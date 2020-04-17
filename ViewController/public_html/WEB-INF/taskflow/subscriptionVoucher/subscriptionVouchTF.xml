@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="subscriptionVouchTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>subsVoucherOnload</default-activity>
+    <input-parameter-definition id="__13">
+      <name>amountSV</name>
+      <value>#{pageFlowScope.amountSV}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__14">
+      <name>paymentTxnSV</name>
+      <value>#{pageFlowScope.paymentTxnSV}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>SubscriptionVouch</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.subscriptionvoucher.SubscriptionVouch</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="subscriptionVouch">
+      <page>/pageFragment/subscriptionVoucher/subscriptionVouch.jsff</page>
+    </view>
+    <view id="subsVouchOrder">
+      <page>/pageFragment/subscriptionVoucher/subsVouchOrder.jsff</page>
+    </view>
+    <task-flow-call id="PaymentTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/payment/PaymentTF.xml</document>
+        <id>PaymentTF</id>
+      </task-flow-reference>
+      <input-parameter id="__17">
+        <name>paymentamount</name>
+        <value>#{pageFlowScope.amountSV}</value>
+      </input-parameter>
+      <input-parameter id="__18">
+        <name>paymentTxn</name>
+        <value>#{pageFlowScope.paymentTxnSV}</value>
+      </input-parameter>
+      <input-parameter id="__2">
+        <name>orderNumber</name>
+        <value>#{pageFlowScope.orderNum}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="subsVoucherOnload">
+      <method>#{backingBeanScope.SubscriptionVouch.subsVoucherOnload}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__4">
+      <from-activity-id>subscriptionVouch</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>goToSubsOrder</from-outcome>
+        <to-activity-id>subsVouchOrder</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>subsVouchOrder</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>backToVoucher</from-outcome>
+        <to-activity-id>subscriptionVouch</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>goToPayment</from-outcome>
+        <to-activity-id>PaymentTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>subsVoucherOnload</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>goToSubsVouch</from-outcome>
+        <to-activity-id>subscriptionVouch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

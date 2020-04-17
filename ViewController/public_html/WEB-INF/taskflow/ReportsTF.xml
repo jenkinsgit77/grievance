@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Reports">
+    <default-activity>generateReport</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>repGenBn</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.ReportGenerationBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="reports">
+      <page>/pageFragment/reports.jsff</page>
+    </view>
+    <task-flow-call id="SelectCustAccountTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/SelectCustAccountTF.xml</document>
+        <id>SelectCustAccountTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <method-call id="generateReport">
+      <method>#{backingBeanScope.repGenBn.generateReportCall}</method>
+      <outcome>
+        <fixed-outcome>goToReportFrg</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>generateReport</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>goToReportFrg</from-outcome>
+        <to-activity-id>reports</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>SelectCustAccountTF</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>NormalFlow</from-outcome>
+        <to-activity-id>generateReport</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

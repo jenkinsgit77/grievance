@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:c="http://java.sun.com/jsp/jstl/core" >
+  <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+
+  <af:panelGroupLayout id="pgl1" styleClass="row iocl_page">
+  <af:panelGroupLayout id="pgl2" styleClass="col-md-12 blueHeading font-size22">
+      <af:outputFormatted value="#{custPortalBundle.FIND_OIL_FOR_SECTOR}" id="of1"/>
+    </af:panelGroupLayout>
+  <af:panelGroupLayout id="pgl3" styleClass="col-md-12 col-xs-12  mb-2  font-bold">
+   <af:outputFormatted value="#{custPortalBundle.AUTOMOTIVE}" id="of2"/>
+  </af:panelGroupLayout>
+  <af:panelGroupLayout id="pgl4" styleClass=" p-0">
+  <af:panelGroupLayout styleClass="row" id="pgl7">
+   <af:panelGroupLayout styleClass="col-md-2" id="pgl8">
+    <af:link shortDesc="#{custPortalBundle.PESSENGER_CARS}" id="l1" icon="/images/confirmation/Warning.png"
+             
+             targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=AUTOMOTIVE&amp;channel=#{custPortalBundle.PESSENGER_CARS}"/>
+             </af:panelGroupLayout>
+             <af:panelGroupLayout styleClass="col-md-2" id="pgl9">
+    <af:link shortDesc="#{custPortalBundle.TWO_WHEELERS}" id="l2" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=AUTOMOTIVE&amp;channel=#{custPortalBundle.TWO_WHEELERS}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl10">
+    <af:link shortDesc="#{custPortalBundle.COMMERCIAL_VEHICLE}" id="l3" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=AUTOMOTIVE&amp;channel=#{custPortalBundle.COMMERCIAL_VEHICLE}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl11">
+    <af:link shortDesc="#{custPortalBundle.FARM_EQUIPMENTS}" id="l4" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=AUTOMOTIVE&amp;channel=#{custPortalBundle.FARM_EQUIPMENTS}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl12">
+    <af:link shortDesc="#{custPortalBundle.HEAVY_MACHINERY}" id="l5" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=AUTOMOTIVE&amp;channel=#{custPortalBundle.HEAVY_MACHINERY}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl13">
+    <af:link shortDesc="#{custPortalBundle.MARINE}" id="l6" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=AUTOMOTIVE&amp;channel=#{custPortalBundle.MARINE}"/>
+    </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+  <af:panelGroupLayout id="pgl5" styleClass="col-md-12 mt-3 mb-2 font-bold">
+  
+  <af:outputFormatted value="#{custPortalBundle.INDUSTRIAL}" id="of3"/>
+  </af:panelGroupLayout>
+  <af:panelGroupLayout styleClass=" p-0" id="pgl14">
+  <af:panelGroupLayout id="pgl6" styleClass="row">
+  <af:panelGroupLayout styleClass="col-md-2" id="pgl15">
+    <af:link  id="l7" icon="/images/confirmation/Warning.png"
+             shortDesc="#{custPortalBundle.POWER}"
+             targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=#{custPortalBundle.INDUSTRIAL}&amp;channel=#{custPortalBundle.POWER}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl16">
+    <af:link shortDesc="#{custPortalBundle.CEMENT}" id="l8" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=#{custPortalBundle.INDUSTRIAL}&amp;channel=#{custPortalBundle.CEMENT}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl17">
+    <af:link shortDesc="#{custPortalBundle.STEEL}" id="l9" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=#{custPortalBundle.INDUSTRIAL}&amp;channel=#{custPortalBundle.STEEL}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl18">
+    <af:link shortDesc="#{custPortalBundle.MINING}" id="l10" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=#{custPortalBundle.INDUSTRIAL}&amp;channel=#{custPortalBundle.MINING}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl19">
+    <af:link shortDesc="#{custPortalBundle.OIL_GAS}" id="l11" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=#{custPortalBundle.INDUSTRIAL}&amp;channel=#{custPortalBundle.OIL_GAS}"/>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-md-2" id="pgl20">
+    <af:link shortDesc="#{custPortalBundle.SUGAR}" id="l12" icon="/images/confirmation/Warning.png"
+    targetFrame="_blank" destination="#{backingBeanScope.findoilforsectorbean.KMBaseUrl}page=content&amp;cat=#{custPortalBundle.INDUSTRIAL}&amp;channel=#{custPortalBundle.SUGAR}"/>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+  </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

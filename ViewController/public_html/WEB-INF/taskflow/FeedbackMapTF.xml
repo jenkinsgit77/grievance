@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="FeedbackMapTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>fetchDealerCodeMap</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>pdealerCode</name>
+      <value>#{pageFlowScope.pdealerCode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__2">
+      <name>pFrom</name>
+      <value>#{pageFlowScope.pFrom}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__11">
+      <managed-bean-name>dealerFeedbackbean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.feedback.DealerFeedbackbean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="dealerFeedback">
+      <page>/pageFragment/feedback/dealerFeedback.jsff</page>
+    </view>
+    <view id="feedbackConfirmation">
+      <page>/pageFragment/feedback/feedbackConfirmation.jsff</page>
+    </view>
+    <method-call id="fetchDealerCodeMap">
+      <method>#{dealerFeedbackbean.fetchDealerCodeMap}</method>
+      <outcome>
+        <fixed-outcome>toDealerFeedback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>dealerFeedback</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>toconfirm</from-outcome>
+        <to-activity-id>feedbackConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>fetchDealerCodeMap</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>toDealerFeedback</from-outcome>
+        <to-activity-id>dealerFeedback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

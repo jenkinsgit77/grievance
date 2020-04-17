@@ -1,0 +1,19 @@
+//Groovy Scripts for com.iocl.customer.model.viewobject.AutolpgDistMasterVo
+
+package com.iocl.customer.model.viewobject
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="LatitudeVar")
+def LatitudeVar_VariableScript_Variable()
+{
+adf.context.pageFlowScope.LatitudeVal
+}
+
+
+@VariableExpression(path="LongitudeVar")
+def LongitudeVar_VariableScript_Variable()
+{
+adf.context.pageFlowScope.LongitudeVal
+}
+

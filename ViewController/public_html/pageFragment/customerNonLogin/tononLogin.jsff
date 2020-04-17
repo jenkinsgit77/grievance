@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl10" rendered="#{pageFlowScope.pflowCode eq 'CustUnsecureIndane'}"
+                         styleClass="row show margin-top;">
+        <af:panelGroupLayout id="pgl12" styleClass="col-md-12 show">
+            <af:panelGroupLayout id="pgl23" layout="vertical" styleClass="row">
+                <af:panelGroupLayout id="pgl18" styleClass="col-md-12" layout="vertical">
+                    <af:panelGroupLayout id="pgl25" styleClass="row margintop30 text-center" layout="vertical">
+                        <af:iterator id="i7" value="#{bindings.AppListVo2_Customer.collectionModel}" var="item">
+                            <af:panelGroupLayout id="pgl17" styleClass="col-md-3 card_group1 show"
+                                                 rendered="#{(item.AppListCode eq 11111 and sessionScope.IS_LOGGED_IN=='True') ? false : true}">
+                                <af:link id="l1" icon="#{item.ImgPath}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'Static') ? true : false}"
+                                         styleClass="svg_icon"
+                                         actionListener="#{backingBeanScope.FetchIconsGenericBean.customerUnsecuredActionList}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link id="l5" icon="#{item.ImgPath}" styleClass="svg_icon"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                         destination="#{item.ToAction}" targetFrame="_blank">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link id="l3" icon="#{item.ImgPath}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}"
+                                         styleClass="svg_icon"
+                                         action="#{backingBeanScope.FetchIconsGenericBean.unsecuredTFActions}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link text="#{item.AppName}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'Static') ? true : false}"
+                                         id="ot1" styleClass="show font-size16 font-dark-blue medium-font"
+                                         actionListener="#{backingBeanScope.FetchIconsGenericBean.customerUnsecuredActionList}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link id="l2" text="#{item.AppName}"
+                                         styleClass="show font-size16 font-dark-blue medium-font"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                         destination="#{item.ToAction}" targetFrame="_blank"></af:link>
+                                <af:link text="#{item.AppName}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}"
+                                         id="l4" styleClass="show font-size16 font-dark-blue medium-font"
+                                         action="#{backingBeanScope.FetchIconsGenericBean.unsecuredTFActions}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:outputFormatted value="#{item.AppDesc}" id="of24"/>
+                            </af:panelGroupLayout>
+                        </af:iterator>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.pflowCode eq 'CustUnsecureRetail'}"
+                         styleClass="row show margin-top">
+        <af:panelGroupLayout id="pgl6" styleClass="col-md-12 show">
+            <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="row">
+                <af:panelGroupLayout id="pgl4" styleClass="col-md-12" layout="vertical">
+                    <af:panelGroupLayout id="pgl5" styleClass="row margintop30 text-center" layout="vertical">
+                        <af:iterator id="i1" value="#{bindings.AppListVo2_Retail.collectionModel}" var="item">
+                            <af:panelGroupLayout id="pgl7" styleClass="col-md-3 card_group1 show">
+                                <af:link id="l6" icon="#{item.ImgPath}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'Static') ? true : false}"
+                                         styleClass="svg_icon"
+                                         actionListener="#{backingBeanScope.FetchIconsGenericBean.customerUnsecuredActionList}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link id="l7" icon="#{item.ImgPath}" styleClass="svg_icon"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                         destination="#{item.ToAction}" targetFrame="_blank">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link id="l8" icon="#{item.ImgPath}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}"
+                                         styleClass="svg_icon"
+                                         action="#{backingBeanScope.FetchIconsGenericBean.unsecuredTFActions}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link text="#{item.AppName}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'Static') ? true : false}"
+                                         id="l9" styleClass="show font-size16 font-dark-blue medium-font"
+                                         actionListener="#{backingBeanScope.FetchIconsGenericBean.customerUnsecuredActionList}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:link id="l10" text="#{item.AppName}"
+                                         styleClass="show font-size16 font-dark-blue medium-font"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                         destination="#{item.ToAction}" targetFrame="_blank"></af:link>
+                                <af:link text="#{item.AppName}"
+                                         rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}"
+                                         id="l11" styleClass="show font-size16 font-dark-blue medium-font"
+                                         action="#{backingBeanScope.FetchIconsGenericBean.unsecuredTFActions}">
+                                    <af:setActionListener from="#{item.ToAction}" to="#{requestScope.ActionName}"/>
+                                </af:link>
+                                <af:outputFormatted value="#{item.AppDesc}" id="of1"/>
+                            </af:panelGroupLayout>
+                        </af:iterator>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

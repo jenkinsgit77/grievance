@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SelectCustAccountTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>showRelationPopupOnLoad</default-activity>
+    <input-parameter-definition id="__8">
+      <name>SourceFlow</name>
+      <value>#{pageFlowScope.SourceFlow}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__13">
+      <name>ExternalNavigation</name>
+      <value>#{pageFlowScope.ExternalNav}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>showRelationPopup</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.selectAccount.ShowRelationPopup</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="showRelationPopup">
+      <page>/pageFragment/selectAccount/showRelationPopup.jsff</page>
+    </view>
+    <router id="router1">
+      <case id="__11">
+        <expression>#{sessionScope.userDetails.lpgMultipleConnection == "Y"}</expression>
+        <outcome>showPopup</outcome>
+      </case>
+      <case id="__12">
+        <expression>#{sessionScope.userDetails.lpgMultipleConnection == "N"}</expression>
+        <outcome>goToNormalFlow</outcome>
+      </case>
+      <case id="__7">
+        <expression>#{sessionScope.userDetails.lpgMultipleConnection == null &amp;&amp; sessionScope.LPGCurrSection ==
+                    null}</expression>
+        <outcome>ERROR</outcome>
+      </case>
+      <default-outcome>goToNormalFlow</default-outcome>
+    </router>
+    <task-flow-return id="NormalFlow">
+      <outcome>
+        <name>NormalFlow</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="showRelationPopupOnLoad">
+      <method>#{backingBeanScope.showRelationPopup.showRelationPopupOnLoad}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__4">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>goToNormalFlow</from-outcome>
+        <to-activity-id>NormalFlow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>showPopup</from-outcome>
+        <to-activity-id>showRelationPopup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>showRelationPopup</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>backToFlow</from-outcome>
+        <to-activity-id>NormalFlow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>showRelationPopupOnLoad</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>goToRouter</from-outcome>
+        <to-activity-id>router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

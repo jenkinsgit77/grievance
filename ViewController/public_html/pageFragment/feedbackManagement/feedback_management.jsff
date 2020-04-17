@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+     <style>
+        .border-cell {
+            border-top: solid 1px Gray;
+            border-left: solid 1px Gray;
+            border-right: solid 1px Gray;
+           
+        }
+               .border-cell:last-child {
+            border-bottom: solid 1px Gray;
+        }
+
+        .rate-table-header {
+            background: #848484;
+            color: #fff;
+            padding: 10px;
+        }
+        .marleft15{
+            margin-left:15px;
+            }
+            
+        
+        @media only screen and (min-device-width:320px) and (max-device-width:768px) {
+        .fontSizeResponsivetable{font-size: 12px !important;}
+        }
+    </style>
+   
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+     <af:panelGroupLayout id="pgl1"  styleClass="d-block" inlineStyle="margin:15px"  partialTriggers="b1">
+        
+         <af:panelGroupLayout id="pgl111" styleClass="IOCLcontent_box1 iocl_page">
+         <af:panelGroupLayout id="pgl18" layout="vertical" styleClass="row marB15">
+            <af:outputFormatted value="Rate Your Previous Experience" id="ot1" styleClass=" col-md-12 font-size22 IOCL-font-weight-regular font-dark-blue"/>
+           <af:spacer width="10" height="10" id="s1"/>
+            <af:panelGroupLayout id="pgl13" styleClass="row marleft15 marB15 show">
+                               
+            <af:panelGroupLayout id="pgl14" styleClass="col-md-8 border-cell">
+                <af:panelGroupLayout id="pgl10" styleClass="row  show rate-table-header">
+                    <af:panelGroupLayout id="pgl11" styleClass="col-md-8  show ">
+                        <af:outputText value="RATED ON" id="ot4"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl12" styleClass="col-md-4  show text-right">
+                        <af:outputText value="YOUR RATING" id="sdf"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl3" styleClass="col-md-8 border-cell">
+                 <af:panelGroupLayout id="pgl28" styleClass="row  show">
+                <af:panelGroupLayout id="pgl16" styleClass="col-md-8  show p-3">
+                    <af:outputText value="Product Quality"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl17" styleClass="col-md-4  show text-right p-3">
+                    <dvt:ratingGauge id="ProductQuality"
+                                     valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getProductQuality}"
+                                     binding="#{backingBeanScope.FeedbackManagementBean.bindProductQuality}"
+                                     value="#{backingBeanScope.FeedbackManagementBean.productQualityValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                     
+                                     />
+                </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl15" styleClass="col-md-8 border-cell">
+            <af:panelGroupLayout id="pgl29" styleClass="row  show">
+                <af:panelGroupLayout id="pgl19" styleClass="col-md-8  show">
+                    <af:outputText value="Quantity Delivered"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl20" styleClass="col-md-4  show text-right">
+                    <dvt:ratingGauge id="QuantityDelivered"
+                                     valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getQuantityDelivered}"
+                                     binding="#{backingBeanScope.FeedbackManagementBean.bindQuantityDelivered}"
+                                     value="#{backingBeanScope.FeedbackManagementBean.quantityDeliveredValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                    />
+                </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl5" styleClass="col-md-8 border-cell">
+            <af:panelGroupLayout id="pgl30" styleClass="row  show">
+                <af:panelGroupLayout id="pgl21" styleClass="col-md-8  show">
+                    <af:outputText value="Service"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl23" styleClass="col-md-4  show text-right">
+                    <dvt:ratingGauge id="Service" binding="#{backingBeanScope.FeedbackManagementBean.bindService}"
+                       valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getService}"
+                                     value="#{backingBeanScope.FeedbackManagementBean.serviceValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                     
+                                     />
+                </af:panelGroupLayout>
+           </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl6" styleClass="col-md-8 border-cell">
+            <af:panelGroupLayout id="pgl31" styleClass="row  show">
+                <af:panelGroupLayout id="pgl24" styleClass="col-md-8  show">
+                    <af:outputText value="Cleanliness"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl25" styleClass="col-md-4  show text-right">
+                    <dvt:ratingGauge id="Cleanliness"
+                                     valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getCleanliness}"
+                                     binding="#{backingBeanScope.FeedbackManagementBean.bindCleanliness}"
+                                     value="#{backingBeanScope.FeedbackManagementBean.cleanlinessValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                    />
+                </af:panelGroupLayout>
+           </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl7" styleClass="col-md-8 border-cell">
+            <af:panelGroupLayout id="pgl38" styleClass="row  show">
+                <af:panelGroupLayout id="pgl26" styleClass="col-md-8  show">
+                    <af:outputText value="Facilities"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl27" styleClass="col-md-4  show text-right">
+                    <dvt:ratingGauge id="Facilities"
+                                      binding="#{backingBeanScope.FeedbackManagementBean.bindFacilities}"
+                                      valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getFacilities}"
+                                      value="#{backingBeanScope.FeedbackManagementBean.facilitiesValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                     />
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        
+        
+         <af:panelGroupLayout id="pgl4" styleClass="col-md-8 border-cell">
+            <af:panelGroupLayout id="pgl32" styleClass="row  show">
+                <af:panelGroupLayout id="pgl33" styleClass="col-md-8  show">
+                    <af:outputText value="Clean Toilet"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl34" styleClass="col-md-4  show text-right">
+                    <dvt:ratingGauge id="CleanToilet"
+                                     valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getCleanToilet}"
+                                      binding="#{backingBeanScope.FeedbackManagementBean.bindCleanToilet}"
+                                     value="#{backingBeanScope.FeedbackManagementBean.cleanToiletValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                     />
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        
+        
+         <af:panelGroupLayout id="pgl35" styleClass="col-md-8 border-cell">
+            <af:panelGroupLayout id="pgl36" styleClass="row  show">
+                <af:panelGroupLayout id="pgl37" styleClass="col-md-8  show">
+                    <af:outputText value="Overall Rating" />
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl39" styleClass="col-md-4  show text-right">
+                    <dvt:ratingGauge id="OverallRating"
+                                     valueChangeListener="#{backingBeanScope.FeedbackManagementBean.getOverallRating}"
+                                     binding="#{backingBeanScope.FeedbackManagementBean.bindOverallRating}"
+                                     value="#{backingBeanScope.FeedbackManagementBean.overallRatingValue}" maximum="5"
+                                     minimum="1" readOnly="false" styleClass="ratingStarDiv"
+                                     />
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+            <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+            
+            <af:panelGroupLayout id="pgl8" styleClass=" marB15 show">
+            <af:panelGroupLayout id="pgl9" layout="default" valign="bottom" halign="left"
+                                 
+                                 styleClass="col-xs-12 col-md-12 col-sm-12" inlineStyle="padding:0">
+                <af:button text="SUBMIT FEEDBACK"  id="b1" partialSubmit="true"
+                           action="#{backingBeanScope.FeedbackManagementBean.conSubmitFeedback}"
+                           styleClass="col-xs-12 col-sm-4 col-md-4"/>
+                <af:spacer width="10" height="10" id="s3"/>
+               
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s4"/>
+            
+             
+           
+        </af:panelGroupLayout>
+         </af:panelGroupLayout>
+        </af:panelGroupLayout>
+</jsp:root>

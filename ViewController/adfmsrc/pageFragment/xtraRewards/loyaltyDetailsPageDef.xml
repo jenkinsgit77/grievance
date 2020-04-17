@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="loyaltyDetailsPageDef"
+                Package="pageFragment.xtraRewards">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProfileEnrichmentVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ProfileEnrichmentVo1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.pValidCodeEnrichDetails}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.pValidMsgEnrichDetails}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="MobileNo">
+      <AttrNames>
+        <Item Value="MobileNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="Address1">
+      <AttrNames>
+        <Item Value="Address1"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="XRPoints">
+      <AttrNames>
+        <Item Value="XRPoints"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="insertProfileEnrichInfo" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertProfileEnrichInfo" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.insertProfileEnrichInfo.dataControl.dataProvider">
+      <NamedData NDName="FirstName" NDType="java.lang.String"/>
+      <NamedData NDName="LastName" NDType="java.lang.String"/>
+      <NamedData NDName="EmailId" NDType="java.lang.String"/>
+      <NamedData NDName="MobileNo" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="MemberNumber">
+      <AttrNames>
+        <Item Value="MemberNumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

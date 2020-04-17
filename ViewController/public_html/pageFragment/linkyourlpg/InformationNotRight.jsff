@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+ xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+<c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="default" halign="center" valign="middle" inlineStyle="min-height:500px;border:solid 1px #ccc;  "
+                       styleClass="col-md-12 col-sm-12 col-md-12 text-center iocl_page">
+    <af:outputText value="#{custPortalBundle.PLEASE_VISIT_DIS}" id="ot1" styleClass="font-size24 submitSection" inlineStyle=" margin:40px 0; "/>
+    <af:button text="#{custPortalBundle.NEW_CONN}" id="b1" styleClass="col-sm-3 col-md-3 col-xs-12 float-none m-auto"
+               actionListener="#{backingBeanScope.LinkedLpgBean.gotoNewConnection}"/>
+  </af:panelGroupLayout>
+</jsp:root>

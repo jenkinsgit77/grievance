@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <af:resource type="css" source="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"></af:resource>    
+     <af:resource type="css" source="/skins/CustPortCommon.css"/>
+    <af:resource type="css" source="/com/iocl/lpg/skins/bootstrap.css"/>
+    <af:resource type="css" source="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></af:resource>
+    <af:resource type="javascript" source="/com/iocl/lpg/js/vender/jQuery/jquery-2.2.4.min.js"/>
+    <af:resource type="javascript" source="/com/iocl/lpg/js/vender/bootstrap.min.js"/>
+    <af:resource type="javascript" source="/com/iocl/lpg/js/globalNumberOnlyInput.js"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <!--<af:resource type="javascript">
+function submitForm(event) {
+        if (event.getKeyCode() == AdfKeyStroke.ENTER_KEY) {
+            var source = event.getSource();
+            var myButton = source.findComponent("pt_b1");
+            var actionEvent = new AdfActionEvent(myButton);
+            actionEvent.forceFullSubmit();
+            actionEvent.noResponseExpected();
+            actionEvent.queue();
+        }
+    }    
+    </af:resource>-->
+    <af:resource type="javascript">
+    function handleEnterEvent(evt) {
+      var _keyCode = evt.getKeyCode();
+      //check for Enter Key
+      if (_keyCode == AdfKeyStroke.ENTER_KEY ){    
+          var comp = evt.getSource();
+          AdfCustomEvent.queue(comp, "EnterEvent", {fvalue:comp.getSubmittedValue()}, false);
+          evt.cancel();
+      }
+   }
+</af:resource>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>LoginTemplate</display-name>
+                <facet>
+                    <facet-name>header</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>status</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>appNav</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>globalLinks</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>footer</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>center</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>start</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>end</facet-name>
+                </facet>
+                <attribute>
+                    <attribute-name>logoImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoSmallImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoStyleClass</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoShortDesc</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>showAppNavbar</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                    <default-value>true</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>brandingMaxWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>1024px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>minWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>startWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>endWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>showFooter</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                </attribute>
+            </component>
+        </af:xmlContent>
+        <af:group id="grp1">
+            <!--<af:resource type="css" source="/styles/tabletFirstTemplate.css"/>-->
+            <af:panelGroupLayout id="mainArea" styleClass="header" layout="vertical">
+                <!--<af:declarativeComponent viewId="brandingBar.jsff" id="bBarFDC" logoImagePath="#{attrs.logoImagePath}"
+                                         logoSmallImagePath="#{attrs.logoSmallImagePath}"
+                                         logoStyleClass="#{attrs.logoStyleClass}" logoShortDesc="#{attrs.logoShortDesc}"
+                                         showAppNavbar="#{attrs.showAppNavbar}" showStatusIndicator="true"
+                                         brandingMaxWidth="#{attrs.brandingMaxWidth}">
+                    <f:facet name="brandingTitle">
+                        <af:facetRef facetName="header"/>
+                    </f:facet>
+                    <f:facet name="appNavbar">
+                        <af:facetRef facetName="appNav"/>
+                    </f:facet>
+                    <f:facet name="globalNavbar">
+                        <af:facetRef facetName="globalLinks"/>
+                    </f:facet>
+                    <f:facet name="statusBar">
+                        <af:facetRef facetName="status"/>
+                    </f:facet>
+                </af:declarativeComponent>-->
+                <af:panelGroupLayout id="pt_pgl1" layout="vertical" styleClass="container">
+                    <af:panelGroupLayout id="pt_pgl4" layout="vertical" styleClass="row">
+                        <af:panelGroupLayout id="pt_pgl13" layout="vertical" styleClass="col-md-12">
+                            <af:panelGroupLayout id="pt_pgl3" layout="vertical" styleClass="row">
+                                <af:panelGroupLayout id="pt_pgl14" layout="vertical" styleClass="col-md-3">
+                                    <af:image source="/images/indane.png" id="pt_i1" styleClass="img-responsive"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl2" layout="vertical" styleClass="col-md-9 text-right">
+                                    <af:panelGroupLayout id="pt_pgl15" layout="horizontal" styleClass="pull-right">
+                                        <af:outputText  id="pt_pgl5" value="TOLL FREE NUMBER:1800-2333-555 | LPG EMERGENCY HELPLINE: 1906" styleClass="header_text1" />
+                                         <af:panelGroupLayout id="pt_pgl18" styleClass="social-media-icons">
+                                            <af:link icon="/images/facebook.png"
+                                                     destination="https://www.facebook.com/IndianOilCorpLimited"
+                                                     targetFrame="_blank" id="pt_l9"/>
+                                            <af:link icon="/images/twitter.png"
+                                                     destination="https://twitter.com/indianOilcl" targetFrame="_blank"
+                                                     id="pt_l10"/>
+                                            <af:link icon="/images/youtube.png"
+                                                     destination="https://www.youtube.com/channel/UC5ho18VZHwEFSahW0Q_o-6g/feed"
+                                                     targetFrame="_blank" id="pt_l11"/>
+                                            <af:link icon="/images/googleplay.png"
+                                                     destination="https://play.google.com/store/apps/developer?id=Indian%20Oil%20Corporation%20Ltd."
+                                                     id="pt_l12" targetFrame="_blank"/>
+                                            <af:link icon="/images/instagram.png"
+                                                     destination="https://www.instagram.com/indianoilcorp/"
+                                                     targetFrame="_blank" id="pt_l13"/>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pt_pgl21" styleClass="clearfix" layout="vertical" />
+                                    <af:panelGroupLayout id="pt_pgl16" layout="horizontal" styleClass="pull-right">                                        
+                                        <af:panelGroupLayout id="pt_pgl17" styleClass="header_text2">
+                                        <af:link text="SCREEN READER ACCESS" immediate="true"
+                                    destination="../faces/reader.jspx" id="pt_20"/></af:panelGroupLayout>
+                                        <af:selectOneChoice id="pt_sol1" styleClass="select_lang" unselectedLabel="English Language"> 
+                                            <f:selectItem itemLabel="English Language" itemValue="1" id="pt_si4"/>
+                                            <f:selectItem itemLabel="Hindi Language" itemValue="2" id="pt_si3"/>
+                                            <f:selectItem itemLabel="Marathi Language" itemValue="3" id="pt_si2"/>
+                                        </af:selectOneChoice>
+                                       <af:panelGroupLayout id="pt_pgl19">
+                                            <af:panelGroupLayout id="pt_pgl20" styleClass="pull-left themes"  layout="horizontal">
+                                                <af:outputText value="Color Themes" id="pt_ot10"/>
+                                                <af:outputText value="w" id="pt_ot12" styleClass="white-theme"/>
+                                                <af:outputText value="b" id="pt_ot13" styleClass="black-theme"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pt_pgl22" styleClass="pull-right" layout="horizontal">
+                                                <af:outputText value="A-" id="pt_ot11" styleClass="font_box zoomzero" />
+                                                <af:outputText value="A" id="pt_ot9" styleClass="font_box zoomminus"/>
+                                                <af:outputText value="A+" id="pt_ot8" styleClass="font_box zoomplus"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pt_pgl23" styleClass="clearfix" layout="vertical"></af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl7" layout="horizontal" halign="right">
+                                    <af:panelGroupLayout id="pt_pgl11" styleClass="form-has-feedback" >
+                                        <af:inputText placeholder="Search" id="pt_it1" simple="true" 
+                                                      binding="#{backingBeanScope.NonLoginBean.searchInputtxt}" autoSubmit="true"
+                                                      >
+                                                      <af:clientListener method="handleEnterEvent" type="keyPress"/>
+    <af:serverListener type="EnterEvent"  method="#{backingBeanScope.NonLoginBean.submitOnEnter}"/>
+    </af:inputText>
+                                        <af:button icon="/images/search-icon-4.png" 
+                                                   action="#{backingBeanScope.NonLoginBean.callKM}"  
+                                                   partialTriggers="pt_it1" id="pt_b1" styleClass="search_icon"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pt_pgl8" layout="horizontal">
+                                        <af:link text="New Connection" id="pt_l1" styleClass="headerMenuBlack"/>
+                                        <af:link text="Login" id="pt_l2" styleClass="headerMenuBlack"/>
+                                        <af:link text="Register" id="pt_l3" styleClass="headerMenuBlack" action="toRegister"/>
+                                        <af:link text="FAQ" id="pt_l4" styleClass="headerMenuBlack no_border"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl6" layout="vertical" halign="right">                                    
+                                    <af:panelGroupLayout id="pt_pgl9" layout="horizontal" halign="right" rendered="false">
+                                        <af:link text="About Indane" id="pt_l5" styleClass="headerMenuBlue"/>
+                                        <af:link text="Initiative" id="pt_l6" styleClass="headerMenuBlue"/>
+                                        <af:link text="Our Network" id="pt_l7" styleClass="headerMenuBlue"/>
+                                        <af:link text="Media Cover" id="pt_l8" styleClass="headerMenuBlue"/>
+                                        <af:link text="Contact Details" id="pt_l18" styleClass="headerMenuBlue"/>
+                                    </af:panelGroupLayout>
+                                    <af:menuBar id="pt_mb2" value="Menu Bar" styleClass="nav_bar" >
+                                        <af:menu text="About Indane" id="pt_m1"  styleClass="headerMenuBlue">
+                                            <af:commandMenuItem text="Brief" id="pt_cmi1"/>
+                                            <af:menu text="Vision" id="pt_m3"  styleClass="headerMenuBlue">
+                                                <af:commandMenuItem text="Market" id="pt_cmi4"/>
+                                            </af:menu>
+                                        </af:menu>
+                                        <af:menu text="Initiative" id="pt_m2"  styleClass="headerMenuBlue">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi3"/>
+                                        </af:menu>
+                                        <af:menu text="Our Network" id="pt_m4"  styleClass="headerMenuBlue">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi5"/>
+                                        </af:menu>
+                                        <af:menu text="Media Cover" id="pt_m5"  styleClass="headerMenuBlue">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi2"/>
+                                        </af:menu>
+                                        <af:menu text="Our Network" id="pt_m6"  styleClass="headerMenuBlue">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi6"/>
+                                        </af:menu>
+                                    </af:menuBar>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pt_pgl10" layout="vertical" styleClass="verticalMenuSection">
+                            <af:toolbar id="pt_t1" stretchId="pt_s16">
+                                <af:menuBar id="pt_mb3">
+                                    <af:menu text="TMenu" id="pt_m14">
+                                        <af:commandMenuItem text="New Connection" id="pt_cmi13"/>
+                                        <af:commandMenuItem text="Login" id="pt_cmi14"/>
+                                        <af:commandMenuItem text="Register" id="pt_cmi15"/>
+                                        <af:commandMenuItem text="FAQ" id="pt_cmi16"/>
+                                    </af:menu>
+                                </af:menuBar>
+                                <af:spacer width="10" height="10" id="pt_s16" clientComponent="true"/>
+                                <af:menuBar id="pt_mb4">
+                                    <af:menu text="TMenu" id="pt_m15">
+                                        <af:commandMenuItem text="Toll Free No:" id="pt_cmi17"/>
+                                        <af:commandMenuItem text="LPG Emergency Helpline" id="pt_cmi18"/>
+                                        <af:commandMenuItem id="pt_cmi19" text="Screen Reader Access"/>
+                                    </af:menu>
+                                </af:menuBar>
+                                <af:menuBar id="pt_mb1">
+                                    <af:menu text="Menu" id="pt_m7">
+                                        <af:menu text="About Indane" id="pt_m8">
+                                            <af:commandMenuItem text="commandMenuItem 1" id="pt_cmi7"/>
+                                            <af:menu text="Vision" id="pt_m13">
+                                                <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi8"/>
+                                            </af:menu>
+                                        </af:menu>
+                                        <af:menu text="Initiative" id="pt_m9">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi9"/>
+                                        </af:menu>
+                                        <af:menu text="Our Network" id="pt_m10">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi10"/>
+                                        </af:menu>
+                                        <af:menu text="Media Cover" id="pt_m11">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi12"/>
+                                        </af:menu>
+                                        <af:menu text="Our Network" id="pt_m12">
+                                            <af:commandMenuItem text="commandMenuItem 3" id="pt_cmi11"/>
+                                        </af:menu>
+                                    </af:menu>
+                                </af:menuBar>
+                            </af:toolbar>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>                    
+                    <af:separator id="pt_s2" inlineStyle="border-bottom:1px solid black;"/>
+                    <af:panelGroupLayout styleClass="container" layout="vertical" id="pt_pgl12">
+                        <af:declarativeComponent viewId="contentBody.jsff" id="cBodFDC">
+                            <f:facet name="startFacet">
+                                <af:facetRef facetName="start"/>
+                            </f:facet>
+                            <f:facet name="endFacet">
+                                <af:facetRef facetName="end"/>
+                            </f:facet>
+                            <f:facet name="content">
+                                <af:facetRef facetName="center"/>
+                            </f:facet>
+                        </af:declarativeComponent>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:group>
+    </af:pageTemplateDef>
+</jsp:root>

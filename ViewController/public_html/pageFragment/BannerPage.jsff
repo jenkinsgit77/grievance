@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:resource type="javascript">
+      function resetPollInterval(e) {
+          var src = e.getSource();
+          var poll = src.findComponent("p2");
+          if (poll != null) {
+              poll.setInterval(-1);
+          }
+      }
+    </af:resource>
+    <af:panelGroupLayout id="pgl6" styleClass="iocl_page">
+        <af:poll id="p2" interval="10" pollListener="#{backingBeanScope.LoggedInBanner.bannerOnLoad}"
+                 rendered="#{pageFlowScope.ShowOnloadPopup eq 'Y'}">
+            <af:clientListener method="resetPollInterval" type="poll"/>
+        </af:poll>
+        <span id="myCarousel" class="carousel slide myCarousel" data-ride="carousel"> 
+            <span class="carousel-inner show">
+                <ol class="carousel-indicators">
+                    <af:forEach varStatus="banner" items="#{pageFlowScope.lstBannerPF}" var="feachtt">
+                        <li data-slide-to="${banner.index}" data-target="#myCarousel"
+                            class="${banner.index == '0' ? 'active':''}">&#160;</li>
+                    </af:forEach>
+                </ol>
+                <af:forEach varStatus="banner" items="#{pageFlowScope.lstBannerPF}" var="feachtt">
+                    <span id="pgl3" class="${banner.index eq '0' ? 'item active':'item'}">
+                        <a href="${feachtt.trainingUrl eq null ? 'javascript:void(0)' : feachtt.trainingUrl }"
+                           target="${feachtt.trainingUrl eq null ? '' : '_blank' }">
+                            <af:image source="../../../PublicBannerImages/#{pageFlowScope.BannerPath==null?'HomeBanner':pageFlowScope.BannerPath}/#{feachtt.url}"
+                                      styleClass="AFStretchWidth"/></a></span>
+                </af:forEach><a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
+                    <span class="sr-only">Previous</span>
+                     </a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="sr-only">Next</span></a></span></span>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                  binding="#{backingBeanScope.LoggedInBanner.onloadPopUpBinding}" contentDelivery="immediate">
+            <af:dialog id="d1" styleClass="MyDialog test iocl_page" type="none" contentHeight="400">
+                <af:panelGroupLayout id="pgl1" layout="vertical">
+                    <af:image id="i1" source="../../../CustomerAdvisory.png" shortDesc="Customer Advisory"/>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+    </af:panelGroupLayout>
+</jsp:root>

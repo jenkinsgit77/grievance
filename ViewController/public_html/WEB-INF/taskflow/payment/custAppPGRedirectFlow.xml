@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="pgRedirectFlow">
+    <default-activity>handlePgResponse</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>pgRedirectBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.payment.PaymentRedirectBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="handlePgResponse">
+      <method>#{backingBeanScope.pgRedirectBean.handlePgResponse}</method>
+      <outcome>
+        <fixed-outcome>updatePayment</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="pgRedirect">
+      <page>/pageFragment/pgRedirect.jsff</page>
+    </view>
+    <control-flow-rule id="__4">
+      <from-activity-id>handlePgResponse</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>updatePayment</from-outcome>
+        <to-activity-id>pgRedirect</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

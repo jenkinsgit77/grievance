@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml" id="ExceptionHandlerTF" type="task-flow-template" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/iamge-slider-flow.xml" id="iamge-slider-flow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/BannerTF.xml" id="BannerTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="BannerPath"/>
+      <input-parameter name="BannerName"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/ContactUs/LeadTF.xml" id="LeadTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/CustomerPropertyLoadTF.xml" id="CustomerPropertyLoadTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/DealerFeedback/DealerFeedbackTF.xml" id="DealerFeedbackTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/GrievFeedbackTF.xml" id="GrievFeedbackTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/LeadCreationTF.xml" id="LeadCreationTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/MobileResponseTF.xml" id="MobileResponseTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/OverviewSectionTF.xml" id="OverviewSectionTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="hideBackButton"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/ReaderTF.xml" id="ReaderTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/ReportsTF.xml" id="Reports" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/SelectCustAccountTF.xml" id="SelectCustAccountTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="ExternalNavigation"/>
+      <input-parameter name="SourceFlow"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/common/AttachmentAdd.xml" id="AttachmentAdd" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/common/ConfirmationPageTF.xml" id="ConfirmationPageTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="destinationLabel"/>
+      <input-parameter name="navigation"/>
+      <input-parameter name="relogin"/>
+      <input-parameter name="refNumber"/>
+      <input-parameter name="destination"/>
+      <input-parameter name="confMessage"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/common/CustomerAddAttachmentTF.xml" id="CustomerAddAttachmentTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="IMAGE_PATH"/>
+      <input-parameter name="pBase64Code"/>
+      <input-parameter name="docType"/>
+      <input-parameter name="pFileUploadName"/>
+      <input-parameter name="internalServiceExec"/>
+      <input-parameter name="pDisabledLink"/>
+      <input-parameter name="flowInUse"/>
+      <input-parameter name="pDocumentType"/>
+      <input-parameter name="pDocumentID"/>
+      <input-parameter name="pNameFile"/>
+      <input-parameter name="pFileInfo"/>
+      <input-parameter name="pNameExt"/>
+      <input-parameter name="pFileUploadNamePre"/>
+      <input-parameter name="hideImagePreview"/>
+      <input-parameter name="hideRemoveLink"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/common/CustomerBussinessValidation.xml" id="CustomerBussinessValidation" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="errorBusinessValidationCode"/>
+      <input-parameter name="errorBusinessValidationMSG"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/common/FetchIconsTF.xml" id="FetchIconsTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="pflowCode"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/linkyourlpg/LinkYourLpgTF.xml" id="LinkYourLpgTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/loyalty/LoyaltyEnrichmentTF.xml" id="LoyaltyEnrichmentTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="navigateTo"/>
+      <input-parameter name="duplicationFlag"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/loyalty/LoyaltyLinkingTF.xml" id="LoyaltyLinkingTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/loyalty/xtraRewardsPointsTF.xml" id="xtraRewardsPointsTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="navigateTo"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/lpgLandingTF.xml" id="lpgLandingTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="LPGCurrSection"/>
+      <input-parameter name="kycAccepted"/>
+      <input-parameter name="kycVerified"/>
+      <input-parameter name="LPGStageStatus"/>
+      <input-parameter name="pOTPFlow"/>
+      <input-parameter name="pOTPMOB"/>
+      <input-parameter name="kycApproved"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/lpgsr/LPGSR.xml" id="LPGSR" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/ourNetworkDistribtorTF.xml" id="ourNetworkDistribtorTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/ourNetworkLocatorTF.xml" id="ourNetworkLocatorTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="DistributorFlag"/>
+      <input-parameter name="LongitudeVal"/>
+      <input-parameter name="CategoryVal"/>
+      <input-parameter name="RetailOutletFlag"/>
+      <input-parameter name="FtlFlag"/>
+      <input-parameter name="LatitudeVal"/>
+      <input-parameter name="BackLinkUrl"/>
+      <input-parameter name="NoDataMsg"/>
+      <input-parameter name="NetworkFlag"/>
+      <input-parameter name="AutoLPGFlag"/>
+      <input-parameter name="AreaOfficeFlag"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/payment/PaymentTF.xml" id="PaymentTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="paymentamount"/>
+      <input-parameter name="orderNumber"/>
+      <input-parameter name="paymentMode"/>
+      <input-parameter name="paymentTxn"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/payment/custAppPGRedirectFlow.xml" id="pgRedirectFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/payment/paymentGatewayFlow.xml" id="paymentGatewayFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="paymentRowTxnId"/>
+      <input-parameter name="amount"/>
+      <input-parameter name="orderNo"/>
+      <input-parameter name="gatewayName"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/reCaptchaCustTF.xml" id="reCaptchaCustTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/reactivate/ReactivateTF.xml" id="ReactivateTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/subscriptionVoucher/subscriptionVouchTF.xml" id="subscriptionVouchTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="amountSV"/>
+      <input-parameter name="paymentTxnSV"/>
+   </task-flow-descriptor>
+</task-flow-registry>

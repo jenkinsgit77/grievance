@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <!--<af:resource type="javascript">
+      $(document).ready(function () {
+          $('iframe#pt1:cBodFDC:r2:0:paymentFrame').load(function () {
+              window.addEventListener('message', function (e) {
+                  $("#pt1:cBodFDC:r2:0:paymentFrame").css("height", e.data['newHeight'] + 'px');
+              },
+              false);
+          });
+      });
+    </af:resource>-->
+    <!--<af:inlineFrame id="paymentFrame" source="#{backingBeanScope.pgBean.PGSecureUrl}"
+                    inlineStyle="width:100%; height:582px" rendered="#{pageFlowScope.gatewayName eq 'cc'}"/>-->
+    <af:panelGroupLayout visible="#{pageFlowScope.gatewayName eq 'cc'}" styleClass="col-md-12 iocl_page">
+        <!--<af:button text="CCAvenue"  destination="#{backingBeanScope.pgBean.PGSecureUrl}"
+                   rendered="#{pageFlowScope.gatewayName eq 'cc'}" styleClass="attrid"></af:button>-->
+                   <!--<a href="${backingBeanScope.pgBean.PGSecureUrl}"
+                      style="font-weight: 700;color: #fff;background: #f37201; padding: 10px;border-radius: 5px;">Proceed to CCAvenue Payment Gateway</a>-->
+    <!--<a href="${backingBeanScope.pgBean.PGSecureUrl}">
+    <af:image id="pt_i4" source="/ShowProperty?nodeId=%2FHOContentConn%2FWCC024558%2F%2FidcPrimaryFile&amp;revision=latestreleased&amp;rid=1"/>
+    </a>-->
+    <af:link id="pt_i4" icon="/ShowProperty?nodeId=%2FHOContentConn%2FWCC024558%2F%2FidcPrimaryFile&amp;revision=latestreleased&amp;rid=1"
+            action="#{backingBeanScope.pgBean.createPaymentRecord}"/>
+    </af:panelGroupLayout>
+    
+    <!--<af:panelGroupLayout visible="#{pageFlowScope.gatewayName eq 'sbi'}" styleClass="col-md-12 iocl_page">
+        --><!--<af:button text="#{res['PAYMENT_PROCEED_TO_SBI']}" 
+                   destination="#{backingBeanScope.pgBean.sbiPGSecureUrl}"
+                   rendered="#{pageFlowScope.gatewayName eq 'sbi'}" styleClass="attrid"></af:button>--><!--
+    
+     <a href="${backingBeanScope.pgBean.sbiPGSecureUrl}"
+                      style="font-weight: 700;color: #fff;background: #f37201; padding: 10px;border-radius: 5px;">Proceed to SBI Payment Gateway</a>
+    </af:panelGroupLayout>-->
+</jsp:root>
+

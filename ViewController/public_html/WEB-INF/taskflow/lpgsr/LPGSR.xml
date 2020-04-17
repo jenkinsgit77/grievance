@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LPGSR">
+    <default-activity>SelBusincessLine</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>lpgSrCreation</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.srcreation.LPGSRCreation</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="SRCreationLPG">
+      <page>/pageFragment/lpgsr/SRCreationLPG.jsff</page>
+    </view>
+    <view id="SelBusincessLine">
+      <page>/pageFragment/selbusinessline/SelBusincessLine.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>SelBusincessLine</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>LPG</from-outcome>
+        <to-activity-id>SRCreationLPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+        .marginleft20 {
+            margin-left: 20px !important;
+        }
+
+        .inputheight input {
+            height: 100px;
+        }
+        .margintop0{
+            margin-top:0px !important;
+            margin:0px !important ;
+        }
+        .marginbottom10 input{
+            margin-bottom: 10px !important;
+        }
+        .height60 input{
+        height:60px !important;
+        }
+        
+    </af:resource>
+    <af:resource type="javascript">
+      $(document).ready(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass="row iocl_page" partialTriggers="b1 l1">
+        <af:panelGroupLayout id="pgl80" styleClass="col-md-12">
+            <af:panelGroupLayout id="pgl81" styleClass="IOCLcontent_box1">
+                <af:panelGroupLayout id="pgl2">
+                    <af:outputFormatted value="#{custPortalBundle.CONTACT_US}" id="ol9"
+                                        styleClass="font-size22 IOCL-font-weight-regular font-dark-blue"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl3" styleClass="row margintop30 marginbottom15 show">
+                    <af:panelGroupLayout id="pgl10" styleClass="col-md-5 form_group show">
+                        
+                            <af:outputFormatted value="#{custPortalBundle.FIRST_NAME_1}" id="of3"
+                                           styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"     />
+                            <af:inputText label="" id="it12" simple="true"
+                                          maximumLength="#{custPortalBundle.VALID_LENGTH_ONE}"
+                                           autoSubmit="true"
+                                          binding="#{backingBeanScope.LeadCreationBean.firstNameBinding}"
+                                          placeholder="#{custPortalBundle.TYPE_YOUR_FIRST_NAME}"/>
+                            <af:outputFormatted value="#{backingBeanScope.LeadCreationBean.firstNameErrorMsg}" id="ot4"
+                                                styleClass="errorMessage"
+                                                rendered='#{backingBeanScope.LeadCreationBean.firstNameErrorMsg != ""}'/>
+                        
+                    </af:panelGroupLayout>
+                    
+                        <af:panelGroupLayout id="pgl14" styleClass="col-md-5 form_group col-md-offset-2 show ">
+                            <af:panelGroupLayout styleClass="row show ">
+                                <af:panelGroupLayout id="pgl12" styleClass="col-md-5 show">
+                                    <af:outputFormatted value="#{custPortalBundle.MIDDLE_NAME}" id="of4"
+                                                        styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                                    <af:inputText label="" id="it1" simple="true" binding="#{backingBeanScope.LeadCreationBean.middleNameBinding}"
+                                    placeholder="#{custPortalBundle.TYPE_YOUR_MIDDLE_NAME}"
+                                                  />
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl13"  styleClass="col-md-7  show">
+                                    <af:outputFormatted value="#{custPortalBundle.LAST_NAME_1}" id="of5"
+                                                        styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                                    <af:inputText label="" id="it2" simple="true" placeholder="#{custPortalBundle.TYPE_YOUR_LAST_NAME}"
+                                                  binding="#{backingBeanScope.LeadCreationBean.lastNameBinding}"/>
+                                    <af:outputFormatted value="#{backingBeanScope.LeadCreationBean.lastNameErrorMsg}" id="of1"
+                                                        styleClass="errorMessage"
+                                                        rendered='#{backingBeanScope.LeadCreationBean.lastNameErrorMsg != ""}'/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl6" styleClass="row marginbottom15 show">
+                    <af:panelGroupLayout id="pgl55" styleClass="col-md-5 form_group show">
+                        <af:outputFormatted value="#{custPortalBundle.LINE_OF_BUSSINESS}" id="of7"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:selectOneChoice value="#{bindings.LineBussiness.inputValue}" unselectedLabel="Select"
+                                            binding="#{backingBeanScope.LeadCreationBean.lineofbussbinding}"
+                                            required="#{bindings.LineBussiness.hints.mandatory}" simple="true"
+                                            shortDesc="#{bindings.LineBussiness.hints.tooltip}" id="soc1">
+                            <f:selectItems value="#{bindings.LineBussiness.items}" id="si1"/>
+                            <f:validator binding="#{bindings.LineBussiness.validator}"/>
+                        </af:selectOneChoice>
+                        <af:panelGroupLayout id="pgl82" styleClass="errClassScroll">
+                            <af:outputFormatted id="ot18" styleClass="errorMessage" rendered='#{backingBeanScope.LeadCreationBean.lineofBussErrorMsg !=""}'
+                                                value="#{backingBeanScope.LeadCreationBean.lineofBussErrorMsg}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl701" styleClass="col-md-5 col-md-offset-2 form_group marginbottom15">
+                        <af:outputFormatted value="#{custPortalBundle.LEAD_MOBILE_NUMBER}" id="of181"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it51" simple="true" placeholder="#{custPortalBundle.TYPE_YOUR_MOBILE_NUMBER}" maximumLength="10"
+                                      binding="#{backingBeanScope.LeadCreationBean.mobileNoBinding}" styleClass="numericOnlyjs"/>
+                        <af:panelGroupLayout id="pgl901" styleClass="errClassScroll">
+                            <af:outputFormatted id="of61" value="#{backingBeanScope.LeadCreationBean.mobileNoErrorMsg}"
+                                                styleClass="errorMessage"
+                                                rendered='#{backingBeanScope.LeadCreationBean.mobileNoErrorMsg !=""}'/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl72" styleClass="row marginbottom15 show">
+                    <af:panelGroupLayout id="pgl69" styleClass=" col-md-5 form_group show">
+                        <af:outputFormatted value="#{custPortalBundle.ADDRESS_1}" id="of17"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it3" simple="true"
+                                      maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                                      binding="#{backingBeanScope.LeadCreationBean.address1Binding}"
+                                      placeholder="#{custPortalBundle.TYPE_YOUR_ADDRESS}"/>
+                        <af:panelGroupLayout id="pgl89" styleClass="errClassScroll">
+                            <af:outputFormatted id="of2" rendered='#{backingBeanScope.LeadCreationBean.address1ErrorMsg !=""}'
+                                                value="#{backingBeanScope.LeadCreationBean.address1ErrorMsg}"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl70"
+                                         styleClass="col-md-5 col-md-offset-2 form_group marginbottom15 show">
+                        <af:outputFormatted value="#{custPortalBundle.ADDRESS_2}" id="of18"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it5" simple="true"
+                                      binding="#{backingBeanScope.LeadCreationBean.address2Binding}"
+                                      placeholder="#{custPortalBundle.TYPE_YOUR_ADDRESS}"/>
+                        <af:panelGroupLayout id="pgl90" styleClass="errClassScroll">
+                            <af:outputFormatted id="of6" value="#{backingBeanScope.LeadCreationBean.address2ErrorMsg}"
+                                                styleClass="errorMessage"
+                                                rendered='#{backingBeanScope.LeadCreationBean.address2ErrorMsg !=""}'/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl37"
+                                         styleClass="col-md-5  marginbottom15 pininput form_group numericOnlyjs">
+                        <af:outputFormatted value="#{custPortalBundle.ZIPCODE}" id="of22"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it4" simple="true" maximumLength="6" placeholder="#{custPortalBundle.TYPE_YOUR_ZIPCODE}"
+                                      binding="#{backingBeanScope.LeadCreationBean.pincodeBinding}" styleClass="numericOnlyjs"/>
+                        <af:panelGroupLayout id="pgl94" styleClass="errClassScroll">
+                            <af:outputFormatted id="of8" value="#{backingBeanScope.LeadCreationBean.pincodeErrorMsg}"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl27" styleClass="col-md-5 col-md-offset-2 form_group">
+                        <af:outputFormatted value="#{custPortalBundle.CITY}" id="of23"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it6" simple="true" placeholder="#{custPortalBundle.TYPE_YOUR_CITY}"
+                                      binding="#{backingBeanScope.LeadCreationBean.cityBinding}"/>
+                        <af:panelGroupLayout id="pgl95" styleClass="errClassScroll">
+                            <af:outputFormatted value="#{backingBeanScope.LeadCreationBean.cityErrorMsg}" id="of9"
+                                                styleClass="errorMessage"
+                                                rendered='#{backingBeanScope.LeadCreationBean.cityErrorMsg !=""}'/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="clearfix"></af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-4">
+                        <af:selectBooleanCheckbox id="sbc1" simple="true" styleClass="marginbottom10"
+                                                  binding="#{backingBeanScope.LeadCreationBean.landbankbinding}"/>
+                        <af:outputFormatted value="Land Bank" id="of12"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal marginleft20"/>
+                       
+                        
+                                    <!--<a href="#" data-toggle="tooltip" data-placement="left" style="margin-left:3px"
+                                       title="Location to set-up a fuel station">
+                                        <img height="21" width="21" src="../../../images/help.png"/>
+                                        </a>-->
+                               
+                        
+                        <af:link id="limg3" icon="/images/help.png"
+                          
+                                          styleClass="submitSection text-center" inlineStyle="display: inline-block; margin-left: 20px;" 
+                                       shortDesc="Location to set-up a fuel station"  ></af:link>
+                        <af:panelGroupLayout id="pgl9" styleClass="errClassScroll">
+                            <af:outputFormatted id="of11" styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl20" styleClass="row show">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-md-12 form_group inputheight height60">
+                        <af:outputFormatted value="Remarks" id="of10"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it8" simple="true" binding="#{backingBeanScope.LeadCreationBean.remarksBinding}"
+                              placeholder="#{custPortalBundle.TYPE_YOUR_REMARKS}"       />
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl11" styleClass="row show top17">
+                    <af:panelGroupLayout id="pgl22" styleClass="boxSize2x1 col-md-3 parentgrp2">
+                        <af:panelGroupLayout id="pgl21" styleClass="parentgrp4x6">
+                            <af:button text="Submit" id="b1"
+                                       action="#{backingBeanScope.LeadCreationBean.onClickLeadSubmit}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl8" styleClass="boxSize2x1 col-md-3 mt-4 parentgrp2">
+                        <af:link text="Reset" id="l1" styleClass="ml-5 " partialSubmit="true"
+                                 actionListener="#{backingBeanScope.LeadCreationBean.onClickLeadReset}"/>
+                       
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

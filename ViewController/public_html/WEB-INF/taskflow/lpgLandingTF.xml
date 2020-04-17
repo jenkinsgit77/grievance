@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="lpgLandingTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>SelectCustAccountTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__11">
+      <name>LPGCurrSection</name>
+      <value>#{pageFlowScope.LPGCurrSection}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__12">
+      <name>LPGStageStatus</name>
+      <value>#{pageFlowScope.LPGStageStatus}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name>kycAccepted</name>
+      <value>#{pageFlowScope.kycAccepted}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>kycVerified</name>
+      <value>#{pageFlowScope.kycAc}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name>kycApproved</name>
+      <value>#{pageFlowScope.kycApproved}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>pOTPMOB</name>
+      <value>#{pageFlowScope.pOTPMOB}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__19">
+      <name>pOTPFlow</name>
+      <value>#{pageFlowScope.pOTPFlow}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <return-value-definition id="__20">
+      <name>pOTPMOB</name>
+      <value>#{pageFlowScope.pOTPMOB}</value>
+      <class>java.lang.String</class>
+    </return-value-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>LPGSection</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.LPGSection</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__21">
+      <managed-bean-name>sendOtpBn</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.otp.OTP</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="lpgLanding">
+      <page>/pageFragment/lpgLanding.jsff</page>
+    </view>
+    <method-call id="fetchApplist">
+      <method>#{bindings.fetchApplist.execute}</method>
+      <outcome>
+        <fixed-outcome>fetchApplist</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="Error">
+      <page>/pageFragment/Error.jsff</page>
+    </view>
+    <task-flow-call id="subscriptionVouchTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/subscriptionVoucher/subscriptionVouchTF.xml</document>
+        <id>subscriptionVouchTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="OTP">
+      <page>/pageFragment/otp/OTP.jsff</page>
+    </view>
+    <task-flow-call id="ConfirmationPageTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/common/ConfirmationPageTF.xml</document>
+        <id>ConfirmationPageTF</id>
+      </task-flow-reference>
+      <input-parameter id="__24">
+        <name>confMessage</name>
+        <value>#{pageFlowScope.confMessage}</value>
+      </input-parameter>
+      <input-parameter id="__25">
+        <name>refNumber</name>
+        <value>#{pageFlowScope.refNumber}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="SelectCustAccountTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/SelectCustAccountTF.xml</document>
+        <id>SelectCustAccountTF</id>
+      </task-flow-reference>
+      <input-parameter id="__16">
+        <name>SourceFlow</name>
+        <value>CustomerLPG</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="LPGSectionOnLoad">
+      <method>#{backingBeanScope.LPGSection.LPGSectionOnLoad}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <method-call id="fetchAppListLpgLogIn">
+      <method>#{bindings.fetchAppListLpgLogIn.execute}</method>
+      <outcome>
+        <fixed-outcome>fetchAppListLpgLogIn</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="LinkYourLpgTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/linkyourlpg/LinkYourLpgTF.xml</document>
+        <id>LinkYourLpgTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="ReactivateTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/reactivate/ReactivateTF.xml</document>
+        <id>ReactivateTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__4">
+      <from-activity-id>lpgLanding</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>goToSubscription</from-outcome>
+        <to-activity-id>subscriptionVouchTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__2">
+        <from-outcome>otpPgRedirect</from-outcome>
+        <to-activity-id>OTP</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>goToLinkLPG</from-outcome>
+        <to-activity-id>LinkYourLpgTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>SUCCESS</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>goToReactivation</from-outcome>
+        <to-activity-id>ReactivateTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id>OTP</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome>SUCCESS</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>SelectCustAccountTF</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>NormalFlow</from-outcome>
+        <to-activity-id>fetchAppListLpgLogIn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id>LPGSectionOnLoad</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome>goToLPG</from-outcome>
+        <to-activity-id>lpgLanding</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>fetchAppListLpgLogIn</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>fetchAppListLpgLogIn</from-outcome>
+        <to-activity-id>LPGSectionOnLoad</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="sliderPageDef"
+                Package="pageFragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="AppListVo1" RangeSize="25" DataControl="AppModuleDataControl" id="AppListVo1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="AppListVo1Iterator" id="AppListVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.AppListVo" Name="AppListVo10">
+        <AttrNames>
+          <Item Value="AppListCode"/>
+          <Item Value="ParentAppCode"/>
+          <Item Value="AppCode"/>
+          <Item Value="RoleCode"/>
+          <Item Value="AppName"/>
+          <Item Value="AppDesc"/>
+          <Item Value="ImgPath"/>
+          <Item Value="ImgName"/>
+          <Item Value="ToAction"/>
+          <Item Value="RoleType"/>
+          <Item Value="ActiveFlag"/>
+          <Item Value="Column8"/>
+          <Item Value="DummyCol10"/>
+          <Item Value="FlowCode"/>
+          <Item Value="DummyCol1"/>
+          <Item Value="DummyCol2"/>
+          <Item Value="DummyCol3"/>
+          <Item Value="DummyCol4"/>
+          <Item Value="DummyCol5"/>
+          <Item Value="DummyCol6"/>
+          <Item Value="DummyCol7"/>
+          <Item Value="DummyCol8"/>
+          <Item Value="DummyCol9"/>
+          <Item Value="ContentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

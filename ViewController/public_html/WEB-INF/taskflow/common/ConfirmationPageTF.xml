@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ConfirmationPageTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>confirmationPage</default-activity>
+    <input-parameter-definition id="__2">
+      <name>destination</name>
+      <value>#{pageFlowScope.destination}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>confMessage</name>
+      <value>#{pageFlowScope.confMessage}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name>destinationLabel</name>
+      <value>#{pageFlowScope.destinationLabel}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>refNumber</name>
+      <value>#{pageFlowScope.refNumber}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__11">
+      <name>navigation</name>
+      <value>#{pageFlowScope.navigation}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>relogin</name>
+      <value>#{pageFlowScope.relogin}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>ConfirmationBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.ConfirmationBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="confirmationPage">
+      <page>/pageFragment/confirmationPage.jsff</page>
+    </view>
+    <task-flow-return id="Return">
+      <outcome>
+        <name>Return</name>
+      </outcome>
+    </task-flow-return>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="LoyaltyEnrichmentTF_LoyaltyEnrichmentTF_onloadProfileMethodPageDef" Package="taskflow.loyalty"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="insertVehicleTypeRecord" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertVehicleTypeRecord" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.insertVehicleTypeRecord.dataControl.dataProvider">
+      <NamedData NDName="count" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="insertProfileEnrichInfo" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertProfileEnrichInfo" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.insertProfileEnrichInfo.dataControl.dataProvider">
+      <NamedData NDName="FirstName" NDType="java.lang.String"/>
+      <NamedData NDName="LastName" NDType="java.lang.String"/>
+      <NamedData NDName="EmailId" NDType="java.lang.String"/>
+      <NamedData NDName="MobileNo" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

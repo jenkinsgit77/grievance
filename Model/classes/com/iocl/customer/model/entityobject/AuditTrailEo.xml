@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AuditTrailEo"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="LPG_AUDIT_TRAIL"
+  AliasName="AuditTrailEo"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="TrackingId"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="TRACKING_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LPG_AUDIT_TRAIL"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ServiceInput"
+    IsQueriable="false"
+    ColumnName="SERVICE_INPUT"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName="LPG_AUDIT_TRAIL"/>
+  <Attribute
+    Name="ServiceOutput"
+    IsQueriable="false"
+    ColumnName="SERVICE_OUTPUT"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName="LPG_AUDIT_TRAIL"/>
+  <Attribute
+    Name="ServiceUrl"
+    Precision="500"
+    ColumnName="SERVICE_URL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LPG_AUDIT_TRAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserSessionTrackingId"
+    Precision="50"
+    ColumnName="USER_SESSION_TRACKING_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LPG_AUDIT_TRAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserId"
+    Precision="50"
+    ColumnName="USER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LPG_AUDIT_TRAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HeaderAttribute"
+    Precision="2000"
+    ColumnName="HEADER_ATTRIBUTE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LPG_AUDIT_TRAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2000"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="LpgAuditTrailPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="LPG_AUDIT_TRAIL_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.iocl.customer.model.entityobject.AuditTrailEo.TrackingId"/>
+    </AttrArray>
+  </Key>
+</Entity>

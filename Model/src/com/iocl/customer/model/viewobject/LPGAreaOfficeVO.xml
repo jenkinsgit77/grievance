@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LPGAreaOfficeVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="com.iocl.customer.model.viewobject.LPGAreaOfficeVORowImpl"
+  ComponentClass="com.iocl.customer.model.viewobject.LPGAreaOfficeVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.iocl.customer.model.viewobject.LPGAreaOfficeVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="LatitudeVar"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression
+      Name="VariableScript"
+      CodeSourceName="LPGAreaOfficeVO"/>
+  </Variable>
+  <Variable
+    Name="LongitudeVar"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression
+      Name="VariableScript"
+      CodeSourceName="LPGAreaOfficeVO"/>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT *                           
+FROM                           
+(SELECT          
+	AREA_OFFICE_ADDRESS,         
+	ZIPCODE,         
+	LONGITUDE,         
+	LATITUDE,         
+	STATE_OFFICE_CODE,         
+	STATE_OFFICE_NAME,         
+	AREA_OFFICE_CODE,         
+	AREA_OFFICE_NAME,  
+        rownum as SNO,  
+        ROUND((((acos(sin((((:LatitudeVar)*3.1415926)/180)) * sin((Latitude*3.1415926/180))+cos(((:LatitudeVar)*3.1415926/180)) * cos((Latitude*3.1415926/180)) * cos((((:LongitudeVar) - Longitude)*3.1415926/180))))*180/3.1415926)*60*1.1515*1.609344),10) AS distance                          
+FROM  LPG_AREA_OFFICE_MASTER )t                         
+WHERE distance<50 order by distance asc]]></SQLQuery>
+  <ViewAttribute
+    Name="AreaOfficeAddress"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AREA_OFFICE_ADDRESS"
+    Expression="AREA_OFFICE_ADDRESS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Zipcode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ZIPCODE"
+    Expression="ZIPCODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Longitude"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="7"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LONGITUDE"
+    Expression="LONGITUDE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Latitude"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="7"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LATITUDE"
+    Expression="LATITUDE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="StateOfficeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATE_OFFICE_CODE"
+    Expression="STATE_OFFICE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StateOfficeName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATE_OFFICE_NAME"
+    Expression="STATE_OFFICE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaOfficeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AREA_OFFICE_CODE"
+    Expression="AREA_OFFICE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaOfficeName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AREA_OFFICE_NAME"
+    Expression="AREA_OFFICE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Sno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SNO"
+    Expression="SNO"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Distance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DISTANCE"
+    Expression="DISTANCE"
+    SQLType="NUMERIC"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Sno"/>
+  </AttrArray>
+</ViewObject>

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+          <af:resource type="css">
+           .hovercolor:hover {
+                  border-color: #aaaaaa !important;
+                 background-color: #d5d4d3 !important;
+          }
+          </af:resource>
+            <af:resource type="javascript">
+      var fileref = document.createElement('script');
+      fileref.setAttribute("type", "text/javascript");
+      fileref.setAttribute("src", "https://www.google.com/recaptcha/api.js");
+      document.getElementsByTagName("head")[0].appendChild(fileref);
+    </af:resource>
+    <af:panelGroupLayout id="pgl5" styleClass="row iocl_page" layout="vertical">
+        <af:panelGroupLayout id="pgl13" styleClass="col-md-12" layout="vertical">
+            <af:panelGroupLayout id="pgl21" styleClass="IOCLcontent_box1" layout="vertical">
+                <af:panelGroupLayout id="pgl2" styleClass="row" layout="vertical">
+                    <af:panelGroupLayout id="pgl23" layout="vertical" styleClass="col-md-12">
+                        <af:outputText id="ot5" value="Dealer Feedback" styleClass="pageHeaderFontStyleFeedback"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl7" styleClass="row marB15" layout="vertical">
+                    <af:panelGroupLayout id="pgl4" layout="vertical" styleClass="col-md-12">
+                        <af:outputText id="ot1" value="#{custPortalBundle.DF_HELP_US}"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="greybackgroundLpg show">
+                    <div class="row top17">
+                        <div class="col-md-12 col-lg-12">
+                         <span class="errClassScroll"><af:outputText   id="ot47"  visible="#{pageFlowScope.pSAPnotFound!=''}" value="#{pageFlowScope.pSAPnotFound}"     styleClass="errorMessage font-size18"/></span>
+                      
+                                  <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="labelheader" style="font-weight:bold !important"> Partner Name    </label>
+                                    </div>
+                                    <div class="col-md-8 col-lg-8">
+                                            <af:outputText id="ot8" value="#{pageFlowScope.poutputDealer}"  />
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                            <label class="labelheader" style="font-weight:bold !important"> Address</label>
+                                    </div>
+                                    <div class="col-md-8 col-lg-8">
+                                            <af:outputText id="ot25" value="#{pageFlowScope.outputSAPDistrict},#{pageFlowScope.outputSAPState}"  />
+                                    </div>
+                                    </div>
+                                               
+                            <!--<p class="feedbackMessage">IOCL continuously strives to improve the quality of services based on the feedback received from our valued customers. It has always been our constant endeavors to strengthen our working relationship and your feedback on your services will provide us key inputs for the same. We request you to take a few minutes to provide your feedback for the service request</p>-->
+                            <p class="nodetail">
+                                <af:outputText id="ot30" value="#{custPortalBundle.DF_INDANE_CUSTOMER}"/>
+                            </p>
+                            <p class="nodetail">
+                                <af:outputText id="ot4" value="#{custPortalBundle.DF_PROVIDE_FEEDBACK}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row top30 mb-4">
+                        <div class="col-md-12 col-lg-12">
+                            <!--<af:outputText id="ot31"
+                                               value="#{((pageFlowScope.pSelectedResponse eq 4) || (pageFlowScope.pSelectedResponse eq 5)) ? (lpgBundle.CUST_THANKS1) :  (pageFlowScope.pSelectedResponse eq 1 || pageFlowScope.pSelectedResponse eq 2 || pageFlowScope.pSelectedResponse eq 3 ? lpgBundle.CUST_THANKS2 : '')}"
+                                               styleClass="thanksmessage"
+                                               partialTriggers="b6 b14 b7 b15 b8 b16 b4 b18 b5 b17"/>-->
+                            <af:outputText id="ot31" value="#{custPortalBundle.DF_SELECT_RESPONSE}"
+                                           styleClass="thanksmessage font-size20 IOCL-font-weight-bold"/><!--partialTriggers="b6 b14 b7 b15 b8 b16 b4 b18 b5 b17"-->
+                        </div>
+                    </div>
+                    <af:panelGroupLayout styleClass="row row-eq-height show" id="pgl1">
+                        <af:panelGroupLayout id="pgl38" styleClass="col-md-6 border-cell mb-5">
+                            <af:panelGroupLayout id="pgl30" styleClass="row show">
+                                <af:panelGroupLayout id="pgl8" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_QUANTITY_DELIVERRED}"
+                                                        binding="#{dealerFeedbackbean.quantityDelivered}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl9" styleClass="col-md-12 mt-3 selectRadioStyling show">
+                                  <dvt:ratingGauge id="quantityRating"
+                                                  binding="#{dealerFeedbackbean.quantitydvtBind}"
+                                             value="#{dealerFeedbackbean.quantityRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.quantityRatingVC}"
+                                             />
+                                    <!--<af:selectOneRadio simple="true" layout="horizontal" styleClass="text-left"
+                                                       id="sor1" binding="#{dealerFeedbackbean.quantityDeliveredSOC}">
+                                        <f:selectItems value="#{bindings.QuantityDelivered.items}" id="si4"/>
+                                        <f:validator binding="#{bindings.QuantityDelivered.validator}"/>
+                                    </af:selectOneRadio>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl3" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl10" styleClass="row show">
+                                <af:panelGroupLayout id="pgl11" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_SERVICE}"
+                                                        binding="#{dealerFeedbackbean.serviceBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl12" styleClass="col-md-12 selectRadioStyling mt-3  show">
+                                <dvt:ratingGauge id="serviceRating"
+                                                  binding="#{dealerFeedbackbean.servicedvtBind}"
+                                             value="#{dealerFeedbackbean.serviceRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.serviceRatingVC}"
+                                             />
+                                    <!--<af:selectOneRadio simple="true" layout="horizontal" id="sor2"
+                                                       binding="#{dealerFeedbackbean.serviceSOC}">
+                                        <f:selectItems value="#{bindings.Service.items}" id="si1"/>
+                                        <f:validator binding="#{bindings.Service.validator}"/>
+                                    </af:selectOneRadio>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="row row-eq-height show" id="pgl6">
+                        <af:panelGroupLayout id="pgl24" styleClass="col-md-6 border-cell mb-5">
+                            <af:panelGroupLayout id="pgl25" styleClass="row show">
+                                <af:panelGroupLayout id="pgl27" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_CLEANLINESS}"
+                                                        binding="#{dealerFeedbackbean.cleanlinessBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl26" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="cleanlinessRating"
+                                                  binding="#{dealerFeedbackbean.cleanlinessdvtBind}"
+                                             value="#{dealerFeedbackbean.cleanlinessRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.cleanlinessRatingVC}"
+                                             />
+                                    <!--<af:selectOneRadio simple="true" layout="horizontal" id="sor3"
+                                                       styleClass="text-left"
+                                                       binding="#{dealerFeedbackbean.cleanlinessSOC}">
+                                        <f:selectItems value="#{bindings.Cleanliness.items}" id="si5"/>
+                                        <f:validator binding="#{bindings.Cleanliness.validator}"/>
+                                    </af:selectOneRadio>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl28" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl29" styleClass="row show">
+                                <af:panelGroupLayout id="pgl31" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_FACILITIES}"
+                                                        binding="#{dealerFeedbackbean.facilitiesBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl32" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="facilitiesRating"
+                                                  binding="#{dealerFeedbackbean.facilitiesdvtBind}"
+                                             value="#{dealerFeedbackbean.facilitiesRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.facilitiesRatingVC}"
+                                             />
+                                    <!--<af:selectOneRadio simple="true" layout="horizontal" id="sor5"
+                                                       binding="#{dealerFeedbackbean.facilitiesSOC}">
+                                        <f:selectItems value="#{bindings.Facilities.items}" id="si2"/>
+                                        <f:validator binding="#{bindings.Facilities.validator}"/>
+                                    </af:selectOneRadio>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="row row-eq-height show" id="pgl22">
+                        <af:panelGroupLayout id="pgl17" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl18" styleClass="row show">
+                                <af:panelGroupLayout id="pgl19" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_CLEAN_TOILET}"
+                                                        binding="#{dealerFeedbackbean.cleantoiletBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl20" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="cleanToiletRating"
+                                                  binding="#{dealerFeedbackbean.cleanToiletdvtBind}"
+                                             value="#{dealerFeedbackbean.cleanToiletRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.cleanToiletRatingVC}"
+                                             />
+                                    <!--<af:selectOneRadio simple="true" layout="horizontal" id="sor6"
+                                                       binding="#{dealerFeedbackbean.cleanToiletSOC}">
+                                        <f:selectItems value="#{bindings.CleanToilet.items}" id="si6"/>
+                                        <f:validator binding="#{bindings.CleanToilet.validator}"/>
+                                    </af:selectOneRadio>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                           <af:panelGroupLayout id="pgl33" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl34" styleClass="row show">
+                                <af:panelGroupLayout id="pgl39" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_PRODUCT_QUALITY}"
+                                                        binding="#{dealerFeedbackbean.productQualitybind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl40" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="prodQualtiyRating"
+                                                  binding="#{dealerFeedbackbean.productQualitydvtbind}"
+                                             value="#{dealerFeedbackbean.productQualityRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.productQualityVC}"
+                                             />
+                                    <!--<af:selectOneRadio simple="true" layout="horizontal" id="sor5"
+                                                       binding="#{dealerFeedbackbean.facilitiesSOC}">
+                                        <f:selectItems value="#{bindings.Facilities.items}" id="si2"/>
+                                        <f:validator binding="#{bindings.Facilities.validator}"/>
+                                    </af:selectOneRadio>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl14" styleClass="row  show mt-5">
+                        <af:panelGroupLayout id="pgl15"
+                                             styleClass="col-md-4 col-md-offset-4 font-size20 show text-center">
+                            <af:outputText value="#{custPortalBundle.DF_OVERALL_RATING}"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl16" styleClass="col-md-4 col-md-offset-4 show text-center">
+                            <dvt:ratingGauge id="OverallRating" binding="#{dealerFeedbackbean.overallRatingbind}"
+                                             value="#{dealerFeedbackbean.overallRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{dealerFeedbackbean.overallRatingVC}"
+                                             />
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>   
+                    <af:panelGroupLayout id="pgl42" styleClass="row d-block m-0 margintop15" layout="vertical">
+                    <af:panelGroupLayout id="pgl36" styleClass="col-md-12 col-lg-12 disstributorInfoLabel marginspace">
+                        <af:outputFormatted value="#{custPortalBundle.RECAPTCHA}" id="of5"/>
+                    </af:panelGroupLayout>
+                     <af:panelGroupLayout id="pgl37" styleClass="col-md-12 col-lg-12  marginspace">
+                        <div class="g-recaptcha" data-sitekey="${dealerFeedbackbean.siteKey}">
+                            &#160;
+                        </div>
+                         <af:outputText id="ot6" visible="#{dealerFeedbackbean.errorCapcha!=''}"
+                                           partialTriggers="b1" value="#{dealerFeedbackbean.errorCapcha}"
+                                           styleClass="errorMessage"/>
+                        
+                    </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="row top17" id="pgl35">
+                        <af:panelGroupLayout styleClass="form-group" id="pgl43">
+                            <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+                            <af:panelGroupLayout styleClass="col-md-4 col-md-offset-4" id="pgl41">
+                                <af:outputText id="ot9" value="#{custPortalBundle.PARTNERCODE_NF}"
+                                               inlineStyle="font-size: 18px;" styleClass="errorMessage"
+                                               visible="#{pageFlowScope.dcNotExist eq 'Y'}"/>
+                                <af:outputFormatted value="#{dealerFeedbackbean.genericErrMsg}"
+                                                    inlineStyle="font-size: 18px;" id="of14" styleClass="errorMessage"
+                                                    partialTriggers="b1"/>
+                                <af:button styleClass="signin iocldefault hovercolor" inlineStyle="display:block !important" disabled="#{pageFlowScope.dcNotExist eq 'Y' or pageFlowScope.partnerNF eq 'Y'}"
+                                           text="#{custPortalBundle.DF_SUBMIT}" id="b1"
+                                           binding="#{dealerFeedbackbean.submitDealerbttnBinding}"
+                                           action="#{dealerFeedbackbean.onSubmitDealerFeedback}"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

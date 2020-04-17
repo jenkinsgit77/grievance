@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+<c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:panelGroupLayout id="pgl5" styleClass="IOCLGreyContentBox margintop30" layout="vertical">
+        <af:panelGroupLayout id="pgl70" styleClass="row show iocl-circle-seprator div ">
+            <af:panelGroupLayout id="pgl6" styleClass="col-md-6 marginspace">
+                <af:panelGroupLayout styleClass="row show" id="pgl52">
+                    <af:panelGroupLayout id="pgl8" styleClass="col-md-4">
+                        <af:outputLabel value="#{custPortalBundle.GRIEV_CONS_NAME}" id="ol7"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl10" styleClass="col-md-8">
+                        <af:outputText value="#{sessionScope.userDetails.consumerName}" id="ot1"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl7" styleClass="col-md-6 marginspace">
+                <af:panelGroupLayout styleClass="row show" id="pgl53">
+                    <af:panelGroupLayout id="pgl9" styleClass="col-md-4">
+                        <af:outputLabel value="#{custPortalBundle.GRIEV_CONS_MOBILE_NUMBER}" id="ol6"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl11" styleClass="col-md-8">
+                        <af:outputText value="#{sessionScope.userDetails.consumerContactNumber}" id="ot2"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl12" styleClass="col-md-6 marginspace">
+                <af:panelGroupLayout styleClass="row show" id="pgl54">
+                    <af:panelGroupLayout id="pgl14" styleClass="col-md-4">
+                        <af:outputLabel value="#{custPortalBundle.GRIEV_CONS_EMAILID}" id="ol3"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl15" styleClass="col-md-8">
+                        <af:outputText value="#{sessionScope.userDetails.consumerEmailId}" id="ot3"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl16" styleClass="col-md-6 marginspace">
+                <af:panelGroupLayout styleClass="row show" id="pgl56">
+                    <af:panelGroupLayout id="pgl17" styleClass="col-md-4">
+                        <af:outputLabel value="#{custPortalBundle.GRIEV_CONS_ADDRES}" id="ol5"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl18" styleClass="col-md-8">
+                        <af:outputText value="#{sessionScope.userDetails.consumerAddress}" id="ot5"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pg1" styleClass="col-md-12" layout="horizontal">
+               <af:selectOneChoice value="#{bindings.Category.inputValue}" label="#{bindings.Category.label}"  autoSubmit="true" unselectedLabel="Please Select a Category"
+                            required="#{bindings.Category.hints.mandatory}"
+                            shortDesc="#{bindings.Category.hints.tooltip}" id="soc1"
+                                   valueChangeListener="#{lpgSrCreation.changeCategory}">
+            <f:selectItems value="#{bindings.Category.items}" id="si1"/>
+            <f:validator binding="#{bindings.Category.validator}"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.SubCategory.inputValue}" label="#{bindings.SubCategory.label}" partialTriggers="soc1" unselectedLabel="Please Select a Sub Category"
+                            required="#{bindings.SubCategory.hints.mandatory}" visible="#{bindings.SubcatCount.inputValue>0}"
+                            shortDesc="#{bindings.SubCategory.hints.tooltip}" id="soc2">
+            <f:selectItems value="#{bindings.SubCategory.items}" id="si2"/>
+            <f:validator binding="#{bindings.SubCategory.validator}"/>
+        </af:selectOneChoice>
+                
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl1"  partialTriggers="soc1">
+   <table id="example" class="datatable table table-striped table-bordered"
+                                       style="width:100% !important;">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_SRNO}" id="ot10"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_ORDER_NO}" id="ot27"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_ORDER_DATE}" id="ot28"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_CYLNQTY}"
+                                                               id="ot4"/>
+                                            </th>
+                                            
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_DEL_DATE}"
+                                                               id="ot6"/>
+                                            </th>
+                                            
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_SUBSY_DATE}"
+                                                               id="ot7"/>
+                                            </th>
+                                            
+                                             <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_CASH_MEMO}"
+                                                               id="ot8"/>
+                                            </th>
+                                            
+                                             <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_CASH_MEMO_DATE}"
+                                                               id="ot9"/>
+                                            </th>
+                                            
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_STATUS}"
+                                                               id="ot11"/>
+                                            </th>
+                                            
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_SUBSIDY_TYPE}"
+                                                               id="ot12"/>
+                                            </th>
+                                            
+                                             <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_BANK_DOS}"
+                                                               id="ot13"/>
+                                            </th>
+                                               <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_UTR_NUM}"
+                                                               id="ot14"/>
+                                            </th>
+                                            
+                                             <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_SEL_REC}"
+                                                               id="ot15"/>
+                                            </th>
+                                            
+                                        </tr>
+                                    </thead>
+                                     
+                                    <tbody>
+                                        <af:iterator var="row" value="#{pageFlowScope.pAllTransPahal}" 
+                                                     varStatus="datatable" id="i2">
+                                            <tr>
+                                                <td>
+                                                    <af:outputText value="#{row.serialNumber}" id="ot19"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.bookNo}" id="ot31"/>
+                                                </td>
+                                                <td>
+                                                 <af:outputText value="#{row.bookDate}" id="ot16"/>
+                                                    
+                                                </td>
+                                                
+                                                 <td>
+                                                 <af:outputText value="#{row.qty}" id="ot17"/>  
+                                                </td>
+                                                
+                                                <td>
+                                                 <af:outputText value="#{row.deliveredDate}" id="ot18"/>  
+                                                </td>
+                                                
+                                                 <td>
+                                                 <af:outputText value="#{row.subsidyAmt}" id="ot20"/>  
+                                                </td>
+                                                
+                                                <td>
+                                                 <af:outputText value="#{row.cashmemoNo}" id="ot21"/>  
+                                                </td>
+                                                
+                                                <td>
+                                                 <af:outputText value="#{row.cashmemoDate}" id="ot22"/>  
+                                                </td>
+                                                
+                                                 <td>
+                                                 <af:outputText value="#{row.status}" id="ot23"/>  
+                                                </td>
+                                                
+                                                 <td>
+                                                 <af:outputText value="#{row.subsidytype}" id="ot24"/>  
+                                                </td>
+                                                
+                                                <td>
+                                                 <af:outputText value="#{row.bankDOS}" id="ot25"/>  
+                                                </td>
+                                                
+                                                
+                                                <td>
+                                                 <af:outputText value="#{row.bankUTR}" id="ot26"/>  
+                                                </td>
+                                                
+                                                <td>
+                                                     <af:selectBooleanCheckbox value="#{row.selectedTransaction}" id="sbc1" clientComponent="true"/>
+                                                </td>
+                                            </tr>
+                                        </af:iterator>
+                                    </tbody>
+                                </table>
+                                </af:panelGroupLayout>
+                                 <af:inputText id="it2" rows="8" binding="#{lpgSrCreation.txtComlaint}"/>
+    <af:region value="#{bindings.AttachmentAdd1.regionModel}" id="r1"/>
+    <af:button text="#{custPortalBundle.GRIEV_CONST_SUBMIT}" id="b1" action="#{lpgSrCreation.createSRMethod}"/>
+    <af:button text="#{custPortalBundle.CANCEL}" id="b2" action="#{lpgSrCreation.cancelSR}"/>
+</jsp:root>

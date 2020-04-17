@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="xtraRewardsPointsTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>SelectCustAccountTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__10">
+      <name>navigateTo</name>
+      <value>#{pageFlowScope.navigateTo}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__3">
+      <managed-bean-name>xtraRBn</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.loyalty.XtraRewards</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="xtraRPoints">
+      <page>/pageFragment/xtraRewards/xtraRPoints.jsff</page>
+    </view>
+    <method-call id="fetchPointsDetails">
+      <method>#{backingBeanScope.xtraRBn.fetchPointsDetails}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <task-flow-call id="SelectCustAccountTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/SelectCustAccountTF.xml</document>
+        <id>SelectCustAccountTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>SourceFlow</name>
+        <value>NormalFlow</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>fetchPointsDetails</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>goToPointsPage</from-outcome>
+        <to-activity-id>xtraRPoints</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>SelectCustAccountTF</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>NormalFlow</from-outcome>
+        <to-activity-id>fetchPointsDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+        .marginleft20 {
+            margin-left: 20px !important;
+        }
+
+        .inputheight input {
+            height: 100px;
+        }
+        .margintop0{
+            margin-top:0px !important;
+            margin:0px !important ;
+        }
+        .marginbottom10 input{
+            margin-bottom: 10px !important;
+        }
+        .height60 input{
+        height:60px !important;
+        }
+        .buttontext span{
+        font-size:14px !important;
+        top:-15px !important;
+    }
+    .ml-8{
+    margin-left:-8px !important;
+    }
+    .labelbold label{
+        font-weight:bold !important;}
+  .fontnormal th{
+      font-weight:normal !important;
+  }
+  .word_break{
+      word-break:normal !important;
+  }
+    </af:resource>
+    <af:resource type="javascript">
+      $(document).ready(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass="row iocl_page" partialTriggers="b1">
+        <af:panelGroupLayout id="pgl80" styleClass="col-md-12">
+            
+            
+           
+            
+                <af:panelGroupLayout id="pgl2" styleClass="">
+                    <af:outputFormatted value="#{custPortalBundle.FIND_YOUR_STOCKIST}" id="ol9"
+                                        styleClass="font-size22 IOCL-font-weight-regular font-dark-blue"/>
+                </af:panelGroupLayout>
+                 
+                   <af:spacer height="10px" id="s1"/>
+                    <af:panelGroupLayout styleClass=" ml-8 labelbold" id="pgl16" layout="horizontal" >
+
+                <af:selectOneRadio value="#{bindings.Col4.inputValue}"
+                                               label="#{bindings.Col4.label}" 
+                                               required="#{bindings.Col4.hints.mandatory}"
+                                               shortDesc="#{bindings.Col4.hints.tooltip}" id="sbr1"
+                                               simple="true" layout="horizontal"
+                                               autoSubmit="true" 
+                                   valueChangeListener="#{backingBeanScope.findyourstockistbean.stockistTypeVCL}"
+                                   binding="#{backingBeanScope.findyourstockistbean.industrialBinding}">
+                                <!--disabled="#{pageFlowScope.pFromContract}" -->
+                                <af:selectItem label="#{custPortalBundle.INDUSTRIAL_STOCKIST}" value="#{custPortalBundle.INDUSTRIAL_STOCKIST}" id="si6"/>
+                                <af:selectItem label="#{custPortalBundle.RETAIL}" value="#{custPortalBundle.RETAIL}" id="si7"/>
+                                <f:validator binding="#{bindings.Col4.validator}"/>
+                            </af:selectOneRadio>
+                        <!--<af:selectBooleanRadio text="#{custPortalBundle.INDUSTRIAL_STOCKIST}" id="sbr1"  autoSubmit="true"
+                                               binding="#{backingBeanScope.findyourstockistbean.industrialBinding}"
+                                               group="findYourStockist"/>-->
+                        <!--<af:selectBooleanRadio text="#{custPortalBundle.RETAIL}" id="sbr2" autoSubmit="true"                                               
+                                               group="findYourStockist" binding="#{backingBeanScope.findyourstockistbean.retailBinding}" />-->
+                                               
+                                                
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl101" styleClass="errClassScroll">
+                            <af:outputFormatted id="of15" value="#{backingBeanScope.findyourstockistbean.stockistTypeErrorMsg}"
+                                                styleClass="errorMessage"/>
+                    </af:panelGroupLayout>
+               
+             <af:spacer height="10px" id="s2"/>
+                 <af:panelGroupLayout id="pgl6"
+                                         styleClass="col-md-4 p-0 marginbottom15 pininput form_group numericOnlyjs">
+                        <af:outputFormatted value="#{custPortalBundle.STATE_STOCKIST}" id="of4"
+                                            styleClass="font-bold"/>
+                    <af:selectOneChoice value="#{bindings.Col2.inputValue}" 
+                                        required="#{bindings.Col2.hints.mandatory}" unselectedLabel="Please Select"
+                                            autoSubmit="true" simple="true"
+                                        binding="#{backingBeanScope.findyourstockistbean.stateBinding}"
+                                        shortDesc="#{bindings.Col2.hints.tooltip}" id="soc1">
+                        <f:selectItems value="#{bindings.Col2.items}" id="si1"/>
+                        <f:validator binding="#{bindings.Col2.validator}"/>
+                    </af:selectOneChoice>
+                 
+                        <af:panelGroupLayout id="pgl10" styleClass="errClassScroll">
+                            <af:outputFormatted id="of1" value="#{backingBeanScope.findyourstockistbean.stateErrorMsg}"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    
+                     <af:panelGroupLayout id="pgl3"
+                                         styleClass="col-md-4  p-0 col-md-offset-2 marginbottom15 pininput form_group numericOnlyjs">
+                        <af:outputFormatted value="#{custPortalBundle.DISTRICT_STOCKIST}" id="of13"
+                                            styleClass=" font-bold"/>
+                    <af:selectOneChoice value="#{bindings.Col3.inputValue}" unselectedLabel="Please Select"
+                                        required="#{bindings.Col3.hints.mandatory}" partialTriggers="soc1"
+                                        binding="#{backingBeanScope.findyourstockistbean.districtBinding}"
+                                        shortDesc="#{bindings.Col3.hints.tooltip}" simple="true" id="soc2">
+                        <f:selectItems value="#{bindings.Col3.items}" id="si2"/>
+                        <f:validator binding="#{bindings.Col3.validator}"/>
+                    </af:selectOneChoice>
+                  
+                        <af:panelGroupLayout id="pgl4" styleClass="errClassScroll">
+                            <af:outputFormatted id="of14" value="#{backingBeanScope.findyourstockistbean.districtErrorMsg}"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    
+              
+               
+                        <af:panelGroupLayout id="pgl21" styleClass="  buttontext col-md-5 p-0">
+                            <af:button text="#{custPortalBundle.SEARCH_STOCKIST}"  inlineStyle="border-radius:16px !important ;height: 27px !important;" id="b1"
+                                  action="#{backingBeanScope.findyourstockistbean.onClickSearchStockist}" partialSubmit="true"  />
+                            <af:outputFormatted id="of3" value="#{backingBeanScope.findyourstockistbean.stockistValidationErrorMsg}"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                   
+                </af:panelGroupLayout>
+        
+            
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.findyourstockistbean.bindpopUp}"
+                        >
+                <af:dialog id="d1" contentWidth="1000" contentHeight="550" type="none" styleClass="test iocl_page"
+                           >
+                 <af:panelGroupLayout id="pgl5" styleClass="col-md-12  hyphenNo font20Regular"  >
+                                       
+        <af:panelGroupLayout id="pgl8" styleClass="row show">
+            <af:panelGroupLayout id="pgl23" styleClass="col-md-12 p-0  mt-3 show">
+                <af:outputFormatted value="#{custPortalBundle.STOCKIST_DETAIL}" id="of2"
+                                    styleClass="IOCL-font-normal font-size26 IOCL-font-weight-regular"/>
+            </af:panelGroupLayout>
+    
+                         
+                        <af:panelGroupLayout id="pgl49" layout="vertical" styleClass="row show">
+                            <af:panelGroupLayout id="pgl50" styleClass="col-md-12 show mt-5 word_break width100" >
+                                <table id="example"
+                                       class="datatable genricDatatableRefresh fontnormal table table-striped table-bordered"
+                                       style="width:100%!important">
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.GRIEV_CONST_SRNO}" id="ot25"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.STOCKIST_NAME}" id="ot27"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.CONTACT_NAME}" id="ot28"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.PHONE_NUMBER}" id="ot1"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.EMAIL_ID_STOCKIST}" id="ot3"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.ADDRESS_STOCKIST}" id="ot13"/>
+                                            </th>
+                                           </tr>
+                                    </thead>
+                     
+                         <tbody>
+                                           
+                                            <af:iterator var="row" rows="-1"
+                                                     value="#{bindings.SearchStockistEVO1.collectionModel}"
+                                                     varStatus="datatable">
+                                            <tr>
+                                                <td>
+                                                    <af:outputText value="#{datatable.index+1}" id="ot19"
+                                                                   />
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.StockistName}" id="ot14"
+                                                                   />
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.ContractName}" id="ot17"
+                                                                  />
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.PhoneNo}" id="ot11"
+                                                                   />
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.EmailId}" id="ot20"
+                                                                   />
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.Address}" id="ot21"
+                                                                  />
+                                                </td>
+                                               </tr>
+                                        </af:iterator>
+                                    </tbody>
+                                </table>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                         
+                    
+           
+        </af:panelGroupLayout>
+   
+                                       
+                                       
+                                    </af:panelGroupLayout>
+                                   
+                    
+                </af:dialog>
+            </af:popup>
+            
+        </af:panelGroupLayout>
+   
+</jsp:root>
+

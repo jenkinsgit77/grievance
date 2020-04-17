@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+        .wordbreak {
+            word-break: break-word;
+        }
+
+        .bgcolor {
+            background: #fff !important;
+        }
+
+        .bgcolor a {
+            color: #f37021 !important;
+        }
+    </af:resource>
+    <af:resource type="javascript">
+    function onPopupOpened(event) {
+          var popup = event.getSource();
+          popup.cancel = function () {
+              if (e.keyCode == 27) {
+                  return false;
+              }
+          }
+      }
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass="show iocl_page" partialTriggers="b2 b1">
+        <af:panelGroupLayout id="pgl2" styleClass="row  mt-3">
+            <af:panelGroupLayout id="pgl4" styleClass="mt-5 col-md-12  ">
+                <af:panelGroupLayout id="pgl20" styleClass="confirmationBorder">
+                    <af:image shortDesc="#{custPortalBundle.CONFIRMATION_SHORT_DESC}"
+                              source="/images/confirmation/confirmation-icon.svg" styleClass="confirmationImg" id="i1"/>
+                    <af:outputText value="#{custPortalBundle.CONFIRMED}" id="ot1" styleClass="conformationColor mr-3"/>
+                    <af:outputText value="#{custPortalBundle.WE_FOUND}" id="ot5"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl19" styleClass="row show mt-3">
+            <af:outputText value="#{custPortalBundle.YOUR_ACCOUNT_DETAILS}" id="ot13"
+                           styleClass="col-md-12 col-xs-12 font-size22 font-dark-blue font-bold ml-5"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl3" styleClass="row show mt-5">
+            <af:panelGroupLayout id="pgl18" styleClass="col-md-12 col-xs-12 ">
+                <af:panelGroupLayout id="pgl5" styleClass="col-md-6 col-xs-6">
+                    <af:outputText value="#{custPortalBundle.NAME}" id="ot7" styleClass="col-md-4 col-xs-4 font-bold "/>
+                    <af:outputText value="#{bindings.Name.inputValue}" shortDesc="#{bindings.Name.hints.tooltip}"
+                                   id="ot2" styleClass="col-md-8 col-xs-8"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl10" styleClass="col-md-6 col-xs-6">
+                    <af:outputText value="#{custPortalBundle.ADDRESS}" id="ot10"
+                                   styleClass="col-md-5 col-xs-5 font-bold "/>
+                    <!--<af:outputText value="#{bindings.Address1.inputValue}" shortDesc="#{bindings.Address1.hints.tooltip}"
+                   id="ot12" styleClass="col-md-7 col-xs-7 wordbreak"/>-->
+                    <af:outputText value="#{bindings.Address.inputValue}" shortDesc="#{bindings.Address.hints.tooltip}"
+                                   id="ot16" styleClass="col-md-7 col-xs-7 wordbreak"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl16" styleClass="row show ">
+            <af:panelGroupLayout id="pgl9" styleClass="col-md-12 col-xs-12">
+                <af:panelGroupLayout id="pgl7" styleClass="col-md-6 col-xs-6 ">
+                    <af:outputText value="#{custPortalBundle.DATE_OF_BIRTH_NOT_MAND}" id="ot9"
+                                   styleClass="col-md-4 col-xs-4 font-bold "/>
+                    <af:outputText value="#{bindings.DateOfBirth.inputValue}"
+                                   shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="ot4"
+                                   styleClass="col-md-8 col-xs-8">
+                        <af:convertDateTime pattern="#{bindings.DateOfBirth.format}"/>
+                    </af:outputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl8" styleClass="col-md-6  ">
+                    <af:outputText value="#{custPortalBundle.MOBILE_NUMBER}" id="ot11"
+                                   styleClass="col-md-5 font-bold "/>
+                    <af:outputText value="#{bindings.MobileNo.inputValue}"
+                                   shortDesc="#{bindings.MobileNo.hints.tooltip}" id="ot6" styleClass="col-md-7 col-xs-7"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl17" styleClass="row show " visible="#{sessionScope.sMemberNumber != null}">
+            <af:panelGroupLayout id="pgl6" styleClass="col-md-12 col-xs-12 ">
+                <af:panelGroupLayout id="pgl15" styleClass="col-md-6 col-xs-6 ">
+                    <af:outputText value="#{custPortalBundle.MEMBER_NUMBER}" id="ot8"
+                                   styleClass="col-md-4 col-xs-4 font-bold "/>
+                    <af:outputText value="#{bindings.MemberNumber.inputValue}"
+                                   shortDesc="#{bindings.MemberNumber.hints.tooltip}" id="ot3"
+                                   styleClass="col-md-8 col-xs-8"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl21" styleClass="col-md-6 col-xs-6 ">
+                    <af:outputText value="#{custPortalBundle.XR_BALANCE_POINTS}" id="ot14"
+                                   styleClass="col-md-5 col-xs-5 font-bold "/>
+                    <af:outputText value="#{bindings.XRPoints.inputValue}"
+                                   shortDesc="#{bindings.XRPoints.hints.tooltip}" id="ot15"
+                                   styleClass="col-md-7 col-xs-7"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl11" styleClass="row show mt-5">
+            <af:panelGroupLayout id="pgl12" styleClass="col-md-12 ml-3">
+                <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+                <af:panelGroupLayout id="pgl13" styleClass="col-md-6 ">
+                    <af:button text="YES,THE INFORMATION IS RIGHT" id="b2"
+                               action="#{backingBeanScope.LoyaltyEnrichment.YesButtonAction}"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl14" styleClass="col-md-6 ">
+                    <af:button text="NO,THE INFORMATION IS NOT RIGHT" id="b1" styleClass="bgcolor"
+                               action="#{backingBeanScope.LoyaltyEnrichment.NoButtonAction}"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.LoyaltyEnrichment.reloginPopUpBinding}">
+                       <af:clientListener method="onPopupOpened" type="popupOpened"/>
+                <af:dialog id="d1" type="none" contentWidth="600" contentHeight="200"
+                           styleClass="MyDialog test iocl_page">
+                <af:panelGroupLayout id="pgl139" layout="vertical" partialTriggers="b7"
+                                     inlineStyle="padding:30px;">
+                    <af:panelGroupLayout id="pgl138" styleClass="row" layout="vertical">
+                        <af:panelGroupLayout id="pgl140" styleClass="col-md-12 col-lg-12 col-xs-12 col-sm-10"
+                                             layout="vertical">
+                            <af:outputFormatted value="#{pageFlowScope.pConfirmMessage}"
+                                                id="of49" styleClass="mainHeadingDistributorInfo"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl142" styleClass="row" layout="vertical" inlineStyle="padding-top:20px;">
+                        <af:panelGroupLayout id="pgl141" styleClass="col-md-12" layout="vertical">
+                            <af:panelGroupLayout id="pgl144"
+                                                 styleClass="col-md-6 col-md-offset-2 col-sm-offset-4 col-sm-4 col-lg-6 marginspace buttonfullwidth pl-0,px-0">
+                                <af:button text="Re-Login" id="b7"
+                                           actionListener="#{backingBeanScope.TemplateBean.clickSignOut}"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                </af:dialog>
+            </af:popup>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

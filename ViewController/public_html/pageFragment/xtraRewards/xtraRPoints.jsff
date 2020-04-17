@@ -1,0 +1,477 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+        .backgroundimageCard {
+            background-image: url("../../../PublicBannerImages/XtrarewardsCardFrontSide.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 276px;
+        }
+        .backgroundimageXRCircle {
+          background-image: url("http://127.0.0.1:7101/slider/images/loyalty/Ellipse 284.svg");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          height: 200px;
+        }
+        .backgroundimageContactUsCard {
+            background-image: url("../../../PublicBannerImages/basecard.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 276px;
+        }
+        .height_new{
+            height:150px; }
+            
+        
+    <!-- .thumbnailm {
+            position: relative;
+            display: inline-block;
+        }
+
+        .caption {
+            position: absolute;
+            top: 50%;
+            left: 13%;
+            transform: translate(-13%, -50%);
+        }-->
+        .cardlabelcolor {
+            color: #161616;
+        }
+
+        .mt-6rem {
+            margin-top: 6rem !important;
+        }
+
+        .mt-2rem {
+            margin-top: 2rem !important;
+        }
+
+        .mt-rem {
+            margin-top: 6rem !important;
+        }
+
+        .font-size37 {
+            font-size: 28px;
+        }
+
+        .letterSpacingNumber {
+            letter-spacing: 7px;
+        }
+
+        .pt-45 {
+            padding-top: 4.5rem !important;
+        }
+        .iocl_page table{width:100%!important;}
+        #Redeem,#Earned{width:100% !important}
+        .carousel-img img{width:90px;}
+        @media only screen and (max-device-width:687px){
+            .font-responsive{
+                font-size:30px !important;
+            }
+        }
+        
+    </af:resource>
+    <af:panelGroupLayout id="pgl3" styleClass="container1 iocl_page show p-5">
+        <af:panelGroupLayout id="pgl9" styleClass="row show">
+            <af:panelGroupLayout id="pgl10" styleClass="col-md-6 show thumbnailm backgroundimageCard">
+                <af:panelGroupLayout styleClass="row show p-3" id="pgl1">
+                    <af:panelGroupLayout styleClass="show font-size14 col-md-12 IOCL-font-weight-regular cardlabelcolor pt-45"
+                                         id="pgl4">
+                        <af:outputText value="NAME" id="ot1"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="show col-md-12 font-size18 bold-font" id="pgl5">
+                        <af:outputText value="#{sessionScope.userDetails.prefix} #{sessionScope.userDetails.consumerName}" id="ot7"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="show font-size13 col-md-12 IOCL-font-weight-regular cardlabelcolor pt-4"
+                                         id="pgl11">
+                        <af:outputText value="CARD NUMBER" id="ot3" styleClass=""/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="show font-size37 font-responsive col-md-12 IOCL-font-weight-regular  mt-1 letterSpacingNumber"
+                                         id="pgl13">
+                        <af:outputText value="#{sessionScope.userDetails.cardNumber}" id="ot2"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl6" styleClass="show font-size23 col-md-12 IOCL-font-weight-medium  pt-5">
+                        <af:image source="../../../PublicBannerImages/sheild.svg" id="i1" styleClass="pr-4"
+                                  inlineStyle="width: 35px;"/>
+                        <!--<af:outputText value="#{sessionScope.userDetails.balancePoints} Points" id="ot5"/>-->
+                        <af:outputText value="#{sessionScope.userDetails.balancePoints}" id="ot57"/>
+                        <!--<af:outputText value="3,214 Points" id="ot6"/>-->
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl14" styleClass="col-md-6 show thumbnailm backgroundimageContactUsCard pt-5">
+            <div id="Contactcarousel" class="carousel slide" data-ride="carousel">
+             
+                   <ol class="carousel-indicators  middle carousalBlack">
+                   <li data-target="#Contactcarousel" data-slide-to="0" class="active">
+                            &#160;
+                        </li>
+                    <li data-target="#Contactcarousel" data-slide-to="1">
+                            &#160;
+                        </li>
+                </ol>
+                <div class="carousel-inner" style="height:260px">
+                 <div class="item active">
+                 <af:panelGroupLayout styleClass="row show" id="pgl17"> 
+                   <af:panelGroupLayout styleClass="col-md-12" id="pgl18"> 
+                     <af:outputText value="#{custPortalBundle.CONTACT_US}" id="ot51" styleClass="font-size22 font-dark-blue medium-font"/>
+                     <p><af:outputText value="#{custPortalBundle.CONTACT_US_NOTE}" id="ot52" styleClass="font-size14 light-font"/></p>
+                     </af:panelGroupLayout>
+                 </af:panelGroupLayout>
+                 <af:panelGroupLayout styleClass="row show" id="pgl19"> 
+                     <af:panelGroupLayout styleClass="col-md-3" id="pgl20"> <af:outputText value="#{custPortalBundle.IVRS_HELPLINE_NO}" id="ot35" styleClass="font-size12 bold-font"/></af:panelGroupLayout>
+                     <af:panelGroupLayout styleClass="col-md-9" id="pgl21">  <af:outputText value="#{custPortalBundle.IVRS_HELPLINE_NO_VAL}" id="ot36"/></af:panelGroupLayout>
+                 </af:panelGroupLayout>
+                 <af:panelGroupLayout styleClass="row show" id="pgl22"> 
+                     <af:panelGroupLayout styleClass="col-md-3" id="pgl24"> <af:outputText value="#{custPortalBundle.SMS_ALERTS}" id="ot37" styleClass="font-size12 bold-font"/></af:panelGroupLayout>
+                     <af:panelGroupLayout styleClass="col-md-9" id="pgl25"> <af:outputText value="#{custPortalBundle.SMS_ALERTS_VAL}" id="ot38"/></af:panelGroupLayout>
+                 </af:panelGroupLayout>
+                 <af:panelGroupLayout styleClass="row show" id="pgl32"> 
+                     <af:panelGroupLayout styleClass="col-md-3" id="pgl33"> <af:outputText value="#{custPortalBundle.HELP_DESK}" id="ot40"  styleClass="font-size12 bold-font"/></af:panelGroupLayout>
+                     <af:panelGroupLayout styleClass="col-md-9" id="pgl34">  
+                     <af:outputText value="#{custPortalBundle.HELP_DESK_VAL}" id="ot39"/>
+                     <p><af:outputText value="#{custPortalBundle.HELP_DESK_EMAIL}" id="ot41"  styleClass="font-size12 bold-font"/>
+                        <af:outputText value="#{custPortalBundle.HELP_DESK_EMAIL_VAL}" id="ot42"/></p>
+                     </af:panelGroupLayout>
+                     
+                 </af:panelGroupLayout>
+                 </div>
+                 <div class="item">
+                            <af:panelGroupLayout id="pgl36"  styleClass="row show">
+                               
+                                 <af:panelGroupLayout styleClass="col-md-12 show" id="pgl38"> 
+                                 <af:outputText value="#{custPortalBundle.XTRAREWARDS_BENEFITS}" id="ot10" styleClass="font-size22 font-dark-blue medium-font"/>                   
+                              </af:panelGroupLayout>
+                             
+                                <af:panelGroupLayout styleClass="col-md-12 show" id="pgl37"> 
+                                <af:outputText value="#{custPortalBundle.XTRAREWARDS_BENEFITS_MESSAGE_1}" id="ot9"
+                                               styleClass="font-size22 IOCL-font-normal IOCL-font-weight-light fontItalic show"/>
+                                 
+                                <af:outputText value="#{custPortalBundle.XTRAREWARDS_BENEFITS_MESSAGE_2}" id="ot11"
+                                               styleClass="font-size22 IOCL-font-normal IOCL-font-weight-light fontItalic show"/>
+                                 
+                                <af:outputText value="#{custPortalBundle.XTRAREWARDS_BENEFITS_MESSAGE_3}" id="ot12"
+                                               styleClass="font-size22 IOCL-font-normal IOCL-font-weight-light fontItalic show"/>
+                                 </af:panelGroupLayout>
+                                <!--<af:panelGroupLayout id="pgl35"
+                                                     styleClass="col-md-8 col-md-offset-2 enrollingButton mt-5">
+                                    <af:button text="CLICK HERE FOR ENROLLING" id="b1" targetFrame="_blank"
+                                               destination="#{sessionScope.enrollNowURL}"/>
+                                </af:panelGroupLayout>-->
+                            </af:panelGroupLayout>
+                 </div>
+                 </div>
+                 
+              
+                 </div>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl30" styleClass="row show">
+            <af:panelGroupLayout id="pgl26" styleClass="col-md-6">
+                <af:panelGroupLayout styleClass="row show" id="pgl27">
+                    <af:panelGroupLayout styleClass="col-md-12 mt-3" id="pgl28">
+                        <af:outputText value="#{custPortalBundle.VEHICLE_DETAILS}" id="ot43"
+                                       styleClass="font-size22 font-dark-blue medium-font"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl65" styleClass="col-md-12 mt-3"
+                                         visible="#{sessionScope.sVehicleDetailsExist ne 'Y'}">
+                        <af:outputText value="#{custPortalBundle.NO_REGISTERED_VEHICLE_EXIST}" id="ot75" styleClass="font-size14 bold-font"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <span id="vehCarousel" class="carousel slide myCarousel" data-ride="carousel"
+                      style="${sessionScope.sVehicleDetailsExist eq 'Y' ? 'display:block;' : 'display:none;'}"> 
+                    <span class="carousel-inner show height_new">
+                        <ol class="carousel-indicators carousalBlack">
+                            <af:forEach varStatus="banner" items="#{sessionScope.userDetails.vehicleDetails}" var="feachtt">
+                                <li data-slide-to="${banner.index}" data-target="#vehCarousel"
+                                    class="${banner.index == '0' ? 'active':''}">&#160;</li>
+                            </af:forEach>
+                        </ol>
+                        <af:forEach varStatus="banner" items="#{sessionScope.userDetails.vehicleDetails}" var="feachtt">
+                            <span id="s7" class="${banner.index eq '0' ? 'item active':'item'}">
+                                    <!--<af:image source="../../../PublicBannerImages/#{feachtt.url}"
+                                              styleClass="AFStretchWidth"/>-->
+                                                              <af:panelGroupLayout styleClass="row show" id="pgl57">
+                    <af:panelGroupLayout styleClass="col-md-4" id="pgl29">
+                        <af:outputText value="#{custPortalBundle.VEHICLE_TYPE}" id="ot44"
+                                       styleClass="font-size12 bold-font"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-8" id="pgl58">
+                        <af:outputText value="#{feachtt.vehicleType}" id="ot46"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="row show" id="pgl59">
+                    <af:panelGroupLayout styleClass="col-md-4" id="pgl60">
+                        <af:outputText value="#{custPortalBundle.VEHICLE_MAKE}" id="ot45"
+                                       styleClass="font-size12 bold-font"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-8" id="pgl61">
+                        <af:outputText value="#{feachtt.vehicleMake}" id="ot47"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="row show" id="pgl62">
+                    <af:panelGroupLayout styleClass="col-md-4" id="pgl63">
+                        <af:outputText value="#{custPortalBundle.REGISTRATION_NO}" id="ot48"
+                                       styleClass="font-size12 bold-font"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-8" id="pgl64">
+                        <af:outputText value="#{feachtt.registrationNo}" id="ot49"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                             </span>
+                        </af:forEach>
+                        </span>
+                     </span>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl31" styleClass="col-md-6 mt-3">
+             <af:panelGroupLayout id="pgl39"  styleClass="row show">
+                               
+                     <af:panelGroupLayout styleClass="col-md-9 show" id="pgl40"> 
+                      <af:outputText value="#{custPortalBundle.ALLIANCE_PARTNERS}" id="ot50"  styleClass="font-size22 font-dark-blue medium-font"/>
+                              
+                  </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="col-md-3 show enrollingButton" id="pgl41">   <af:button text="#{custPortalBundle.OFFERS}" id="b2"/>  </af:panelGroupLayout>
+              </af:panelGroupLayout>
+                <span id="alliancePart" class="carousel slide myCarousel show mt-5" data-ride="carousel">
+            <span class="carousel-inner show" style="height:150px">
+                <ol class="carousel-indicators carousalBlack">
+                    <af:forEach varStatus="banner" items="#{pageFlowScope.pLstAlliancePartImg}" var="feachtt">
+                        <li data-slide-to="${banner.index}" data-target="#alliancePart" class="${banner.index == '0' ? 'active':''}">&#160;</li>
+                    </af:forEach>
+                </ol>
+                        
+                        <af:forEach varStatus="banner" items="#{pageFlowScope.pLstAlliancePartImg}" var="feachtt">
+                     <div id="s9" class="${banner.index eq '0' ? 'item active':'item'}">
+                        <div class="row carousel-img">
+                          <div class="col-md-3 col-xs-3">
+                          
+                            <af:image source="../../../PublicBannerImages/Loyalty/#{feachtt.loyalityImg1}" id="i4"
+                            visible="#{feachtt.loyalityImg1 != null}"/>
+                            </div>
+                             <div class="col-md-3  col-xs-3">
+                          <af:image source="../../../PublicBannerImages/Loyalty/#{feachtt.loyalityImg2}" id="i5"
+                             visible="#{feachtt.loyalityImg2 != null}"/>
+                             </div>
+                              <div class="col-md-3 col-xs-3">
+                                 <af:image source="../../../PublicBannerImages/Loyalty/#{feachtt.loyalityImg3}" id="i6"
+                                        visible="#{feachtt.loyalityImg3 != null}"/>
+                             </div>
+                             <div class="col-md-3 col-xs-3">
+                         <af:image source="../../../PublicBannerImages/Loyalty/#{feachtt.loyalityImg4}" id="i7"
+                             visible="#{feachtt.loyalityImg4 != null}"/>
+                             </div>
+                               </div>          
+                       </div>
+                </af:forEach>
+                </span>
+                </span>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl12" styleClass="row show p-5 mt-5" inlineStyle="border:solid 1px #95989A;"
+                             partialTriggers="b3 l1">
+      
+                 <af:panelGroupLayout id="pgl15"  styleClass="col-md-3 show" partialTriggers="b3 l1">
+                 <af:outputText value="#{custPortalBundle.DATE_FROM}" id="ot73" styleClass="font-size14 IOCL-font-weight-medium"/>
+                    <af:inputDate  id="id1" partialTriggers="b3 l1" placeholder="DD/MM/YYYY" autoSubmit="true"
+                                  binding="#{backingBeanScope.xtraRBn.fromDtBind}" simple="true"
+                                  value="#{pageFlowScope.pFromDate}">
+                                  <!--<af:validateDateTimeRange minimum="#{backingBeanScope.xtraRBn.userDOBFrom}"
+                                                            maximum="#{backingBeanScope.xtraRBn.userDOBTo}"/>-->
+                                  <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                  </af:inputDate>
+                    <af:outputFormatted id="of5" styleClass="errorMessage" partialTriggers="b3 l1"
+                                        value="#{backingBeanScope.xtraRBn.fromDtErr}"/>
+                      </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl7"  styleClass="col-md-3 show" partialTriggers="b3 l1">
+                  <af:outputText value="#{custPortalBundle.DATE_TO}" id="ot74" styleClass="font-size14 IOCL-font-weight-medium"/>
+                    <af:inputDate  id="id2" partialTriggers="b3 l1" placeholder="DD/MM/YYYY" autoSubmit="true"
+                                  binding="#{backingBeanScope.xtraRBn.toDtBind}" simple="true"
+                                  value="#{pageFlowScope.pToDate}">
+                                   <!--<af:validateDateTimeRange minimum="#{backingBeanScope.xtraRBn.userDOBFrom}"
+                                                             maximum="#{backingBeanScope.xtraRBn.userDOBTo}"/>-->
+                                    <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                  </af:inputDate>
+                    <af:outputFormatted id="of6" styleClass="errorMessage" partialTriggers="b3 l1"
+                                        value="#{backingBeanScope.xtraRBn.toDtErr}"/>
+                                        
+                </af:panelGroupLayout>
+        
+            
+            <af:panelGroupLayout id="pgl8" styleClass="col-md-3 show pt-3">
+                <af:button text="#{custPortalBundle.FETCH}" id="b3" 
+                           action="#{backingBeanScope.xtraRBn.fetchPointsDataCall}"/>
+                           </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl81" styleClass="col-md-3 show pt-5">
+                <af:link text="#{custPortalBundle.RESET}" id="l1" action="#{backingBeanScope.xtraRBn.resetVars}" 
+                         binding="#{backingBeanScope.xtraRBn.resetLinkBind}" partialSubmit="true"/>
+            </af:panelGroupLayout>
+            <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl2" styleClass="row show mt-5" partialTriggers="b3 l1">
+            <ul class="nav nav-tabs">
+                <li class="active text-center" style="width:50%">
+                    <a data-toggle="tab" href="#menu1">
+                        <af:outputText value="Points Earned" id="ot4" styleClass="font-size20 light-font font-normal"/></a>
+                </li>
+                <li style="width:50%" class="text-center">
+                    <a href="#menu2" data-toggle="tab">
+                        <af:outputText value="Points Redeem" id="ot145"
+                                       styleClass="font-size20 light-font font-normal"/></a>
+                </li>
+            </ul>
+            <div class="tab-content" style="padding-top:15px;border: solid 1px #ccc;border-top: 0; padding: 10px;">
+                <div id="menu1" class="tab-pane fade in active">
+                 <af:panelGroupLayout id="pgl16" partialTriggers="b3 l1">
+                        <table id="Earned" class="datatable table genricDatatableRefresh table-striped table-bordered dt-table"
+                                       style="width:100%!important;">
+                                    <thead>
+                                        <tr>
+                                         <th>
+                                                <af:outputText value="#{custPortalBundle.SERIAL_NO}" id="ot53"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.MERCHANT_NAME}" id="ot27"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.MERCHANT_LOCATION}" id="ot28"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.TRANSACTION_ID}" id="ot54"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.TRANSACTION_AMOUNT}"
+                                                               id="ot13"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.POINTS_EARNED}" id="ot14"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.DATE_AND_TIME}" id="ot29"/>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                     
+                                    <tbody>
+                                        <af:iterator var="row" value="#{bindings.XtraRewardsTxnVO1.collectionModel}"
+                                                     varStatus="datatable" id="i2">
+                                            <tr>
+                                            <td>
+                                                    <af:outputText value="#{datatable.index +1}" id="ot19"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.MerchantName}" id="ot31"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.MerchantLocation}" id="ot15"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.TxnId}" id="ot16"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.TxnAmt}" id="ot20"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.TxnPointsEarned}" id="ot17"/>
+                                                </td>
+                                                <td>
+                                                     <af:outputText value="#{row.TxnDateTime}" id="ot18"/>
+                                                </td>
+                                            </tr>
+                                        </af:iterator>
+                                    </tbody>
+                                </table>
+                        </af:panelGroupLayout>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                <af:panelGroupLayout id="pgl23" partialTriggers="b3 l1">
+                            <!--<f:facet name="separator">
+                                <af:spacer width="10" id="s4"/>
+                                <af:spacer height="20" id="s5"/>
+                                <af:separator id="s6"/>
+                            </f:facet>-->
+                            <table id="Redeem" class="datatable table genricDatatableRefresh table-striped table-bordered dt-table"
+                                   style="width:100%!important;">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.SERIAL_NO}" id="ot6"/>
+                                        </th>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.MERCHANT_NAME}" id="ot8"/>
+                                        </th>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.MERCHANT_LOCATION}" id="ot55"/>
+                                        </th>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.TRANSACTION_ID}" id="ot56"/>
+                                        </th>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.TRANSACTION_AMOUNT}" id="ot21"/>
+                                        </th>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.POINTS_REDEEMED}" id="ot22"/>
+                                        </th>
+                                        <th>
+                                            <af:outputText value="#{custPortalBundle.DATE_AND_TIME}" id="ot23"/>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                 
+                                <tbody>
+                                    <af:iterator var="row" value="#{bindings.XtraRewardsTxnVO2.collectionModel}"
+                                                 varStatus="datatable" id="i3">
+                                        <tr>
+                                            <td>
+                                                <af:outputText value="#{datatable.index +1}" id="ot24"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{row.MerchantName}" id="ot25"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{row.MerchantLocation}" id="ot26"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{row.TxnId}" id="ot30"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{row.TxnAmt}" id="ot32"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{row.TxnPointsReedeem}" id="ot33"/>
+                                            </td>
+                                            <td>
+                                                <af:outputText value="#{row.TxnDateTime}" id="ot34"/>
+                                            </td>
+                                        </tr>
+                                    </af:iterator>
+                                </tbody>
+                            </table>
+                            <!--<af:panelGroupLayout layout="vertical" id="pgl24" styleClass="backgroundimageXRCircle">
+                                <af:outputFormatted value="#{item.bindings.TxnDateTime.inputValue}" id="of3"/>
+                                <af:outputFormatted value="#{item.bindings.TxnTime.inputValue}" id="of8"/>
+                               
+                            </af:panelGroupLayout>-->
+                            <!--<af:panelGroupLayout layout="vertical" id="pgl25">
+                                <af:outputFormatted value="#{item.bindings.MerchantName.inputValue}" id="of12"/>
+                                <af:outputFormatted value="#{item.bindings.MerchantLocation.inputValue}" id="of14"/>
+                                <af:panelGroupLayout layout="horizontal" id="pgl26">
+                                    <af:panelGroupLayout layout="vertical" id="pgl27">
+                                        <af:outputFormatted value="#{item.bindings.TxnPointsReedeem.inputValue} Points redeemed/
+                                                                   #{item.bindings.TxnPts.inputValue} Points" id="of19"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>-->
+                            <!--<af:panelGroupLayout layout="horizontal" id="pgl29" styleClass="pull-right">
+                                <af:outputText value="Transaction ID - " id="ot12"/>
+                                <af:outputFormatted value="#{item.bindings.TxnId.inputValue}" id="of16"/>
+                            </af:panelGroupLayout>-->
+                        </af:panelGroupLayout>  
+                          
+               
+                </div>
+            </div>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

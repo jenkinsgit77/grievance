@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">OurNetworkLocatorPF</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">410.68652</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>OurNetworkLocatorPF&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">241.39648</property>
+      <property
+         name="page">/pageFragment/ourNetwork/OurNetworkLocatorPF.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">initializerTF</property>
+      <property
+         name="x">303.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>initializerTF&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">82.19531</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall3"
+      to="View3">
+      <property
+         name="fromOutcome">goToOurNetworkLocator</property>
+      <property
+         name="sdm:polyPoints">B50,303.0,135.84473,410.68652,187.0459,T50</property>
+   </ControlFlowCase>
+</SDM>

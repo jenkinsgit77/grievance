@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="FeedbackManagementTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>fetchCustIdfromURL</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>FeedbackManagementBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.feedbackManagement.FeedbackManagement</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="feedback_management">
+      <page>/pageFragment/feedbackManagement/feedback_management.jsff</page>
+    </view>
+    <method-call id="fetchCustIdfromURL">
+      <method>#{backingBeanScope.FeedbackManagementBean.fetchCustIdfromURL}</method>
+      <outcome>
+       <to-string/>
+      </outcome>
+    </method-call>
+    <view id="BussinessValidation">
+      <page>/pageFragment/feedbackManagement/BussinessValidation.jsff</page>
+    </view>
+    <task-flow-call id="ConfirmationPageTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/common/ConfirmationPageTF.xml</document>
+        <id>ConfirmationPageTF</id>
+      </task-flow-reference>
+      <input-parameter id="__7">
+        <name>confMessage</name>
+        <value>#{pageFlowScope.confMessage}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>fetchCustIdfromURL</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>tofeedback</from-outcome>
+        <to-activity-id>feedback_management</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>tobussiness</from-outcome>
+        <to-activity-id>BussinessValidation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>feedback_management</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>toConfirmation</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

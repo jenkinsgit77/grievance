@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="profileEnrichmentPageDef"
+                Package="pageFragment.xtraRewards">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProfileEnrichmentVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ProfileEnrichmentVo1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.pValidCodeEnrichNo}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.pValidMsgEnrichNo}"/>
+      </parameters>
+    </taskFlow>
+    <iterator Binds="EnrollmentDbVo1" RangeSize="10" DataControl="AppModuleDataControl" id="EnrollmentDbVo1Iterator"/>
+    <iterator Binds="VehicleDetailsDbVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="VehicleDetailsDbVo1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="EnrollmentDbVo1Iterator" StaticList="false" Uses="LOV_Gender" id="Gender"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="EmailId">
+      <AttrNames>
+        <Item Value="EmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="MobileNo">
+      <AttrNames>
+        <Item Value="MobileNo"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EnrollmentDbVo1Iterator" StaticList="false" Uses="LOV_State" id="State"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="EnrollmentDbVo1Iterator" StaticList="false" Uses="LOV_District" id="District"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="Pincode">
+      <AttrNames>
+        <Item Value="Pincode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="AnnualIncome">
+      <AttrNames>
+        <Item Value="AnnualIncome"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="insertVehicleTypeRecord" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertVehicleTypeRecord" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.insertVehicleTypeRecord.dataControl.dataProvider">
+      <NamedData NDName="count" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="Address1">
+      <AttrNames>
+        <Item Value="Address1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="Address2">
+      <AttrNames>
+        <Item Value="Address2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="Address3">
+      <AttrNames>
+        <Item Value="Address3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="Address4">
+      <AttrNames>
+        <Item Value="Address4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="MotherMaidenName">
+      <AttrNames>
+        <Item Value="MotherMaidenName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="OfficePhoneStd">
+      <AttrNames>
+        <Item Value="OfficePhoneStd"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="OfficePhoneNo">
+      <AttrNames>
+        <Item Value="OfficePhoneNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="ResidencePhoneStd">
+      <AttrNames>
+        <Item Value="ResidencePhoneStd"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="ResidencePhoneNo">
+      <AttrNames>
+        <Item Value="ResidencePhoneNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfileEnrichmentVo1Iterator" id="AadharNumber">
+      <AttrNames>
+        <Item Value="AadharNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="MiddleName">
+      <AttrNames>
+        <Item Value="MiddleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EnrollmentDbVo1Iterator" StaticList="false" Uses="LOV_Prefix" id="Prefix"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="insertProfileEnrichInfo" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertProfileEnrichInfo" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.insertProfileEnrichInfo.dataControl.dataProvider">
+      <NamedData NDName="FirstName" NDType="java.lang.String"/>
+      <NamedData NDName="LastName" NDType="java.lang.String"/>
+      <NamedData NDName="EmailId" NDType="java.lang.String"/>
+      <NamedData NDName="MobileNo" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="VehicleDetailsDbVo1Iterator" id="VehicleDetailsDbVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.Loyalty.VehicleDetailsDbVo"
+                      Name="VehicleDetailsDbVo10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="VehicleType"/>
+          <Item Value="FuelType"/>
+          <Item Value="RegistrationNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="EnrollmentDbVo1Iterator" id="AadharNumber1">
+      <AttrNames>
+        <Item Value="AadharNumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

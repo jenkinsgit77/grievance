@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+    .buttontext span{
+        font-size:14px !important;
+        top:-15px !important;
+    }
+    </af:resource> 
+    <af:resource type="javascript">
+ function NewTab(taburl) {
+            window.open(
+              taburl, "_blank");
+        }
+</af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass=" iocl_page">
+    <af:panelGroupLayout styleClass="col-md-12" id="pgl7">
+   
+    <af:panelGroupLayout styleClass="col-md-12 blueHeading font-size22" id="pgl8">
+    <af:outputFormatted value="Find your Oil" id="of4"/>
+    </af:panelGroupLayout>
+    
+    
+     
+        <af:panelGroupLayout styleClass="col-md-6 font-bold" id="pgl9">
+            <af:outputFormatted value="#{custPortalBundle.VEHICLE_TYPE_SERVO}" id="of1"/>
+            <af:selectOneChoice value="#{bindings.VehicleType.inputValue}" label="#{bindings.VehicleType.label}"
+                                unselectedLabel="#{custPortalBundle.PLEASE_SELECT}" autoSubmit="true"
+                                required="#{bindings.VehicleType.hints.mandatory}" simple="true"
+                                shortDesc="#{bindings.VehicleType.hints.tooltip}" id="soc4">
+                <f:selectItems value="#{bindings.VehicleType.items}" id="si4"/>
+                 </af:selectOneChoice>
+</af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl3" styleClass="col-md-6 font-bold">
+            <af:outputFormatted value="#{custPortalBundle.MAKE_SERVO}" id="of2"/>
+            <af:selectOneChoice value="#{bindings.Make.inputValue}" label="#{bindings.Make.label}"
+                                unselectedLabel="#{custPortalBundle.PLEASE_SELECT}" autoSubmit="true"
+                                required="#{bindings.Make.hints.mandatory}" shortDesc="#{bindings.Make.hints.tooltip}"
+                                id="soc1" simple="true" partialTriggers="soc4">
+                  <f:selectItems value="#{bindings.Make.items}" id="si3"/>
+            </af:selectOneChoice>
+           
+        </af:panelGroupLayout>
+       
+        <af:panelGroupLayout styleClass="row" id="pgl10">
+        <af:panelGroupLayout id="pgl4" styleClass="col-md-6 font-bold">
+            <af:outputFormatted value="#{custPortalBundle.MODEL_SERVO}" id="of3"/>
+            <af:selectOneChoice value="#{bindings.Model.inputValue}" label="#{bindings.Model.label}"
+                                unselectedLabel="#{custPortalBundle.PLEASE_SELECT}" autoSubmit="true"
+                                required="#{bindings.Model.hints.mandatory}" shortDesc="#{bindings.Model.hints.tooltip}"
+                                id="soc2" simple="true" partialTriggers="soc1">
+                <f:selectItems value="#{bindings.Model.items}" id="si1"/>
+               </af:selectOneChoice>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl5" styleClass="col-md-5 top30 buttontext">
+            <af:button text="SEARCH  LUBES" id="b1"  inlineStyle="border-radius:16px !important ;height: 27px !important;"
+                       targetFrame="_blank" destination="#{backingBeanScope.findyouroillanding.KMBaseUrl}?fac=#{bindings.VehicleType.inputValue}&amp;page=answers&amp;startover=y&amp;question_box_status=changed&amp;restrict=&amp;question_box=#{bindings.Make.inputValue}-#{bindings.Model.inputValue}"
+                       partialTriggers="soc4 soc1 soc2"/>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

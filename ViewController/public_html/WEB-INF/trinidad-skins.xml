@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+  <skin>
+    <id>ImageSlider.desktop</id>
+    <family>ImageSlider</family>
+    <extends>fusionFx-simple-v2.1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>skins/jflow.style.css</style-sheet-name>
+    <bundle-name>resources.skinBundle</bundle-name>
+  </skin>
+  <skin>
+    <id>customerPortal.desktop</id>
+    <family>customerPortal</family>
+    <extends>alta-v1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>skins/customerPortal.css</style-sheet-name>
+    <bundle-name>skinBundle</bundle-name>
+  </skin>
+</skins>

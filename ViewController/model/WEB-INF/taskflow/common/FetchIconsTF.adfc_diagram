@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="linkStyle">Direct</property>
+   </OverallProperties>
+   <MethodCall
+      id="MethodCall2">
+      <property
+         name="activityId">fetchAppListCustomerNonLogin</property>
+      <property
+         name="x">207.71484</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>fetchAppListCustomerNonLogin&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">161.86719</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <View
+      id="View7">
+      <property
+         name="activityId">tononLogin</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">421.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>tononLogin&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">157.5459</property>
+      <property
+         name="page">/pageFragment/customerNonLogin/tononLogin.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="MethodCall2"
+      to="View7">
+      <property
+         name="fromOutcome">tononLogin</property>
+      <property
+         name="sdm:polyPoints">R50,248.71484,161.5166,380.0,157.19531,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="ourNetworkDistribtorTF_ourNetworkDistribtorTF_initializerTFPageDef" Package="taskflow"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LpgDistMaster1" RangeSize="10" DataControl="AppModuleDataControl" id="LpgDistMaster1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="LpgDistMaster1Iterator" id="LpgDistMaster1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.LpgDistMaster" Name="LpgDistMaster10">
+        <AttrNames>
+          <Item Value="DistName"/>
+          <Item Value="Addr"/>
+          <Item Value="AoCode"/>
+          <Item Value="AoName"/>
+          <Item Value="CustSinceDt"/>
+          <Item Value="Dist5kgFtl"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="MainEmailAddr"/>
+          <Item Value="MainFaxPhNum"/>
+          <Item Value="MainPhNum"/>
+          <Item Value="Province"/>
+          <Item Value="SalesAreaCode"/>
+          <Item Value="SalesAreaName"/>
+          <Item Value="SapCode"/>
+          <Item Value="Sno"/>
+          <Item Value="SoldToPartyCode"/>
+          <Item Value="State"/>
+          <Item Value="StateName"/>
+          <Item Value="UcmUid"/>
+          <Item Value="Zipcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

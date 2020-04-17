@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3877.922 5940 41.535 42.386">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #fc0303;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        font-size: 37px;
+        font-family: Mshtakan;
+      }
+    </style>
+  </defs>
+  <g id="Group_538" data-name="Group 538" transform="translate(3698 5751)">
+    <path id="Path_236" data-name="Path 236" class="cls-1" d="M33.331,12.512a1.285,1.285,0,0,0-1.795.051L16.665,28.357,7.948,21.332a1.277,1.277,0,0,0-1.59,2L16,31.126a1.257,1.257,0,0,0,.82.308,1.284,1.284,0,0,0,.923-.41l15.64-16.665A1.35,1.35,0,0,0,33.331,12.512ZM20.767,0A20.767,20.767,0,1,0,41.535,20.767a22.567,22.567,0,0,0-.158-2.549A20.647,20.647,0,0,0,36.3,7.079,21.551,21.551,0,0,0,28.1,1.34,20,20,0,0,0,20.767,0Zm0,38.971a18.2,18.2,0,1,1,17.1-24.452,17.516,17.516,0,0,1,1.1,6.249A18.208,18.208,0,0,1,20.767,38.971Z" transform="translate(179.922 189.851)"/>
+    <ellipse id="Ellipse_15" data-name="Ellipse 15" class="cls-2" cx="16" cy="15.5" rx="16" ry="15.5" transform="translate(185 195)"/>
+    <text id="_" data-name="!" class="cls-3" transform="translate(195 222)"><tspan x="0" y="0">!</tspan></text>
+  </g>
+</svg>

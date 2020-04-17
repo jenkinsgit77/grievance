@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+    .radio_grouppayment label{
+    padding-right: 20% !important;
+}
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="row IOCLcontent_box1 iocl_page">
+        <af:panelGroupLayout id="pglh1" layout="vertical" styleClass="col-md-12">
+            <af:panelGroupLayout id="pgl18">
+                <af:panelGroupLayout id="pgl22" layout="vertical">
+                    <af:panelGroupLayout id="pgl12" layout="vertical" styleClass="row">
+                        <af:panelGroupLayout id="pgl13" layout="vertical" styleClass="col-md-12">
+                            <af:outputFormatted value="#{custPortalBundle.PAYMENTPAGE}" id="ofg1"
+                                                styleClass="mainHeading"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <!--<af:panelGroupLayout id="pgdl2" layout="horizontal" styleClass="IOCLgrey_box">
+              <af:panelGroupLayout id="pgl16" layout="horizontal">
+                    <af:panelLabelAndMessage label="#{custPortalBundle.NFR_PAYMENTPAGE_TA}" id="plam2" styleClass="labelHeading">
+                        <af:outputText value="#{bindings.TotalAmount.inputValue}"
+                                       shortDesc="#{bindings.TotalAmount.hints.tooltip}" id="ot2"/>
+                    </af:panelLabelAndMessage>
+                </af:panelGroupLayout>
+                 <af:panelGroupLayout id="pgl17" layout="horizontal">
+                <af:panelLabelAndMessage label="#{custPortalBundle.NFR_PAYMENTPAGE_OI}" id="plam1" styleClass="labelHeading">
+                        <af:outputText value="#{bindings.OrderId.inputValue}"
+                                       shortDesc="#{bindings.OrderId.hints.tooltip}" id="ot1"/>
+                    </af:panelLabelAndMessage>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>-->
+            <af:panelGroupLayout id="pgl5">
+                <ul class="nav nav-tabs">
+                    <li class="active text-center" style="width:50%">
+                        <a data-toggle="tab" href="#menu1" style="font-weight:700">
+                            <af:outputText value="#{custPortalBundle.PAYMENTPAGE_COD}" id="ot1"/></a>
+                    </li>
+                    <li style="width:50%" class="text-center">
+                        <a data-toggle="tab" href="#menu2" style="font-weight:700">
+                            <af:outputText value="#{custPortalBundle.PAYMENTPAGE_OP}" id="ot145"/></a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="padding-top:15px;border: solid 1px #ccc;border-top: 0; padding: 10px;">
+                    <div id="menu1" class="tab-pane fade in active">
+                        <af:panelGroupLayout layout="vertical" id="pgl4" styleClass="row mar25">
+                            <af:panelGroupLayout layout="vertical" styleClass="col-md-12" id="pgl7">
+                                <af:outputFormatted id="of18" value="#{custPortalBundle.PAYMENTPAGE_CODTEXT}"
+                                                    styleClass="font18"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl8" layout="vertical" styleClass="row">
+                            <af:panelGroupLayout id="pgl17" layout="vertical"
+                                                 styleClass="col-md-2 col-md-offset-5 marginspace">
+                                <af:panelGroupLayout id="pgl20" styleClass=" marginspace buttonfullwidth pr-0,px-0"
+                                                     >
+                                    <af:button text="#{custPortalBundle.SUBMIT}" id="b1"
+                                               action="#{backingBeanScope.PaymentMethod.codSubmitAction}"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <af:panelGroupLayout layout="vertical" id="pgl3" styleClass="row">
+                            <af:panelGroupLayout id="pgl37" styleClass="col-md-12">
+                                <af:outputText value="#{custPortalBundle.PAYMENT_CONFIRMATION_MESSAGE_OP}" id="of13"
+                                               styleClass="font_bold "/>
+                                <af:spacer width="5px"/>
+                                <af:outputText value="#{pageFlowScope.orderNumber}" id="of16" styleClass=""/>
+                            </af:panelGroupLayout>
+                            <!--<af:panelGroupLayout styleClass="show col-md-12 marginspace" id="pgl2">
+                                <af:outputFormatted id="of1" value="#{bindings.paymentMode.label}"
+                                                    styleClass="font22Blue"/>
+                            </af:panelGroupLayout>-->
+                            <!--<af:panelGroupLayout styleClass="show col-md-12 marginspace radio_grouppayment" id="pgl6">
+                                <af:selectOneRadio value="#{bindings.paymentMode.inputValue}"
+                                                   label="#{bindings.paymentMode.label}"
+                                                   shortDesc="#{bindings.paymentMode.hints.tooltip}" id="sor1"
+                                                   layout="horizontal"
+                                                   valueChangeListener="#{backingBeanScope.PaymentMethod.paymentModeValueCl}"
+                                                   autoSubmit="true" simple="true">
+                                    <f:selectItems value="#{bindings.paymentMode.items}" id="si1"/>
+                                    <f:validator binding="#{bindings.paymentMode.validator}"/>
+                                </af:selectOneRadio>
+                            </af:panelGroupLayout>-->
+                            <af:panelGroupLayout styleClass="show margintop15 marginspace" id="pgl9" layout="vertical">
+                                <af:region value="#{bindings.paymentGatewayFlow1.regionModel}" id="r1"
+                                           binding="#{backingBeanScope.PaymentMethod.paymentRegionBinding}"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </div>
+                </div>
+            </af:panelGroupLayout>
+            <!--<af:panelGroupLayout id="pgl2" layout="vertical" halign="center" valign="middle" styleClass="">
+                <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="tab1" text="#{custPortalBundle.PAYMENTPAGE_COD}" disclosed="true">
+                        <af:panelGroupLayout layout="vertical" id="pgl4" styleClass="row mar25">
+                            <af:panelGroupLayout layout="vertical" styleClass="col-md-12" id="pgl7">
+                                <af:outputFormatted id="of18" value="#{custPortalBundle.PAYMENTPAGE_CODTEXT}"
+                                                    styleClass="font18"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl8" layout="vertical" styleClass="row">
+                            <af:panelGroupLayout id="pgl17" layout="vertical"
+                                                 styleClass="col-md-8 marginspace">
+                                <af:panelGroupLayout id="pgl20"
+                                                     styleClass=" marginspace buttonfullwidth"
+                                                     inlineStyle="padding-left: 0px;">
+                                    <af:button text="#{custPortalBundle.SUBMIT}" id="b1"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem text="#{custPortalBundle.PAYMENTPAGE_OP}" id="sdi1">
+                        <af:panelGroupLayout layout="vertical" id="pgl3" styleClass="row">
+                            <af:selectOneRadio value="#{bindings.paymentMode.inputValue}"
+                                               label="#{bindings.paymentMode.label}"
+                                               shortDesc="#{bindings.paymentMode.hints.tooltip}" id="sor1"
+                                               layout="horizontal"
+                                               valueChangeListener="#{pageFlowScope.PaymentMethod.paymentModeValueCl}"
+                                               autoSubmit="true">
+                                <f:selectItems value="#{bindings.paymentMode.items}" id="si1"/>
+                                <f:validator binding="#{bindings.paymentMode.validator}"/>
+                            </af:selectOneRadio>
+                        </af:panelGroupLayout>
+                        <af:region value="#{bindings.paymentGatewayFlow1.regionModel}" id="r1"
+                                   binding="#{pageFlowScope.PaymentMethod.paymentRegionBinding}"/>
+                    </af:showDetailItem>
+                </af:panelTabbed>
+            </af:panelGroupLayout>-->
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

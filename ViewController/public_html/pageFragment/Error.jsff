@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+    .resizenone textarea
+    {
+    resize:none;
+    }
+    </af:resource>
+    <af:panelGroupLayout id="pgl1777" styleClass="row iocl_page" layout="vertical">
+        <af:panelGroupLayout id="pgl1" styleClass="col-md-12 marB15 backlink" layout="vertical">
+            <af:link id="l11" text="#{custPortalBundle.BACK_CUSTOMER_NON_LOGGED_IN}" action="BACK_TO_FLOW_CUSTOMER"
+                     visible="#{!sessionScope.IS_LOGGED_IN=='True'}" partialSubmit="true"
+                     rendered="#{(pageFlowScope.hideBackButton != null and pageFlowScope.hideBackButton == 'Y') ? false : true}"/>
+            <af:link id="l8" text="#{custPortalBundle.BACK_CUSTOMER_LOGGED_IN}" action="BACK_TO_FLOW_CUSTOMER"
+                     visible="#{sessionScope.IS_LOGGED_IN=='True'}" partialSubmit="true"
+                     rendered="#{(pageFlowScope.hideBackButton != null and pageFlowScope.hideBackButton == 'Y') ? false : true}"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl29" styleClass="col-md-12" layout="vertical">
+            <af:panelGroupLayout styleClass="IOCLcontent_box1 " id="pgl7">
+                <af:panelGroupLayout styleClass="row" id="pgl2">
+                    <af:panelGroupLayout styleClass="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 font20 confirmationBorder"
+                                         id="pgl3" inlineStyle="color: #fc0303; border: 2px solid #fc0303;">
+                        <af:panelGroupLayout styleClass="row" id="pgl4">
+                            <af:panelGroupLayout styleClass="col-md-12 col-lg-12" id="pgl5">
+                                <af:panelGroupLayout styleClass="grievanceerrorsymbol" id="pgl6">
+                                    <af:image source="/images/globalimages/error-icon.svg"
+                                              styleClass="image-responsive confirmationImg" id="i1"/>
+                                    <span class="errorRed"> 
+                                        <af:outputText id="ot1" value="#{custPortalBundle.ERROR_HDR}"/>
+                                         </span>
+                                    <!--<af:outputText id="ot3" value="#{res['ERROR_HDR_TXT']}" rendered="#{bindings.Errorcode.inputValue eq '' || bindings.Errorcode.inputValue eq null}"/>-->
+                                    <af:outputText value="#{bindings.Errormessage.inputValue}(#{bindings.Errorcode.inputValue})"
+                                                   shortDesc="#{bindings.Errormessage.hints.tooltip}" id="ot4"/>
+                                    <!--<af:outputText value="2::#{bindings.Errormessage.inputValue}(#{bindings.Errorcode.inputValue})"
+                                                   shortDesc="#{bindings.Errormessage.hints.tooltip}" id="ot6"/>-->
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="row" id="pgl14">
+                            <af:panelGroupLayout styleClass="col-md-12 col-lg-12 " id="pgl12">
+                                <af:panelGroupLayout styleClass="robotoregularfont" id="pgl13">
+                                    <af:outputText id="ot2" value="#{custPortalBundle.ERROR_TXT}#{sessionScope.UserTrackingId}"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                     <af:panelGroupLayout styleClass="row" id="pgl16">
+                      <af:panelGroupLayout styleClass="col-md-4 col-md-offset-1 col-sm-4 col-lg-4 p-0 mt-5" id="pgl17">
+                    <af:button text="#{custPortalBundle.REPORT_ISSUE}"  id="l4" visible="#{customerErrorBn.showLink=='Y'}">
+                     <af:showPopupBehavior  popupId="p1"/>
+                     </af:button>
+                     <af:outputFormatted value="#{custPortalBundle.MAIL_SENT_SUCCESSFULLY}" visible="#{customerErrorBn.showMessage}" partialTriggers="b1"/>
+                     </af:panelGroupLayout>
+                     </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            
+                      <af:popup id="p1" contentDelivery="lazyUncached" animate="true" childCreation="deferred"
+                                binding="#{customerErrorBn.errorPopupBn}">
+                <af:dialog id="d1" styleClass="test MyDialog complaintpop iocl_page" contentWidth="1000" type="none">
+               <af:panelGroupLayout id="pgl8" styleClass="row">
+                 <af:panelGroupLayout  styleClass="col-md-12  marginspace numericOnlyjs text-center" layout="vertical"
+                                      id="pgl10">
+                            <af:outputFormatted value="#{custPortalBundle.PLS_SEND_MAIL}" styleClass="disstributorInfoLabel blueHeading  font-size22"
+                                                id="of1"/>
+                             </af:panelGroupLayout>
+                              <af:panelGroupLayout  styleClass="col-md-12  marginspace numericOnlyjs text-center" 
+                                                   id="pgl9">
+                             <af:outputFormatted value="#{custPortalBundle.MAIL_DESCRIPTION}" styleClass=" col-md-2 mt-5   font-size20"
+                                                id="of2"/>
+                                <af:inputText id="it1" rows="3" styleClass="texterrorChk col-md-10 p-0 resizenone" simple="true"  maximumLength="500"  
+                                              binding="#{customerErrorBn.txtErrorBody}"/>
+                               </af:panelGroupLayout>
+                        <af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout styleClass="row" id="pgl11">
+                        <af:panelGroupLayout styleClass="col-md-3 col-md-offset-2 mt-5 mt-5s" id="pgl15">
+                        <af:button text="#{custPortalBundle.SEND_MAIL}" id="b1" actionListener="#{customerErrorBn.mailSend}"/>
+                        </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                </af:dialog>
+                </af:popup>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>
+

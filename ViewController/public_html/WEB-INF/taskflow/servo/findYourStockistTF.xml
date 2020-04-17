@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="findYourStockistTF">
+    <default-activity>CreateInsert</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>findyourstockistbean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.servo.FindYourStockistBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="findYourStockistPF">
+      <page>/pageFragment/servo/findYourStockistPF.jsff</page>
+    </view>
+    <view id="SearchStockistfrg">
+      <page>/pageFragment/servo/SearchStockistfrg.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__4">
+      <from-activity-id>findYourStockistPF</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>Success</from-outcome>
+        <to-activity-id>SearchStockistfrg</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>findYourStockistPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

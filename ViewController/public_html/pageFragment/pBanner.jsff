@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<af:panelGroupLayout id="pgl6" layout="vertical" styleClass="iocl_page">
+        
+ <af:panelGroupLayout id="myCarousel"  styleClass="carousel slide myCarousel submitSection"  clientComponent="true">
+             
+             <ol class="carousel-indicators">
+                <af:forEach varStatus="banner" items="#{pageFlowScope.PartnerBanner.lstBanner}"  var="feachtt"> 
+                    <li data-slide-to="${banner.index}" class="${banner.index == '0' ? 'active':''}">
+                    &#160;
+                </li>
+                </af:forEach>
+                <!--<li data-target="#myCarousel" data-slide-to="0" class="active">
+                            &#160;
+                        </li>                    
+                    <li data-target="#myCarousel" data-slide-to="1">
+                        &#160;
+                    </li>
+                    <li data-target="#myCarousel" data-slide-to="2">
+                        &#160;
+                    </li>
+                    <li data-target="#myCarousel" data-slide-to="3">
+                        &#160;
+                    </li>
+                    <li data-target="#myCarousel" data-slide-to="4">
+                        &#160;
+                    </li>-->
+                </ol>
+           
+            <af:panelGroupLayout   styleClass="carousel-inner show" id="pgl1">
+                <!--<af:iterator  value="#{pageFlowScope.LoggedInBanner.lstBanner}" varStatus="item" var="feachtt">          
+                   <af:image source="#{feachtt.url}" inlineStyle="width:100%"/>
+                </af:iterator>-->
+                 <af:forEach varStatus="banner" items="#{pageFlowScope.PartnerBanner.lstBanner}"  var="feachtt"> 
+                  <af:panelGroupLayout  id="pgl3" styleClass="banner-img"> 
+                  <!--styleClass="#{banner.index eq '0' ? 'item active':'item'}"-->
+                        <!--<af:outputText value="#{banner.index==0}" id="ot1"/>
+                        <af:outputText visible="#{banner.index==0}" value="xyx" id="ot2"/>-->
+                        <af:image source="#{feachtt.url}"  styleClass="img-responsive w-100"/>
+                  </af:panelGroupLayout>
+                
+                 </af:forEach>  
+         </af:panelGroupLayout>
+         
+             <!--<af:forEach varStatus="item" items="#{pageFlowScope.LoggedInBanner.lstBanner}"> 
+             
+          <af:outputText value="#{item.index}"/>
+             <af:outputText value="#{item.index}"/>
+            </af:forEach>-->     
+                    <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="sr-only">Previous</span></a>
+                     
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="sr-only">Next</span></a>-->
+                
+                <!-- Controls -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+
+ </af:panelGroupLayout>
+
+   </af:panelGroupLayout>
+    
+ 
+    <af:resource type="javascript">
+          document.addEventListener('DOMContentLoaded', function() {         
+              changeGroupLayout();           
+            });
+  
+              function changeGroupLayout() {
+                  var pgl = $('.myCarousel');
+                  pgl.attr("data-ride", "carousel");
+                  pgl.attr("id", "myCarousel");
+                  $('.carousel-inner > span:first-child').addClass('active');
+                  $('.carousel-inner > span').addClass('item');
+              }
+    </af:resource>
+</jsp:root>

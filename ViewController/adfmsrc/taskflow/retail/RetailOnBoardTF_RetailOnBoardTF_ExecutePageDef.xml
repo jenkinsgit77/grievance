@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="RetailOnBoardTF_RetailOnBoardTF_ExecutePageDef" Package="taskflow.retail" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="RetailOnboardingVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="RetailOnboardingVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="RetailOnboardingVO1Iterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

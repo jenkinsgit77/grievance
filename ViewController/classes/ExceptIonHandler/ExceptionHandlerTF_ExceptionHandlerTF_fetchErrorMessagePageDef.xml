@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="ExceptionHandlerTF_ExceptionHandlerTF_fetchErrorMessagePageDef" Package="ExceptIonHandler"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="fetchErrorMessage" RequiresUpdateModel="true" Action="invokeMethod" MethodName="fetchErrorMessage"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.fetchErrorMessage.dataControl.dataProvider">
+      <NamedData NDName="errorCode" NDValue="#{pageFlowScope.epicSibelOrAppErrorCode}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

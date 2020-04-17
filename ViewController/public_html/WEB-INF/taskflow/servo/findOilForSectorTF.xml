@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="findOilForSectorTF">
+    <default-activity>findOilForSectorPF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>vehicleType</name>
+      <value>#{pageFlowScope.vehicleType}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>make</name>
+      <value>#{pageFlowScope.make}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>model</name>
+      <value>#{pageFlowScope.model}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>findoilforsectorbean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.servo.FinOilFOrSectorBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="findOilForSectorPF">
+      <page>/pageFragment/servo/findOilForSectorPF.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

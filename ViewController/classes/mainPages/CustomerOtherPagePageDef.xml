@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="CustomerOtherPagePageDef"
+                Package="mainPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="template.LoggedInTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <taskFlow id="subscriptionVouchTF1"
+              taskFlowId="/WEB-INF/taskflow/subscriptionVoucher/subscriptionVouchTF.xml#subscriptionVouchTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="CustomerPropertyLoadTF1"
+              taskFlowId="/WEB-INF/taskflow/CustomerPropertyLoadTF.xml#CustomerPropertyLoadTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="LinkYourLpgTF1" taskFlowId="/WEB-INF/taskflow/linkyourlpg/LinkYourLpgTF.xml#LinkYourLpgTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="LPGSR1" taskFlowId="/WEB-INF/taskflow/lpgsr/LPGSR.xml#LPGSR" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="ReactivateTF1" taskFlowId="/WEB-INF/taskflow/reactivate/ReactivateTF.xml#ReactivateTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="xtraRewardsPointsTF1"
+              taskFlowId="/WEB-INF/taskflow/loyalty/xtraRewardsPointsTF.xml#xtraRewardsPointsTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="LoyaltyLinkingTF1" taskFlowId="/WEB-INF/taskflow/loyalty/LoyaltyLinkingTF.xml#LoyaltyLinkingTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="LoyaltyEnrichmentTF1"
+              taskFlowId="/WEB-INF/taskflow/loyalty/LoyaltyEnrichmentTF.xml#LoyaltyEnrichmentTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

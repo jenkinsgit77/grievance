@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="subscriptionVouchPageDef"
+                Package="pageFragment.subscriptionVoucher">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustomerGeneralVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CustomerGeneralVo1Iterator"/>
+    <iterator Binds="GlassTopLPG_StoveVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="GlassTopLPG_StoveVo1Iterator"/>
+    <iterator Binds="LPGStoveProductVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="LPGStoveProductVo1Iterator"/>
+    <iterator Binds="LPGHoseProductVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="LPGHoseProductVo1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.pValidCodeSubVoucher}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.pValidMsgSubVoucher}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <list IterBinding="CustomerGeneralVo1Iterator" StaticList="false" Uses="LOV_ConnectionType" id="ConnectionType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="CustomerGeneralVo1Iterator" StaticList="false" Uses="LOV_HotPlate" id="HotPlate"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="LPGStoveProductVo1Iterator" id="LPGStoveProductVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.LPGStoveProductVo" Name="LPGStoveProductVo10">
+        <AttrNames>
+          <Item Value="Type"/>
+          <Item Value="Mrp"/>
+          <Item Value="Brand"/>
+          <Item Value="Code"/>
+          <Item Value="Description"/>
+          <Item Value="Make"/>
+          <Item Value="Manufacturing"/>
+          <Item Value="ProductCode"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSelected"/>
+          <Item Value="ProductId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="LPGHoseProductVo1Iterator" id="LPGHoseProductVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.LPGHoseProductVo" Name="LPGHoseProductVo10">
+        <AttrNames>
+          <Item Value="Type"/>
+          <Item Value="Mrp"/>
+          <Item Value="Brand"/>
+          <Item Value="Code"/>
+          <Item Value="Description"/>
+          <Item Value="Make"/>
+          <Item Value="ProductCode"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSelected"/>
+          <Item Value="ProductId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="LPGHoseProductVo1Iterator" id="Brand1">
+      <AttrNames>
+        <Item Value="Brand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGHoseProductVo1Iterator" id="Description1">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGStoveProductVo1Iterator" id="Type">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGStoveProductVo1Iterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGHoseProductVo1Iterator" id="Type1">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGHoseProductVo1Iterator" id="ProductId1">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGStoveProductVo1Iterator" id="Brand">
+      <AttrNames>
+        <Item Value="Brand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LPGStoveProductVo1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerGeneralVo1Iterator" id="PromoSelected">
+      <AttrNames>
+        <Item Value="PromoSelected"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

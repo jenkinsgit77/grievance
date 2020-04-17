@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ourNetworkDistribtorTF">
+    <default-activity>initializerTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ournetworkbean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.OurNetworkBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+
+    <view id="OurNetworkLocatorPF">
+      <page>/pageFragment/ourNetwork/OurNetworkLocatorPF.jsff</page>
+    </view>
+    <method-call id="initializerTF">
+      <method>#{backingBeanScope.ournetworkbean}</method>
+      <outcome>
+        <fixed-outcome>goToOurNetworkLocator</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>initializerTF</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>goToOurNetworkLocator</from-outcome>
+        <to-activity-id>OurNetworkLocatorPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

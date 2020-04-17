@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+  <?audit suppress oracle.ide.xml.validation-error?>
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+   <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="row iocl_page" partialTriggers="b2 l1">
+        <af:panelGroupLayout id="pgl2" layout="vertical" styleClass="col-md-12">
+            <af:panelGroupLayout id="pgl27" layout="vertical" styleClass="IOCLcontent_box1">
+                <af:panelGroupLayout id="pgl3" styleClass="row show">
+                    <af:panelGroupLayout id="pgl12" styleClass="col-md-6 show header-title-sv"
+                                         inlineStyle="padding-bottom:15px">
+                        <af:outputFormatted value="#{custPortalBundle.REQUIRED_DOCUMENTS}" id="of1"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl15" styleClass="col-md-6 show text-right">
+                        <af:outputFormatted value="#{custPortalBundle.All_MANDATORY_FIELD_MESSAGE}" id="of3"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl4" styleClass="col-md-12 show" partialTriggers="soc1 soc2">
+                    <af:outputFormatted value="#{custPortalBundle.REQUIRED_DOCUMENTS_NOTES}" id="of5"/>
+                    <!--<af:outputFormatted value="#{custPortalBundle.POA_POI_SINGLE_DOCUMENT_MESSAGE}" id="of12"
+                                            styleClass="errorMessage"
+                                            visible="#{bindings.POIDocType.inputValue ne null and bindings.POIDocType.inputValue eq 'POA-POI' ? true : (bindings.POADocType.inputValue ne null and bindings.POADocType.inputValue eq 'POA-POI') ? true : false}"
+                                        inlineStyle="font-size:18px;"/>-->
+                        <af:outputFormatted value="#{backingBeanScope.ReactivateBean.attachmentErrorMsg}" id="of12"
+                                            styleClass="errorMessage font-size18"
+                                        />
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl7" layout="vertical" styleClass="row">
+                    <af:panelGroupLayout id="pgl8" layout="vertical" styleClass="col-md-5 ">
+                        <af:panelGroupLayout id="pgl10" layout="vertical" styleClass="IOCLgrey_boxNew IOCLcontent_box3">
+                            <af:panelGroupLayout id="pgl9" layout="vertical" styleClass="marB15">
+                                <af:outputFormatted value="#{custPortalBundle.SELECT_ONE_PROOF_OF_IDENTITY}" id="of4"
+                                                    styleClass="firstHeading font-size18 IOCL-font-weight-medium IOCL-font-normal"/>
+                                <af:selectOneChoice value="#{bindings.ProofOfIdentityType.inputValue}"
+                                                    label="#{bindings.ProofOfIdentityType.label}"
+                                                    shortDesc="#{bindings.ProofOfIdentityType.hints.tooltip}" id="soc1"
+                                                    simple="true"
+                                                    binding="#{backingBeanScope.ReactivateBean.poiTypeBinding}"
+                                                    autoSubmit="true"
+                                                    valueChangeListener="#{backingBeanScope.ReactivateBean.poiTypeValueCl}"
+                                                    unselectedLabel="#{custPortalBundle.PLEASE_SELECT}">
+                                    <f:selectItems value="#{bindings.ProofOfIdentityType.items}" id="si1"/>
+                                    <f:validator binding="#{bindings.ProofOfIdentityType.validator}"/>
+                                </af:selectOneChoice>
+                                <af:panelGroupLayout id="pgl34" styleClass="errClassScroll">
+                                    <af:outputText value="#{backingBeanScope.ReactivateBean.proofofIdenErrorMsg}" id="ot17"
+                                                   styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl11" layout="vertical" styleClass="marB15"
+                                                 partialTriggers="soc1">
+                                <af:outputFormatted value="#{custPortalBundle.ENTER_THE_SELECTED_POI_DOCUMENT_ID_NUMBER}" id="of2"
+                                                    styleClass="IOCL-font-normal font-size18 IOCL-font-weight-light"/>
+                                <af:inputText value="#{bindings.ProofOfIdentityNo.inputValue}"
+                                              label="#{bindings.ProofOfIdentityNo.hints.label}"
+                                              maximumLength="#{bindings.ProofOfIdentityNo.hints.precision}"
+                                              shortDesc="#{bindings.ProofOfIdentityNo.hints.tooltip}" id="it1"
+                                              simple="true" binding="#{backingBeanScope.ReactivateBean.poiNoBinding}"
+                                              valueChangeListener="#{backingBeanScope.ReactivateBean.poiNoTypeValueCl}"
+                                              autoSubmit="true">
+                                    <f:validator binding="#{bindings.ProofOfIdentityNo.validator}"/>
+                                </af:inputText>
+                                <af:panelGroupLayout id="pgl35" styleClass="errClassScroll">
+                                    <af:outputText value="#{backingBeanScope.ReactivateBean.proofofIdenNoErrorMsg}" id="ot5"
+                                                   styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                                <af:outputText value="#{bindings.POIDocType.inputValue}"
+                                               shortDesc="#{bindings.POIDocType.hints.tooltip}" id="ot1"
+                                               visible="false"
+                                               binding="#{backingBeanScope.ReactivateBean.poiDocTypeBinding}"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl5" layout="vertical" styleClass="marB15"
+                                                 partialTriggers="soc1 it1"
+                                                 visible="#{bindings.ProofOfIdentityType.inputValue != null and bindings.ProofOfIdentityNo.inputValue != null}">
+                                <af:outputFormatted id="of9" value="#{custPortalBundle.SELECT_A_POI_FILE}"
+                                                    styleClass="IOCL-font-normal font-size18 IOCL-font-weight-light"/>
+                                <af:region value="#{bindings.CustomerAddAttachmentTF1.regionModel}" id="r1"/>
+                                <af:panelGroupLayout id="pgl36" styleClass="errClassScroll">
+                                    <af:outputFormatted value="#{backingBeanScope.ReactivateBean.poiFileErrorMsg}" id="of10"
+                                                        styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl13" layout="vertical" styleClass="col-md-5 col-md-offset-2">
+                        <af:panelGroupLayout id="pgl30" layout="vertical" styleClass="IOCLgrey_boxNew IOCLcontent_box3">
+                            <af:panelGroupLayout id="pgl31" layout="vertical" styleClass="marB15">
+                                <af:outputFormatted value="#{custPortalBundle.SELECT_ONE_PROOF_OF_ADDRESS}" id="of6"
+                                                    styleClass="firstHeading  font-size18 IOCL-font-weight-medium IOCL-font-normal"/>
+                                <af:selectOneChoice value="#{bindings.ProofOfAddressType.inputValue}"
+                                                    label="#{bindings.ProofOfAddressType.label}"
+                                                    shortDesc="#{bindings.ProofOfAddressType.hints.tooltip}" id="soc2"
+                                                    simple="true"
+                                                    binding="#{backingBeanScope.ReactivateBean.poaTypeBinding}"
+                                                    valueChangeListener="#{backingBeanScope.ReactivateBean.poaTypeValueCl}"
+                                                    unselectedLabel="#{custPortalBundle.PLEASE_SELECT}"
+                                                    autoSubmit="true">
+                                    <f:selectItems value="#{bindings.ProofOfAddressType.items}" id="si2"/>
+                                    <f:validator binding="#{bindings.ProofOfAddressType.validator}"/>
+                                </af:selectOneChoice>
+                                <af:panelGroupLayout id="pgl37" styleClass="errClassScroll">
+                                    <af:outputText value="#{backingBeanScope.ReactivateBean.proofofAddErrorMsg}" id="ot4"
+                                                   styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl14" layout="vertical" styleClass="marB15"
+                                                 partialTriggers="soc2">
+                                <af:outputFormatted value="#{custPortalBundle.ENTER_THE_SELECTED_POA_DOCUMENT_ID_NUMBER}" id="of7"
+                                                    styleClass="IOCL-font-normal font-size18 IOCL-font-weight-light"/>
+                                <af:inputText value="#{bindings.ProofOfAddressNo.inputValue}"
+                                              label="#{bindings.ProofOfAddressNo.hints.label}"
+                                              maximumLength="#{bindings.ProofOfAddressNo.hints.precision}"
+                                              shortDesc="#{bindings.ProofOfAddressNo.hints.tooltip}" id="it2"
+                                              binding="#{backingBeanScope.ReactivateBean.poaNoBinding}" simple="true"
+                                              valueChangeListener="#{backingBeanScope.ReactivateBean.poaTypeNoValueCl}"
+                                              autoSubmit="true">
+                                    <f:validator binding="#{bindings.ProofOfAddressNo.validator}"/>
+                                </af:inputText>
+                                <af:panelGroupLayout id="pgl38" styleClass="errClassScroll">
+                                    <af:outputText value="#{backingBeanScope.ReactivateBean.proofofAddNoErrorMsg}" id="ot6"
+                                                   styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                                <af:outputText value="#{bindings.POADocType.inputValue}"
+                                               shortDesc="#{bindings.POADocType.hints.tooltip}" id="ot2"
+                                               binding="#{backingBeanScope.ReactivateBean.poaDocTypeBinding}"
+                                               visible="false"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl6" layout="vertical" styleClass="marB15"
+                                                 partialTriggers="soc2 it2"
+                                                 visible="#{bindings.ProofOfAddressType.inputValue != null and bindings.ProofOfAddressNo.inputValue != null}">
+                                <af:outputFormatted value="#{custPortalBundle.SELECT_A_POA_FILE}" id="of8"
+                                                    styleClass="IOCL-font-normal font-size18 IOCL-font-weight-light"/>
+                                <af:region value="#{bindings.CustomerAddAttachmentTF2.regionModel}" id="r2"/>
+                                <af:panelGroupLayout id="pgl39" styleClass="errClassScroll">
+                                    <af:outputFormatted value="#{backingBeanScope.ReactivateBean.poaFileErrorMsg}" id="of11"
+                                                        styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl16" layout="vertical" styleClass="row IOCLbutton_group">
+                    <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r3"
+                               partialTriggers="::b2 ::l1"/>
+                    <af:panelGroupLayout id="pgl18" layout="vertical" styleClass="col-md-4 col-md-offset-4">
+                        <af:panelGroupLayout id="pgl33" layout="vertical" styleClass="row">
+                            <af:panelGroupLayout id="pgl32" layout="vertical"
+                                                 styleClass="col-md-9 text-center buttonSubmitEvent">
+                                <af:button text="#{custPortalBundle.REACTIVATE_NOW}" id="b2"
+                                           action="#{backingBeanScope.ReactivateBean.reactivationAction}"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl19" layout="vertical" styleClass="col-md-3 text-right">
+                                <af:link text="#{custPortalBundle.RESET}" id="l1" partialSubmit="true" styleClass="cancel_link"
+                                         actionListener="#{backingBeanScope.ReactivateBean.reactivateResetActionlis}"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

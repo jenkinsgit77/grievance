@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="TestPagePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="iamgesliderflow1" taskFlowId="/WEB-INF/iamge-slider-flow.xml#iamge-slider-flow" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="MobileResponseTF1" taskFlowId="/WEB-INF/taskflow/MobileResponseTF.xml#MobileResponseTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="Reports1" taskFlowId="/WEB-INF/taskflow/ReportsTF.xml#Reports" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="CustNonLoginFetchIconsTF1"
+              taskFlowId="/WEB-INF/taskflow/CustNonLoginFetchIconsTF.xml#CustNonLoginFetchIconsTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="FetchIconsTF1" taskFlowId="/WEB-INF/taskflow/common/FetchIconsTF.xml#FetchIconsTF"
+              activation="immediate" xmlns="http://xmlns.oracle.com/adf/controller/binding" 
+            >
+      <parameters>
+        <parameter id="pflowCode" value="CustUnsecureRetail"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="FetchIconsTF2" taskFlowId="/WEB-INF/taskflow/common/FetchIconsTF.xml#FetchIconsTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="pflowCode" value="CustUnsecureIndane"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="DealerFeedbackTF1" taskFlowId="/WEB-INF/taskflow/DealerFeedback/DealerFeedbackTF.xml#DealerFeedbackTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="RetailOnBoardTF1" taskFlowId="/WEB-INF/taskflow/retail/RetailOnBoardTF.xml#RetailOnBoardTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="FindYourOilLandingTF1"
+              taskFlowId="/WEB-INF/taskflow/servo/FindYourOilLandingTF.xml#FindYourOilLandingTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

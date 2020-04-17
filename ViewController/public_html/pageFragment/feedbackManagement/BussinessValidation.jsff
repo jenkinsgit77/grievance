@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  
+  <af:panelGroupLayout id="pgl29" styleClass="col-md-12" layout="vertical">
+            <af:panelGroupLayout styleClass="IOCLcontent_box1 " id="pgl7">
+                <af:panelGroupLayout styleClass="row" id="pgl2">
+                    <af:panelGroupLayout styleClass="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 font20 confirmationBorder"
+                                         id="pgl3" inlineStyle="color: #fc0303; border: 2px solid #fc0303;">
+                        <af:panelGroupLayout styleClass="row" id="pgl4">
+                            <af:panelGroupLayout styleClass="col-md-12 col-lg-12" id="pgl5">
+                                <af:panelGroupLayout styleClass="grievanceerrorsymbol" id="pgl6">
+                                    <af:image source="/images/globalimages/error-icon.svg"
+                                              styleClass="image-responsive confirmationImg" id="i1"/>
+                                     <span class="errorRed"> 
+                                        <af:outputText id="ot1" value="#{custPortalBundle.ERROR_HDR}"/>
+                                         </span>
+                                    <af:outputText id="ot3" value="Something went wrong..."/>
+                                  
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                       
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+</jsp:root>

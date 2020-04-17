@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="DealerFeedbackTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>fetchDealerCode</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__7">
+      <name>pdealerCode</name>
+      <value>#{pageFlowScope.pdealerCode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>pFrom</name>
+      <value>#{pageFlowScope.pFrom}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>dealerFeedbackbean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.feedback.DealerFeedbackbean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <method-call id="fetchDealerCode">
+      <method>#{dealerFeedbackbean.fetchDealerCode}</method>
+      <outcome>
+        <fixed-outcome>tocheck</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="dealerFeedback">
+      <page>/pageFragment/feedback/dealerFeedback.jsff</page>
+    </view>
+    <view id="feedbackConfirmation">
+      <page>/pageFragment/feedback/feedbackConfirmation.jsff</page>
+    </view>
+    <router id="router1">
+      <case id="__6">
+        <expression>#{pageFlowScope.pError eq 'ERROR'}</expression>
+        <outcome>ERROR</outcome>
+      </case>
+      <default-outcome>toDealerFeedback</default-outcome>
+    </router>
+    <control-flow-rule id="__2">
+      <from-activity-id>fetchDealerCode</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>tocheck</from-outcome>
+        <to-activity-id>router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>dealerFeedback</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>toconfirm</from-outcome>
+        <to-activity-id>feedbackConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>toDealerFeedback</from-outcome>
+        <to-activity-id>dealerFeedback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

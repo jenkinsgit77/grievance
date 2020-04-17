@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1" visible="#{pageFlowScope.errorBusinessValidationCode eq '100'}" layout="vertical"
+                       styleClass="col-md-12 col-lg-12 iocl_page">
+  <af:outputText value="#{pageFlowScope.errorBusinessValidationMSG}" id="ot1"  styleClass="errorMessage marginspace font-size18" />
+ </af:panelGroupLayout>
+
+</jsp:root>

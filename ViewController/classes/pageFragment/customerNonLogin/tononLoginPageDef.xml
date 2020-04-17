@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="tononLoginPageDef"
+                Package="pageFragment.customerNonLogin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="AppListVo2_Customer"    RangeSize="25" DataControl="AppModuleDataControl"
+              id="AppListVo2_CustomerIterator"/>
+    <iterator Binds="AppListVo2_Retail" RangeSize="25" DataControl="AppModuleDataControl"
+              id="AppListVo2_RetailIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="AppListVo2_CustomerIterator" id="AppListVo2_Customer">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.AppListVo" Name="AppListVo2_Customer0">
+        <AttrNames>
+          <Item Value="AppListCode"/>
+          <Item Value="ParentAppCode"/>
+          <Item Value="AppCode"/>
+          <Item Value="RoleCode"/>
+          <Item Value="AppName"/>
+          <Item Value="AppDesc"/>
+          <Item Value="ImgPath"/>
+          <Item Value="ImgName"/>
+          <Item Value="ToAction"/>
+          <Item Value="RoleType"/>
+          <Item Value="ActiveFlag"/>
+          <Item Value="Column8"/>
+          <Item Value="DummyCol10"/>
+          <Item Value="FlowCode"/>
+          <Item Value="DummyCol1"/>
+          <Item Value="DummyCol2"/>
+          <Item Value="DummyCol3"/>
+          <Item Value="DummyCol4"/>
+          <Item Value="DummyCol5"/>
+          <Item Value="DummyCol6"/>
+          <Item Value="DummyCol7"/>
+          <Item Value="DummyCol8"/>
+          <Item Value="DummyCol9"/>
+          <Item Value="ContentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="AppListVo2_RetailIterator" id="AppListVo2_Retail">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.AppListVo" Name="AppListVo2_Retail0">
+        <AttrNames>
+          <Item Value="AppListCode"/>
+          <Item Value="ParentAppCode"/>
+          <Item Value="AppCode"/>
+          <Item Value="RoleCode"/>
+          <Item Value="AppName"/>
+          <Item Value="AppDesc"/>
+          <Item Value="ImgPath"/>
+          <Item Value="ImgName"/>
+          <Item Value="ToAction"/>
+          <Item Value="RoleType"/>
+          <Item Value="ActiveFlag"/>
+          <Item Value="Column8"/>
+          <Item Value="DummyCol10"/>
+          <Item Value="FlowCode"/>
+          <Item Value="DummyCol1"/>
+          <Item Value="DummyCol2"/>
+          <Item Value="DummyCol3"/>
+          <Item Value="DummyCol4"/>
+          <Item Value="DummyCol5"/>
+          <Item Value="DummyCol6"/>
+          <Item Value="DummyCol7"/>
+          <Item Value="DummyCol8"/>
+          <Item Value="DummyCol9"/>
+          <Item Value="ContentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

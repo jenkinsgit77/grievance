@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:panelGroupLayout styleClass="col-lg-2 col-md-2 imgicon iocl_page">
+        <af:button   text="#{viewcontrollerBundle.GRIEV_CONST_AVIATION}"
+                   styleClass="createSRbutton  buttonhover imgLabel lobicons" icon="/images/GRIEV_SR/aviation.svg"
+                   id="b3">
+            <af:setPropertyListener from="Aviation" type="action" to="#{pageFlowScope.pCat}"/>
+            <af:setPropertyListener from="Aviation" type="action" to="#{pageFlowScope.pCatDisplay}"/>
+        </af:button>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-lg-2 col-md-2 imgicon iocl_page">
+        <af:button text="#{viewcontrollerBundle.GRIEV_CONST_LUBES}" icon="/images/GRIEV_SR/lubes.svg"
+                   styleClass="createSRbutton  buttonhover imgLabel lobicons"
+                    id="cil3">
+            <af:setPropertyListener from="Lubes" type="action" to="#{pageFlowScope.pCat}"/>
+            <af:setPropertyListener from="Lubes" type="action" to="#{pageFlowScope.pCatDisplay}"/>
+        </af:button>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-lg-2 col-md-2 imgicon iocl_page">
+        <af:button  icon="/images/GRIEV_SR/gas.svg" action="LPG"
+                   styleClass="createSRbutton  lobicons imgLabel" id="cil2"
+                   text="#{viewcontrollerBundle.GRIEV_CONST_INDANE_AUTO_GAS}">
+            <af:setPropertyListener from="LPG" type="action" to="#{pageFlowScope.pCat}"/>
+            <af:setPropertyListener from="LPG" type="action" to="#{pageFlowScope.pCatDisplay}"/>
+        </af:button>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-lg-2 col-md-2 imgicon iocl_page">
+        <af:button 
+                   text="#{viewcontrollerBundle.GRIEV_CONST_BULK_FUEL_CONSUMER}" icon="/images/GRIEV_SR/bulk.svg"
+                   styleClass="createSRbutton  lobicons  imgLabel" id="cil1">
+            <af:setPropertyListener from="Institutional Sales" type="action" to="#{pageFlowScope.pCat}"/>
+            <af:setPropertyListener from="Bulk Customer" type="action" to="#{pageFlowScope.pCatDisplay}"/>
+        </af:button>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout styleClass="col-lg-2 col-md-2 imgicon iocl_page">
+        <af:button styleClass="createSRbutton lobicons  imgLabel"
+                   icon="/images/GRIEV_SR/petrolPump.svg" id="cb6"
+                   text="#{viewcontrollerBundle.GRIEV_CONST_RETAIL_SALES_PETROL_PUMP}">
+            <af:setPropertyListener from="Petrol Pump" type="action" to="#{pageFlowScope.pCat}"/>
+            <af:setPropertyListener from="Petrol Pumps" type="action"
+                                    to="#{pageFlowScope.pCatDisplay}"/>
+        </af:button>
+    </af:panelGroupLayout>
+</jsp:root>

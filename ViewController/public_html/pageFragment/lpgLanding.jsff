@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+    .bootstrapWizardlanding li.complete .step {
+            background: #0aa66e !important;
+            padding: 1px 6px !important;
+            border: 3px solid #55606E !important;
+        }
+
+        .bootstrapWizardlanding li .step i {
+            font-size: 10px !important;
+            font-weight: 400 !important;
+            position: relative !important;
+            top: -1.5px !important;
+        }
+
+        .bootstrapWizardlanding li .step {
+            display: inline !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            line-height: 12px  !important;
+            position: relative !important;
+            text-align: center  !important;
+            z-index: 2 !important;
+            transition: all .1s linear 0s !important;
+        }
+        .bootstrapWizardlanding li:before {
+            right: 1px !important;   
+        }
+        .bootstrapWizardlanding li:first-child:before {
+            left: 50% !important;
+            max-width: 50% !important;
+        }
+        .bootstrapWizardlanding li:last-child:before {
+            max-width: 50% !important;
+            width: 50% !important;
+        } 
+        @media only screen and (min-device-width:320px) and (max-device-width:768px) {
+         .fontsizefifteen{
+             font-size:15px;
+                         }
+        }
+
+    </af:resource>
+    <af:panelGroupLayout id="pgl3" styleClass="container1 iocl_page" layout="vertical"
+                         binding="#{backingBeanScope.LPGSection.lpgPageMainPgBinding}">
+        <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="row">
+            <af:panelGroupLayout id="pgl2" layout="vertical" styleClass="col-md-12">
+                <af:panelGroupLayout id="pg23" styleClass="crow margin-top show Iocl-panel-box IOCLcontent_boxconfirmation"
+                                     inlineStyle="min-height:1px">
+                   
+                    <af:region value="#{bindings.BannerTF1.regionModel}" id="r1"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--<af:spacer width="10" height="10" id="s1"/>-->
+        <!--Below Section Contain Prospect Case: New Connection Kyc/Ekyc-->
+        <af:panelGroupLayout id="pgl4" layout="vertical" styleClass="row margin-top"
+                             rendered="#{sessionScope.LPGCurrSection eq 'NewConnection'}">
+            <af:panelGroupLayout id="pgl5" layout="vertical" styleClass="col-md-12">
+                <af:panelGroupLayout id="pg21" styleClass="crow show Iocl-panel-box IOCLcontent_boxconfirmation">
+                    <!--<af:panelGroupLayout id="pgl9" layout="vertical" styleClass="col-md-9">
+                        <af:outputText value="#{custPortalBundle.APPLY_FOR_LPG_NEW_CONNECTION}" id="ot2"
+                                       styleClass="lpg-header1"/>
+                        <af:outputText value="#{custPortalBundle.WE_COULD_NOT_FIND_ANY_EXISTING_LPG_CONNECTION}"
+                                       id="ot3"/>
+                        <af:outputText value="#{custPortalBundle.BENEFITS_OF_INDANE_LPG_CONNECTION}" id="ot4"
+                                       styleClass="lpg-landing-header2"/>
+                        <af:panelGroupLayout id="pgl26" styleClass="lpg-landing-list">
+                            <af:panelList id="pl1">
+                                -->
+                    <!--<af:outputText value="#{custPortalBundle.BENFITS_1}" id="ot5"/>
+                                <af:outputText value="#{custPortalBundle.BENFITS_2}" id="ot6"/>
+                                <af:outputText value="#{custPortalBundle.BENFITS_3}" id="ot7"/>
+                                <af:outputText value="#{custPortalBundle.BENFITS_4}" id="ot8"/>-->
+                    <!--
+                            </af:panelList>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>-->
+                    <af:panelGroupLayout id="pgl10" layout="vertical" styleClass="row">
+                        <af:panelGroupLayout layout="vertical" styleClass="col-md-12" id="pgl13">
+                            <af:outputText value="#{custPortalBundle.WE_COULD_NOT_FIND_ANY_EXISTING_LPG_CONNECTION}"
+                                           id="ot3" styleClass="title-text"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl9" layout="vertical" styleClass="row margintop30">
+                        <af:panelGroupLayout id="pgl11" layout="vertical"
+                                             styleClass="#{sessionScope.userDetails.hasBlankUCMId eq 'Y' or (sessionScope.LPGRelationship ne 'Y' and sessionScope.LoyaltyRelationship eq 'Y') ? 'Iocl-panel-box text-center kyc-box col-md-3 col-md-offset-2' : 'Iocl-panel-box text-center kyc-box col-md-3 col-md-offset-4'}">
+                            <af:outputText value="Apply for New Connection" id="ot9" styleClass="kyc-text-linkPage"/>
+                            <af:link id="l4" styleClass="apply-text"
+                                     actionListener="#{backingBeanScope.LPGSection.KycConnActionLis}" text="Submit KYC"
+                                     inlineStyle="color:#f37201;"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl14" layout="vertical" styleClass="col-md-2 orContainer"
+                                             rendered="#{sessionScope.userDetails.hasBlankUCMId eq 'Y' or (sessionScope.LPGRelationship ne 'Y' and sessionScope.LoyaltyRelationship eq 'Y')}">
+                            <af:image source="/images/globalimages/OR-image.png"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl12" layout="vertical"
+                                             rendered="#{sessionScope.userDetails.hasBlankUCMId eq 'Y' or sessionScope.LPGRelationship ne 'Y'}"
+                                             styleClass="Iocl-panel-box text-center kyc-box col-md-3">
+                            <!--<af:outputText value="#{custPortalBundle.REGISTER_FOR_ONLINE_KYC}" id="ot11"
+                                           styleClass="kyc-text"/>
+                            <af:link text="#{custPortalBundle.KYC_KEYWORD}" id="l4" styleClass="apply-text"
+                                     actionListener="#{backingBeanScope.LPGSection.KycConnActionLis}"/>-->
+                            <af:outputText value="Link your Existing LPG Connection" id="ot11"
+                                           styleClass="kyc-text-linkPage"/>
+                            <af:link id="l3" styleClass="apply-text" text="Link Now"
+                                     inlineStyle="color:#f37201;" destination="/portal/Customer/pages_linkedlpg"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--Below Section Contain InActive Case: Train Status & Subscription Voucher-->
+        <af:panelGroupLayout id="InActivePgl" styleClass="row show"
+                             rendered="#{sessionScope.LPGCurrSection eq 'KycTrainStatus'}">
+            <af:panelGroupLayout id="pgl67" styleClass="col-md-12 show">
+                <af:panelGroupLayout id="pgl65" styleClass="crow show Iocl-panel-box IOCLcontent_boxconfirmation">
+                    <af:panelGroupLayout id="pgl45" styleClass="col-md-12" layout="vertical">
+                        <af:outputFormatted value="#{custPortalBundle.APPLICATION_STATUS}" id="of1"
+                                            styleClass="lpg-header1"/>
+                        <!--<af:outputFormatted value="#{custPortalBundle.WE_COULD_NOT_FIND_ANY_EXISTING_LPG_CONNECTION}"
+                                            id="of2"/>-->
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl15" styleClass="col-md-12 show mt-3">
+                        <af:panelGroupLayout id="pgl24" styleClass="row show IOCLGreyContentBox">
+                            <af:panelGroupLayout id="pgl69" styleClass="col-md-3 show mt-3">
+                                <af:outputFormatted value="KYC Status" id="of23" styleClass="kyc-status-text"/>
+                            </af:panelGroupLayout>
+                            <!--Below Track Link Code is commented as per new Requirement-->
+                            <!--<af:panelGroupLayout id="pgl38" styleClass="col-md-9 show mt-3"
+                                                 rendered="#{sessionScope.userDetails.coexistenceExist eq 'Y'}">
+                                <af:link text="Track" id="l2"
+                                         destination="/portal/Customer/pages_customertrackyourservice">
+                                    <af:setActionListener from="Document" to="#{sessionScope.Generic}"/>
+                                </af:link>
+                            </af:panelGroupLayout>-->
+                            <af:panelGroupLayout id="pgl71" styleClass="col-md-12 show">
+                                <af:panelGroupLayout id="pgl76" styleClass="row show lpg-iocl-padding-row">
+                                    <ul class="bootstrapWizard bootstrapWizardlanding form-wizard">
+                                        <li class="active">
+                                            <a>
+                                                <span class="step">
+                                                    <af:image id="i1" source="#{sessionScope.kycSubmitDistributer}"
+                                                              styleClass="lpg-landing-step-img"
+                                                              inlineStyle="width:50px; height:auto"/></span><span class="title">
+                                                    <af:outputFormatted value="#{custPortalBundle.SUBMITTED_TO_DISTRIBUTER}"
+                                                                        id="of3" styleClass="fontsizefifteen"  /></span></a>
+                                        </li>
+                                        <li>&#160;</li>
+                                        <li class="active">
+                                            <a>
+                                                <span class="step">
+                                                    <af:image id="i12" source="#{sessionScope.kycReadyLPGConn}"
+                                                              styleClass="lpg-landing-step-img"
+                                                              inlineStyle="width:50px; height:auto"/></span><span class="title">
+                                                    <af:outputFormatted value="#{custPortalBundle.READY_FOR_LPG_CONNECTION}"
+                                                                        id="of5" styleClass="fontsizefifteen" /></span></a>
+                                        </li>
+                                    </ul>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl8" styleClass="col-md-6 col-md-offset-3 show subscriptionButton"
+                                         inlineStyle="margin-top:20px"
+                                         rendered="#{sessionScope.userDetails.kycLevel eq 'Y' &amp;&amp; sessionScope.userDetails.coexistenceExist eq 'Y'}">
+                        <af:button text="#{custPortalBundle.REQUEST_FOR_SUBSCRIPTION_VOUCHER}" id="b1"
+                                   action="goToSubscription"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl30" styleClass="col-md-6 col-md-offset-3 show"
+                                         inlineStyle="margin-top:20px" partialTriggers="b3"
+                                         rendered="#{sessionScope.userDetails.kycLevel eq 'N' &amp;&amp; sessionScope.userDetails.coexistenceExist eq 'Y'}">
+                        <!--Cancel Application button has been disabled as per new requirement-->
+                        <af:button text="#{custPortalBundle.CANCEL_REQUEST}" id="b3"
+                                   action="#{backingBeanScope.LPGSection.cancelApplicationReqAction}" rendered="false"/>
+                        <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r2"
+                                   rendered="false"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--Below Section Contain suspended Case: ReActivate Connection-->
+        <af:panelGroupLayout id="pgl19" styleClass="row show" rendered="#{sessionScope.LPGCurrSection eq 'Deactive'}">
+            <af:panelGroupLayout id="pgl20" styleClass="col-md-12 show">
+                <af:panelGroupLayout id="pgl16" styleClass="crow show Iocl-panel-box IOCLcontent_boxconfirmation"
+                                     inlineStyle="min-height:200px;">
+                    <af:panelGroupLayout id="pgl21" layout="vertical" styleClass="col-md-12">
+                        <af:outputFormatted value="#{custPortalBundle.REACTIVATE_CONNECTION}" id="of6"
+                                            styleClass="lpg-header1"/>
+                        <af:outputFormatted value="#{custPortalBundle.YOUR_ACCOUNT_IS_DEACTIVATED_MSG}" id="of4"
+                                            styleClass="font_bold"
+                                            visible="#{sessionScope.LPGCurrSection eq 'Deactive' &amp;&amp; sessionScope.userDetails.coexistenceExist eq 'Y'}"/>
+                        <af:outputFormatted value="#{custPortalBundle.YOUR_ACCOUNT_IS_DEACTIVATED_CONTACT_DISTRIBUTER_MSG}" id="of7"
+                                            styleClass="font_bold"
+                                            visible="#{sessionScope.LPGCurrSection eq 'Deactive' &amp;&amp; sessionScope.userDetails.coexistenceExist eq 'N'}"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl27" styleClass="col-md-3 show top10" 
+                                         rendered="#{sessionScope.userDetails.coexistenceExist eq 'Y'}">
+                        <af:button text="#{custPortalBundle.REACTIVATE_NOW}" id="b2"
+                                   action="#{backingBeanScope.LPGSection.reactivateNowAction}"
+                                   rendered="#{sessionScope.userDetails.coexistenceExist ne 'N'}"></af:button>
+                    </af:panelGroupLayout>
+                    <af:outputFormatted value="#{backingBeanScope.LPGSection.reactivationErrorMsg}" id="of8"
+                                        styleClass="errorMessage" partialTriggers="b2"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--Below Section Contain New Application InProcess Reason-->
+        <af:panelGroupLayout id="pgl39" styleClass="row show"
+                             rendered="#{sessionScope.LPGCurrSection eq 'NewConnectionInProcess'}">
+            <af:panelGroupLayout id="pgl40" styleClass="col-md-12 show">
+                <af:panelGroupLayout id="pgl41" styleClass="crow show Iocl-panel-box IOCLcontent_boxconfirmation"
+                                     inlineStyle="min-height:200px;">
+                    <af:panelGroupLayout id="pgl42" layout="vertical" styleClass="col-md-12">
+                        <af:outputFormatted value="#{custPortalBundle.APPLICATION_STATUS}" id="of2"
+                                            styleClass="lpg-header1"/>
+                        <af:outputFormatted value="#{custPortalBundle.YOUR_APPLICATION_FOR_NEW_CONNECTION_IS_IN_PROCESS}"
+                                            id="of19" styleClass="font_bold" partialTriggers="b2"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--Below Section Contain New Application Cancelled Reason-->
+        <af:panelGroupLayout id="pgl32" styleClass="row show" rendered="#{sessionScope.LPGCurrSection eq 'ConnectionCancelled'}">
+            <af:panelGroupLayout id="pgl33" styleClass="col-md-12 show">
+                <af:panelGroupLayout id="pgl34" styleClass="crow show Iocl-panel-box IOCLcontent_boxconfirmation"
+                                     inlineStyle="min-height:200px;">
+                    <af:panelGroupLayout id="pgl35" layout="vertical" styleClass="col-md-12">
+                        <af:outputFormatted value="#{custPortalBundle.APPLICATION_STATUS}" id="of15"
+                                            styleClass="lpg-header1"/>
+                        <af:outputFormatted value="#{custPortalBundle.CANCELLED_MESSAGE}" id="of14"
+                                            styleClass="font_bold"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl37" styleClass="col-md-12">
+                        <af:outputText value="#{custPortalBundle.CANCELLED_REASON}" id="of13"
+                                            styleClass="font_bold "/>
+                                            <af:spacer width="5px"/>
+                        <af:outputText value="#{pageFlowScope.connectionCancelledMsg}" id="of16"
+                                       styleClass=""/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl36" styleClass="col-md-3 show top10" 
+                                         rendered="#{sessionScope.userDetails.coexistenceExist ne 'N'}">
+                        <af:button text="#{custPortalBundle.SUBMIT_KYC}" id="b4"
+                                   actionListener="#{backingBeanScope.LPGSection.KycConnActionLis}"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--Below Section Contain Transferred Case/Suspended Case: Transferred Connection/Suspended Connection-->
+        <af:panelGroupLayout id="pgl22" styleClass="row show"
+                             rendered="#{sessionScope.LPGCurrSection eq 'Transferred' or sessionScope.LPGCurrSection eq 'Suspended'}">
+            <af:panelGroupLayout id="pgl26" styleClass="col-md-12 show">
+                <af:panelGroupLayout id="pgl28" styleClass="crow show Iocl-panel-box IOCLcontent_boxconfirmation">
+                    <af:panelGroupLayout id="pgl29" layout="vertical" styleClass="col-md-12"
+                                         rendered="#{sessionScope.LPGCurrSection eq 'Transferred'}">
+                        <af:outputFormatted value="#{custPortalBundle.TRANSFERRED_CONNECTION}" id="of9"
+                                            styleClass="lpg-header1"/>
+                        <af:outputFormatted value="#{custPortalBundle.TRANSFERRED_CONNECTION_MESSAGE}" id="of10"
+                                            styleClass="font_bold"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl31" styleClass="col-md-12" layout="vertical"
+                                         rendered="#{sessionScope.LPGCurrSection eq 'Suspended'}">
+                        <af:outputFormatted value="#{custPortalBundle.SUSPENDED_CONNECTION}" id="of11"
+                                            styleClass="lpg-header1"/>
+                        <af:outputFormatted value="#{custPortalBundle.SUSPENDED_CONNECTION_MESSAGE}" id="of12"
+                                            styleClass="font_bold"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!--Below Section show Static Application link-->
+        <af:panelGroupLayout id="pgl6" styleClass="row " layout="vertical">
+            <af:panelGroupLayout id="pgl7" styleClass="col-md-12 " layout="vertical">
+                <af:panelGroupLayout id="pg20" styleClass="Iocl-panel-box IOCLcontent_boxconfirmation "
+                                     layout="vertical">
+                    <af:panelGroupLayout id="pgl23" styleClass="row " layout="vertical">
+                        <af:panelGroupLayout id="pgl18" styleClass="col-md-12 " layout="vertical">
+                            <af:panelGroupLayout id="pgl25" styleClass="row margintop30 text-center">
+                                <af:iterator id="i7" value="#{bindings.AppListVo1.collectionModel}" var="item">
+                                    <af:panelGroupLayout id="pgl17" styleClass="col-md-4 card_group1 show"
+                                                         rendered="#{(item.AppListCode eq 8004) || (sessionScope.userDetails.coexistenceExist=='N' and item.DummyCol4=='N') ||(item.AppListCode eq 8009 &amp;&amp; (sessionScope.userDetails.consumerId == null || sessionScope.userDetails.hasLast5ServiceRequest == false)) ? false : true}">
+                                        <af:link icon="#{item.ImgPath}" id="i8" partialSubmit="true"
+                                                 styleClass="svg_icon" inlineStyle="height:auto;margin:10px;"
+                                                 actionListener="#{backingBeanScope.LPGSection.loginRefresh}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? false : true}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:link text="#{item.AppName}"
+                                                 styleClass="pageHeaderFontStyle font-size16 font-dark-blue medium-font"
+                                                 partialSubmit="true" id="l1"
+                                                 actionListener="#{backingBeanScope.LPGSection.loginRefresh}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? false : true}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <!--Links for External Link-->
+                                        <af:link icon="#{item.ImgPath}" id="l5" partialSubmit="true"
+                                                 styleClass="svg_icon" inlineStyle="height:auto;margin:10px;"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                                 targetFrame="_blank" destination="#{item.ToAction}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:link text="#{item.AppName}"
+                                                 styleClass="pageHeaderFontStyle font-size16 font-dark-blue medium-font"
+                                                 partialSubmit="true" id="l6" destination="#{item.ToAction}"
+                                                 targetFrame="_blank"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:outputFormatted value="#{item.AppDesc}" id="of24"/>
+                                    </af:panelGroupLayout>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <!--<af:panelGroupLayout id="pgl8" layout="vertical" styleClass="col-md-5">
+                <af:panelGroupLayout id="pg22" layout="vertical"
+                                     styleClass="Iocl-panel-box IOCLcontent_boxconfirmation">
+                    <af:outputText value="#{custPortalBundle.BUY_INDANE_ACCESSORIES}" id="ot13"
+                                   styleClass="lpg-header1"/>
+                    <af:outputText value="#{custPortalBundle.BASED_ON_YOUR_PINCODE_OUR_DISTRIBUTER_PROVIDED_QUALITY_KITCHEN_ACCESSORIES}"
+                                   id="ot14"/>
+                    <af:panelGroupLayout id="pgl20" styleClass="row show margin-top">
+                        <af:iterator var="itemImg" id="lddv2" value="#{backingBeanScope.LPGSection.lstNFRImgList}">
+                            <af:panelGroupLayout id="pgl21" styleClass="col-md-6 marB15 show text-center">
+                                <af:link id="l5" styleClass="">
+                                    <af:image source="#{itemImg.ucmUrl}" id="i6"
+                                              styleClass="lpg-landing-img thumbnail1 cust-portal-thumbnail img-responsive1"/>
+                                    
+                                </af:link>
+                                <af:outputLabel value="#{itemImg.ucmCategoryName}" styleClass=" NFRimg_caption"
+                                                id="ol2"/>
+                            </af:panelGroupLayout>
+                        </af:iterator>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>-->
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

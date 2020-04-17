@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean id="__1">
+    <managed-bean-name>NonLoginBean</managed-bean-name>
+    <managed-bean-class>com.iocl.lpg.customer.bean.NonLoginBean</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>TemplateBean</managed-bean-name>
+    <managed-bean-class>com.iocl.lpg.customer.bean.TemplateBean</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>customerErrorBn</managed-bean-name>
+    <managed-bean-class>com.iocl.lpg.customer.bean.CustomerErrorBn</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

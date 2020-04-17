@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="dealerFeedbackPageDef"
+                Package="pageFragment.feedback">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DealerFeedbackVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="DealerFeedbackVO1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1" Refresh="ifNeeded"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.perrorValidationCode}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.perrorValidationMessage}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <list IterBinding="DealerFeedbackVO1Iterator" id="QuantityDelivered" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="QuantityDelivered"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Yes"/>
+        <Item Value="No"/>
+      </ValueList>
+    </list>
+    <list IterBinding="DealerFeedbackVO1Iterator" id="Service" DTSupportsMRU="false" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Service"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Yes"/>
+        <Item Value="No"/>
+      </ValueList>
+    </list>
+    <list IterBinding="DealerFeedbackVO1Iterator" id="Cleanliness" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="Cleanliness"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Yes"/>
+        <Item Value="No"/>
+      </ValueList>
+    </list>
+    <list IterBinding="DealerFeedbackVO1Iterator" id="Facilities" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="Facilities"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Yes"/>
+        <Item Value="No"/>
+      </ValueList>
+    </list>
+    <list IterBinding="DealerFeedbackVO1Iterator" id="CleanToilet" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="CleanToilet"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Yes"/>
+        <Item Value="No"/>
+      </ValueList>
+    </list>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

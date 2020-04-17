@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="OverviewSectionPageDef"
+                Package="mainPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="template.LoggedInTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <taskFlow id="OverviewSectionTF1" taskFlowId="/WEB-INF/taskflow/OverviewSectionTF.xml#OverviewSectionTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="LPGSR1" taskFlowId="/WEB-INF/taskflow/lpgsr/LPGSR.xml#LPGSR" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

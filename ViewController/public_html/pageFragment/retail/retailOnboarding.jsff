@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:panelGroupLayout id="pgl1" styleClass="show iocl_page" partialTriggers="b1 l1">
+        <af:panelGroupLayout id="pgl2" styleClass="row  mt-3"
+                             visible="#{sessionScope.navigateTo != null &amp;&amp; sessionScope.navigateTo == 'recordNotExist'}">
+            <af:panelGroupLayout id="pgl4" styleClass="mt-5 col-md-12 confirmationBorder color ">
+                <af:image shortDesc="#{custPortalBundle.CONFIRMATION_SHORT_DESC}"
+                          source="/images/confirmation/Warning.png" styleClass="confirmationImg" id="i1"/>
+                <af:outputText value="#{custPortalBundle.OOPS}" id="ot1" styleClass="conformationColor colorred mr-3"/>
+                <af:outputText value="#{custPortalBundle.WE_ARE_UNABLE}" id="ot5"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl30" styleClass="row show">
+            <af:panelGroupLayout id="pgl3" styleClass="col-md-12 font-size22 font-dark-blue font-bold">
+                <af:outputFormatted value="Enrolment Form" id="of1"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl28" styleClass="row show ">
+            <af:panelGroupLayout id="pgl5" styleClass="col-md-6 col-xs-6 show">
+                <af:outputFormatted value="#{custPortalBundle.PLEASE_PROVIDE_YOUR_REQUIRED_INFORMATION}" id="of2"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl6" styleClass="col-md-6 col-xs-6 text-right show">
+                <af:outputFormatted value="#{custPortalBundle.All_MANDATORY_FIELD_MESSAGE}" id="of3"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl7" styleClass="row mt-3 show">
+            <af:panelGroupLayout id="pgl29" styleClass="col-md-12 font-bold show">
+                <af:outputFormatted value="#{custPortalBundle.PERSONAL_DETAILS}" id="of4"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl23" styleClass="row show mt-3">
+            <af:panelGroupLayout id="pgl8" styleClass="col-md-5 show">
+                <af:panelGroupLayout id="pgl62" styleClass="show row">
+                    <af:panelGroupLayout id="pgl64" styleClass="col-md-4 show">
+                        <af:outputFormatted value="#{custPortalBundle.PREFIX}" id="of28" styleClass="font-bold show"/>
+                        <af:selectOneChoice value="#{bindings.prefix.inputValue}" label="#{bindings.prefix.label}"
+                                            shortDesc="#{bindings.prefix.hints.tooltip}" id="soc9" simple="true"
+                                            binding="#{backingBeanScope.retailOnboard.prefixBinding}">
+                            <f:selectItems value="#{bindings.prefix.items}" id="si10"/>
+                            <f:validator binding="#{bindings.prefix.validator}"/>
+                        </af:selectOneChoice>
+                        <af:outputFormatted value="#{backingBeanScope.retailOnboard.prefixErrorMsg}" id="of32"
+                                            styleClass="errorMessage"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl63" styleClass="col-md-8 show">
+                        <af:outputFormatted value="#{custPortalBundle.FIRST_NAME}" id="of6"
+                                            styleClass="font-bold show"/>
+                        <af:inputText value="#{bindings.firstname.inputValue}" simple="true"
+                                      maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                                      shortDesc="#{bindings.firstname.hints.tooltip}" id="it2"
+                                      binding="#{backingBeanScope.retailOnboard.firstNameBinding}"
+                                      disabled="#{sessionScope.userDetails.idamUserFirstName != null}">
+                            <f:validator binding="#{bindings.firstname.validator}"/>
+                        </af:inputText>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl9" styleClass="col-md-5 col-md-offset-2  show">
+                <af:panelGroupLayout id="pgl61" styleClass="show row">
+                    <af:panelGroupLayout id="pgl59" styleClass="show col-md-6">
+                        <af:outputFormatted value="#{custPortalBundle.MIDDLE_NAME}" id="of5"
+                                            styleClass="font-bold show"/>
+                        <af:inputText value="#{bindings.middlename.inputValue}" simple="true"
+                                      maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                                      shortDesc="#{bindings.middlename.hints.tooltip}" id="it3" disabled="true">
+                            <f:validator binding="#{bindings.middlename.validator}"/>
+                        </af:inputText>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl60" styleClass="show col-md-6">
+                        <af:outputFormatted value="#{custPortalBundle.LAST_NAME}" id="of27"
+                                            styleClass="font-bold show"/>
+                        <af:inputText value="#{bindings.lastname.inputValue}" simple="true"
+                                      maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                                      shortDesc="#{bindings.lastname.hints.tooltip}" id="it9"
+                                      binding="#{backingBeanScope.retailOnboard.lastNameBinding}"
+                                      disabled="#{sessionScope.userDetails.idamUserLastName != null}">
+                            <f:validator binding="#{bindings.lastname.validator}"/>
+                        </af:inputText>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl25" styleClass="row show mt-3">
+            <af:panelGroupLayout id="pgl12" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.EMAIL_ID_SUB}" id="of9" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.emailId.inputValue}" simple="true"
+                              maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                              shortDesc="#{bindings.emailId.hints.tooltip}" id="it1"
+                              binding="#{backingBeanScope.retailOnboard.emailBind}"
+                              disabled="#{sessionScope.userDetails.idamUserEmailId != null}">
+                    <f:validator binding="#{bindings.emailId.validator}"/>
+                </af:inputText>
+                 <af:outputFormatted value="#{backingBeanScope.retailOnboard.emailErrorMsg}" id="of31"
+                                            styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl13" styleClass="col-md-5 col-md-offset-2  show numericOnlyjs">
+                <af:outputFormatted value="#{custPortalBundle.LEAD_MOBILE_NUMBER}" id="of10"
+                                    styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.mobNum.inputValue}" simple="true"
+                              maximumLength="10"
+                              shortDesc="#{bindings.mobNum.hints.tooltip}" id="it10"
+                              binding="#{backingBeanScope.retailOnboard.mobileBinding}"
+                              disabled="#{sessionScope.userDetails.idamUserMobileNo != null}">
+                    <f:validator binding="#{bindings.mobNum.validator}"/>
+                </af:inputText>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.mobileErrorMsg}" id="of18"
+                                            styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl24" styleClass="row show mt-3">
+            <!--<af:panelGroupLayout id="pgl10" styleClass="col-md-5 show">
+                <af:panelGroupLayout id="pgl47" styleClass="show row"/>
+            </af:panelGroupLayout>-->
+            <af:panelGroupLayout id="pgl349" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.GENDER}" id="of7" styleClass="font-bold show"/>
+                <af:selectOneChoice value="#{bindings.gender.inputValue}" label="#{bindings.gender.label}"
+                                    required="#{bindings.gender.hints.mandatory}" simple="true"
+                                    shortDesc="#{bindings.gender.hints.tooltip}" id="soc6" unselectedLabel="Select"
+                                    binding="#{backingBeanScope.retailOnboard.genderSelBind}">
+                    <f:selectItems value="#{bindings.gender.items}" id="si6"/>
+                    <f:validator binding="#{bindings.gender.validator}"/>
+                </af:selectOneChoice>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.genderErrorMsg}" id="of17"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgel40" styleClass="col-md-5 col-md-offset-2 show" partialTriggers="id1">
+                <af:outputFormatted value="#{custPortalBundle.DATE_OF_BIRTH}" id="of8" styleClass="font-bold show"/>
+                <af:inputDate id="id1" simple="true" autoSubmit="true"
+                              binding="#{backingBeanScope.retailOnboard.dobSelBind}"
+                              valueChangeListener="#{backingBeanScope.retailOnboard.dobValListener}"
+                              maxValue="#{backingBeanScope.retailOnboard.currentSystemDate}">
+                    <f:validator binding="#{bindings.dob.validator}"/>
+                    <af:convertDateTime pattern="#{custPortalBundle.LPG_DATE_FORMAT_DISPLAY}"/>
+                </af:inputDate>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.dateOfBirthErrorMsg}" id="of16"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl38" styleClass="row show mt-3">
+            <af:panelGroupLayout id="pgl39" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.ADDRESS1}" id="of19" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.address1.inputValue}" simple="true"
+                              maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                              shortDesc="#{bindings.address1.hints.tooltip}" id="it8"
+                              binding="#{backingBeanScope.retailOnboard.addr1Bind}">
+                    <f:validator binding="#{bindings.address1.validator}"/>
+                </af:inputText>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.address1ErrorMsg}" id="of33"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl40" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.ADDRESS2}" id="of20" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.address2.inputValue}" simple="true"
+                              maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                              shortDesc="#{bindings.address2.hints.tooltip}" id="it4"
+                              binding="#{backingBeanScope.retailOnboard.addr2Bind}">
+                    <f:validator binding="#{bindings.address2.validator}"/>
+                </af:inputText>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl41" styleClass="row show mt-3">
+            <af:panelGroupLayout id="pgl42" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.ADDRESS3}" id="of21" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.address3.inputValue}" simple="true"
+                              shortDesc="#{bindings.address3.hints.tooltip}" id="it5"
+                              binding="#{backingBeanScope.retailOnboard.addr3Bind}"
+                              maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}">
+                    <f:validator binding="#{bindings.address3.validator}"/>
+                </af:inputText>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl43" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.ADDRESS4}" id="of22" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.landmark.inputValue}" simple="true"
+                              shortDesc="#{bindings.landmark.hints.tooltip}" id="it6"
+                              binding="#{backingBeanScope.retailOnboard.landmrk1Bind}"
+                              maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}">
+                    <f:validator binding="#{bindings.landmark.validator}"/>
+                </af:inputText>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl26" styleClass="row show mt-3">
+            <af:panelGroupLayout id="pgl14" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.STATE}" id="of11" styleClass="font-bold show"/>
+                <af:selectOneChoice value="#{bindings.state.inputValue}" simple="true" autoSubmit="true"
+                                    shortDesc="#{bindings.state.hints.tooltip}" id="soc1"
+                                    unselectedLabel="Select"
+                                    binding="#{backingBeanScope.retailOnboard.state1Bind}">
+                    <f:selectItems value="#{bindings.state.items}" id="si1"/>
+                    <f:validator binding="#{bindings.state.validator}"/>
+                </af:selectOneChoice>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.stateErrorMsg}" id="of34"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl15" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.DISTRICT}" id="of12" styleClass="font-bold show"/>
+                <af:selectOneChoice value="#{bindings.district.inputValue}" simple="true" immediate="true"
+                                    required="#{bindings.district.hints.mandatory}" partialTriggers="soc1"
+                                    shortDesc="#{bindings.district.hints.tooltip}" id="soc2"
+                                    unselectedLabel="Select"
+                                    binding="#{backingBeanScope.retailOnboard.district1Bind}">
+                    <f:selectItems value="#{bindings.district.items}" id="si2"/>
+                    <f:validator binding="#{bindings.district.validator}"/>
+                </af:selectOneChoice>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.districtErrorMsg}" id="of35"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl50" styleClass="row show mt-3">
+            <af:panelGroupLayout id="pgl51" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.LOYALTY_CITY}" id="of25" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.city.inputValue}" columns="#{bindings.city.hints.displayWidth}"
+                              maximumLength="#{custPortalBundle.VALID_LENGTH_TWO}"
+                              shortDesc="#{bindings.city.hints.tooltip}" id="it7"
+                              binding="#{backingBeanScope.retailOnboard.cityBind}" simple="true">
+                    <f:validator binding="#{bindings.city.validator}"/>
+                </af:inputText>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.cityErrorMsg}" id="of36"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl52" styleClass="col-md-5 col-md-offset-2  show numericOnlyjs">
+                <af:outputFormatted value="#{custPortalBundle.PIN_CODE}" id="of13" styleClass="font-bold show"/>
+                <af:inputText value="#{bindings.pincode.inputValue}" simple="true"
+                              shortDesc="#{bindings.pincode.hints.tooltip}" id="it13"
+                              binding="#{backingBeanScope.retailOnboard.pinCodeBind}" maximumLength="6">
+                    <f:validator binding="#{bindings.pincode.validator}"/>
+                </af:inputText>
+                <af:outputFormatted value="#{backingBeanScope.retailOnboard.pincodeErrorMsg}" id="of40"
+                                    styleClass="errorMessage"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl18" styleClass="row show mt-3">
+            <af:outputText value="#{custPortalBundle.VEHICLE_DETAILS}" id="ot7" styleClass="font-bold col-md-12"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl20" styleClass="row show mt-3" partialTriggers="b1 l1">
+            <af:panelGroupLayout id="pgl11" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.FUEL_TYPE_RETAIL}" id="of65" styleClass="disstributorInfoLabel"/>
+                <af:selectOneChoice autoSubmit="true" simple="true" valuePassThru="true" label="fuelpList"
+                                    unselectedLabel="Select" id="soc7" partialTriggers="b1 l1"
+                                    binding="#{backingBeanScope.retailOnboard.vehFuelBind}">
+                    <f:selectItems value="#{pageFlowScope.pVehicleFuelLst}" id="si7"/>
+                </af:selectOneChoice>
+                <af:outputFormatted id="of66" styleClass="errorMessage"
+                                    binding="#{backingBeanScope.retailOnboard.fuelTypeErrBind}"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl16" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.FUEL_TYPE_RETAIL}" id="of51" styleClass="disstributorInfoLabel"/>
+                <af:selectOneChoice autoSubmit="true" simple="true" valuePassThru="true" label="typList"
+                                    unselectedLabel="Select" id="soc4"
+                                    binding="#{backingBeanScope.retailOnboard.vehTypeBind}" partialTriggers="b1 l1"
+                                    valueChangeListener="#{backingBeanScope.retailOnboard.vehicleTypeSelector}">
+                    <f:selectItems value="#{pageFlowScope.pVehicleTypeLst}" id="si4"/>
+                </af:selectOneChoice>
+                <af:outputFormatted id="of60" styleClass="errorMessage"
+                                    binding="#{backingBeanScope.retailOnboard.vehicleTypErrBind}"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl46" styleClass="row show mt-3" partialTriggers="b1 l1">
+            <af:panelGroupLayout id="pgl45" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.VEHICLE_MAKE_RETAIL}" id="of61" styleClass="disstributorInfoLabel"/>
+                <af:selectOneChoice autoSubmit="true" simple="true" valuePassThru="true" label="makList"
+                                    unselectedLabel="Select" id="soc3" partialTriggers="b1 l1 soc4"
+                                    binding="#{backingBeanScope.retailOnboard.vehMakeBind}"
+                                    valueChangeListener="#{backingBeanScope.retailOnboard.fetchModelFromMakeListener}">
+                    <f:selectItems value="#{pageFlowScope.pVehicleMakeLst}" id="si5"/>
+                </af:selectOneChoice>
+                <af:outputFormatted id="of62" styleClass="errorMessage"
+                                    binding="#{backingBeanScope.retailOnboard.vehicleMdErrBind}"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl44" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.MODEL}" id="of63" styleClass="disstributorInfoLabel"/>
+                <af:selectOneChoice autoSubmit="true" simple="true" valuePassThru="true" label="modelList"
+                                    unselectedLabel="Select" id="soc5"
+                                    binding="#{backingBeanScope.retailOnboard.vehModelBind}"
+                                    partialTriggers="soc3 b1 l1">
+                    <f:selectItems value="#{pageFlowScope.pVehicleModelLst}" id="si8"/>
+                    <!--<f:selectItems value="#{pageFlowScope.pVehicleMakeLst}" id="si59"/>-->
+                </af:selectOneChoice>
+                <af:outputFormatted id="of64" styleClass="errorMessage"
+                                    binding="#{backingBeanScope.retailOnboard.modelErrBind}"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl37" styleClass="row show mt-3" partialTriggers="b1 l1">
+            <af:panelGroupLayout id="pgl35" styleClass="col-md-5 show">
+                <af:outputFormatted value="#{custPortalBundle.LICENCE_PLATE_NUMBER}" id="of48" styleClass="disstributorInfoLabel"/>
+                <af:inputText label="Label 1" id="it12" simple="true" maximumLength="20"
+                              binding="#{backingBeanScope.retailOnboard.licensePlateNumBind}"/>
+                <af:outputFormatted id="of49" styleClass="errorMessage"
+                                    binding="#{backingBeanScope.retailOnboard.licensePlateNumErrorBind}"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl34" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.PRIMARY_VEHICLE}" id="of67" styleClass="disstributorInfoLabel"/>
+                <af:selectOneRadio label="prim" simple="true" value="Y" layout="horizontal" id="sor1" styleClass="top21"
+                                   binding="#{backingBeanScope.retailOnboard.primaryVehSelectBind}" disabled="true">
+                    <f:selectItem itemLabel="Yes" itemValue="Y" id="si3"/>
+                </af:selectOneRadio>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl33" styleClass="row show mt-3" partialTriggers="b1 l1">
+            <af:panelGroupLayout id="pgl32" styleClass="col-md-5 show">
+                <af:outputFormatted value="PUC" id="of68" styleClass="disstributorInfoLabel"/>
+                <af:inputDate label="pucdt" id="id2" inlineStyle="width:30%" simple="true"
+                              binding="#{backingBeanScope.retailOnboard.pucDtBind}" placeholder="DD-MM-YYYY"
+                              autoSubmit="true"
+                              minValue="#{backingBeanScope.retailOnboard.currentSystemDate}">
+                    <af:convertDateTime pattern="#{custPortalBundle.LPG_DATE_FORMAT_DISPLAY}"/>
+                </af:inputDate>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl31" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="Insurance Expiry" id="of69" styleClass="disstributorInfoLabel"/>
+                <af:inputDate label="insdt" id="id4" inlineStyle="width:30%" simple="true"
+                              binding="#{backingBeanScope.retailOnboard.insExpDtBind}" placeholder="DD-MM-YYYY"
+                              autoSubmit="true"
+                              minValue="#{backingBeanScope.retailOnboard.currentSystemDate}">
+                    <af:convertDateTime pattern="#{custPortalBundle.LPG_DATE_FORMAT_DISPLAY}"/>
+                </af:inputDate>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl27" styleClass="row show mt-3" partialTriggers="b1 l1">
+            <af:panelGroupLayout id="pgl17" styleClass="col-md-5 show">
+                <af:outputFormatted value="Tax Expiry" id="of70" styleClass="disstributorInfoLabel"/>
+                <af:inputDate label="taxexdt" id="id3" inlineStyle="width:30%" simple="true"
+                              binding="#{backingBeanScope.retailOnboard.taxexpDtBind}" placeholder="DD-MM-YYYY"
+                              autoSubmit="true"
+                              minValue="#{backingBeanScope.retailOnboard.currentSystemDate}">
+                    <af:convertDateTime pattern="#{custPortalBundle.LPG_DATE_FORMAT_DISPLAY}"/>
+                </af:inputDate>
+            </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl19" styleClass="col-md-5 col-md-offset-2  show">
+                <af:outputFormatted value="#{custPortalBundle.OWNERSHIP_TYPE}" id="of14" styleClass="disstributorInfoLabel"/>
+                <af:selectOneChoice simple="true" autoSubmit="true" valuePassThru="true"
+                                    label="#{bindings.vehicleOwnershipType.label}" unselectedLabel="Select"
+                                    shortDesc="#{bindings.vehicleOwnershipType.hints.tooltip}" id="soc8"
+                                    binding="#{backingBeanScope.retailOnboard.vehOwnerBind}">
+                    <f:selectItems value="#{bindings.vehicleOwnershipType.items}" id="si9"/>
+                    <f:validator binding="#{bindings.vehicleOwnershipType.validator}"/>
+                </af:selectOneChoice>
+                <af:outputFormatted id="of15" styleClass="errorMessage"
+                                    binding="#{backingBeanScope.retailOnboard.vehOwnErrBind}"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl36" styleClass="col-md-12 marginnegative mt-5 show">
+            <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"
+                       binding="#{backingBeanScope.retailOnboard.error100VehBoBind}"/>
+            <af:panelGroupLayout id="pgl10" styleClass="row">
+                <af:panelGroupLayout id="pgl21" styleClass="col-md-3 col-xs-6 show">
+                    <af:button text="#{custPortalBundle.SUBMIT}" id="b1"
+                               action="#{backingBeanScope.retailOnboard.submitRetailOnboardCall}"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl22" styleClass="col-md-3 col-xs-6 mt-3 a-underline show">
+                    <af:link text="#{custPortalBundle.RESET}" id="l1"
+                             actionListener="#{backingBeanScope.retailOnboard.resetRetOnboardForm}"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

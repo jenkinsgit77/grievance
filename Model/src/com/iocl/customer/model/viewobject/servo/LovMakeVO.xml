@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LovMakeVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.iocl.customer.model.viewobject.servo.LovMakeVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="ValSetValpBindVAR"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[Select   
+MST_SET_ID,  
+VAL_SET_ID,  
+VAL_SET_NAME,  
+VAL_SET_VALUES,  
+MST_SET_IDP,  
+VAL_SET_IDP,  
+VAL_SET_VALP   
+from VALUE_SET_VALUES   
+where MST_SET_ID=90002   
+AND ACT_FLAG='Y' 
+AND VAL_SET_VALP = :ValSetValpBindVAR]]></SQLQuery>
+  <ViewAttribute
+    Name="MstSetId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigInteger"
+    ColumnType="BIGINT"
+    AliasName="MST_SET_ID"
+    Expression="MST_SET_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ValSetId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="38"
+    Scale="0"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    AliasName="VAL_SET_ID"
+    Expression="VAL_SET_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ValSetName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VAL_SET_NAME"
+    Expression="VAL_SET_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ValSetValues"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VAL_SET_VALUES"
+    Expression="VAL_SET_VALUES"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MstSetIdp"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MST_SET_IDP"
+    Expression="MST_SET_IDP"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ValSetIdp"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VAL_SET_IDP"
+    Expression="VAL_SET_IDP"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ValSetValp"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VAL_SET_VALP"
+    Expression="VAL_SET_VALP"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="MstSetId"/>
+    <Item Value="ValSetId"/>
+    <Item Value="ValSetName"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

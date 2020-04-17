@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  
+    <af:resource type="css">
+        .af_document {
+            background-color: White !important;
+            background-image: none !important;
+        }
+
+        .newsSectionContent {
+            text-align: left;
+            color: #00164e;
+            font-size: 26px;
+            font-weight: 400;
+        }
+
+        .ornggradient {
+            font-size: 12px;
+            background-repeat: no-repeat;
+            color: #f2f0f0;
+            font-weight: 400;
+            padding: 7% 0%;
+            background-image: url("../images/orange_gradiet.png");
+            background-size: cover;
+            text-align: center;
+        }
+        .newsSection
+        {
+            background-color:#F7F5F5;
+        }
+        .carousel-control
+        {
+            opacity:1 !important
+        }
+        #myCarouselnews .glyphicon-menu-left:before,#myCarouselnews .glyphicon-menu-right:before
+        {
+            content: none;
+        }
+        #myCarouselnews .glyphicon-menu-left
+        {
+            position: absolute;
+            top: 25%;
+            color: #000;
+            text-shadow: none;
+            left: 0px;
+            display: block;
+            width: 10px;
+        
+        }
+        #myCarouselnews .glyphicon-menu-right
+        {
+            position: absolute;
+            top: 25%;
+            color: #000;
+            text-shadow: none;
+            right: 0px;
+            display: block;
+            width: 10px;
+        }
+        #myCarouselnews .carousel-indicators
+        {
+            display:none !important;
+        }
+        .disp-flex{
+            display: flex !important; align-items: stretch;
+        }
+        /* Medium screens */
+@media all and (max-width: 800px) {
+   .disp-flex{
+            display: block !important; align-items: stretch;
+        }
+        .mar-20{
+          margin-top:20px;
+        
+        }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+   .disp-flex{
+            display: block; align-items: stretch;
+        }
+        .mar-20{
+          margin-top:20px;
+        
+        }
+}
+        
+    </af:resource>
+    <div style="background-color: White;" class="iocl_page">
+        <af:panelGroupLayout id="pgl6" styleClass="row show">
+            <af:panelGroupLayout id="pgl14" styleClass="col-md-12 show">
+                <span id="myCarousel" class="carousel slide myCarousel" data-ride="carousel">
+                    <span class="carousel-inner show">
+                        <ol class="carousel-indicators">
+                            <af:forEach varStatus="banner" items="#{pageFlowScope.imagesList}" var="feachtt">
+                                <li data-slide-to="${banner.index}" data-target="#myCarousel" class="${banner.index == '0' ? 'active':''}">&#160;</li>
+                            </af:forEach>
+                        </ol>
+                        <af:forEach varStatus="banner" items="#{pageFlowScope.imagesList}" var="feachtt">
+                            <span class="${banner.index eq '0' ? 'item active':'item'}">
+                                <!--<af:link  destination="#{feachtt.trainingUrl}"  styleClass="AFStretchWidth" 
+                                     text="asdads">
+                             </af:link>-->
+                                <a href="${feachtt.trainingUrl eq null ? 'javascript:void(0)' : feachtt.trainingUrl }"
+                                   target="${feachtt.trainingUrl eq null ? '' : '_blank' }">
+                                    <af:image source="/ShowProperty?nodeId=%2FHOContentConn%2F#{feachtt.url}%2F%2FidcPrimaryFile&amp;revision=latestreleased&amp;rid=1"
+                                              styleClass="AFStretchWidth" shortDesc="#{feachtt.trainingUrl}"/></a></span>
+                            <!--<img src="${feachtt.url}" style="width:100%"/></span>-->
+                        </af:forEach><a class="left carousel-control" href="#myCarousel" role="button"
+                                        data-slide="prev"> 
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                             
+                            <span class="sr-only">Previous</span>
+                             </a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a></span></span>
+                <!--<af:panelGroupLayout id="pgl2" styleClass="carousel slide myCarousel" inlineStyle="display:block;">
+                <ol class="carousel-indicators">
+                    
+                    <af:forEach varStatus="banner" items="#{pageFlowScope.testBean.lstBanner}" var="feachtt">
+                        <li data-slide-to="${banner.index}" class="${banner.index == '0' ? 'active':''}">&#160;</li>
+                    </af:forEach>
+                </ol>
+                <af:panelGroupLayout styleClass="carousel-inner" id="pgl1">
+                    <af:iterator value="#{pageFlowScope.testBean.lstBanner}" var="feachtt">
+                        <af:panelGroupLayout  id="pgl3">
+                        <af:image source="#{feachtt.url}" styleClass="AFStretchWidth"/>
+                        -->
+                <!--<img src="http://dctdmwrapp02:16200/cs/groups/public/documents/document/d2nj/mdaz/~edisp/wcc003203.jpg" style="width:100%"/>-->
+                <!--
+                        
+                        </af:panelGroupLayout>
+                    </af:iterator>
+                </af:panelGroupLayout>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                     </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span></a>
+            </af:panelGroupLayout>-->
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+         
+        <af:panelGroupLayout styleClass="row show disp-flex" id="pgl11" inlineStyle="margin-top:20px;">
+            <af:panelGroupLayout id="pgl5" styleClass="col-md-5 show newsSection">
+                <af:panelGroupLayout id="pgl1" styleClass="newsSectionContent" layout="vertical">
+                    <af:outputText value="News Section" id="ol1" inlineStyle="padding:0 0 0 18px;"/>
+                </af:panelGroupLayout>
+                <span id="myCarouselnews" class="carousel slide myCarouselnews" data-interval="false" data-ride="carousel">
+                    <span class="carousel-inner show">
+                        <ol class="carousel-indicators">
+                            <af:forEach varStatus="banner" items="#{pageFlowScope.news}" var="feachtt">
+                                <li data-slide-to="${banner.index}" class="${banner.index == '0' ? 'active':''}">&#160;</li>
+                            </af:forEach>
+                        </ol>
+                        <af:forEach varStatus="banner" items="#{pageFlowScope.news}" var="row">
+                            <span id="pgl3" class="${banner.index eq '0' ? 'item active':'item'}">
+                                <af:outputFormatted value="#{row.news}" inlineStyle="width: 410px; height: 160px;"
+                                                    id="i1"/></span>
+                        </af:forEach>
+                            <a class="left carousel-control" href="#myCarouselnews" role="button" data-slide="prev"> 
+                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true" id="s1">
+                                    <af:image source="/images/arrow-left.svg" id="i3"/>
+                                </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarouselnews" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+                                    <af:image source="/images/arrow-right.svg" id="i4"/>
+                                </span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                    </span>
+                </span>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl4" styleClass="col-md-4 show mar-20">
+                <a href="/webcenter/portal/LPG/pages_bookrefillpol" id="b1" target="_blank">
+                    <af:image source="/images/3simplesteps.png" id="i2" styleClass="img-responsive h-100" inlineStyle="width:332px;"/></a>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl2" styleClass="col-md-3 show ornggradient mar-20" layout="vertical">
+                <!--<af:outputLabel id="" value="For any Complaints/Queries" />-->
+                <af:outputText id="of1" value="For any Complaints/Queries"/>
+                <af:outputText id="ot2" value="1800-233-3555" styleClass="font-size24"/>
+                <af:outputText id="ot3" value="(Toll Free)"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+         
+        <af:panelGroupLayout id="pgl10" styleClass="row show" inlineStyle="margin-top:20px;">
+            <af:panelGroupLayout id="pgl12" styleClass="col-md-12 show">
+                <af:panelGroupLayout id="pg20" layout="vertical"
+                                     styleClass="Iocl-panel-box IOCLcontent_boxconfirmation">
+                    <af:panelGroupLayout id="pgl23" layout="vertical" styleClass="row">
+                        <af:panelGroupLayout id="pgl18" styleClass="col-md-12" layout="vertical">
+                            <af:panelGroupLayout id="pgl25" styleClass="row margintop30 text-center" layout="vertical">
+                                <af:iterator id="i7" value="#{bindings.AppListVo1.collectionModel}" var="item">
+                                    <af:panelGroupLayout id="pgl17" styleClass="col-md-3 card_group1 show"
+                                                         rendered="#{(item.AppListCode eq 8009) ||(item.AppListCode eq 8004 &amp;&amp; sessionScope.IS_LOGGED_IN=='True') ? false : true}">
+                                        <af:link id="l1" icon="#{item.ImgPath}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'Static') ? true : false}"
+                                                 styleClass="svg_icon"
+                                                 actionListener="#{backingBeanScope.testBean.customerUnsecuredActionLis}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:link id="l5" icon="#{item.ImgPath}" styleClass="svg_icon"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                                 destination="#{item.ToAction}" targetFrame="_blank">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <!--<af:link id="l3" icon="#{item.ImgPath}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}"
+                                                 styleClass="svg_icon"
+                                                 actionListener="#{backingBeanScope.testBean.customerUnsecuredTFActionLis}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>-->
+                                        <af:link id="l3" icon="#{item.ImgPath}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}"
+                                                 styleClass="svg_icon"
+                                                 action="#{backingBeanScope.testBean.unsecuredTFActions}">
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:link text="#{item.AppName}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'Static') ? true : false}"
+                                                 id="ot1" styleClass="show font-size16 font-dark-blue medium-font"
+                                                 actionListener="#{backingBeanScope.testBean.customerUnsecuredActionLis}">
+                                                 
+                                            <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:link id="l2" text="#{item.AppName}" styleClass="show font-size16 font-dark-blue medium-font"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'External') ? true : false}"
+                                                 destination="#{item.ToAction}" targetFrame="_blank"></af:link>
+                                        <!--<af:link text="#{item.AppName}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}" id="l4" styleClass="show font-size16 font-dark-blue medium-font"
+                                                 actionListener="#{backingBeanScope.testBean.customerUnsecuredTFActionLis}"
+                                                 action="#{backingBeanScope.testBean.unsecuredTFActions}">
+                                                 <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>-->
+                                        <af:link text="#{item.AppName}"
+                                                 rendered="#{(item.DummyCol6 != null and item.DummyCol6 eq 'TaskFlow') ? true : false}" id="l4" styleClass="show font-size16 font-dark-blue medium-font"                                                 
+                                                 action="#{backingBeanScope.testBean.unsecuredTFActions}">
+                                                 <af:setActionListener from="#{item.ToAction}"
+                                                                  to="#{requestScope.ActionName}"/>
+                                        </af:link>
+                                        <af:outputFormatted value="#{item.AppDesc}" id="of24"/>
+                                    </af:panelGroupLayout>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </div>
+    <af:resource type="javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          //  changeGroupLayout();
+      });
+
+      function changeGroupLayout() {
+          var pgl = $('.myCarousel');
+          pgl.attr("data-ride", "carousel");
+          pgl.attr("id", "myCarousel");
+          var newscr = $('.newscarousel');
+          newscr.attr("data-ride", "carousel");
+          newscr.attr("id", "newscarousel");
+          $('.carousel-inner &gt; span:first-child').addClass('active');
+          $('.carousel-inner &gt; span').addClass('item');
+      }
+    </af:resource>
+</jsp:root>

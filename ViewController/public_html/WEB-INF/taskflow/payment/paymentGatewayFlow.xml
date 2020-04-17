@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="paymentGatewayFlow">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>pgFrame</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>paymentRowTxnId</name>
+      <value>#{pageFlowScope.paymentRowTxnId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>amount</name>
+      <value>#{pageFlowScope.amount}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>gatewayName</name>
+      <value>#{pageFlowScope.gatewayName}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>orderNo</name>
+      <value>#{pageFlowScope.orderNo}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>pgBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.payment.PaymentGatewayBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="pgFrame">
+      <page>/pageFragment/pgFrame.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

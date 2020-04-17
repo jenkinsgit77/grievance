@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FindYourOilVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.iocl.customer.model.viewobject.servo.FindYourOilVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="LovVehicleTypeVO1"
+    ViewObjectName="com.iocl.customer.model.viewobject.servo.LovVehicleTypeVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LovMakeVO1"
+    ViewObjectName="com.iocl.customer.model.viewobject.servo.LovMakeVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="ValSetValpBindVAR">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[VehicleType]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LovModelVO1"
+    ViewObjectName="com.iocl.customer.model.viewobject.servo.LovModelVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="ValSetValpModelBindVar">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[Make]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_VehicleType"
+    ListVOName="LovVehicleTypeVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VehicleType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Col5"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ValSetValues"/>
+      <Item Value="MstSetId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ValSetName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Make"
+    ListVOName="LovMakeVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Make"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Col6"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ValSetValues"/>
+      <Item Value="ValSetValp"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ValSetName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Model"
+    ListVOName="LovModelVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Model"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Col5"/>
+      <Item Value="Model"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ValSetValues"/>
+      <Item Value="MstSetIdp"/>
+      <Item Value="ValSetValp"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ValSetName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="LevelADataEo"
+    Entity="com.iocl.customer.model.entityobject.LevelADataEo"/>
+  <ViewAttribute
+    Name="VehicleType"
+    PrecisionRule="true"
+    EntityAttrName="Col2"
+    EntityUsage="LevelADataEo"
+    AliasName="COL2"
+    LOVName="LOV_VehicleType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Make"
+    PrecisionRule="true"
+    EntityAttrName="Col3"
+    EntityUsage="LevelADataEo"
+    AliasName="COL3"
+    LOVName="LOV_Make">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Model"
+    PrecisionRule="true"
+    EntityAttrName="Col4"
+    EntityUsage="LevelADataEo"
+    AliasName="COL4"
+    LOVName="LOV_Model">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Col5"
+    PrecisionRule="true"
+    EntityAttrName="Col5"
+    EntityUsage="LevelADataEo"
+    AliasName="COL5"/>
+  <ViewAttribute
+    Name="Col6"
+    PrecisionRule="true"
+    EntityAttrName="Col6"
+    EntityUsage="LevelADataEo"
+    AliasName="COL6"/>
+  <ViewAttribute
+    Name="Flowcode"
+    PrecisionRule="true"
+    EntityAttrName="Flowcode"
+    EntityUsage="LevelADataEo"
+    AliasName="FLOWCODE"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="LevelADataEo"
+    AliasName="ID"/>
+</ViewObject>

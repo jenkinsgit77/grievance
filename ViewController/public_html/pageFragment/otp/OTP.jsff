@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+ <c:set var="partnerBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="javascript">
+      window.addEventListener('DOMContentLoaded', function () {
+          $(".defaultFocusCls .x25").focus();
+      })
+
+      function setFocusMethod(event) {
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it2");
+          element.focus();
+
+      }
+
+      function setFocusMeth(event) {
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it3");
+          element.focus();
+
+      }
+
+      function setFocusMTD(event) {
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it4");
+          element.focus();
+
+      }
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass="mainOtpContainer iocl_page">
+        <af:outputText value="#{custPortalBundle.OTP}" id="ot3" styleClass="otpPageHeader"/>
+        <af:panelGroupLayout layout="default" id="pgl2" styleClass="otpMobileNumberMessageSection">
+            <af:outputText value="#{custPortalBundle.OTP_HDR}" id="ot2"/>
+            <af:outputText value="#{sessionScope.userDetails.consumerContactNumber}" id="ot1" styleClass="otpNumberHighlighted"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout layout="default" id="pgl4" styleClass="otpInputTextSection">
+            <af:inputText simple="true" id="it1" binding="#{sendOtpBn.txtOTP1}" styleClass="otpInputAllignment defaultFocusCls"
+                          maximumLength="1" autoTab="true" autoComplete="off">
+                <af:clientListener method="setFocusMethod" type="keyUp"/>
+            </af:inputText>
+            <af:inputText simple="true" id="it2" binding="#{sendOtpBn.txtOTP2}"  autoTab="true"
+            maximumLength="1" styleClass="otpInputAllignment" autoComplete="off">
+                <af:clientListener method="setFocusMeth" type="keyUp"/>
+            </af:inputText>
+            <af:inputText simple="true" id="it3" binding="#{sendOtpBn.txtOTP3}" autoTab="true" maximumLength="1" styleClass="otpInputAllignment"
+                          autoComplete="off">
+                <af:clientListener method="setFocusMTD" type="keyUp"/>
+            </af:inputText>
+            <af:inputText simple="true" styleClass="otpInputAllignment defaultFocusField" id="it4" binding="#{sendOtpBn.txtOTP4}"
+                          maximumLength="1" autoComplete="off"/>
+            <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="otpMessageLabelSection">
+                <af:outputText id="ot4" value="#{custPortalBundle.OTP_NOT_RECEIVED}" styleClass="otpPass fontStrong"/>
+                <af:link id="b31" styleClass="a-underline" action="#{sendOtpBn.resendOtp}" text="#{custPortalBundle.RESEND_CODE}"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:outputText id="ot7" visible="#{sendOtpBn.errorOTP!=''}"
+                       value="#{sendOtpBn.errorOTP}" styleClass="errorMessage" partialTriggers="b1 b31"/>
+        <af:button text="#{custPortalBundle.VERIFY_BUTTON}" id="b1" action="#{sendOtpBn.confirmOTP}" inlineStyle="width:20%; margin:20px 0"/>
+        <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1" partialTriggers="::b1"/>
+    </af:panelGroupLayout>
+</jsp:root>

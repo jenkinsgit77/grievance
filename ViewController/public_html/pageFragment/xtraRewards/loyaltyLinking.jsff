@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+  <af:resource type="css">
+  .paddingleft0{
+      padding-left:0px !important;
+  }
+  </af:resource>
+  <af:panelGroupLayout id="pgl1" styleClass="show iocl_page confirmationBorder">
+    <af:panelGroupLayout id="pgl2" styleClass=" row show">
+    <af:panelGroupLayout id="pgl6" styleClass=" text-right font-size20 light-font col-md-4">
+      <af:outputText value="#{custPortalBundle.WELCOME_TO_XTRA_REWARD}" id="ot1"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl5" styleClass="col-md-3  enrollingButton">
+      <af:button text="#{custPortalBundle.LINK_YOUR_XTRA_REWARD_CARD}" id="b1"
+                 actionListener="#{backingBeanScope.LoyaltyLinking.linkYourXtraRewardActionLis}">
+        <!--<af:showPopupBehavior popupId="p1"/>-->
+        <af:setActionListener from="Enrichment" to="#{sessionScope.loyaltyFlow}"/>
+      </af:button></af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl7" styleClass="col-md-2 enrollingButton">
+      <af:button text="#{custPortalBundle.ENROLL_NOW}" id="b2"
+                 actionListener="#{backingBeanScope.TemplateBean.enrollNowAction}">
+        </af:button>
+      </af:panelGroupLayout>
+      
+    </af:panelGroupLayout>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+              popupCanceledListener="#{backingBeanScope.LoyaltyLinking.linkingPopUpCancelLis}"
+              binding="#{backingBeanScope.LoyaltyLinking.linkingPopUpBinding}">
+      <af:dialog id="d1" styleClass="test MyDialog iocl_page AFDefaultFontFamily:alias " type="none" contentWidth="700">
+      <af:panelGroupLayout id="pgl13" styleClass="row ml-4" partialTriggers="b3 l1">
+      <af:panelGroupLayout id="pgl8" styleClass="col-md-12 font-size20 font-dark-blue mt-4 fontregular">
+        <af:outputText value="#{custPortalBundle.LINK_YOUR_XTRA_REWARD_CARD_SMALL}" id="ot2"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl4" styleClass=" col-md-12 top30 font-size18 show">
+          <af:outputText value="#{custPortalBundle.PLEASE_ENTER_YOUR_XTRA_REWARD_CARD_NUMBER}" id="ot3"/>
+          </af:panelGroupLayout>
+          <af:panelGroupLayout id="pgl9" styleClass="col-md-6 mt-1 ">
+          <af:inputText id="it1" simple="true" binding="#{backingBeanScope.LoyaltyLinking.xtraRewardNoBinding}"/>
+            <af:outputFormatted value="#{pageFlowScope.xtraRewardCardErrorMsg}" id="of1" styleClass="errorMessage"/>
+          </af:panelGroupLayout>
+       <af:panelGroupLayout id="pgl10" styleClass="col-md-12 paddingleft0 mt-3">
+            <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1" partialTriggers="::b3"/>
+            <af:panelGroupLayout  id="pgl11" styleClass="col-md-3 top25">
+       <af:button text="#{custPortalBundle.SUBMIT}" id="b3"
+                  action="#{backingBeanScope.LoyaltyLinking.linkingSubmitAction}"/>
+       </af:panelGroupLayout>
+       <af:panelGroupLayout  id="pgl12" styleClass="col-md-3 top25">
+        <af:link text="#{custPortalBundle.CANCEL}" id="l1"
+                 actionListener="#{backingBeanScope.LoyaltyLinking.linkingCancelActionLis}" partialSubmit="true"
+                 styleClass="cancel_link"/>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

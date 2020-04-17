@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="RetailOnBoardTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>SelectCustAccountTF</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>retailOnboard</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.retail.RetailOnboarding</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="retailOnboarding">
+      <page>/pageFragment/retail/retailOnboarding.jsff</page>
+    </view>
+    <task-flow-call id="ConfirmationPageTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/common/ConfirmationPageTF.xml</document>
+        <id>ConfirmationPageTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>confMessage</name>
+        <value>#{backingBeanScope.retailOnboard.confirmationPageMsg}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__5">
+        <name>destinationLabel</name>
+        <value>#{backingBeanScope.retailOnboard.confirmReferenceNum}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="defCall">
+      <method>#{backingBeanScope.retailOnboard.defaultCallLoadRetailOnboard}</method>
+      <outcome>
+        <fixed-outcome>goToROBoard</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome>
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="SelectCustAccountTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/SelectCustAccountTF.xml</document>
+        <id>SelectCustAccountTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="retailUserDetails">
+      <page>/pageFragment/retail/retailUserDetails.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>retailOnboarding</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>ToConfirmation</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>duplicateDetails</from-outcome>
+        <to-activity-id>retailUserDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>defCall</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>goToROBoard</from-outcome>
+        <to-activity-id>retailOnboarding</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>Execute</from-activity-id>
+      <control-flow-case id="__91">
+        <from-outcome>Execute</from-outcome>
+        <to-activity-id>defCall</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>SelectCustAccountTF</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>NormalFlow</from-outcome>
+        <to-activity-id>Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>retailUserDetails</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>ToConfirmation</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="reportsPageDef"
+                Package="pageFragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ReportsChartVO2" RangeSize="-1" DataControl="AppModuleDataControl" id="ReportsChartVO2Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ReportsChartVO2Iterator" id="ReportsChartVO2" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.ReportsChartVO" Name="ReportsChartVO2">
+        <AttrNames>
+          <Item Value="CountVal"/>
+          <Item Value="MonthVal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ReportsChartVO2Iterator" id="ReportsChartVO21">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.ReportsChartVO" Name="ReportsChartVO210">
+        <AttrNames>
+          <Item Value="MonthVal"/>
+          <Item Value="BookingCount"/>
+          <Item Value="CountVal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

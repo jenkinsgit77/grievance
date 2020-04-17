@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="FindYourOilLandingTF">
+    <default-activity>CreateInsert1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__2">
+      <managed-bean-name>findyouroillanding</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.servo.FindYourOilLanding</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="findYourOilPF">
+      <page>/pageFragment/servo/findYourOilPF.jsff</page>
+    </view>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>CreateInsert1</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>findYourOilPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

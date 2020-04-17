@@ -1,0 +1,475 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+    .disp div{display:block !important}
+        .popup-heading {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .popup-heading-label {
+            font-size: 16px;
+        }
+
+        .popup-main-heading {
+            font-weight: 700;
+            line-height: 3;
+            font-size: 22px;
+        }
+
+        .popup-main-text {
+            font-weight: 700;
+            line-height: 3;
+            font-size: 22px;
+            color: #F37021;
+            padding-left: 10px;
+        }
+
+        .padding-popup {
+            padding: 30px;
+        }
+
+        .padding-bottom-popup {
+            padding-bottom: 10px;
+        }
+
+        .padding10_15 {
+            padding: 0px 15px;
+        }
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass="row show iocl_page padding20"
+                         inlineStyle="background:#fff">
+        <af:panelGroupLayout id="pgl12" styleClass="col-md-6 show header-title-sv" inlineStyle="padding-bottom:15px">
+            <af:outputFormatted value="#{custPortalBundle.REQUEST_FOR_SUBSCRIPTION_VOUCHER_SUB}" id="of1"/>
+        </af:panelGroupLayout>
+        <!--<af:panelGroupLayout id="pgl13" styleClass="col-md-12 show">
+            <af:outputFormatted value="#{custPortalBundle.YOU_ARE_ENTITLED_FOR_CYCLINDER_PRESSURE_REGULATOR}" id="of2"/>
+        </af:panelGroupLayout>-->
+        <af:panelGroupLayout id="pgl15" styleClass="col-md-6 show text-right">
+            <af:outputFormatted value="#{custPortalBundle.All_MANDATORY_FIELD_MESSAGE}" id="of3"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl6" styleClass="col-md-12  show">
+            <af:panelGroupLayout id="pgl4" styleClass="row show">
+                <af:panelGroupLayout id="pgl20" styleClass="col-md-12 show ">
+                    <af:panelGroupLayout id="pgl28" styleClass="show Iocl-panel-box pr-0,px-0"
+                                         inlineStyle="padding:15px;">
+                        <af:panelGroupLayout id="pgl59" styleClass="row show"
+                                             inlineStyle="background:#F3F0EE;padding:5px;border-bottom:1px solid #ddd">
+                            <af:panelGroupLayout id="pgl13" styleClass="col-md-12 show">
+                            <!--Product/Promotion Display through Relationship-->
+                             <af:panelGroupLayout id="pgl3" styleClass="font-size23 IOCL-font-weight-bold " >
+                                    <af:outputText value="#{custPortalBundle.PRODUCT_OR_PROMOTION_SELECTED}" id="ot1"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl16" styleClass="apply-text"
+                                                     inlineStyle="display:inline !important">
+                                    <af:outputText id="ot2" value="#{sessionScope.userDetails.distributorProduct}"/>
+                                </af:panelGroupLayout>
+                                
+                            <!--Product/Promotion Selection through Service-->
+                                <!--<af:panelGroupLayout id="pgl54"
+                                                     styleClass="col-md-12 padding20 show header-sub-title-sv">
+                                    <af:panelGroupLayout id="pgl3" styleClass="mb-3 show">
+                                    <af:outputFormatted value="#{custPortalBundle.SELECT_PRODUCT_OR_PROMOTIONS}"
+                                                        id="of5"/>
+                                                        </af:panelGroupLayout>
+                                    --><!--<af:outputText value="#{bindings.PromoSelected.inputValue}"
+                           shortDesc="#{bindings.PromoSelected.hints.tooltip}" id="ot1"/>--><!--
+                                    <af:selectOneRadio value="#{bindings.PromoSelected.inputValue}" valuePassThru="true"
+                                                       id="sor1" autoSubmit="true" styleClass="needconnection disp" 
+                                                       simple="true">
+                                        <f:selectItems value="#{pageFlowScope.pDistributerProdLst}" id="si1"/>
+                                    </af:selectOneRadio>
+                                </af:panelGroupLayout>-->
+                                <af:panelGroupLayout id="pgl2" styleClass="col-md-12 show header-sub-title-sv"
+                                                     visible="false">
+                                    <af:panelGroupLayout id="pgl14" styleClass="show mb-3">                 
+                                    <af:outputFormatted value="#{custPortalBundle.SELECT_CONNECTION}" id="of4"/>
+                                    </af:panelGroupLayout>
+                                    <af:selectOneRadio value="#{bindings.ConnectionType.inputValue}"
+                                                       label="#{bindings.ConnectionType.label}"
+                                                       shortDesc="#{bindings.ConnectionType.hints.tooltip}" id="sor2"
+                                                       simple="true" styleClass="needconnection"
+                                                       binding="#{backingBeanScope.SubscriptionVouch.svConnectionBinding}">
+                                        <f:selectItems value="#{bindings.ConnectionType.items}" id="si2"/>
+                                        <f:validator binding="#{bindings.ConnectionType.validator}"/>
+                                    </af:selectOneRadio>
+                                    <!--<af:outputFormatted value="#{backingBeanScope.SubscriptionVouch.svNeedConnError}"
+                                                        id="of28" styleClass="errorMessage"/>-->
+                                    <af:outputFormatted value="#{backingBeanScope.SubscriptionVouch.svNeedConnError}"
+                                                        id="of28" styleClass="errorMessage"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <!--<af:panelGroupLayout id="pgl54" styleClass="col-md-12 show">
+                                <af:outputText value="#{custPortalBundle.YOU_ARE_ENTITLED_FOR_CYCLINDER_PRESSURE_REGULATOR_AND_DGCC_BOOKLET_WITH_THE_CONNECTION}"
+                                               id="ot5"/>
+                            </af:panelGroupLayout>-->
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl60" styleClass="row show">
+                            <af:panelGroupLayout id="pgl5" styleClass="col-md-12 show header-sub-title-sv">
+                                <af:outputFormatted value="#{custPortalBundle.LIST_OF_ITEMS}" id="of7"/>
+                                <!--<af:outputFormatted value="#{backingBeanScope.SubscriptionVouch.productSelectionError}"
+                                                    id="of31" styleClass="errorMessage" partialTriggers="b1 l2"/>-->
+                                <af:outputFormatted value="#{backingBeanScope.SubscriptionVouch.productSelectionError}"
+                                                    id="of31" styleClass="errorMessage" partialTriggers="b1"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <!--<af:panelGroupLayout id="pgl38" styleClass="header-sub-title-sv show padding-bottom10">
+                            <af:outputFormatted value="#{custPortalBundle.DO_YOU_WANT_TO_BUY_HOT_PLATE}" id="of6"/>
+                        </af:panelGroupLayout>-->
+                        <!--<af:panelGroupLayout id="pgl8" styleClass="show header-sub-title-sv padding-bottom10">
+                            <af:selectOneRadio value="#{bindings.HotPlate.inputValue}"
+                                               label="#{bindings.HotPlate.label}"
+                                               shortDesc="#{bindings.HotPlate.hints.tooltip}" id="sor3"
+                                               styleClass="needconnection" simple="true"
+                                               binding="#{backingBeanScope.SubscriptionVouch.svHotplateBinding}"
+                                               valueChangeListener="#{backingBeanScope.SubscriptionVouch.hotPlateValueCl}"
+                                               autoSubmit="true">
+                                <f:selectItems value="#{bindings.HotPlate.items}" id="si3"/>
+                                <f:validator binding="#{bindings.HotPlate.validator}"/>
+                            </af:selectOneRadio>
+                            <af:outputFormatted value="#{backingBeanScope.SubscriptionVouch.svHotPlateError}" id="of30"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>-->
+                        <!--<af:panelGroupLayout id="pgl9" styleClass="show header-sub-title-sv padding-bottom10">
+                            <af:outputFormatted value="#{custPortalBundle.PLEASE_SELECT_EQUIPMENT_TYPE}" id="of9"/>
+                        </af:panelGroupLayout>-->
+                        <af:panelGroupLayout id="pgl89" styleClass="row show">
+                            <!-- LPG Stove Section-->
+                            <af:panelGroupLayout id="pgl17" styleClass="col-md-6  show"
+                                                 binding="#{backingBeanScope.SubscriptionVouch.steelTopLpgPanelBinding}">
+                                <af:panelGroupLayout id="pgl27" styleClass="text-sv-desc show">
+                                    <af:outputFormatted value="#{custPortalBundle.LPG_STOVE}" id="of8"/>
+                                </af:panelGroupLayout>
+                                <table id="example" class="datatable table table-striped table-bordered"
+                                       style="width:100% !important;">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.PRODUCT_Name}" id="ot10"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.MRP}" id="ot27"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.SPECIFICATION}" id="ot28"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.SELECT}" id="ot29"/>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                     
+                                    <tbody>
+                                        <af:iterator var="row" value="#{bindings.SvLpgStoveProductVo1.collectionModel}"
+                                                     varStatus="datatable" id="i2">
+                                            <tr>
+                                                <td>
+                                                    <af:outputText value="#{row.ProductName}" id="ot19"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.Mrp}" id="ot31"/>
+                                                </td>
+                                                <td><af:link text="#{custPortalBundle.CLICK_HERE}" id="l1"
+                                                             actionListener="#{backingBeanScope.SubscriptionVouch.lpgStoveClickActionLis}">
+                                                             <af:setPropertyListener to="#{pageFlowScope.pLPGProductType}"
+                                                                                type="action"
+                                                                                     from="#{custPortalBundle.LPG_STOVE}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pType}"
+                                                                                type="action" from="#{row.Type}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pBrand}"
+                                                                                type="action" from="#{row.Brand}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pProductId}"
+                                                                                type="action" from="#{row.ProductId}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pDescription}"
+                                                                                type="action" from="#{row.Description}"/>
+                                                    </af:link>
+                                                </td>
+                                                <td>
+                                                    <af:selectBooleanRadio id="sbr1" group="LPGStove" simple="true"
+                                                                           value="#{row.ProductSelected}"></af:selectBooleanRadio>
+                                                </td>
+                                            </tr>
+                                        </af:iterator>
+                                    </tbody>
+                                </table>
+                                <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                                          contentDelivery="immediate"
+                                          binding="#{backingBeanScope.SubscriptionVouch.lpgStovePopUpBinding}">
+                                    <af:dialog id="d1" type="none" styleClass="MyDialog test iocl_page" contentWidth="600">
+                                        <af:panelGroupLayout id="pgl25" styleClass="row show padding-popup">
+                                            <af:panelGroupLayout id="pgl26"
+                                                                 styleClass="col-md-12 show padding-bottom-popup">
+                                                <af:panelGroupLayout id="pgl18"
+                                                                     styleClass="popup-heading popup-main-heading">
+                                                    <af:outputText id="ot33" value="#{pageFlowScope.pLPGProductType}"/>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl29"
+                                                                 styleClass="col-md-6 show padding-bottom-popup">
+                                                <af:panelGroupLayout layout="vertical" styleClass="row" id="pgl56">
+                                                    <af:panelGroupLayout id="pgl19"
+                                                                         styleClass="show popup-heading col-md-6 marginspace">
+                                                        <af:outputText id="ot34" value="#{custPortalBundle.TYPE}"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl30"
+                                                                         styleClass="show col-md-6 popup-heading-label marginspace">
+                                                        <af:outputText id="ot35" value="#{pageFlowScope.pType}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout layout="vertical" styleClass="row" id="pgl57">
+                                                    <af:panelGroupLayout id="pgl36"
+                                                                         styleClass="show popup-heading  col-md-6 marginspace">
+                                                        <af:outputText id="ot11" value="#{custPortalBundle.BRAND}"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl37"
+                                                                         styleClass="show  col-md-6  popup-heading-label marginspace">
+                                                        <af:outputText id="ot12" value="#{pageFlowScope.pBrand}"
+                                                                       shortDesc="#{bindings.Brand.hints.tooltip}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout layout="vertical" styleClass="row" id="pgl58">
+                                                    <af:panelGroupLayout id="pgl39"
+                                                                         styleClass="show popup-heading  col-md-6 marginspace">
+                                                        <af:outputText id="ot16"
+                                                                       value="#{custPortalBundle.PRODUCT_ID}"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl38"
+                                                                         styleClass="show  col-md-6  popup-heading-label marginspace">
+                                                        <af:outputText id="ot15"
+                                                                       value="#{pageFlowScope.pProductId}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl35"
+                                                                 styleClass="col-md-6 show padding-bottom-popup">
+                                                <af:panelGroupLayout id="pgl40"
+                                                                     styleClass="show popup-heading  col-md-6 marginspace">
+                                                    <af:outputText id="ot20" value="#{custPortalBundle.DESCRIPTION}"/>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl41"
+                                                                     styleClass="show  col-md-6  popup-heading-label marginspace">
+                                                    <af:outputText id="ot21" value="#{pageFlowScope.pDescription}"
+                                                                   shortDesc="#{bindings.Description.hints.tooltip}"/>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout styleClass="show col-md-4 col-md-offset-4" id="pgl42">
+                                                <af:button text="#{custPortalBundle.CLOSE}" id="b3" partialSubmit="true"
+                                                           actionListener="#{backingBeanScope.SubscriptionVouch.lpgStoveCloseActionLis}"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </af:dialog>
+                                </af:popup>
+                            </af:panelGroupLayout>
+                            <!-- Glass Top LPG Hose Section-->
+                            <af:panelGroupLayout id="pgl10" styleClass="col-md-6 show"
+                                                 binding="#{backingBeanScope.SubscriptionVouch.glassTopLpgPanelBinding}">
+                                <af:panelGroupLayout id="pgl31" styleClass="text-sv-desc show">
+                                    <af:outputFormatted value="#{custPortalBundle.LPG_HOSE}" id="of10"/>
+                                </af:panelGroupLayout>
+                                <table id="LPGHose" class="datatable table table-striped table-bordered"
+                                       style="width:100%!important;">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.PRODUCT_Name}" id="ot3"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.MRP}" id="ot4"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.SPECIFICATION}" id="ot6"/>
+                                            </th>
+                                            <th>
+                                                <af:outputText value="#{custPortalBundle.SELECT}" id="ot7"/>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                     
+                                    <tbody>
+                                        <af:iterator var="row" value="#{bindings.SvLpgHoseProductVo1.collectionModel}"
+                                                     varStatus="datatable" id="i3">
+                                            <tr>
+                                                <td>
+                                                    <af:outputText value="#{row.ProductName}"
+                                                                   id="ot9"/>
+                                                </td>
+                                                <td>
+                                                    <af:outputText value="#{row.Mrp}" id="ot8"/>
+                                                </td>
+                                                <td>
+                                                    <af:link text="#{custPortalBundle.CLICK_HERE}" id="l3"
+                                                             actionListener="#{backingBeanScope.SubscriptionVouch.lpgHoseClickActionLis}">
+                                                             <af:setPropertyListener to="#{pageFlowScope.pLPGProductType}"
+                                                                                type="action"
+                                                                                     from="#{custPortalBundle.LPG_HOSE}"/>
+                                                             <af:setPropertyListener to="#{pageFlowScope.pType}"
+                                                                                type="action" from="#{row.Type}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pBrand}"
+                                                                                type="action" from="#{row.Brand}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pProductId}"
+                                                                                type="action" from="#{row.ProductId}"/>
+                                                        <af:setPropertyListener to="#{pageFlowScope.pDescription}"
+                                                                                type="action" from="#{row.Description}"/>
+                                                             </af:link>
+                                                </td>
+                                                <td>
+                                                    <af:selectBooleanRadio id="sbr2" group="LPG_Hose" simple="true"
+                                                                           value="#{row.ProductSelected}"></af:selectBooleanRadio>
+                                                </td>
+                                            </tr>
+                                        </af:iterator>
+                                    </tbody>
+                                </table>
+                                <!--<af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                                          binding="#{backingBeanScope.SubscriptionVouch.lpgHosePopUpBinding}">
+                                    <af:dialog id="d2" styleClass="MyDialog test iocl_page" type="none" contentWidth="600">
+                                        <af:panelGroupLayout id="pgl8" styleClass="row show padding-popup">
+                                            <af:panelGroupLayout id="pgl9"
+                                                                 styleClass="col-md-12 show padding-bottom-popup">
+                                                <af:panelGroupLayout id="pgl32"
+                                                                     styleClass="popup-heading popup-main-heading">
+                                                    <af:outputText id="ot13" value="#{custPortalBundle.LPG_HOSE}"/>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl33"
+                                                                 styleClass="col-md-6 show padding-bottom-popup">
+                                                <af:panelGroupLayout layout="vertical" id="pgl52" styleClass="row">
+                                                    <af:panelGroupLayout id="pgl43"
+                                                                         styleClass="show popup-heading col-md-6 marginspace">
+                                                        <af:outputText id="ot26" value="#{custPortalBundle.TYPE}"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl51"
+                                                                         styleClass="show col-md-6 popup-heading-label marginspace">
+                                                        <af:outputText id="ot25" value="#{bindings.Type1.inputValue}"
+                                                                       shortDesc="#{bindings.Type1.hints.tooltip}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout layout="vertical" id="pgl53" styleClass="row">
+                                                    <af:panelGroupLayout id="pgl49"
+                                                                         styleClass="show popup-heading  col-md-6 marginspace">
+                                                        <af:outputText id="ot23" value="#{custPortalBundle.BRAND}"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl50"
+                                                                         styleClass="show  col-md-6  popup-heading-label marginspace">
+                                                        <af:outputText id="ot24" value="#{bindings.Brand1.inputValue}"
+                                                                       shortDesc="#{bindings.Brand1.hints.tooltip}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout layout="vertical" id="pgl55" styleClass="row">
+                                                    <af:panelGroupLayout id="pgl48"
+                                                                         styleClass="show popup-heading  col-md-6 marginspace">
+                                                        <af:outputText id="ot18"
+                                                                       value="#{custPortalBundle.PRODUCT_ID}"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl47"
+                                                                         styleClass="show  col-md-6  popup-heading-label marginspace">
+                                                        <af:outputText id="ot22"
+                                                                       value="#{bindings.ProductId1.inputValue}"
+                                                                       shortDesc="#{bindings.ProductId1.hints.tooltip}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl44"
+                                                                 styleClass="col-md-6 show padding-bottom-popup">
+                                                <af:panelGroupLayout id="pgl45"
+                                                                     styleClass="show popup-heading  col-md-6 marginspace">
+                                                    <af:outputText id="ot17" value="#{custPortalBundle.DESCRIPTION}"/>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl46"
+                                                                     styleClass="show  col-md-6  popup-heading-label marginspace">
+                                                    <af:outputText id="ot14" value="#{bindings.Description1.inputValue}"
+                                                                   shortDesc="#{bindings.Description1.hints.tooltip}"/>
+                                                    <af:outputText value="Name: #{bindings.ProductName1.inputValue}"
+                                                                   shortDesc="#{bindings.ProductName1.hints.tooltip}"
+                                                                   id="ot30"/>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout styleClass="show col-md-4 col-md-offset-4" id="pgl34">
+                                                <af:button text="#{custPortalBundle.CLOSE}" id="b2"
+                                                           actionListener="#{backingBeanScope.SubscriptionVouch.lpgHoseCloseActionLis}"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </af:dialog>
+                                </af:popup>-->
+                                <!--<af:table value="#{bindings.LPGHoseProductVo1.collectionModel}" var="row"
+                                          rows="#{bindings.LPGHoseProductVo1.rangeSize}"
+                                          emptyText="#{bindings.LPGHoseProductVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.LPGHoseProductVo1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.LPGHoseProductVo1.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.LPGHoseProductVo1.rangeSize}"
+                                          id="t1">
+                                    <af:column headerText="#{bindings.LPGHoseProductVo1.hints.Type.label}" id="c1">
+                                        <af:outputText value="#{row.Type}"
+                                                       shortDesc="#{bindings.LPGHoseProductVo1.hints.Type.tooltip}"
+                                                       id="ot3"/>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.LPGHoseProductVo1.hints.Mrp.label}" id="c2">
+                                        <af:outputText value="#{row.Mrp}"
+                                                       shortDesc="#{bindings.LPGHoseProductVo1.hints.Mrp.tooltip}"
+                                                       id="ot4"/>
+                                    </af:column>
+                                </af:table>-->
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl24" styleClass="col-md-12  show">
+            <!-- Item List for Selection-->
+            <!--<af:panelGroupLayout id="pgl18" styleClass="row show">
+                <af:iterator id="i1" value="#{pageFlowScope.itemDetailsPF}" var="itemItr">
+                    <af:panelGroupLayout id="pgl19" styleClass="col-md-6 show">
+                        <af:panelGroupLayout id="pgl26" styleClass="Iocl-panel-box clearfix checkbox show"
+                                             inlineStyle="padding:10px">
+                            <af:selectBooleanCheckbox text="#{itemItr.itemName}" id="sbc1" value="#{itemItr.itemSelect}"
+                                                      simple="true"/>
+                            <af:panelGroupLayout id="pgl30" styleClass="show text-sv-desc"
+                                                 inlineStyle="padding:20px 0px 20px 10px">
+                                <af:outputFormatted value="#{itemItr.itemDesc}" id="of12"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl24" styleClass="row">
+                             <af:panelGroupLayout id="pgl31" styleClass="col-md-6">
+                                <af:selectOneChoice simple="true" valuePassThru="true" id="soc5" autoSubmit="true"
+                                                    value="#{itemItr.itemLength}"
+                                                    unselectedLabel="#{custPortalBundle.SELECT}">
+                                    <f:selectItems value="#{itemItr.itemLst}" id="si6"/>
+                                </af:selectOneChoice>
+                                <af:outputFormatted value="#{itemItr.itemLengthError}" id="of35"
+                                                    styleClass="errorMessage"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl55" styleClass=" col-md-6  text-sv-rs pull-right">
+                                <af:outputFormatted value="#{itemItr.itemMrp}" id="of13"/>
+                            </af:panelGroupLayout>
+                            
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:iterator>
+            </af:panelGroupLayout>-->
+            <af:panelGroupLayout id="pgl21" styleClass="row show">
+                <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+                <af:panelGroupLayout id="pgl22" styleClass="col-md-3 show">
+                    <af:button text="#{custPortalBundle.CONTINUE}" id="b1"
+                               action="#{backingBeanScope.SubscriptionVouch.SubsVouchContinueAction}"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl23" styleClass="col-md-6 show pt-3">
+                    <!--<af:link text="#{custPortalBundle.RESET}" id="l2"
+                             actionListener="#{backingBeanScope.SubscriptionVouch.SubsVouchResetActionLis}"
+                             partialSubmit="true"/>-->
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl7" styleClass="col-md-12 show margin-top " >
+            <af:panelGroupLayout id="pgl11" layout="vertical">
+                <af:outputFormatted value="#{custPortalBundle.SUBSCRIPTION_VOUCHER_NOTE}" id="of14"/>
+                <af:outputFormatted value="#{custPortalBundle.SUBSCRIPTION_VOUCHER_NOTE1}" id="of16"/>
+                <af:outputFormatted value="#{custPortalBundle.SUBSCRIPTION_VOUCHER_NOTE2}" id="of17"/>
+                <af:outputFormatted value="#{custPortalBundle.SUBSCRIPTION_VOUCHER_NOTE3}" id="of15"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

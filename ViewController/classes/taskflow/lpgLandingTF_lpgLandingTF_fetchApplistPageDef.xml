@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="lpgLandingTF_lpgLandingTF_fetchApplistPageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="fetchApplist" RequiresUpdateModel="true" Action="invokeMethod" MethodName="fetchApplist"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.fetchApplist.dataControl.dataProvider">
+      <NamedData NDName="flowCode" NDValue="CustomerUnsecured" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

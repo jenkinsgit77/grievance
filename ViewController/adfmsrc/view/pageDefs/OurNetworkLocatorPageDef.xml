@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="OurNetworkLocatorPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="template.LoggedInTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <taskFlow id="ourNetworkLocatorTF1" taskFlowId="/WEB-INF/taskflow/ourNetworkLocatorTF.xml#ourNetworkLocatorTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="CategoryVal" value="Distributors"/>
+        <parameter id="CategoryType" value="IP"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="FindYourOilLandingTF1"
+              taskFlowId="/WEB-INF/taskflow/servo/FindYourOilLandingTF.xml#FindYourOilLandingTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

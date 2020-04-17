@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<af:panelGroupLayout id="pgl1" layout="vertical">
+        <!--<af:panelGroupLayout id="pgl5" layout="vertical" styleClass="row">
+            <af:panelGroupLayout id="pgl6" styleClass="col-md-12" layout="vertical">
+                <af:link text="#{res['BACK_TO_DASHBOARD']}" id="l2" destination="/portal/LPG/pages_dashboard"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>-->
+        <af:panelGroupLayout id="pgl7" layout="vertical" styleClass="row">
+            <af:panelGroupLayout id="pgl2" layout="vertical" styleClass="col-md-12">
+                <af:panelGroupLayout id="pgl8" layout="vertical" styleClass="IOCLcontent_box1 min-height300" >
+                    <af:outputFormatted value="#{custPortalBundle.CONFIRMATION_PAGE}" id="of1"
+                                        styleClass="pageHeaderFontStyle"/>
+                    <af:panelGroupLayout id="pgl35"  layout="vertical" styleClass="row margintop30">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-md-12"  layout="vertical">
+                            <af:panelGroupLayout styleClass="row" id="pgl3"  layout="vertical">
+                                <af:panelGroupLayout  id="pgl4"  styleClass="col-md-offset-1 col-md-offset-10 col-lg-offset-1 col-lg-10 col-xs-12 font20 confirmationBorder">
+                                    <af:image shortDesc="Confirmation"
+                                              source="/images/confirmation/confirmation-icon.svg"
+                                              styleClass="confirmationImg" id="i1" rendered="#{backingBeanScope.pgRedirectBean.paymentStatus eq 'Y' or backingBeanScope.pgRedirectBean.paymentStatus eq 'Success'}"/>
+                                    <af:image shortDesc="Confirmation"
+                                              source="/images/globalimages/error-icon.svg"
+                                              styleClass="confirmationImg" id="i2" rendered="#{backingBeanScope.pgRedirectBean.paymentStatus eq 'N' or backingBeanScope.pgRedirectBean.paymentStatus eq 'Failure'
+                                               or backingBeanScope.pgRedirectBean.paymentStatus eq 'Aborted'}"/>
+                                    <af:outputFormatted value="#{custPortalBundle.CONFIRMATION_EXCLAMATION}" id="of2"
+                                                        styleClass="conformationColor font20" rendered="#{backingBeanScope.pgRedirectBean.paymentStatus eq 'Y'}"/>
+                                    <!--<af:outputText value="#{pageFlowScope.confBean.confirmationMessage}" id="ot1"
+                                   binding="#{pageFlowScope.confBean.confirmationMsgBind}"/>-->
+                                    <af:outputFormatted id="ot1" value="#{custPortalBundle.PAYMENT_SUCCESS} #{backingBeanScope.pgRedirectBean.bankRefNo}"
+                                    rendered="#{backingBeanScope.pgRedirectBean.paymentStatus eq 'Y' or backingBeanScope.pgRedirectBean.paymentStatus eq 'Success'}"/>
+                                    <af:outputFormatted id="ot2" value="#{custPortalBundle.PAYMENT_FAILURE} #{backingBeanScope.pgRedirectBean.bankRefNo}"
+                                    rendered="#{backingBeanScope.pgRedirectBean.paymentStatus eq 'N' or backingBeanScope.pgRedirectBean.paymentStatus eq 'Failure'}"/>
+                                <af:outputFormatted id="ot3" value="#{custPortalBundle.PAYMENT_ABORTED}"
+                                    rendered="#{backingBeanScope.pgRedirectBean.paymentStatus eq 'Aborted'}"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    
+    <af:poll id="p1" binding="#{backingBeanScope.repGenBn.pollstbinding}" 
+             interval="10"
+             pollListener="#{backingBeanScope.repGenBn.handleFragmentOnLoad}">
+			 
+			 </af:poll>
+    
+    <af:panelGroupLayout id="pgl1" styleClass="row show iocl_page">
+        <af:panelGroupLayout id="pgl2">
+            <af:panelGroupLayout id="pgl4" styleClass="col-md-12 col-xs-12 col-sm-12"
+                                 rendered="#{pageFlowScope.reportAvailableFlg}"
+                                 binding="#{backingBeanScope.repGenBn.pg14}">
+                <dvt:barChart id="barChart2" var="row" value="#{pageFlowScope.reportList}" 
+                              contentDelivery="immediate" emptyText="#{custPortalBundle.NO_REP_MSG}"
+                              title="#{custPortalBundle.LPG_CONS_REP}" footnoteHalign="center" barGapRatio="0.2" zoomAndScroll="live"
+                              footnote="#{custPortalBundle.CONS_MONTHS}" styleClass="AFStretchWidth"
+                              binding="#{backingBeanScope.repGenBn.barChart}">
+                    <dvt:chartLegend rendered="#{pageFlowScope.reportAvailableFlg}" id="cl2" title="#{custPortalBundle.NUM_BOOK}" titleHalign="start" referenceObjectTitle="Booking Count"/>
+                    <f:facet name="dataStamp">
+                        <dvt:chartDataItem id="di1" series="#{custPortalBundle.BOOK_CNT}"
+                                           value="#{row.bookingCount}" group="#{row.bookingMonth}"
+                                           label="#{backingBeanScope.repGenBn.evalCount}">
+                            <dvt:attributeGroups id="ag1" label="#{custPortalBundle.CONS_MONTHS}" type="color"
+                                                 value="#{row.bookingMonth}"/>
+                        </dvt:chartDataItem>
+                    </f:facet>
+                </dvt:barChart>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl9o4" styleClass="col-md-12" 
+                                 rendered="#{!pageFlowScope.reportAvailableFlg}"
+                                 binding="#{backingBeanScope.repGenBn.pgCharNotFound}">
+                <span class="errorRed">
+                    <af:outputText id="ot1" value="#{custPortalBundle.NO_REP_MSG}"/></span>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

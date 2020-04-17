@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="GrievFeedbackTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>SelectCustAccountTF</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>GrievFeedback</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.greivfeedback.GrievFeedback</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <task-flow-call id="SelectCustAccountTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/SelectCustAccountTF.xml</document>
+        <id>SelectCustAccountTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="BlockUI">
+      <page>/pageFragment/BlockUI.jsff</page>
+    </view>
+    <method-call id="moveToGrievance">
+      <method>#{backingBeanScope.GrievFeedback.moveToGrievance}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__6">
+      <from-activity-id>SelectCustAccountTF</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>NormalFlow</from-outcome>
+        <to-activity-id>moveToGrievance</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

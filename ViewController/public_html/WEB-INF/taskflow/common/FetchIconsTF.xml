@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="FetchIconsTF">
+    <default-activity>fetchAppListCustomerNonLogin</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name>pflowCode</name>
+      <value>#{pageFlowScope.pflowCode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__7">
+      <managed-bean-name>FetchIconsGenericBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.custNonlogin.FetchIconsGenericBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="fetchAppListCustomerNonLogin">
+      <method>#{bindings.fetchAppListCustomerNonLogin.execute}</method>
+      <outcome>
+        <fixed-outcome>tononLogin</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="tononLogin">
+      <page>/pageFragment/customerNonLogin/tononLogin.jsff</page>
+    </view>
+    <control-flow-rule id="__5">
+      <from-activity-id>fetchAppListCustomerNonLogin</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>tononLogin</from-outcome>
+        <to-activity-id>tononLogin</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

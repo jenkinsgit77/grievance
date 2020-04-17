@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-template id="ExceptionHandlerTF">
+    <default-activity>ExceptionHandler</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <exception-handler>Error1</exception-handler>
+    <method-call id="ExceptionHandler"></method-call>
+    <view id="Error">
+      <page>/pageFragment/Error.jsff</page>
+    </view>
+    <view id="Error1">
+      <page>/pageFragment/Error.jsff</page>
+    </view>
+    <method-call id="fetchErrorMessage">
+      <method>#{bindings.fetchErrorMessage.execute}</method>
+      <outcome>
+        <fixed-outcome>fetchErrorMessage</fixed-outcome>
+      </outcome>
+    </method-call>
+    <url-view id="EXP_NON_LOGGED_IN">
+      <url>/webcenter/portal/Customer/pages_nonloggedin</url>
+    </url-view>
+    <url-view id="EXP_LOGGED_IN">
+      <url>/webcenter/portal/Customer/pages_landingpage</url>
+    </url-view>
+    <router id="EXP_HANDLER_ROUTER">
+      <case id="__3">
+        <expression>#{!sessionScope.IS_LOGGED_IN=='True'}</expression>
+        <outcome>goEXPNonLoggedIN</outcome>
+      </case>
+      <case id="__4">
+        <expression>#{sessionScope.IS_LOGGED_IN=='True'}</expression>
+        <outcome>goEXPLoggedIN</outcome>
+      </case>
+      <default-outcome>goEXPLoggedIN</default-outcome>
+    </router>
+    <view id="BlockUI">
+      <page>/pageFragment/BlockUI.jsff</page>
+    </view>
+    <control-flow-rule id="__5">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>ERROR</from-outcome>
+        <to-activity-id>fetchErrorMessage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>fetchErrorMessage</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>fetchErrorMessage</from-outcome>
+        <to-activity-id>Error</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__1">
+      <from-activity-id>Error</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>BACK_TO_FLOW_CUSTOMER</from-outcome>
+        <to-activity-id>EXP_HANDLER_ROUTER</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>EXP_HANDLER_ROUTER</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>goEXPNonLoggedIN</from-outcome>
+        <to-activity-id>EXP_NON_LOGGED_IN</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>goEXPLoggedIN</from-outcome>
+        <to-activity-id>EXP_LOGGED_IN</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>externalNav</from-outcome>
+        <to-activity-id>BlockUI</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-template>
+</adfc-config>

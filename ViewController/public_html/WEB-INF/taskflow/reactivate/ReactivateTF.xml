@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ReactivateTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>reactivationOnload</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>ReactivateBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.reactivate.ReactivateBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="reactivate">
+      <page>/pageFragment/reactivate/reactivate.jsff</page>
+    </view>
+    <method-call id="reactivationOnload">
+      <method>#{backingBeanScope.ReactivateBean.reactivationOnload}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <task-flow-call id="ConfirmationPageTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/common/ConfirmationPageTF.xml</document>
+        <id>ConfirmationPageTF</id>
+      </task-flow-reference>
+      <input-parameter id="__6">
+        <name>confMessage</name>
+        <value>#{pageFlowScope.confMessage}</value>
+      </input-parameter>
+      <input-parameter id="__7">
+        <name>refNumber</name>
+        <value>#{pageFlowScope.refNumber}</value>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>destination</name>
+        <value></value>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>destinationLabel</name>
+        <value></value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>reactivationOnload</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>goToReactivate</from-outcome>
+        <to-activity-id>reactivate</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>reactivate</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>goToConfirmation</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

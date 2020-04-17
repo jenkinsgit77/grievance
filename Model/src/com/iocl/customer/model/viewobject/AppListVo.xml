@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppListVo"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.iocl.customer.model.viewobject.AppListVo_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="FlowCodeBindVar"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="ParentCodeBindVar"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT            
+    APP_LIST.APP_LIST_CODE APP_LIST_CODE,            
+    APP_LIST.PARENT_APP_CODE PARENT_APP_CODE,            
+    APP_LIST.APP_CODE APP_CODE,            
+    APP_LIST.ROLE_CODE ROLE_CODE,            
+    APP_LIST.APP_NAME APP_NAME,            
+    APP_LIST.APP_DESC APP_DESC,            
+    APP_LIST.IMG_PATH IMG_PATH,            
+    APP_LIST.IMG_NAME IMG_NAME,            
+    APP_LIST.TO_ACTION TO_ACTION,            
+    APP_LIST.ROLE_TYPE ROLE_TYPE,            
+    APP_LIST.ACTIVE_FLAG ACTIVE_FLAG,            
+    APP_LIST.COLUMN8 COLUMN8,            
+    APP_LIST.DUMMY_COL10 DUMMY_COL10,            
+    APP_LIST.FLOW_CODE FLOW_CODE,            
+    APP_LIST.DUMMY_COL1 DUMMY_COL1,            
+    APP_LIST.DUMMY_COL2 DUMMY_COL2,            
+    APP_LIST.DUMMY_COL3 DUMMY_COL3,            
+    APP_LIST.DUMMY_COL4 DUMMY_COL4,            
+    APP_LIST.DUMMY_COL5 DUMMY_COL5,            
+    APP_LIST.DUMMY_COL6 DUMMY_COL6,            
+    APP_LIST.DUMMY_COL7 DUMMY_COL7,            
+    APP_LIST.DUMMY_COL8 DUMMY_COL8,            
+    APP_LIST.DUMMY_COL9 DUMMY_COL9,            
+    APP_LIST.CONTENT_ID CONTENT_ID            
+FROM            
+    APP_LIST 
+Where FLOW_CODE= NVL(:FlowCodeBindVar,FLOW_CODE)        
+AND APP_CODE=NVL(:ParentCodeBindVar,APP_CODE)   
+AND ACTIVE_FLAG='Y']]></SQLQuery>
+  <ViewAttribute
+    Name="AppListCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="APP_LIST_CODE"
+    Expression="APP_LIST_CODE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ParentAppCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PARENT_APP_CODE"
+    Expression="PARENT_APP_CODE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="AppCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="APP_CODE"
+    Expression="APP_CODE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="RoleCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ROLE_CODE"
+    Expression="ROLE_CODE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="AppName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="APP_NAME"
+    Expression="APP_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AppDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="APP_DESC"
+    Expression="APP_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ImgPath"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IMG_PATH"
+    Expression="IMG_PATH"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ImgName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IMG_NAME"
+    Expression="IMG_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ToAction"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="500"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TO_ACTION"
+    Expression="TO_ACTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RoleType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ROLE_TYPE"
+    Expression="ROLE_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ActiveFlag"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ACTIVE_FLAG"
+    Expression="ACTIVE_FLAG"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Column8"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="COLUMN8"
+    Expression="COLUMN8"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DummyCol10"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DUMMY_COL10"
+    Expression="DUMMY_COL10"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FlowCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FLOW_CODE"
+    Expression="FLOW_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DummyCol1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DUMMY_COL1"
+    Expression="DUMMY_COL1"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DummyCol2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DUMMY_COL2"
+    Expression="DUMMY_COL2"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DummyCol3"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DUMMY_COL3"
+    Expression="DUMMY_COL3"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DummyCol4"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DUMMY_COL4"
+    Expression="DUMMY_COL4"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DummyCol5"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DUMMY_COL5"
+    Expression="DUMMY_COL5"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DummyCol6"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DUMMY_COL6"
+    Expression="DUMMY_COL6"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DummyCol7"
+    IsUpdateable="false"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    AliasName="DUMMY_COL7"
+    Expression="DUMMY_COL7"
+    SQLType="BLOB"/>
+  <ViewAttribute
+    Name="DummyCol8"
+    IsUpdateable="false"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    AliasName="DUMMY_COL8"
+    Expression="DUMMY_COL8"
+    SQLType="CLOB"/>
+  <ViewAttribute
+    Name="DummyCol9"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="DUMMY_COL9"
+    Expression="DUMMY_COL9"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="ContentId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CONTENT_ID"
+    Expression="CONTENT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="AppListCode"/>
+    <Item Value="ParentAppCode"/>
+    <Item Value="AppCode"/>
+    <Item Value="RoleCode"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

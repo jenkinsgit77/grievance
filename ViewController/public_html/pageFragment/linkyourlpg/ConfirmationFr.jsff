@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+     <af:resource type="css">
+        .whitespacePre{white-space: pre;}
+    </af:resource>
+     
+    <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="iocl_page">
+       
+        <af:panelGroupLayout id="pgl7" layout="vertical" styleClass="row">
+            <af:panelGroupLayout id="pgl2" layout="vertical" styleClass="col-md-12">
+                <af:panelGroupLayout id="pgl8" layout="vertical" styleClass="IOCLcontent_box1 min-height300"
+                                     >
+                    <af:outputFormatted value="#{custPortalBundle.CONFIRMATION_PAGE}" id="of1"
+                                        styleClass="pageHeaderFontStyle"/>
+                    <af:panelGroupLayout id="pgl35" layout="vertical" styleClass="row margintop30">
+                        <af:panelGroupLayout id="pgl4" styleClass="col-xs-offset-1 col-xs-10" layout="vertical">
+                            <af:panelGroupLayout id="pgl9" styleClass="confirmationBorder">
+                                <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="row margintop30">
+                                    <af:panelGroupLayout id="pgl10" styleClass="col-md-4 text-right pr-0,px-0" inlineStyle="margin-top: -7px;">
+                                        <af:image shortDesc="#{custPortalBundle.CONFIRMATION}"
+                                                  source="/images/confirmation/confirmation-icon.svg"
+                                                  styleClass="confirmationImg" id="i1"/>
+                                        <af:outputFormatted value="#{custPortalBundle.CONFIRMATION_EXCLAMATION}" id="of2"
+                                                            styleClass="conformationColor font-size19" />
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl11" styleClass="col-md-8 marB15 hyphenNo pr-0,px-0"  >
+                                        <af:outputFormatted value="#{pageFlowScope.confMessage}" id="of3"
+                                                            inlineStyle="word-break:keep-all;"/>
+                                        <af:link text="#{pageFlowScope.relogin}" id="l1" actionListener="#{backingBeanScope.TemplateBean.clickSignOut}"/>
+                                       
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

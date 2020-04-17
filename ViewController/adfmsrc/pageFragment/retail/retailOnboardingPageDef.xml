@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="retailOnboardingPageDef"
+                Package="pageFragment.retail">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RetailOnboardingVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="RetailOnboardingVO1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1" Refresh="ifNeeded"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.retailOnBErrorCode}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.retailOnBErrorMessage}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <list IterBinding="RetailOnboardingVO1Iterator" StaticList="false" Uses="LOV_prefix" id="prefix"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="firstname">
+      <AttrNames>
+        <Item Value="firstname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="middlename">
+      <AttrNames>
+        <Item Value="middlename"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="lastname">
+      <AttrNames>
+        <Item Value="lastname"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="RetailOnboardingVO1Iterator" StaticList="false" Uses="LOV_gender" id="gender"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="dob">
+      <AttrNames>
+        <Item Value="dob"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="address1">
+      <AttrNames>
+        <Item Value="address1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="address2">
+      <AttrNames>
+        <Item Value="address2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="address3">
+      <AttrNames>
+        <Item Value="address3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="landmark">
+      <AttrNames>
+        <Item Value="landmark"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="RetailOnboardingVO1Iterator" StaticList="false" Uses="LOV_state" id="state"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="RetailOnboardingVO1Iterator" StaticList="false" Uses="LOV_district" id="district"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="city">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="pincode">
+      <AttrNames>
+        <Item Value="pincode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="emailId">
+      <AttrNames>
+        <Item Value="emailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="mobNum">
+      <AttrNames>
+        <Item Value="mobNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailOnboardingVO1Iterator" id="prefix1">
+      <AttrNames>
+        <Item Value="prefix"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="RetailOnboardingVO1Iterator" StaticList="false" Uses="LOV_vehicleOwnershipType"
+          id="vehicleOwnershipType" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

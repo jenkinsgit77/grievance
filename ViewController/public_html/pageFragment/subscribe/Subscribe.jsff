@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+        .marginleft20 {
+            margin-left: 20px !important;
+        }
+
+        .inputheight input {
+            height: 100px;
+        }
+        .margintop0{
+            margin-top:0px !important;
+            margin:0px !important ;
+        }
+        .marginbottom10 input{
+            margin-bottom: 10px !important;
+        }
+        .height60 input{
+        height:60px !important;
+        }
+        
+    </af:resource>
+    <af:resource type="javascript">
+      $(document).ready(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" styleClass="row iocl_page" partialTriggers="b1">
+      
+            <af:panelGroupLayout id="pgl81" styleClass="  IOCLcontent_box1">
+                <af:panelGroupLayout id="pgl2" styleClass="col-md-6">
+                    <af:outputFormatted value="Register for Subscription " id="ol9"
+                                        styleClass="font-size22 IOCL-font-weight-regular font-dark-blue"/>
+                
+                
+                <af:panelGroupLayout id="pgl5" styleClass="show" >
+                    <af:outputFormatted value="Provide the required information to register" id="of6"
+                                        />
+                </af:panelGroupLayout>  
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="row">
+                <af:panelGroupLayout id="pgl4" styleClass="col-md-6 text-right muted-text ">
+            <af:outputFormatted value="#{custPortalBundle.All_MANDATORY_FIELD_MESSAGE}" id="of3"/>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl3" styleClass="row margintop30 marginbottom15 show">
+                    <af:panelGroupLayout id="pgl10" styleClass="col-md-5 form_group show">
+                        
+                            <af:outputFormatted value="#{custPortalBundle.FIRST_NAME_1}" id="of4"
+                                                styleClass="labelHeading IOCL-font-weight-regular margintop0 font-regular IOCL-font-normal show"/>
+                            <af:inputText label="" id="it12" simple="true"
+                                          maximumLength="#{custPortalBundle.VALID_LENGTH_ONE}"
+                                          binding="#{backingBeanScope.CustomerSubscriptionBean.bindFirstName}" autoSubmit="true" styleClass="form-control"
+                                          placeholder="#{custPortalBundle.TYPE_YOUR_FIRST_NAME}"/>
+                            <af:outputFormatted value="#{backingBeanScope.CustomerSubscriptionBean.firstNameErrorMsg}" id="ot4"
+                                                styleClass="errorMessage"
+                                                rendered='#{backingBeanScope.CustomerSubscriptionBean.firstNameErrorMsg != ""}'/>
+                        
+                    </af:panelGroupLayout>
+                    
+                        <af:panelGroupLayout id="pgl14" styleClass="col-md-5 form_group col-md-offset-2 show ">
+                            
+                                
+                                
+                                    <af:outputFormatted value="#{custPortalBundle.LAST_NAME_1}" id="of5"
+                                                        styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                                    <af:inputText label="" id="it2" simple="true" placeholder="#{custPortalBundle.TYPE_YOUR_LAST_NAME}"
+                                                  binding="#{backingBeanScope.CustomerSubscriptionBean.lastNameBinding}"
+                                                   maximumLength="#{custPortalBundle.VALID_LENGTH_ONE}" styleClass="form-control"/>
+                                    <af:outputFormatted value="#{backingBeanScope.CustomerSubscriptionBean.lastNameErrorMsg}" id="of1"
+                                                        styleClass="errorMessage"
+                                                        rendered='#{backingBeanScope.CustomerSubscriptionBean.lastNameErrorMsg != ""}'/>
+                               
+                            
+                        </af:panelGroupLayout>
+                    
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl6" styleClass="row marginbottom15 show">
+                    <af:panelGroupLayout id="pgl55" styleClass="col-md-5 form_group show">
+                        <af:outputFormatted value="#{custPortalBundle.EMAIL_ID_SUB}" id="of7"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it51" simple="true" placeholder="#{custPortalBundle.TYPE_YOUR_MOBILE_NUMBER}"
+                                      binding="#{backingBeanScope.CustomerSubscriptionBean.emailIdbinding}"/>
+                        <af:panelGroupLayout id="pgl82" styleClass="errClassScroll">
+                            <af:outputFormatted id="ot18" styleClass="errorMessage" rendered='#{backingBeanScope.CustomerSubscriptionBean.emailErrorMsg !=""}'
+                                                value="#{backingBeanScope.CustomerSubscriptionBean.emailErrorMsg}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl701" styleClass="col-md-5 col-md-offset-2 form_group marginbottom15">
+                        <af:outputFormatted value="#{custPortalBundle.LEAD_MOBILE_NUMBER}" id="of181"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                        <af:inputText label="" id="it1" simple="true" placeholder="#{custPortalBundle.TYPE_YOUR_MOBILE_NUMBER}"
+                                      binding="#{backingBeanScope.CustomerSubscriptionBean.mobileNoBinding}"/>
+                        <af:panelGroupLayout id="pgl901" styleClass="errClassScroll">
+                            <af:outputFormatted id="of61" value="#{backingBeanScope.CustomerSubscriptionBean.mobileNoErrorMsg}"
+                                                styleClass="errorMessage"
+                                                rendered='#{backingBeanScope.CustomerSubscriptionBean.mobileNoErrorMsg !=""}'/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl72" styleClass="row marginbottom15 show">
+                    <af:panelGroupLayout id="pgl69" styleClass=" col-md-5 form_group show">
+                        <af:outputFormatted value="#{custPortalBundle.PREFERENCES}" id="of17"
+                                            styleClass="labelHeading IOCL-font-weight-regular IOCL-font-normal"/>
+                                            <af:panelGroupLayout styleClass="row show">
+                                        
+                         <af:selectManyCheckbox label="" value="#{backingBeanScope.CustomerSubscriptionBean.preferenceList}"
+                                               valueChangeListener="#{backingBeanScope.CustomerSubscriptionBean.onChangeValue}"
+                                               id="smc1" layout="horizontal" autoSubmit="true"
+                                               >
+                            <f:selectItems value="#{backingBeanScope.CustomerSubscriptionBean.preferenceItemList}" id="si10"/>
+                            
+                        </af:selectManyCheckbox>
+                        <af:panelGroupLayout id="pgl89" styleClass="errClassScroll">
+                            <af:outputFormatted id="of2" rendered='#{backingBeanScope.CustomerSubscriptionBean.prefrenceErrorMsg !=""}'
+                                                value="#{backingBeanScope.CustomerSubscriptionBean.prefrenceErrorMsg}"
+                                                styleClass="errorMessage"/>
+                        </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                 
+                    <af:panelGroupLayout id="pgl22" styleClass="boxSize2x1 col-md-offset-2 col-md-3 parentgrp2">
+                        <af:panelGroupLayout id="pgl21" styleClass="parentgrp4x6">
+                            <af:button text="SUBSCRIBE" id="b1"
+                                       action="#{backingBeanScope.CustomerSubscriptionBean.onClickscbscribe}" />
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl8" styleClass="boxSize2x1 col-md-2 mt-4 parentgrp2">
+                        <af:link text="Reset" id="l1" styleClass="ml-5 " actionListener="#{backingBeanScope.CustomerSubscriptionBean.onClickReset}"
+                                 />
+                    </af:panelGroupLayout>
+                
+                </af:panelGroupLayout>
+              
+                
+            </af:panelGroupLayout>
+       
+    </af:panelGroupLayout>
+</jsp:root>
+

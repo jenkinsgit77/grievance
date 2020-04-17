@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="PartnerNLMiddlecontentTF_PartnerNLMiddlecontentTF_fetchAppListPartnerPageDef"
+                Package="taskflow.partnerNonLoginMidContent" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchApplistpartner" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchApplistpartner" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.fetchApplistpartner.dataControl.dataProvider">
+      <NamedData NDName="flowCode" NDValue="PartnerUnsecured" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LoyaltyLinkingTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>linkingOnLoad</default-activity>
+    <return-value-definition id="__8">
+      <name>XRUCMId</name>
+      <value>#{pageFlowScope.XRUCMId}</value>
+      <class>java.lang.String</class>
+    </return-value-definition>
+    <return-value-definition id="__9">
+      <name>LPGUCMId</name>
+      <value>#{pageFlowScope.LPGUCMId}</value>
+      <class>java.lang.String</class>
+    </return-value-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>LoyaltyLinking</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.loyalty.LoyaltyLinking</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="loyaltyLinking">
+      <page>/pageFragment/xtraRewards/loyaltyLinking.jsff</page>
+    </view>
+    <task-flow-call id="LoyaltyEnrichmentTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/loyalty/LoyaltyEnrichmentTF.xml</document>
+        <id>LoyaltyEnrichmentTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>navigateTo</name>
+        <value>#{pageFlowScope.navigateTo}</value>
+      </input-parameter>
+      <input-parameter id="__5">
+        <name>duplicationFlag</name>
+        <value>#{pageFlowScope.duplicationFlag}</value>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>XRUCMId</name>
+        <value>#{pageFlowScope.XRUCMId}</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>LPGUCMId</name>
+        <value>#{pageFlowScope.LPGUCMId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="linkingOnLoad">
+      <method>#{backingBeanScope.LoyaltyLinking.linkingOnLoad}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>loyaltyLinking</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>LoyaltyEnrichmentTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>linkingOnLoad</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>goToLinking</from-outcome>
+        <to-activity-id>loyaltyLinking</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

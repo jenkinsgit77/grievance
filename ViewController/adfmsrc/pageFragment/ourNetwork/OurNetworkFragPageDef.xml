@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="OurNetworkFragPageDef"
+                Package="pageFragment.ourNetwork">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="locationMapVo1" RangeSize="25" DataControl="AppModuleDataControl" id="locationMapVo1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="locationMapVo1Iterator" StaticList="false" Uses="LOV_LocationCat" id="LocationCat"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="locationMapVo1Iterator" id="SearchLocations">
+      <AttrNames>
+        <Item Value="SearchLocations"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="locationMapVo1Iterator" id="locationMapVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.locationMapVo" Name="locationMapVo10">
+        <AttrNames>
+          <Item Value="LocationName"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="Area"/>
+          <Item Value="Pin"/>
+          <Item Value="Aoflag"/>
+          <Item Value="Aoname"/>
+          <Item Value="Autolocation"/>
+          <Item Value="Distributorname"/>
+          <Item Value="LocationCat"/>
+          <Item Value="LocationId"/>
+          <Item Value="SearchLocations"/>
+          <Item Value="Searchonmap"/>
+          <Item Value="Sno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

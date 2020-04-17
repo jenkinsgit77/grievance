@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="ourNetworkLocatorTF_ourNetworkLocatorTF_methodCall1PageDef" Package="taskflow"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LPGAreaOfficeMasterVO1" RangeSize="-1" DataControl="AppModuleDataControl"
+              id="LPGAreaOfficeMasterVO1Iterator"/>
+    <iterator Binds="LpgDistMaster1" RangeSize="-1" DataControl="AppModuleDataControl" id="LpgDistMaster1Iterator1"/>
+    <iterator Binds="AutolpgDistMasterVo1" RangeSize="-1" DataControl="AppModuleDataControl"
+              id="AutolpgDistMasterVo1Iterator1"/>
+    <iterator Binds="ROLocatorVO1" RangeSize="10" DataControl="AppModuleDataControl" id="ROLocatorVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="initLpgDistVo" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initLpgDistVo"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.initLpgDistVo.dataControl.dataProvider">
+      <NamedData NDName="ftlFlag" NDType="java.lang.String"/>
+      <NamedData NDName="zipcodeFilter" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="LPGAreaOfficeMasterVO1Iterator" id="LPGAreaOfficeMasterVO1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.LPGAreaOfficeMasterVO" Name="LPGAreaOfficeMasterVO10">
+        <AttrNames>
+          <Item Value="AreaOfficeAddress"/>
+          <Item Value="AreaOfficeCode"/>
+          <Item Value="AreaOfficeName"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="StateOfficeCode"/>
+          <Item Value="StateOfficeName"/>
+          <Item Value="Zipcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="LpgDistMaster1Iterator1" id="LpgDistMaster1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.LpgDistMaster" Name="LpgDistMaster10">
+        <AttrNames>
+          <Item Value="DistName"/>
+          <Item Value="Addr"/>
+          <Item Value="AddrLine2"/>
+          <Item Value="AddrLine3"/>
+          <Item Value="AddrLine4"/>
+          <Item Value="AoCode"/>
+          <Item Value="AoName"/>
+          <Item Value="Dist5kgFtl"/>
+          <Item Value="Distance"/>
+          <Item Value="IvrsNum"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="MainEmailAddr"/>
+          <Item Value="MainPhNum"/>
+          <Item Value="Province"/>
+          <Item Value="SalesAreaCode"/>
+          <Item Value="SalesAreaName"/>
+          <Item Value="SapCode"/>
+          <Item Value="Sno"/>
+          <Item Value="SoldToPartyCode"/>
+          <Item Value="State"/>
+          <Item Value="StateName"/>
+          <Item Value="UcmUid"/>
+          <Item Value="Zipcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="AutolpgDistMasterVo1Iterator1" id="AutolpgDistMasterVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.AutolpgDistMasterVo" Name="AutolpgDistMasterVo10">
+        <AttrNames>
+          <Item Value="DistName"/>
+          <Item Value="Addr"/>
+          <Item Value="AoCode"/>
+          <Item Value="AoName"/>
+          <Item Value="CustSinceDt"/>
+          <Item Value="Distance"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="MainEmailAddr"/>
+          <Item Value="MainFaxPhNum"/>
+          <Item Value="MainPhNum"/>
+          <Item Value="Province"/>
+          <Item Value="SalesAreaCode"/>
+          <Item Value="SalesAreaName"/>
+          <Item Value="SapCode"/>
+          <Item Value="Sno"/>
+          <Item Value="SoldToPartyCode"/>
+          <Item Value="State"/>
+          <Item Value="StateName"/>
+          <Item Value="UcmUid"/>
+          <Item Value="Zipcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ROLocatorVO1Iterator" id="ROLocatorVO1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.ROLocatorVO" Name="ROLocatorVO10">
+        <AttrNames>
+          <Item Value="AmbulaneContNo"/>
+          <Item Value="ArcheType"/>
+          <Item Value="BreakdownServiceNo"/>
+          <Item Value="CustStateName"/>
+          <Item Value="DealerName"/>
+          <Item Value="DhruvaFlag"/>
+          <Item Value="DistrictName"/>
+          <Item Value="DoCode"/>
+          <Item Value="Email"/>
+          <Item Value="FireBrigadeContNo"/>
+          <Item Value="HighwayNo"/>
+          <Item Value="HighwayType"/>
+          <Item Value="HSD"/>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="MS"/>
+          <Item Value="Pin"/>
+          <Item Value="PoliceContactNo"/>
+          <Item Value="Promo"/>
+          <Item Value="ROaddress"/>
+          <Item Value="ROCode"/>
+          <Item Value="ROMktType"/>
+          <Item Value="ROName"/>
+          <Item Value="ROServices"/>
+          <Item Value="SalesArea"/>
+          <Item Value="SalesAreaName"/>
+          <Item Value="SalesOff"/>
+          <Item Value="SalesOffName"/>
+          <Item Value="SalesOrg"/>
+          <Item Value="SalesOrgName"/>
+          <Item Value="SOCode"/>
+          <Item Value="State"/>
+          <Item Value="Telephone"/>
+          <Item Value="TelF1"/>
+          <Item Value="WorkTimingEnd"/>
+          <Item Value="WorkTimingStart"/>
+          <Item Value="XM"/>
+          <Item Value="XP"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

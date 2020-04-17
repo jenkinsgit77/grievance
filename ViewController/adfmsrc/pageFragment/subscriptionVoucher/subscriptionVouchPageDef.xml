@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="subscriptionVouchPageDef"
+                Package="pageFragment.subscriptionVoucher">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustomerGeneralVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CustomerGeneralVo1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.pValidCodeSubVoucher}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.pValidMsgSubVoucher}"/>
+      </parameters>
+    </taskFlow>
+    <iterator Binds="SvLpgHoseProductVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="SvLpgHoseProductVo1Iterator"/>
+    <iterator Binds="SvLpgStoveProductVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="SvLpgStoveProductVo1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CustomerGeneralVo1Iterator" StaticList="false" Uses="LOV_ConnectionType" id="ConnectionType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="CustomerGeneralVo1Iterator" StaticList="false" Uses="LOV_HotPlate" id="HotPlate"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="CustomerGeneralVo1Iterator" id="PromoSelected">
+      <AttrNames>
+        <Item Value="PromoSelected"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SvLpgHoseProductVo1Iterator" id="SvLpgHoseProductVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.sv.SvLpgHoseProductVo" Name="SvLpgHoseProductVo10">
+        <AttrNames>
+          <Item Value="Brand"/>
+          <Item Value="Code"/>
+          <Item Value="Description"/>
+          <Item Value="Flowcode"/>
+          <Item Value="Id"/>
+          <Item Value="Make"/>
+          <Item Value="Mrp"/>
+          <Item Value="ProductCode"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSelected"/>
+          <Item Value="Type"/>
+          <Item Value="UniqueProductIndex"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SvLpgStoveProductVo1Iterator" id="SvLpgStoveProductVo1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.sv.SvLpgStoveProductVo" Name="SvLpgStoveProductVo10">
+        <AttrNames>
+          <Item Value="Brand"/>
+          <Item Value="Code"/>
+          <Item Value="Description"/>
+          <Item Value="Flowcode"/>
+          <Item Value="Id"/>
+          <Item Value="Make"/>
+          <Item Value="Manufacturing"/>
+          <Item Value="Mrp"/>
+          <Item Value="ProductCode"/>
+          <Item Value="ProductId"/>
+          <Item Value="ProductName"/>
+          <Item Value="ProductSelected"/>
+          <Item Value="Type"/>
+          <Item Value="UniqueProductIndex"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

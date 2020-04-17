@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="SearchStockistfrgPageDef"
+                Package="pageFragment.servo">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchStockistEVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="SearchStockistEVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchStockistEVO1Iterator" id="SearchStockistEVO1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.servo.SearchStockistEVO" Name="SearchStockistEVO10">
+        <AttrNames>
+          <Item Value="StockistName"/>
+          <Item Value="ContractName"/>
+          <Item Value="PhoneNo"/>
+          <Item Value="EmailId"/>
+          <Item Value="Address"/>
+          <Item Value="Flowcode"/>
+          <Item Value="Id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

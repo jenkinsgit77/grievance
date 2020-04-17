@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+     <f:view>
+        <af:document title="TestPage.jspx" id="d1">
+          <af:resource type="javascript" source="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>
+            <af:form id="f1" usesUpload="true">
+                <af:pageTemplate viewId="/template/LoggedInTemplate.jspx" id="pt1">
+                    <?audit suppress oracle.adf.faces.pt-missing-model?>
+                    <f:facet name="header"/>
+                    <f:facet name="status"/>
+                    <f:facet name="appNav"/>
+                    <f:facet name="globalLinks"/>
+                    <f:facet name="footer"/>
+                    <f:facet name="center">
+                        <af:region value="#{bindings.FindYourOilLandingTF1.regionModel}" id="r2"/>
+                        <!--<af:region value="#{bindings.RetailOnBoardTF1.regionModel}" id="r1"/>-->
+                    </f:facet>
+                   <f:facet name="start"/>
+                    <f:facet name="end"/>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+    
+    
+    
+  
+</jsp:root>

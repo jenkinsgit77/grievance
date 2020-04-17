@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="CustomerOtherPage.jspx" id="d1">
+            <af:form id="f1" usesUpload="true">
+                <af:pageTemplate viewId="/template/LoggedInTemplate.jspx" value="#{bindings.ptb1}" id="pt1">
+                    <f:facet name="header"/>
+                    <f:facet name="status"/>
+                    <f:facet name="appNav"/>
+                    <f:facet name="globalLinks"/>
+                    <f:facet name="footer"/>
+                    <f:facet name="center">
+                        <af:region value="#{bindings.LoyaltyEnrichmentTF1.regionModel}" id="r1"/>
+                        <!--<af:region value="#{bindings.LoyaltyLinkingTF1.regionModel}" id="r1"/>-->
+                        <!--<af:region value="#{bindings.xtraRewardsPointsTF1.regionModel}" id="r3"/>-->
+                        <!--<af:region value="#{bindings.ReactivateTF1.regionModel}" id="r2"/>-->
+                        <!--<af:region value="#{bindings.CustomerPropertyLoadTF1.regionModel}" id="r2"/>-->
+                        <!--<af:region value="#{bindings.subscriptionVouchTF1.regionModel}" id="r1"/>-->
+                        <!--<af:region value="#{bindings.LinkYourLpgTF1.regionModel}" id="r1"/>-->
+                        <!--<af:region value="#{bindings.LPGSR1.regionModel}" id="r1"/>-->
+                    </f:facet>
+                    <f:facet name="start"/>
+                    <f:facet name="end"/>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

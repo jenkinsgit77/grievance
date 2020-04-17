@@ -1,0 +1,12 @@
+//Groovy Scripts for com.iocl.customer.model.viewobject.GrievForm
+
+package com.iocl.customer.model.viewobject
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="GrievSubCatVO1", name="CatCodeVar")
+def CatCodeVar_GrievSubCatVO1_BindVariable_BoundParameter()
+{
+adf.source.Category
+}
+

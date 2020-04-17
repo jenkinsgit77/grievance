@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">SRCreationLPG</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">268.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SRCreationLPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">106.5459</property>
+      <property
+         name="page">/pageFragment/lpgsr/SRCreationLPG.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">SelBusincessLine</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">408.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SelBusincessLine&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">288.59766</property>
+      <property
+         name="page">/pageFragment/selbusinessline/SelBusincessLine.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View4"
+      to="View3">
+      <property
+         name="fromOutcome">LPG</property>
+      <property
+         name="sdm:polyPoints">T50,408.0,233.42134,268.0,161.02107,B50</property>
+   </ControlFlowCase>
+</SDM>

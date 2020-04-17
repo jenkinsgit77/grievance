@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CustomerBussinessValidation">
+    <default-activity>CustomerBussinessValidation1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>errorBusinessValidationCode</name>
+      <value>#{pageFlowScope.errorBusinessValidationCode}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__2">
+      <name>errorBusinessValidationMSG</name>
+      <value>#{pageFlowScope.errorBusinessValidationMSG}</value>
+    </input-parameter-definition>
+    <view id="CustomerBussinessValidation1">
+      <page>/pageFragment/CustomerBussinessValidation.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ourNetworkLocatorTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>methodCall1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__4">
+     <name>FtlFlag</name>
+     <value>#{pageFlowScope.FtlFlag}</value>
+     <class>java.lang.Boolean</class>
+   </input-parameter-definition>
+   <input-parameter-definition id="__5">
+     <name>DistributorFlag</name>
+     <value>#{pageFlowScope.DistributorFlag}</value>
+     <class>java.lang.Boolean</class>
+   </input-parameter-definition>
+   <input-parameter-definition id="__6">
+     <name>AutoLPGFlag</name>
+     <value>#{pageFlowScope.AutoLPGFlag}</value>
+     <class>java.lang.Boolean</class>
+   </input-parameter-definition>
+   <input-parameter-definition id="__7">
+     <name>AreaOfficeFlag</name>
+     <value>#{pageFlowScope.AreaOfficeFlag}</value>
+     <class>java.lang.Boolean</class>
+   </input-parameter-definition>
+   <input-parameter-definition id="__8">
+     <name>NetworkFlag</name>
+     <value>#{pageFlowScope.NetworkFlag}</value>
+     <class>java.lang.String</class>
+   </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name>LatitudeVal</name>
+      <value>#{pageFlowScope.LatitudeVal}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>LongitudeVal</name>
+      <value>#{pageFlowScope.LongitudeVal}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__11">
+      <name>NoDataMsg</name>
+      <value>#{pageFlowScope.NoDataMsg}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__12">
+      <name>CategoryVal</name>
+      <value>#{pageFlowScope.CategoryVal}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__13">
+      <name>BackLinkUrl</name>
+      <value>#{pageFlowScope.BackLinkUrl}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__14">
+      <name>RetailOutletFlag</name>
+      <value>#{pageFlowScope.RetailOutletFlag}</value>
+      <class>java.lang.Boolean</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__16">
+      <name>pdealerCode</name>
+      <value>#{pageFlowScope.pdealerCode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__17">
+      <name>pFrom</name>
+      <value>#{pageFlowScope.pFrom}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__15">
+      <name>CategoryType</name>
+      <value>#{pageFlowScope.CategoryType}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>networklocatorbean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.NetworkLocatorBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    
+    <view id="OurNetworkLocatorPF">
+      <page>/pageFragment/ourNetwork/OurNetworkLocatorPF.jsff</page>
+    </view>
+    <method-call id="methodCall1">
+      <method>#{backingBeanScope.networklocatorbean.initializerTaskFlow}</method>
+      <outcome>
+        <fixed-outcome>goToNetworkLocator</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="feedbackConfirmation">
+      <page>/pageFragment/feedback/feedbackConfirmation.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>methodCall1</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>goToNetworkLocator</from-outcome>
+        <to-activity-id>OurNetworkLocatorPF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id>OurNetworkLocatorPF</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>toconfirm</from-outcome>
+        <to-activity-id>feedbackConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

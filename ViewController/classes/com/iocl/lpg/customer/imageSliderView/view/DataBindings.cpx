@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.1.61.92" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.iocl.lpg.customer.imageSliderView.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/ImageSliderPage.jspx" usageId="view_ImageSliderPagePageDef"/>
+    
+    <page path="/template/LoggedInTemplate.jspx" usageId="view_LoggedInTemplatePageDef"/>
+    <page path="/mainPages/BannerMainPage.jspx" usageId="view_BannerMainPagePageDef"/>
+    <page path="/mainPages/LPGLandingPage.jspx" usageId="view_LPGLandingPagePageDef"/>
+    <page path="/pageFragment/lpgLanding.jsff" usageId="com_iocl_lpg_imageSliderView_view_lpgLandingPageDef"/>
+    <page path="/WEB-INF/taskflow/lpgLandingTF.xml#lpgLandingTF@fetchApplist"
+          usageId="com_iocl_lpg_imageSliderView_view_lpgLandingTF_lpgLandingTF_fetchApplistPageDef"/>
+    <page path="/mainPages/OverviewSection.jspx" usageId="com_iocl_lpg_imageSliderView_view_OverviewSectionPageDef"/>
+    <page path="/pageFragment/slider.jsff" usageId="com_iocl_lpg_imageSliderView_view_sliderPageDef"/>
+    <page path="/pageFragment/subscriptionVoucher/subscriptionVouch.jsff"
+          usageId="com_iocl_lpg_imageSliderView_view_subscriptionVouchPageDef"/>
+    <page path="/pageFragment/subscriptionVoucher/paymentMethod.jsff"
+          usageId="com_iocl_lpg_imageSliderView_view_paymentMethodPageDef"/>
+    <page path="/pageFragment/ServiceRequest.jsff" usageId="com_iocl_lpg_imageSliderView_view_ServiceRequestPageDef"/>
+    <page path="/pageFragment/otp/OTP.jsff" usageId="com_iocl_lpg_imageSliderView_view_OTPPageDef"/>
+    <page path="/pageFragment/linkyourlpg/LinkYourLpg.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_LinkYourLpgPageDef"/>
+    <page path="/pageFragment/linkyourlpg/EmailOtp.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_EmailOtpPageDef"/>
+    <page path="/pageFragment/linkyourlpg/Otp.jsff" usageId="com_iocl_lpg_customer_imageSliderView_view_OtpPageDef"/>
+    <page path="/mainPages/CustomerOtherPage.jspx"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_CustomerOtherPagePageDef"/>
+    <page path="/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml#ExceptionHandlerTF@fetchErrorMessage"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_ExceptionHandlerTF_ExceptionHandlerTF_fetchErrorMessagePageDef"/>
+    <page path="/pageFragment/ourNetwork/OurNetworkLocatorPF.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_OurNetworkLocatorPFPageDef"/>
+    <page path="/OurNetworkLocator.jspx" usageId="com_iocl_lpg_customer_imageSliderView_view_OurNetworkLocatorPageDef"/>
+    <page path="/WEB-INF/taskflow/ourNetworkDistribtorTF.xml#ourNetworkDistribtorTF@initializerTF"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_ourNetworkDistribtorTF_ourNetworkDistribtorTF_initializerTFPageDef"/>
+    <page path="/pageFragment/networkLocatorFrag.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_networkLocatorFragPageDef"/>
+    <page path="/WEB-INF/taskflow/lpgLandingTF.xml#lpgLandingTF@fetchAppListLpgLogIn"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_lpgLandingTF_lpgLandingTF_fetchAppListLpgLogInPageDef"/>
+    <page path="/WEB-INF/iamge-slider-flow.xml#iamge-slider-flow@fetchAppListLpgLogIn"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_iamge_slider_flow_iamge_slider_flow_fetchAppListLpgLogInPageDef"/>
+    <page path="/WEB-INF/taskflow/OverviewSectionTF.xml#OverviewSectionTF@overviewOnLoad"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_OverviewSectionTF_OverviewSectionTF_overviewOnLoadPageDef"/>
+    <page path="/WEB-INF/taskflow/ourNetworkLocatorTF.xml#ourNetworkLocatorTF@methodCall1"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_ourNetworkLocatorTF_ourNetworkLocatorTF_methodCall1PageDef"/>
+    <page path="/WEB-INF/taskflow/SelectCustAccountTF.xml#SelectCustAccountTF@showRelationPopupOnLoad"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_SelectCustAccountTF_SelectCustAccountTF_showRelationPopupOnLoadPageDef"/>
+    <page path="/pageFragment/linkyourlpg/AccountDetails.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_AccountDetailsPageDef"/>
+    <page path="/TestPage.jspx" usageId="com_iocl_lpg_customer_imageSliderView_view_TestPagePageDef"/>
+    <page path="/R.jspx" usageId="com_iocl_lpg_customer_imageSliderView_view_RPageDef"/>
+    <page path="/pageFragment/lpgsr/SRCreationLPG.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_SRCreationLPGPageDef"/>
+    <page path="/pageFragment/Error.jsff" usageId="com_iocl_lpg_customer_imageSliderView_view_ErrorPageDef"/>
+    <page path="/WEB-INF/taskflow/lpgLandingTF.xml#lpgLandingTF@LPGSectionOnLoad"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_lpgLandingTF_lpgLandingTF_LPGSectionOnLoadPageDef"/>
+    <page path="/WEB-INF/taskflow/subscriptionVoucher/subscriptionVouchTF.xml#subscriptionVouchTF@subsVoucherOnload"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_subscriptionVouchTF_subscriptionVouchTF_subsVoucherOnloadPageDef"/>
+    <page path="/pageFragment/subscriptionVoucher/subsVouchOrder.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_subsVouchOrderPageDef"/>
+    <page path="/pageFragment/reactivate/reactivate.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_reactivatePageDef"/>
+    <page path="/pageFragment/attachment/AttachmentAdd.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_AttachmentAddPageDef"/>
+    <page path="/WEB-INF/taskflow/ReportsTF.xml#Reports@generateReport"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_ReportsTF_Reports_generateReportPageDef"/>
+    <page path="/pageFragment/reports.jsff" usageId="com_iocl_lpg_customer_imageSliderView_view_reportsPageDef"/>
+    <page path="/WEB-INF/taskflow/common/FetchIconsTF.xml#FetchIconsTF@fetchAppListCustomerNonLogin"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_FetchIconsTF_FetchIconsTF_fetchAppListCustomerNonLoginPageDef"/>
+    <page path="/pageFragment/customerNonLogin/tononLogin.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_tononLoginPageDef"/>
+    <page path="/pageFragment/pgFrame.jsff" usageId="com_iocl_lpg_customer_imageSliderView_view_pgFramePageDef"/>
+    <page path="/WEB-INF/taskflow/payment/custAppPGRedirectFlow.xml#pgRedirectFlow@handlePgResponse"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_custAppPGRedirectFlow_pgRedirectFlow_handlePgResponsePageDef"/>
+    <page path="/pageFragment/xtraRewards/xtraRPoints.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_xtraRPointsPageDef"/>
+    <page path="/WEB-INF/taskflow/loyalty/xtraRewardsPointsTF.xml#xtraRewardsPointsTF@fetchPointsDetails"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_xtraRewardsPointsTF_xtraRewardsPointsTF_fetchPointsDetailsPageDef"/>
+    <page path="/pageFragment/xtraRewards/profileEnrichment.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_profileEnrichmentPageDef"/>
+    <page path="/pageFragment/xtraRewards/loyaltyDetails.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_loyaltyDetailsPageDef"/>
+    <page path="/pageFragment/feedback/dealerFeedback.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_dealerFeedbackPageDef"/>
+    <page path="/dealerFeedback.jspx" usageId="com_iocl_lpg_customer_imageSliderView_view_dealerFeedbackPageDef1"/>
+    <page path="/WEB-INF/taskflow/DealerFeedback/DealerFeedbackTF.xml#DealerFeedbackTF@fetchDealerCode"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_DealerFeedbackTF_DealerFeedbackTF_fetchDealerCodePageDef"/>
+    <page path="/pageFragment/linkyourlpg/LpgId.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_LpgIdPageDef"/>
+    <page path="/pageFragment/ContactUs/ContactUs.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_ContactUsPageDef"/>
+    <page path="/pageFragment/LeadCreation.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_LeadCreationPageDef"/>
+    <page path="/pageFragment/linkyourlpg/ContacttoDist.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_ContacttoDistPageDef"/>
+    <page path="/pageFragment/xtraRewards/loyaltyLinking.jsff"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_loyaltyLinkingPageDef"/>
+    <page path="/WEB-INF/taskflow/loyalty/LoyaltyEnrichmentTF.xml#LoyaltyEnrichmentTF@onloadProfileMethod"
+          usageId="com_iocl_lpg_customer_imageSliderView_view_LoyaltyEnrichmentTF_LoyaltyEnrichmentTF_onloadProfileMethodPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_ImageSliderPagePageDef"
+          path="com.iocl.lpg.customer.imageSliderView.view.pageDefs.ImageSliderPagePageDef"/>
+    <page id="view_nonLoginPageDef" path="com.iocl.lpg.customer.imageSliderView.view.pageDefs.nonLoginPageDef"/>
+
+    <page id="view_LoggedInTemplatePageDef" path="template.LoggedInTemplatePageDef"/>
+    <page id="view_BannerMainPagePageDef" path="mainPages.BannerMainPagePageDef"/>
+    <page id="view_LPGLandingPagePageDef" path="mainPages.LPGLandingPagePageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_lpgLandingPageDef" path="pageFragment.lpgLandingPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_lpgLandingTF_lpgLandingTF_fetchApplistPageDef"
+          path="taskflow.lpgLandingTF_lpgLandingTF_fetchApplistPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_OverviewSectionPageDef" path="mainPages.OverviewSectionPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_sliderPageDef" path="pageFragment.sliderPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_subscriptionVouchPageDef"
+          path="pageFragment.subscriptionVoucher.subscriptionVouchPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_ServiceRequestPageDef" path="pageFragment.ServiceRequestPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_paymentMethodPageDef"
+          path="pageFragment.subscriptionVoucher.paymentMethodPageDef"/>
+    <page id="com_iocl_lpg_imageSliderView_view_OTPPageDef" path="pageFragment.otp.OTPPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_LinkYourLpgPageDef"
+          path="pageFragment.linkyourlpg.LinkYourLpgPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_EmailOtpPageDef"
+          path="pageFragment.linkyourlpg.EmailOtpPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_OtpPageDef" path="pageFragment.linkyourlpg.OtpPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_CustomerOtherPagePageDef"
+          path="mainPages.CustomerOtherPagePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ExceptionHandlerTF_ExceptionHandlerTF_fetchErrorMessagePageDef"
+          path="ExceptIonHandler.ExceptionHandlerTF_ExceptionHandlerTF_fetchErrorMessagePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_OurNetworkLocatorPFPageDef"
+          path="pageFragment.ourNetwork.OurNetworkLocatorPFPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_OurNetworkLocatorPageDef"
+          path="view.pageDefs.OurNetworkLocatorPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ourNetworkDistribtorTF_ourNetworkDistribtorTF_initializerTFPageDef"
+          path="taskflow.ourNetworkDistribtorTF_ourNetworkDistribtorTF_initializerTFPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_networkLocatorFragPageDef"
+          path="pageFragment.networkLocatorFragPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_lpgLandingTF_lpgLandingTF_fetchAppListLpgLogInPageDef"
+          path="taskflow.lpgLandingTF_lpgLandingTF_fetchAppListLpgLogInPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_iamge_slider_flow_iamge_slider_flow_fetchAppListLpgLogInPageDef"
+          path="view.pageDefs.iamge_slider_flow_iamge_slider_flow_fetchAppListLpgLogInPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_OverviewSectionTF_OverviewSectionTF_overviewOnLoadPageDef"
+          path="taskflow.OverviewSectionTF_OverviewSectionTF_overviewOnLoadPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ourNetworkLocatorTF_ourNetworkLocatorTF_methodCall1PageDef"
+          path="taskflow.ourNetworkLocatorTF_ourNetworkLocatorTF_methodCall1PageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_SelectCustAccountTF_SelectCustAccountTF_showRelationPopupOnLoadPageDef"
+          path="taskflow.SelectCustAccountTF_SelectCustAccountTF_showRelationPopupOnLoadPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_AccountDetailsPageDef"
+          path="pageFragment.linkyourlpg.AccountDetailsPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_TestPagePageDef" path="view.pageDefs.TestPagePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_RPageDef" path="view.pageDefs.RPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_SRCreationLPGPageDef"
+          path="pageFragment.lpgsr.SRCreationLPGPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ErrorPageDef" path="pageFragment.ErrorPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_lpgLandingTF_lpgLandingTF_LPGSectionOnLoadPageDef"
+          path="taskflow.lpgLandingTF_lpgLandingTF_LPGSectionOnLoadPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_subscriptionVouchTF_subscriptionVouchTF_subsVoucherOnloadPageDef"
+          path="taskflow.subscriptionVoucher.subscriptionVouchTF_subscriptionVouchTF_subsVoucherOnloadPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_subsVouchOrderPageDef"
+          path="pageFragment.subscriptionVoucher.subsVouchOrderPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_reactivatePageDef"
+          path="pageFragment.reactivate.reactivatePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_AttachmentAddPageDef"
+          path="pageFragment.attachment.AttachmentAddPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ReportsTF_Reports_generateReportPageDef"
+          path="taskflow.ReportsTF_Reports_generateReportPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_reportsPageDef" path="pageFragment.reportsPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_FetchIconsTF_FetchIconsTF_fetchAppListCustomerNonLoginPageDef"
+          path="taskflow.common.FetchIconsTF_FetchIconsTF_fetchAppListCustomerNonLoginPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_tononLoginPageDef"
+          path="pageFragment.customerNonLogin.tononLoginPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_pgFramePageDef" path="pageFragment.pgFramePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_custAppPGRedirectFlow_pgRedirectFlow_handlePgResponsePageDef"
+          path="taskflow.payment.custAppPGRedirectFlow_pgRedirectFlow_handlePgResponsePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_xtraRPointsPageDef"
+          path="pageFragment.xtraRewards.xtraRPointsPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_xtraRewardsPointsTF_xtraRewardsPointsTF_fetchPointsDetailsPageDef"
+          path="taskflow.loyalty.xtraRewardsPointsTF_xtraRewardsPointsTF_fetchPointsDetailsPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_profileEnrichmentPageDef"
+          path="pageFragment.xtraRewards.profileEnrichmentPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_loyaltyDetailsPageDef"
+          path="pageFragment.xtraRewards.loyaltyDetailsPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_dealerFeedbackPageDef"
+          path="pageFragment.feedback.dealerFeedbackPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_dealerFeedbackPageDef1"
+          path="view.pageDefs.dealerFeedbackPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_DealerFeedbackTF_DealerFeedbackTF_fetchDealerCodePageDef"
+          path="taskflow.DealerFeedback.DealerFeedbackTF_DealerFeedbackTF_fetchDealerCodePageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_LpgIdPageDef" path="pageFragment.linkyourlpg.LpgIdPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ContactUsPageDef"
+          path="pageFragment.ContactUs.ContactUsPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_LeadCreationPageDef" path="pageFragment.LeadCreationPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_ContacttoDistPageDef"
+          path="pageFragment.linkyourlpg.ContacttoDistPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_loyaltyLinkingPageDef"
+          path="pageFragment.xtraRewards.loyaltyLinkingPageDef"/>
+    <page id="com_iocl_lpg_customer_imageSliderView_view_LoyaltyEnrichmentTF_LoyaltyEnrichmentTF_onloadProfileMethodPageDef"
+          path="taskflow.loyalty.LoyaltyEnrichmentTF_LoyaltyEnrichmentTF_onloadProfileMethodPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="com.iocl.customer.model.service"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

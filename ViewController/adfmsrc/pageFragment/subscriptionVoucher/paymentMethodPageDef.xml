@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="paymentMethodPageDef"
+                Package="pageFragment.subscriptionVoucher">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="paymentGatewayFlow1" taskFlowId="/WEB-INF/taskflow/payment/paymentGatewayFlow.xml#paymentGatewayFlow"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="amount" value="#{pageFlowScope.paymentamount}"/>
+        <parameter id="gatewayName" value="cc"/>
+        <parameter id="orderNo" value="#{pageFlowScope.orderNumber}"/>
+      </parameters>
+    </taskFlow>
+    <iterator Binds="CustomerGeneralVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="CustomerGeneralVo1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CustomerGeneralVo1Iterator" id="paymentMode" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="paymentMode"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="SBI"/>
+        <Item Value="CCAVENUE"/>
+      </ValueList>
+    </list>
+  </bindings>
+</pageDefinition>

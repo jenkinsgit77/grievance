@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="MobileNotFoundPageDef"
+                Package="pageFragment.linkyourlpg">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="LinkedLpgVO1Iterator" Binds="LinkedLpgVO1" DataControl="AppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="RelUCMId">
+      <AttrNames>
+        <Item Value="RelUCMId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="MobileNumber">
+      <AttrNames>
+        <Item Value="MobileNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="DistributorName">
+      <AttrNames>
+        <Item Value="DistributorName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="EmailId">
+      <AttrNames>
+        <Item Value="EmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="UCMId">
+      <AttrNames>
+        <Item Value="UCMId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LinkedLpgVO1Iterator" id="CunsumerId">
+      <AttrNames>
+        <Item Value="CunsumerId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

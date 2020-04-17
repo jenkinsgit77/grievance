@@ -1,0 +1,570 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+          
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="javascript" source="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+    <af:resource source="https://maps.googleapis.com/maps/api/js?key=${backingBeanScope.networklocatorbean.mapKey}&amp;libraries=places"
+                 type="javascript"/>
+    <af:resource type="javascript" source="/js/networkLocatorScriptv3.js"/>
+    <af:resource type="css">
+     .hovercolor:hover {
+                  border-color: #aaaaaa !important;
+                 background-color: #d5d4d3 !important;
+          }
+          
+        .myinputWidth input {
+            width: 80% !important;
+        }
+
+        .myinputWidth div {
+            display: inline;
+        }
+
+        .listMarker span {
+            position: absolute;
+            left: 22px;
+            color: #fff;
+            font-size: 11px;
+            top: 5px;
+        }
+
+        input.location {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            border-bottom: 1px solid #000;
+            width: 99%;
+            margin-bottom: 15px;
+        }
+    </af:resource>
+    <af:panelGroupLayout id="pgl1777" styleClass="row iocl_page" layout="vertical">
+        <af:panelGroupLayout id="pgl44" styleClass="col-md-12  marginbottom15 backlink" layout="vertical"
+                             visible="#{pageFlowScope.BackLinkUrl=='LPG'}">
+            <af:link id="l11" text="#{custPortalBundle.BACK_TO_LPG_SERVICES}"
+                     destination="/portal/LPG/pages_lpgservices"/>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl5" styleClass="row iocl_page" layout="vertical">
+        <af:panelGroupLayout id="pgl13" styleClass="col-md-12" layout="vertical">
+            <af:panelGroupLayout id="pgl21" styleClass="IOCLcontent_box1" layout="vertical">
+                <af:panelGroupLayout id="pgl23" layout="vertical" styleClass="row">
+                    <af:panelGroupLayout id="pgl48" layout="vertical" styleClass="col-md-6">
+                        <af:outputLabel value="Our Network" styleClass="mainHeading" id="ol11"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl6" layout="vertical" styleClass="col-md-6 text-right">
+                        <af:outputFormatted value="#{custPortalBundle.All_MANDATORY_FIELD_MESSAGE}" id="of6"
+                                            styleClass="formMandatoryNoteGrey " rendered="true"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl22" layout="vertical" styleClass="row">
+                    <af:panelGroupLayout id="pgl24" styleClass="col-md-4" layout="vertical">
+                        <af:panelGroupLayout id="pgl45" styleClass="marginspace" layout="vertical">
+                            <af:outputFormatted value="#{custPortalBundle.SELECT_MANDATORY}" id="of22" styleClass="disstributorInfoLabel"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl46" styleClass="marginspace selectMapcategory" layout="vertical">
+                            <af:selectOneChoice value="#{pageFlowScope.CategoryVal}" autoSubmit="true" id="soc1"
+                                                partialTriggers="pgl19" simple="true"
+                                                unselectedLabel="#{custPortalBundle.PLEASE_SELECT}"
+                                                valueChangeListener="#{backingBeanScope.networklocatorbean.networkTypeVCL}"
+                                                binding="#{backingBeanScope.networklocatorbean.categoryTypeBinding}">
+                                <f:selectItems value="#{pageFlowScope.CategoryList}" id="si1"/>
+                                <f:validator binding="#{bindings.NetworkType.validator}"/>
+                            </af:selectOneChoice>
+                            <af:outputFormatted value="#{backingBeanScope.networklocatorbean.categoryTypeErrMsg}" id="of52"
+                                                styleClass="errorMessage" partialTriggers="b1"
+                                                binding="#{backingBeanScope.networklocatorbean.categoryTypeErrMsgBinding}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl25" styleClass="col-md-4 col-md-offset-3 " layout="vertical">
+                        <af:panelGroupLayout id="pgl8" styleClass="marginspace" layout="vertical">
+                            <af:outputFormatted value="#{custPortalBundle.MAP_AREA_LABEL}" id="of51"
+                                                styleClass="disstributorInfoLabel"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl10" styleClass="marginspace myinputWidth" layout="vertical">
+                            <af:inputText label="Label 1" id="it1" simple="true" styleClass="txtPlaces"
+                                          binding="#{backingBeanScope.networklocatorbean.searchLocationBinding}">
+
+                            </af:inputText>
+                            <af:outputText styleClass="fatchPin" id="ot1" visible="true" clientComponent="true"/>
+
+                             <af:outputFormatted value="#{backingBeanScope.networklocatorbean.searchLocationErrMsg}" id="of53"
+                                                styleClass="errorMessage" partialTriggers="b1"
+                                                 binding="#{backingBeanScope.networklocatorbean.networklocatorbeanBinding}"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl12" styleClass="row" layout="vertical" visible="true">
+                    <af:panelGroupLayout id="pgl7" styleClass="col-md-3 col-md-offset-7" layout="vertical"
+                                         visible="true">
+                        <af:button text="#{custPortalBundle.CUST_NTWRKLOCATOR_SHOW}" id="b1"
+                                   action="#{backingBeanScope.networklocatorbean.showButtonAction}"></af:button>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl15" styleClass="row margintop30" layout="vertical"
+                                     inlineStyle="border-top: 1px solid grey;">
+                    <af:panelGroupLayout layout="vertical" id="pgl19" styleClass="col-md-4 pr-0,px-0"
+                                         inlineStyle=" border: 1px solid grey; height: 600px; overflow-x: hidden;">
+                        <af:panelGroupLayout id="pgl51" styleClass="marker" partialTriggers="b1 soc1 it1">
+                            <af:panelGroupLayout id="pgl32" partialTriggers="soc1 b1 it1"
+                                                 visible="#{pageFlowScope.NetworkFlag eq 'Ftl'}">
+                                <af:outputFormatted value="#{pageFlowScope.NoDataMsg}" id="of5"
+                                                    partialTriggers="soc1 b1 it1"/>
+                                <af:iterator value="#{bindings.LpgDistMaster1.collectionModel}" var="item1" id="i1"
+                                             rows="50" varStatus="lpgDistMasterItem">
+                                    <af:panelGroupLayout id="pgl1" layout="vertical"
+                                                         inlineStyle="border-bottom: 1px solid grey; padding: 10px; "
+                                                         styleClass="listmarkerClick fontregular">
+                                        <af:panelGroupLayout id="pgl2" layout="vertical" styleClass="row ">
+                                            <af:panelGroupLayout id="pgl14" styleClass="col-md-2 listMarker pr-0,px-0">
+                                                <af:link icon="/images/Pointer-search.png"
+                                                         text="#{lpgDistMasterItem.index+1}" id="l2"
+                                                         inlineStyle="pointer-events: none;">
+                                                </af:link>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl11" styleClass="col-md-9 font-size20 pr-0,px-0">
+                                                <af:outputFormatted value="#{item1.DistName}" id="of7"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl26">
+                                            <af:outputFormatted value="#{item1.Addr}" id="of8"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl27">
+                                            <af:outputFormatted value="#{item1.Zipcode}" id="of9"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl9">
+                                            <af:outputFormatted value="#{item1.StateName}" id="of2"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl41">
+                                            <af:panelGroupLayout id="pgl47">
+                                                <af:outputFormatted value="#{'Phone No:'}" id="of19"
+                                                                    styleClass="strong"/>
+                                                <af:outputFormatted value="#{item1.MainPhNum}" id="of15"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl42">
+                                            <af:outputFormatted value="#{item1.MainEmailAddr}" id="of16"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl43">
+                                            <af:panelGroupLayout id="pgl49">
+                                                <af:outputFormatted value="#{'Ivrs No :'}" id="of18"
+                                                                    styleClass="strong"/>
+                                                <af:outputFormatted value="#{item1.IvrsNum}" id="of17"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl99" partialTriggers="soc1 b1 it1"
+                                                 visible="#{pageFlowScope.NetworkFlag eq 'Distributor'}">
+                                <af:outputFormatted value="#{pageFlowScope.NoDataMsg}" id="of43"
+                                                    partialTriggers="soc1 b1 it1"/>
+                                <af:iterator value="#{bindings.PartnerLocatorVO1.collectionModel}" var="item1" id="i5"
+                                             rows="50" varStatus="partnerItem">
+                                             
+                                    <af:panelGroupLayout id="pgl100" layout="vertical"
+                                                         inlineStyle="border-bottom: 1px solid grey; padding: 10px; "
+                                                         styleClass="listmarkerClick fontregular">
+                                        <af:panelGroupLayout id="pgl101" layout="vertical" styleClass="row ">
+                                            <af:panelGroupLayout id="pgl102" styleClass="col-md-2 listMarker pr-0,px-0">
+                                                <af:link icon="/images/Pointer-search.png"
+                                                         text="#{partnerItem.index+1}" id="l5"
+                                                         inlineStyle="pointer-events: none;">
+                                                </af:link>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl103" styleClass="col-md-9 font-size20 pr-0,px-0">
+                                                <af:outputFormatted value="#{item1.PartnerName}" id="of44"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl104">
+                                            <af:outputFormatted value="#{item1.Address}" id="of45"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl108">
+                                            <af:outputFormatted value="#{item1.Pin}" id="of46"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl109">
+                                            <af:outputFormatted value="#{item1.CustStateName}" id="of47"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl110">
+                                            <af:panelGroupLayout id="pgl111">
+                                                <af:outputFormatted value="#{'Phone No:'}" id="of48"
+                                                                    styleClass="strong"/>
+                                                <af:outputFormatted value="#{item1.Telephone}" id="of49"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl112">
+                                            <af:outputFormatted value="#{item1.Email}" id="of50"/>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl33" partialTriggers="soc1 b1 it1"
+                                                 visible="#{pageFlowScope.NetworkFlag eq 'AutoLPG'}">
+                                <af:outputFormatted id="of3" partialTriggers="soc1 b1 it1"
+                                                    value="#{pageFlowScope.NoDataMsg}"/>
+                                <af:iterator value="#{bindings.AutolpgDistMasterVo1.collectionModel}" var="item2"
+                                             id="i2" varStatus="autoLpgItem" rows="-1">
+                                    <af:panelGroupLayout id="pgl16" layout="vertical"
+                                                         styleClass="listmarkerClick fontregular"
+                                                         inlineStyle="border-bottom: 1px solid grey; padding: 10px; ">
+                                        <af:panelGroupLayout id="pgl18" layout="vertical">
+                                            <af:panelGroupLayout id="pgl17" styleClass="col-md-2 listMarker pr-0,px-0">
+                                                <af:link icon="/images/Pointer-search.png" text="#{autoLpgItem.index+1}"
+                                                         id="l3"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl28"
+                                                                 styleClass="col-md-10 font-size20 pr-0,px-0">
+                                                <af:outputFormatted value="#{item2.DistName}" id="of1"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl29">
+                                            <af:outputFormatted value="#{item2.StateName}" id="of11"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl31">
+                                            <af:outputFormatted value="#{item2.Zipcode}" id="of14"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl30">
+                                            <af:outputFormatted value="#{item2.Addr}" id="of13"/>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl37" partialTriggers="soc1 b1 it1"
+                                                 visible="#{pageFlowScope.NetworkFlag eq 'AreaOffice'}">
+                                <af:outputFormatted value="#{pageFlowScope.NoDataMsg}" id="of20"
+                                                    partialTriggers="soc1 b1 it1"/>
+                                <af:iterator value="#{bindings.AOLocatorVO1.collectionModel}" var="item2"
+                                             id="i3" varStatus="areaOfficeItem" rows="-1">
+                                    <af:panelGroupLayout id="pgl38" layout="vertical" styleClass="listmarkerClick"
+                                                         inlineStyle="border-bottom: 1px solid grey; padding: 10px; font-weight: 400;">
+                                        <af:panelGroupLayout id="pgl39" layout="vertical">
+                                            <af:panelGroupLayout id="pgl40" styleClass="col-md-2 listMarker pr-0,px-o">
+                                                <af:link icon="/images/Pointer-search.png"
+                                                         text="#{areaOfficeItem.index+1}" id="l1"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl36"
+                                                                 styleClass="col-md-10 font-size20 pr-0,px-0">
+                                                <af:outputFormatted value="#{item2.OfficeName}" id="of12"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl35">
+                                            <af:outputFormatted value="#{item2.Address}" id="of10"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl4">
+                                            <af:outputFormatted value="#{item2.Email}" id="of41"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout layout="vertical" id="pgl90">
+                                            <af:outputFormatted value="#{item2.PhoneNo}" id="of42"/>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl54" partialTriggers="soc1 b1 it1"
+                                                 visible="#{pageFlowScope.NetworkFlag eq 'RetailOutlet'}">
+                                <af:outputFormatted value="#{pageFlowScope.NoDataMsg}" id="of21"
+                                                    partialTriggers="soc1 b1 it1"/>
+                                <af:iterator value="#{bindings.ROLocatorVO1.collectionModel}" var="item5" id="i4"
+                                             varStatus="retailOutletItem" rows="-1">
+                                    <af:panelGroupLayout id="pgl57" layout="vertical"
+                                                         inlineStyle="border-bottom: 1px solid grey; padding: 10px; ">
+                                        <af:panelGroupLayout id="pgl63" styleClass="listmarkerClick fontregular"
+                                                             layout="vertical">
+                                            <af:panelGroupLayout id="pgl56" layout="vertical" styleClass="marginb10">
+                                                <af:panelGroupLayout id="pgl55"
+                                                                     styleClass="col-md-2 listMarker pr-0,px-0">
+                                                    <af:link icon="/images/Pointer-search.png"
+                                                             text="#{retailOutletItem.index+1}" id="l4"
+                                                             inlineStyle="pointer-events: none;"/>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl58"
+                                                                     styleClass="col-md-10 pr-0,px-0 font-size20">
+                                                    <af:outputFormatted value="#{item5.ROName}" id="of23"/>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout layout="vertical" id="pgl59"
+                                                                 inlineStyle="margin-top: 45px;">
+                                                <af:outputFormatted value="#{item5.ROaddress}" id="of24"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout layout="vertical" id="pgl66">
+                                                <af:outputFormatted value="#{'Dealer:'}" id="of33" styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.DealerName}" id="of31"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout layout="vertical" id="pgl65">
+                                                <af:outputFormatted value="#{item5.Email}" id="of30"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout layout="vertical" id="pgl60">
+                                                <af:outputFormatted value="#{'Phone No:'}" id="of34"
+                                                                    styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.Telephone}" id="of25"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout layout="horizontal" id="pgl62">
+                                                <af:outputFormatted value="#{'MS:'}" id="of35" styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.MS}" id="of27"/>
+                                                <af:spacer width="10" height="10" id="s1"/>
+                                                <af:outputFormatted value="#{'XM:'}" id="of36" styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.XM}" id="of32"/>
+                                                <af:spacer width="10" height="10" id="s2"/>
+                                                <af:outputFormatted value="#{'HSD:'}" id="of37" styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.HSD}" id="of28"/>
+                                                <af:spacer width="10" height="10" id="s3"/>
+                                                <af:outputFormatted value="#{'XP:'}" id="of38" styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.XP}" id="of29"/>
+                                                
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout layout="horizontal" id="pgl61">
+                                                <af:outputFormatted value="#{'Amenities:'}" id="of39"
+                                                                    styleClass="strong"/>
+                                                <af:outputFormatted value="#{item5.ROServices}" id="of26"/>
+                                            </af:panelGroupLayout>
+                                            
+                                        </af:panelGroupLayout>
+                                        <af:link text="Feedback" id="l6"  visible="#{sessionScope.userDetails.ucmID!=null}"
+                                                 action="#{backingBeanScope.networklocatorbean.feedbackLinkAction}">
+                                            <af:setActionListener from="#{item5.ROCode}" 
+                                                                  to="#{pageFlowScope.pdealerCode}"/>
+                                        </af:link>
+                                    </af:panelGroupLayout>
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                                              binding="#{backingBeanScope.networklocatorbean.feedbackPopupBinding}"
+                                              popupCanceledListener="#{backingBeanScope.networklocatorbean.feedbackPopupCancelListener}"
+                                              contentDelivery="immediate">
+                                        <af:dialog id="d1" styleClass="MyDialog test iocl_page" type="none"
+                                                   contentWidth="650" contentHeight="300">
+                                            <af:panelGroupLayout id="pgl53"  layout="vertical">
+        <af:panelGroupLayout id="pgl64" styleClass="col-md-12" layout="vertical">
+            <af:panelGroupLayout id="pgl67" styleClass="IOCLcontent_box1" layout="vertical">
+                <af:panelGroupLayout id="pgl68" styleClass="row" layout="vertical">
+                    <af:panelGroupLayout id="pgl69" layout="vertical" styleClass="col-md-12">
+                        <af:outputText id="ot5" value="Dealer Feedback" styleClass="pageHeaderFontStyleFeedback"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl70" styleClass="row marB15" layout="vertical">
+                    <af:panelGroupLayout id="pgl71" layout="vertical" styleClass="col-md-12">
+                        <af:outputText id="ot2" value="#{custPortalBundle.DF_HELP_US}"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout styleClass="greybackgroundLpg show">
+                    <div class="row top17">
+                        <div class="col-md-12 col-lg-12">
+                         <span class="errClassScroll"><af:outputText   id="ot47"  visible="#{pageFlowScope.pSAPnotFound!=''}" value="#{pageFlowScope.pSAPnotFound}"     styleClass="errorMessage font-size18"/></span>
+                      
+                                  <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="labelheader" style="font-weight:bold !important"> Partner Name    </label>
+                                    </div>
+                                    <div class="col-md-8 col-lg-8">
+                                            <af:outputText id="ot8" value="#{pageFlowScope.poutputDealer}"  />
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                            <label class="labelheader" style="font-weight:bold !important"> Address</label>
+                                    </div>
+                                    <div class="col-md-8 col-lg-8">
+                                            <af:outputText id="ot25" value="#{pageFlowScope.outputSAPDistrict},#{pageFlowScope.outputSAPState}"  />
+                                    </div>
+                                    </div>
+                                               
+                            <p class="nodetail">
+                                <af:outputText id="ot30" value="#{custPortalBundle.DF_INDANE_CUSTOMER}"/>
+                            </p>
+                            <p class="nodetail">
+                                <af:outputText id="ot4" value="#{custPortalBundle.DF_PROVIDE_FEEDBACK}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row top30 mb-4">
+                        <div class="col-md-12 col-lg-12">
+                           
+                            <af:outputText id="ot31" value="#{custPortalBundle.DF_SELECT_RESPONSE}"
+                                           styleClass="thanksmessage font-size20 IOCL-font-weight-bold"/><!--partialTriggers="b6 b14 b7 b15 b8 b16 b4 b18 b5 b17"-->
+                        </div>
+                    </div>
+                    <af:panelGroupLayout styleClass="row row-eq-height show" id="pgl73">
+                        <af:panelGroupLayout id="pgl72" styleClass="col-md-6 border-cell mb-5">
+                            <af:panelGroupLayout id="pgl75" styleClass="row show">
+                                <af:panelGroupLayout id="pgl74" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_QUANTITY_DELIVERRED}"
+                                                        binding="#{backingBeanScope.networklocatorbean.quantityDelivered}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl76" styleClass="col-md-12 mt-3 selectRadioStyling show">
+                                  <dvt:ratingGauge id="quantityRating"
+                                                  binding="#{backingBeanScope.networklocatorbean.quantitydvtBind}"
+                                             value="#{backingBeanScope.networklocatorbean.quantityRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.quantityRatingVC}"
+                                             />
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl77" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl78" styleClass="row show">
+                                <af:panelGroupLayout id="pgl79" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_SERVICE}"
+                                                        binding="#{backingBeanScope.networklocatorbean.serviceBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl80" styleClass="col-md-12 selectRadioStyling mt-3  show">
+                                <dvt:ratingGauge id="serviceRating"
+                                                  binding="#{backingBeanScope.networklocatorbean.servicedvtBind}"
+                                             value="#{backingBeanScope.networklocatorbean.serviceRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.serviceRatingVC}"
+                                             />
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="row row-eq-height show" id="pgl82">
+                        <af:panelGroupLayout id="pgl83" styleClass="col-md-6 border-cell mb-5">
+                            <af:panelGroupLayout id="pgl81" styleClass="row show">
+                                <af:panelGroupLayout id="pgl84" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_CLEANLINESS}"
+                                                        binding="#{backingBeanScope.networklocatorbean.cleanlinessBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl85" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="cleanlinessRating"
+                                                  binding="#{backingBeanScope.networklocatorbean.cleanlinessdvtBind}"
+                                             value="#{backingBeanScope.networklocatorbean.cleanlinessRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.cleanlinessRatingVC}"
+                                             />
+                                    
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl86" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl87" styleClass="row show">
+                                <af:panelGroupLayout id="pgl88" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_FACILITIES}"
+                                                        binding="#{backingBeanScope.networklocatorbean.facilitiesBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl89" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="facilitiesRating"
+                                                  binding="#{backingBeanScope.networklocatorbean.facilitiesdvtBind}"
+                                             value="#{backingBeanScope.networklocatorbean.facilitiesRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.facilitiesRatingVC}"
+                                             />
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout styleClass="row row-eq-height show" id="pgl92">
+                        <af:panelGroupLayout id="pgl91" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl93" styleClass="row show">
+                                <af:panelGroupLayout id="pgl94" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_CLEAN_TOILET}"
+                                                        binding="#{backingBeanScope.networklocatorbean.cleantoiletBind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl20" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="cleanToiletRating"
+                                                  binding="#{backingBeanScope.networklocatorbean.cleanToiletdvtBind}"
+                                             value="#{backingBeanScope.networklocatorbean.cleanToiletRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.cleanToiletRatingVC}"
+                                             />
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                           <af:panelGroupLayout id="pgl95" styleClass="col-md-6 border-cell">
+                            <af:panelGroupLayout id="pgl96" styleClass="row show">
+                                <af:panelGroupLayout id="pgl97" styleClass="col-md-12 font-size20 text-left show">
+                                    <af:outputFormatted value="#{custPortalBundle.DF_PRODUCT_QUALITY}"
+                                                        binding="#{backingBeanScope.networklocatorbean.productQualitybind}"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl98" styleClass="col-md-12 selectRadioStyling mt-3 show">
+                                 <dvt:ratingGauge id="prodQualtiyRating"
+                                                  binding="#{backingBeanScope.networklocatorbean.productQualitydvtbind}"
+                                             value="#{backingBeanScope.networklocatorbean.productQualityRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.productQualityVC}"
+                                             />
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl114" styleClass="row  show mt-5">
+                        <af:panelGroupLayout id="pgl115"
+                                             styleClass="col-md-4 col-md-offset-4 font-size20 show text-center">
+                            <af:outputText value="#{custPortalBundle.DF_OVERALL_RATING}"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl116" styleClass="col-md-4 col-md-offset-4 show text-center">
+                            <dvt:ratingGauge id="OverallRating" binding="#{backingBeanScope.networklocatorbean.overallRatingbind}"
+                                             value="#{backingBeanScope.networklocatorbean.overallRatingvalue}" maximum="5" minimum="1"
+                                             readOnly="false" styleClass="ratingStarDiv"
+                                             valueChangeListener="#{backingBeanScope.networklocatorbean.overallRatingVC}"
+                                             />
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>   
+                    
+                    <af:panelGroupLayout styleClass="row top17" id="pgl135">
+                        <af:panelGroupLayout styleClass="form-group" id="pgl143" partialTriggers="b2">                            
+                                <af:panelGroupLayout id="pgl3" visible="#{pageFlowScope.errorBusinessValidationCode eq '100'}" layout="vertical"
+                                    styleClass="col-md-12 col-lg-12">
+                                 <af:outputText value="#{pageFlowScope.errorBusinessValidationMSG}" id="ot3"  styleClass="errorMessage marginspace font-size18" />
+                             </af:panelGroupLayout>
+                            <af:panelGroupLayout styleClass="col-md-4 col-md-offset-4" id="pgl141">
+                                <af:outputText id="ot9" value="#{custPortalBundle.PARTNERCODE_NF}"
+                                               inlineStyle="font-size: 18px;" styleClass="errorMessage"
+                                               visible="#{pageFlowScope.dcNotExist eq 'Y'}"/>
+                                <af:outputFormatted value="#{backingBeanScope.networklocatorbean.genericErrMsg}"
+                                                    inlineStyle="font-size: 18px;" id="of40" styleClass="errorMessage"
+                                                    partialTriggers="b2"/>
+                                <af:button styleClass="signin iocldefault hovercolor" inlineStyle="display:block !important" disabled="#{pageFlowScope.dcNotExist eq 'Y' or pageFlowScope.partnerNF eq 'Y'}"
+                                           text="#{custPortalBundle.DF_SUBMIT}" id="b2"
+                                           binding="#{backingBeanScope.networklocatorbean.submitDealerbttnBinding}"
+                                           action="#{backingBeanScope.networklocatorbean.onSubmitDealerFeedback}"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+                                        </af:dialog>
+                                    </af:popup>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl107" layout="vertical" styleClass="panel"
+                                             inlineStyle="display:none">
+                            <div>
+                                <b>From </b>
+                                 
+                                <input id="query-0" type="text" class="location"/>
+                            </div>
+                            <div>
+                                <b>To </b>
+                                 
+                                <input type="text" class="location" id="destination" readonly="readonly"/>
+                            </div>
+                            <div class="text-center">
+                                <a href="javascript:void(0)" onclick="getDirection_btn()"
+                                   style="font-weight:400;text-decoration:underline ;">Get Direction</a>
+                            </div>
+                            <af:panelGroupLayout id="pgl52"></af:panelGroupLayout>
+                            <div id="panel" style="width: 300px; float: left;">&#160;</div>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout layout="vertical" id="pgl50" styleClass="col-md-8 pr-0,px-0">
+                        <div id="map" style="width: 100%; height: 600px;">&#160;</div>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl105" visible="false" partialTriggers="b1 it1">
+                    <af:panelGroupLayout id="pgl106" styleClass="jsonArrayData" partialTriggers="it1 soc1">
+                        <af:outputFormatted value="#{pageFlowScope.dffd}" id="of4"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl34" visible="false">
+            <af:inputText styleClass="latValue" id="it2" value="#{backingBeanScope.networklocatorbean.latitudeBean}"
+                          clientComponent="true" binding="#{backingBeanScope.networklocatorbean.latitudeBinding}"
+                          partialTriggers="b1 it1"/>
+            <af:inputText styleClass="lngValue" id="it3" value="#{backingBeanScope.networklocatorbean.longitudeBean}"
+                          clientComponent="true" autoSubmit="true"
+                          binding="#{backingBeanScope.networklocatorbean.longitudeBinding}" partialTriggers="b1 it1"/>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

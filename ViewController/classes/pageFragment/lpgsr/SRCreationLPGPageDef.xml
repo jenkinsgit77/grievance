@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SRCreationLPGPageDef"
+                Package="pageFragment.lpgsr">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GrievForm1" RangeSize="25" DataControl="AppModuleDataControl" id="GrievForm1Iterator"/>
+    <taskFlow id="AttachmentAdd1" taskFlowId="/WEB-INF/taskflow/common/AttachmentAdd.xml#AttachmentAdd"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="GrievForm1Iterator" id="Dummy">
+      <AttrNames>
+        <Item Value="Dummy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GrievForm1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GrievForm1Iterator" id="MobileNumber">
+      <AttrNames>
+        <Item Value="MobileNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GrievForm1Iterator" id="EmailId">
+      <AttrNames>
+        <Item Value="EmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GrievForm1Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="GrievForm1Iterator" StaticList="false" Uses="LOV_Category" id="Category" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="GrievForm1Iterator" StaticList="false" Uses="LOV_SubCategory" id="SubCategory"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="GrievForm1Iterator" id="ComplainDetails">
+      <AttrNames>
+        <Item Value="ComplainDetails"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GrievForm1Iterator" id="SubcatCount">
+      <AttrNames>
+        <Item Value="SubcatCount"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

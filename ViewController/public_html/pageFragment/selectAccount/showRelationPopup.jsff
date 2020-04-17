@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="javascript">
+      function resetPollInterval(e) {
+          var src = e.getSource();
+          var poll = src.findComponent("p1");
+          if (poll != null) {
+              poll.setInterval( - 1);
+          }
+      }
+
+      function onPopupOpened(event) {
+          var popup = event.getSource();
+          popup.cancel = function () {
+              if (e.keyCode == 27) {
+                  return false;
+              }
+          }
+      }
+    </af:resource>
+    <af:panelGroupLayout id="pgl2" layout="scroll" styleClass="iocl_page">
+        <af:poll id="p1" interval="10" pollListener="#{backingBeanScope.showRelationPopup.handleFragmentOnLoad}">
+            <af:clientListener method="resetPollInterval" type="poll"/>
+        </af:poll>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                  binding="#{backingBeanScope.showRelationPopup.lpgConnPopUpBinding}" contentDelivery="immediate">
+            <af:clientListener method="onPopupOpened" type="popupOpened"/>
+            <af:dialog id="d1" contentWidth="650" contentHeight="300" styleClass="MyDialog test iocl_page" type="none">
+                <f:facet name="buttonBar"/>
+                <af:panelGroupLayout id="pgl22" styleClass="IOCLcontent_box3 margintop30" layout="vertical"
+                                     partialTriggers="b3">
+                    <af:outputFormatted value="#{custPortalBundle.YOU_HAVE_MULTIPLE_LPG_CONNECTION}" id="of8"
+                                        styleClass="blueHeading "/>
+                    <af:spacer width="10" height="10" id="s1"/>
+                    <!--<af:outputFormatted value="#{custPortalBundle.LPG_CONNECTION_OPTION}" id="of10"
+                                        styleClass="blueHeading"/>-->
+                    <!--Customer Relationship Table Start-->
+                    <af:panelGroupLayout id="pgl1">
+                        <table id="example" class="datatable table table-striped table-bordered"
+                               style="width:100% !important;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <af:outputText value="#{custPortalBundle.LPG_SELECT}" id="ot10"/>
+                                    </th>
+                                    <th>
+                                        <af:outputText value="#{custPortalBundle.LPG_CONSUMER_ID}" id="ot5"/>
+                                    </th>
+                                    <th>
+                                        <af:outputText value="#{custPortalBundle.LPG_CONNECTION_STATUS}" id="ot27"/>
+                                    </th>
+                                    <th>
+                                        <af:outputText value="#{custPortalBundle.LPG_CONNECTION_SUB_STATUS}" id="ot28"/>
+                                    </th>
+                                    <th>
+                                        <af:outputText value="#{custPortalBundle.LPG_PARTNER_CODE}" id="ot29"/>
+                                    </th>
+                                    <th>
+                                        <af:outputText value="#{custPortalBundle.LPG_PARTNER_NAME}" id="ot1"/>
+                                    </th>
+                                </tr>
+                            </thead>
+                             
+                            <tbody>
+                                <af:iterator var="row" value="#{sessionScope.userDetails.customerDetails}"
+                                             varStatus="datatable" id="i2">
+                                    <tr>
+                                        <td>
+                                            <af:selectBooleanRadio id="sbr1" group="LPGConnection" simple="true"
+                                                                   value="#{row.connectionSelected}"/>
+                                        </td>
+                                        <td>
+                                            <af:outputText value="#{row.consumerId}" id="ot6"/>
+                                        </td>
+                                        <td>
+                                            <af:outputText value="#{row.connectionStatusLabel}" id="ot31"/>
+                                        </td>
+                                        <td>
+                                            <af:outputText value="#{row.connectionSubStatusLabel}" id="ot3"/>
+                                        </td>
+                                        <td>
+                                            <af:outputText value="#{row.partnercode}" id="ot4"/>
+                                        </td>
+                                        <td>
+                                            <af:outputText value="#{row.partnerName}" id="ot2"/>
+                                        </td>
+                                    </tr>
+                                </af:iterator>
+                            </tbody>
+                        </table>
+                    </af:panelGroupLayout>
+                    <!--Customer Relationship Table End-->
+                    <af:panelGroupLayout id="pgl28" layout="vertical" styleClass="marB15 margintop30">
+                        <af:outputFormatted value="#{pageFlowScope.lpgConnecErrorMsg}" id="of1"
+                                            styleClass="errorMessage" partialTriggers="b3"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pg1" inlineStyle="display: inline-flex;" styleClass="marB15">
+                        <af:image source="/images/globalimages/exclamation.svg" styleClass="exclamationImg" id="i1"/>
+                        <af:outputText value="#{custPortalBundle.PLEASE_LOGIN_AGAIN_TO_CHANGE_LPG_RELATIONSHIP}"
+                                       id="ot8" noWrap="false"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl29" layout="vertical" styleClass="row">
+                        <af:button text="#{custPortalBundle.SELECT_CONNECTION}" id="b3" styleClass="col-md-6"
+                                   binding="#{backingBeanScope.showRelationPopup.lpgSectionSubmitBtnBinding}"
+                                   action="#{backingBeanScope.showRelationPopup.lpgConnSubmitAction}"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:dialog>
+        </af:popup>
+    </af:panelGroupLayout>
+</jsp:root>

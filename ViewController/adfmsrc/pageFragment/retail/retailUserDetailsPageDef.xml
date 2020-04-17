@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="retailUserDetailsPageDef"
+                Package="pageFragment.retail">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RetailUserDetailsVo1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="RetailUserDetailsVo1Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.pValidCodeRetailDetails}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.pValidMsgRetailDetails}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="RetailUserDetailsVo1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailUserDetailsVo1Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailUserDetailsVo1Iterator" id="MobileNo">
+      <AttrNames>
+        <Item Value="MobileNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RetailUserDetailsVo1Iterator" id="DupUCMId">
+      <AttrNames>
+        <Item Value="DupUCMId"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="BannerTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>loggedInBannerImage</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name>BannerName</name>
+      <value>#{pageFlowScope.BannerName}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>BannerPath</name>
+      <value>#{pageFlowScope.BannerPath}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>ShowOnloadPopup</name>
+      <value>#{pageFlowScope.ShowOnloadPopup}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>LoggedInBanner</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.LoggedInBanner</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="loggedInBannerImage">
+      <method>#{backingBeanScope.LoggedInBanner.loggedInBannerImage}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="BannerPage">
+      <page>/pageFragment/BannerPage.jsff</page>
+    </view>
+    <view id="dummyPage">
+      <page>/pageFragment/dummyPage.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>loggedInBannerImage</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>goToBanner</from-outcome>
+        <to-activity-id>BannerPage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>dummyPage</from-outcome>
+        <to-activity-id>dummyPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

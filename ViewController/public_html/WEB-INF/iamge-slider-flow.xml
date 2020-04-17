@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="iamge-slider-flow">
+    <default-activity>fetchAppListLpgLogIn</default-activity>
+    <managed-bean id="__2">
+      <managed-bean-name>testBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.imageSliderView.view.TestBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+      <managed-bean-name>NonLoginBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.NonLoginBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="slider.jsff">
+      <page>/pageFragment/slider.jsff</page>
+    </view>
+    <method-call id="methodCall1">
+      <method>#{backingBeanScope.testBean.callUcmImage}</method>
+      <outcome>
+        <fixed-outcome>toslider</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="fetchAppListLpgLogIn">
+      <method>#{bindings.fetchAppListLpgLogIn.execute}</method>
+      <outcome>
+        <fixed-outcome>fetchAppListLpgLogIn</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="reCaptchaCustTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/reCaptchaCustTF.xml</document>
+        <id>reCaptchaCustTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>methodCall1</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>toslider</from-outcome>
+        <to-activity-id>slider.jsff</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__1">
+      <from-activity-id>fetchAppListLpgLogIn</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>fetchAppListLpgLogIn</from-outcome>
+        <to-activity-id>methodCall1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>slider.jsff</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>toRecaptcha</from-outcome>
+        <to-activity-id>reCaptchaCustTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

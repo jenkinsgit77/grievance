@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LinkYourLpgTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>ConfirmationFr</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__8">
+      <managed-bean-name>LinkedLpgBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.LinkedLpg</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="LinkYourLpg">
+      <page>/pageFragment/linkyourlpg/LinkYourLpg.jsff</page>
+    </view>
+    <view id="AccountDetails">
+      <page>/pageFragment/linkyourlpg/AccountDetails.jsff</page>
+    </view>
+    <view id="InformationNotRight">
+      <page>/pageFragment/linkyourlpg/InformationNotRight.jsff</page>
+    </view>
+    <view id="ContacttoDist">
+      <page>/pageFragment/linkyourlpg/ContacttoDist.jsff</page>
+    </view>
+    <view id="Error">
+      <page>/pageFragment/Error.jsff</page>
+    </view>
+    <view id="Error2">
+      <page>/pageFragment/Error.jsff</page>
+    </view>
+    <view id="ConfirmationFr">
+      <page>/pageFragment/linkyourlpg/ConfirmationFr.jsff</page>
+    </view>
+    <view id="LpgId">
+      <page>/pageFragment/linkyourlpg/LpgId.jsff</page>
+    </view>
+    <task-flow-call id="ConfirmationPageTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/common/ConfirmationPageTF.xml</document>
+        <id>ConfirmationPageTF</id>
+      </task-flow-reference>
+      <input-parameter id="__12">
+        <name>confMessage</name>
+        <value>#{pageFlowScope.confMessage}</value>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>refNumber</name>
+        <value>#{pageFlowScope.refNumber}</value>
+      </input-parameter>
+    </task-flow-call>
+    <view id="MobileNotFound">
+      <page>/pageFragment/linkyourlpg/MobileNotFound.jsff</page>
+    </view>
+    <control-flow-rule id="__5">
+      <from-activity-id>AccountDetails</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>toConfirm</from-outcome>
+        <to-activity-id>ConfirmationFr</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>toInformationNot</from-outcome>
+        <to-activity-id>InformationNotRight</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>LpgId</from-activity-id>
+      <control-flow-case id="__1">
+        <from-outcome>toaccountDetails</from-outcome>
+        <to-activity-id>AccountDetails</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>toSV</from-outcome>
+        <to-activity-id>LinkYourLpg</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>LinkYourLpg</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>toDistributor</from-outcome>
+        <to-activity-id>ContacttoDist</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>toInformationNot</from-outcome>
+        <to-activity-id>InformationNotRight</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>toaccountDetails</from-outcome>
+        <to-activity-id>AccountDetails</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>tonotfoundMobile</from-outcome>
+        <to-activity-id>MobileNotFound</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>ContacttoDist</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>toConfirm</from-outcome>
+        <to-activity-id>ConfirmationPageTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>MobileNotFound</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>toInformationNot</from-outcome>
+        <to-activity-id>InformationNotRight</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <af:resource type="css" source="/skins/bootstrap.css"/>
+    <af:resource type="css" source="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"></af:resource>
+    <af:resource type="css" source="/skins/CustPortCommon.css"/>
+    <!--<af:resource type="css" source="/com/iocl/lpg/skins/bootstrap.css"/>-->
+    <af:resource type="css" source="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></af:resource>
+    <af:resource type="javascript" source="/js/vender/jQuery/jquery-2.2.4.min.js"/>
+    <af:resource type="javascript" source="/js/vender/bootstrap_3.3.7/bootstrap.min.js"/>
+    <af:resource type="javascript" source="/js/globalNumberOnlyInput.js"/>
+    <af:resource type="css" source="/skins/CustPortCommon.css"/>
+    <af:resource type="css" source="/skins/customerPortal.css"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <style>
+        .social-network ul {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .social-network ul li {
+            border: none;
+            margin: 0;
+        }
+
+        .social-network ul li span {
+            /* margin: 0;*/
+        }
+
+        .social-network ul li {
+            display: inline;
+            margin: 0 5px;
+            border: 0px solid #2D2D2D;
+            padding: 5px 0 0;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            color: #000;
+        }
+
+        social-network ul {
+            list-style: none;
+            margin: 5px 0 10px -25px;
+            float: right;
+        }
+
+        .social-network ul {
+            list-style: none;
+            margin: 5px 0 10px -25px;
+            float: right !important;
+        }
+
+        .font-box-padding {
+            padding: 3px;
+            width: 23px !important;
+        }
+
+        .navbar-default-cust {
+            background-color: #ffffff;
+            border-radius: 0px !important;
+            padding-bottom: 20px;
+            margin-bottom: 0px;
+        }
+
+        .search_icon_header {
+            background: transparent none repeat scroll 0 0;
+            border: medium none;
+            bottom: -18px;
+            cursor: pointer;
+            left: 9em;
+            position: absolute;
+        }
+
+        .af_button.p_AFLeading .af_button_image {
+            height: 30px !important;
+        }
+ 
+   
+
+        .searchbox input {
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            color: #555;
+            display: block;
+            font-size: 14px;
+            height: 42px;
+            line-height: 1.42857;
+            padding: 6px 12px;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+            width: 235px;
+            border-right: 0px !important;
+        }
+
+      
+        .stylish-input-group .input-group-addon {
+            background: white !important;
+        }
+
+        .stylish-input-group .form-control {
+            border-right: 0;
+            box-shadow: 0 0 0;
+            border-color: #ccc;
+        }
+
+        .stylish-input-group button {
+            border: 0;
+            background: transparent;
+        }
+
+        .input-group-padding {
+            padding-right: 30px !important;
+            padding-top:0px !important;
+            padding-bottom: 0px !important;
+        }
+
+   
+
+    
+  </style>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>LoginTemplate</display-name>
+                <facet>
+                    <facet-name>header</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>status</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>appNav</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>globalLinks</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>footer</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>center</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>start</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>end</facet-name>
+                </facet>
+                <attribute>
+                    <attribute-name>logoImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoSmallImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoStyleClass</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoShortDesc</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>showAppNavbar</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                    <default-value>true</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>brandingMaxWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>1024px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>minWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>startWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>endWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>showFooter</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                </attribute>
+            </component>
+        </af:xmlContent>
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>PartnerTemplate</display-name>
+            </component>
+        </af:xmlContent>
+        <!--<header>
+        <af:panelGroupLayout id="pt_pgl1" styleClass="container show">
+            <af:panelGroupLayout id="pt_pgl2" styleClass="show row row1">
+       
+                <af:panelList id="pt_pl1" styleClass="social-network">
+                            <af:panelGroupLayout id="pt_pgl15" styleClass="show">
+                                <af:image source="/images/fullscreen.png" id="pt_i2" inlineStyle="width:30px;"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl4" styleClass="header_text2">
+                                <af:outputFormatted value="SCREEN READER ACCESS" id="pt_of1"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl8">
+                                <af:selectOneChoice id="pt_sol1" styleClass="select_lang"
+                                                    unselectedLabel="English Language">
+                                    <f:selectItem itemLabel="English Language" itemValue="1" id="pt_si4"/>
+                                    <f:selectItem itemLabel="Hindi Language" itemValue="2" id="pt_si3"/>
+                                    <f:selectItem itemLabel="Marathi Language" itemValue="3" id="pt_si2"/>
+                                </af:selectOneChoice>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl5">
+                                <af:panelGroupLayout id="pt_pgl7">
+                                    <af:outputFormatted value="Color Themes" id="pt_ot10"/>
+                                </af:panelGroupLayout>
+                                <af:outputText value="w" id="pt_ot12" styleClass="w"/>
+                                <af:outputText value="b" id="pt_ot13" styleClass="b"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl6">
+                                <af:outputText value="A-" id="pt_ot11"
+                                               styleClass="font_box pull-left font-box-padding"/>
+                                <af:outputText value="A" id="pt_ot9" styleClass="font_box pull-left font-box-padding"/>
+                                <af:outputText value="A+" id="pt_ot8" styleClass="font_box pull-left font-box-padding"/>
+                            </af:panelGroupLayout>
+                        </af:panelList>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pt_pgl3" styleClass="row row2 show">
+                <af:panelGroupLayout id="pt_pgl11" styleClass="show col-sm-2">
+                    <af:image source="/images/indane.png" id="pt_i1" styleClass="navbar-brand1 img-responsive"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pt_pgl10" styleClass="col-md-8">
+                    <af:panelGroupLayout id="pt_pgl13" styleClass="row pull-right">
+                        <af:panelGroupLayout id="pt_p34" styleClass="show input-group stylish-input-group searchbox">
+                            <af:inputText placeholder="Knowledge base search" id="pt_it1" simple="true"
+                                          binding="#{backingBeanScope.NonLoginBean.searchInputtxt}" autoSubmit="true"
+                                          valueChangeListener="#{backingBeanScope.NonLoginBean.kmChangeLstr}"
+                                          styleClass="pull-left"/>
+                            <af:panelGroupLayout id="pt_pgl17"
+                                                 styleClass="input-group-addon pull-left input-group-padding">
+                                <af:commandButton id="dsfa">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </af:commandButton>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pt_pgl9" styleClass="largenav col-md-2">
+                    <af:panelGroupLayout id="pt_pgl16" styleClass="show pull-right" inlineStyle="padding-left:20px;">
+                        <af:image source="/images/bellicon.png" id="pt_i4" inlineStyle="width:30px;"/>
+                          <af:image source="/images/line.png" id="pt_i3" inlineStyle="height:30px;margin-left:10px;"/>
+                          <af:link text="Login" id="pt_m7" styleClass="headerMenuBlue"   inlineStyle="vertical-align:middle;padding-left:15px">
+                               
+                                </af:link>
+                    </af:panelGroupLayout>
+                  
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        </header>-->
+        <header class="topbar">
+            <af:panelGroupLayout id="pt_pgl1" styleClass="container show">
+                <af:panelGroupLayout id="pt_pgl2" styleClass="row show">
+                    <af:panelGroupLayout id="pt_pgl3" styleClass="col-sm-12 show">
+                        <af:panelList id="pt_pl1" styleClass="social-network">
+                            <af:panelGroupLayout id="pt_pgl15" styleClass="show">
+                                <af:image source="/images/fullscreen.png" id="pt_i2" inlineStyle="width:30px;"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl4" styleClass="header_text2">
+                                <af:outputFormatted value="SCREEN READER ACCESS" id="pt_of1"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl8">
+                                <af:selectOneChoice id="pt_sol1" styleClass="select_lang"
+                                                    unselectedLabel="English Language">
+                                    <f:selectItem itemLabel="English Language" itemValue="1" id="pt_si4"/>
+                                    <f:selectItem itemLabel="Hindi Language" itemValue="2" id="pt_si3"/>
+                                    <f:selectItem itemLabel="Marathi Language" itemValue="3" id="pt_si2"/>
+                                </af:selectOneChoice>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl5">
+                                <af:panelGroupLayout id="pt_pgl7">
+                                    <af:outputFormatted value="Color Themes" id="pt_ot10"/>
+                                </af:panelGroupLayout>
+                                <af:outputText value="w" id="pt_ot12" styleClass="w"/>
+                                <af:outputText value="b" id="pt_ot13" styleClass="b"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pt_pgl6">
+                                <af:outputText value="A-" id="pt_ot11"
+                                               styleClass="font_box pull-left font-box-padding"/>
+                                <af:outputText value="A" id="pt_ot9" styleClass="font_box pull-left font-box-padding"/>
+                                <af:outputText value="A+" id="pt_ot8" styleClass="font_box pull-left font-box-padding"/>
+                            </af:panelGroupLayout>
+                        </af:panelList>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </header>
+        <nav class="navbar navbar-default-cust">
+            <af:panelGroupLayout id="pt_pgl9" styleClass="container show">
+                <af:panelGroupLayout id="pt_pgl10" styleClass="navbar-header show"
+                                     inlineStyle="position:absolute;top:-20px">
+                    <af:image source="/images/ico_new_logo-final.gif" id="pt_i1"
+                              styleClass="navbar-brand1 img-responsive"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pt_pgl11" styleClass="collapse navbar-collapse">
+                    <af:panelGroupLayout id="pt_pgl13" styleClass="navbar-right show">
+                        <ul id="pt_pl2" class="nav navbar-nav">
+                            <li>
+                                <af:panelGroupLayout id="pt_pl3" styleClass="show">
+                                    <af:panelGroupLayout id="pt_p34"
+                                                         styleClass="show input-group stylish-input-group searchbox">
+                                        <af:inputText placeholder="Knowledge base search" id="pt_it1" simple="true"
+                                                      binding="#{backingBeanScope.NonLoginBean.searchInputtxt}"
+                                                      autoSubmit="true"
+                                                      valueChangeListener="#{backingBeanScope.NonLoginBean.kmChangeLstr}"
+                                                      styleClass="pull-left"/>
+                                        <af:panelGroupLayout id="pt_pgl17"
+                                                             styleClass="input-group-addon pull-left input-group-padding">
+                                                             <!--<af:button icon="/images/search-icon-4.png" destination="#{pageFlowScope.kmval}"
+                                                   partialTriggers="pt_it1" targetFrame="_blank" id="pt_b1"
+                                                   styleClass="search_icon"/>-->
+                                         <af:button icon="/images/search-icon-4.png" destination="#{pageFlowScope.kmval}"
+                                                   partialTriggers="pt_it1" targetFrame="_blank" id="pt_b1"
+                                                  styleClass="search_icon"/>
+                                            <!--<af:commandButton id="dsfa" styleClass="myNewButtonClass"
+                                                              partialSubmit="true" icon="/images/search-icon-4.png">
+                                                
+                                            </af:commandButton>-->
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </li>
+                            <li>
+                                <af:panelGroupLayout id="pt_pgl16" styleClass="show" inlineStyle="padding-left:20px;">
+                                    <af:image source="/images/bellicon.png" id="pt_i4" inlineStyle="width:30px;"/>
+                                </af:panelGroupLayout>
+                            </li>
+                            <li>
+                                <af:panelGroupLayout id="pt_pgl14" inlineStyle="padding-left:20px;">
+                                    <af:image source="/images/line.png" id="pt_i3" inlineStyle="height:30px;"/>
+                                </af:panelGroupLayout>
+                            </li>
+                            <li>
+                                <af:link text="Login" id="pt_m7" styleClass="headerMenuBlue"
+                                         inlineStyle="padding-top:5px"></af:link>
+                            </li>
+                        </ul>
+                        <af:panelGroupLayout id="pt_pgl26" layout="horizontal" partialTriggers="pt_m7"
+                                             visible="#{pageFlowScope.accountStatment}" halign="right">
+                            <af:link text="Manage Funds" id="pt_l3" styleClass="headerMenuBlue"/>
+                            <af:link text="Transactions Since Yesterday"
+                                     destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_transactionsinceyesterdaypage"
+                                     id="pt_l4" styleClass="headerMenuBlue"/>
+                            <af:link text="Account Statement"
+                                     destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_accstatementpage"
+                                     id="pt_l5" styleClass="headerMenuBlue"/>
+                            <af:link text="Payment"
+                                     destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_payment"
+                                     id="pt_l6" styleClass="headerMenuBlue"/>
+                            <af:link text="Check Transactions"
+                                     destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_checktransactionspage"
+                                     id="pt_l7" styleClass="headerMenuBlue"/>
+                            <af:link text="Invoice with Tax"
+                                     destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_invoicewithtax"
+                                     id="pt_l8" styleClass="headerMenuBlue"/>
+                            <af:link text="Refill Payment"
+                                     destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_refillpaymentpage"
+                                     id="pt_l9" styleClass="headerMenuBlue"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pt_pg282" styleClass="pull-right">Account</af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </nav>
+        <!--<header>
+        <af:panelGroupLayout id="mainArea" styleClass="header" layout="vertical">
+                <af:panelGroupLayout id="pt_pgl28" layout="vertical" styleClass="container">
+                    <af:panelGroupLayout id="pt_pgl30" layout="vertical" styleClass="row">
+                        <af:panelGroupLayout id="pt_pgl31" layout="vertical" styleClass="col-md-12">
+                            <af:panelGroupLayout id="pt_pgl15" layout="vertical" styleClass="row">
+                                <af:panelGroupLayout id="pt_pgl14" layout="vertical" styleClass="col-md-3">
+                                    <af:image source="/images/indane.png" id="pt_i2" styleClass="img-responsive"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl18" layout="vertical" styleClass="col-md-9 text-right">
+                                    <af:panelGroupLayout id="pt_pgl21" styleClass="clearfix" layout="vertical"/>
+                                    <af:panelGroupLayout id="pt_pgl16" layout="horizontal" styleClass="pull-right">
+                                        <af:panelGroupLayout id="pt_pgl17" styleClass="header_text2">
+                                            <af:outputText value="SCREEN READER ACCESS" id="pt_20"/>
+                                        </af:panelGroupLayout>
+                                            <af:selectOneChoice id="pt_soc2" styleClass="select_lang"
+                                                            unselectedLabel="English Language">
+                                            <f:selectItem itemLabel="English Language" itemValue="1" id="pt_si5"/>
+                                            <f:selectItem itemLabel="Hindi Language" itemValue="2" id="pt_si6"/>
+                                            <f:selectItem itemLabel="Marathi Language" itemValue="3" id="pt_si1"/>
+                                        </af:selectOneChoice>
+                                        <af:panelGroupLayout id="pt_pgl19">
+                                            <af:panelGroupLayout id="pt_pgl20" styleClass="pull-left themes"
+                                                                 layout="horizontal">
+                                                <af:outputText value="Color Themes" id="pt_ot1"/>
+                                                <af:outputText value="w" id="pt_ot2" styleClass="w"/>
+                                                <af:outputText value="b" id="pt_ot3" styleClass="b"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pt_pgl22" styleClass="pull-right"
+                                                                 layout="horizontal">
+                                                <af:outputText value="A-" id="pt_ot4" styleClass="font_box"/>
+                                                <af:outputText value="A" id="pt_ot5" styleClass="font_box"/>
+                                                <af:outputText value="A+" id="pt_ot6" styleClass="font_box"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pt_pgl23" styleClass="clearfix" layout="vertical"></af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl27" layout="horizontal" halign="right">
+                                    <af:panelGroupLayout id="pt_pgl29" styleClass="form-has-feedback">
+                                        <af:inputText placeholder="Knowledge base search" id="pt_it2" simple="true"
+                                                      binding="#{backingBeanScope.NonLoginBean.searchInputtxt}"
+                                                      autoSubmit="true"
+                                                      valueChangeListener="#{backingBeanScope.NonLoginBean.kmChangeLstr}"/>
+                                        <af:button icon="/images/search-icon-4.png" destination="#{pageFlowScope.kmval}"
+                                                   partialTriggers="pt_it1" targetFrame="_blank" id="pt_b1"
+                                                   styleClass="search_icon"/>
+                                    </af:panelGroupLayout>
+                                   
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl24" layout="vertical" halign="right">
+                                    
+                                </af:panelGroupLayout>
+                                <af:spacer height="20" id="pt_s4"/>
+                                <af:panelGroupLayout id="pt_pgl25" layout="vertical" halign="right">
+                                
+                                    <af:link text="Account" 
+                                             id="pt_m7" styleClass="headerMenuBlue" 
+                                             action="#{pageFlowScope.PartnerTemplateBean.showMenuBar}">
+                                              <af:setPropertyListener from="Account" to="#{pageFlowScope.accountStatment}" type="action" />
+                                             </af:link>
+                                   
+                                   
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pt_pgl26" layout="horizontal" partialTriggers="pt_m7"
+                                                     binding="#{pageFlowScope.PartnerTemplateBean.menubarPGLbinding}" visible="#{pageFlowScope.accountStatment eq 'Account'}" halign="right">
+                                    <af:link text="Manage Funds"
+                                             
+                                             id="pt_l3" styleClass="headerMenuBlue"/>
+                                    <af:link text="Transactions Since Yesterday"
+                                             destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_transactionsinceyesterdaypage"
+                                             id="pt_l4" styleClass="headerMenuBlue"/>
+                                    <af:link text="Account Statement"
+                                             destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_accstatementpage"
+                                             id="pt_l5" styleClass="headerMenuBlue"/>
+                                    <af:link text="Payment"
+                                             destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_payment"
+                                             id="pt_l6" styleClass="headerMenuBlue"/>
+                                    <af:link text="Check Transactions"
+                                             destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_checktransactionspage"
+                                             id="pt_l7" styleClass="headerMenuBlue"/>
+                                    <af:link text="Invoice with Tax"
+                                             destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_invoicewithtax"
+                                             id="pt_l8" styleClass="headerMenuBlue"/>
+                                    <af:link text="Refill Payment"
+                                             destination="http://10.146.65.112:8888/webcenter/portal/PartnerPortal/pages_refillpaymentpage"
+                                             id="pt_l9" styleClass="headerMenuBlue"/>
+                                   
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </header>-->
+        <af:separator id="pt_s2" inlineStyle="border-bottom:1px solid black;"/>
+        <af:panelGroupLayout styleClass="container" layout="vertical" id="pt_pgl12">
+            <af:declarativeComponent viewId="contentBody.jsff" id="cBodFDC">
+                <f:facet name="startFacet">
+                    <af:facetRef facetName="start"/>
+                </f:facet>
+                <f:facet name="endFacet">
+                    <af:facetRef facetName="end"/>
+                </f:facet>
+                <f:facet name="content">
+                    <af:facetRef facetName="center"/>
+                </f:facet>
+            </af:declarativeComponent>
+        </af:panelGroupLayout>
+    </af:pageTemplateDef>
+</jsp:root>

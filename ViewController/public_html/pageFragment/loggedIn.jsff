@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:cust="http://xmlns.oracle.com/adf/faces/customizable" version="2.1">
+    <!--<af:resource source="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="css"/>
+   <af:resource source="https://code.jquery.com/jquery-2.2.4.min.js" type="javascript"/>
+   <af:resource source="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="javascript"/>-->
+
+    <af:panelGroupLayout id="mainPanel" styleClass="container-fluid mainContainerCustom iocl_page" layout="vertical">
+      <af:panelGroupLayout id="pgl20" layout="vertical" styleClass="row">
+            <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="col-md-2">
+             <af:panelGroupLayout id="pgl13" layout="vertical" styleClass="topheader">
+                     <cust:panelCustomizable id="pcarea2_99607" layout="auto">
+                        Overview
+                    </cust:panelCustomizable>
+             </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl12" layout="default" styleClass="leftTab">
+                   <cust:panelCustomizable id="pc1" layout="auto">
+                        AVIATION
+                    </cust:panelCustomizable>
+                </af:panelGroupLayout>
+            
+               <af:panelGroupLayout id="pgl14" layout="default" styleClass="leftTab">
+                   <cust:panelCustomizable id="pc2" layout="auto">
+                        LPG
+                    </cust:panelCustomizable>
+                </af:panelGroupLayout>
+               <af:panelGroupLayout id="pgl15" layout="default" styleClass="leftTab">
+                   <cust:panelCustomizable id="pc3" layout="auto">
+                        LUBES
+                    </cust:panelCustomizable>
+                </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl16" layout="default" styleClass="leftTab">
+                   <cust:panelCustomizable id="pc4" layout="auto">
+                         BULK CUSTOMER
+                    </cust:panelCustomizable>
+                </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl17" layout="default" styleClass="leftTab">
+                   <cust:panelCustomizable id="pc8" layout="auto">
+                        RETAIL
+                    </cust:panelCustomizable>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl18" layout="default" styleClass="leftTab">
+                   <cust:panelCustomizable id="pc9" layout="auto">
+                        LOYALTY
+                    </cust:panelCustomizable>
+                </af:panelGroupLayout>
+               
+            </af:panelGroupLayout>
+            
+            <af:panelGroupLayout id="pgl4" layout="vertical" styleClass="col-md-10">
+              
+                    <af:panelGroupLayout id="pgl5"  styleClass="row" layout="vertical">
+                         <af:panelGroupLayout id="pgl1" styleClass="col-md-12" layout="vertical">
+                              <af:panelGroupLayout id="pgl2" styleClass="Banner-Section submitSection" >
+                                  <cust:panelCustomizable id="pcarea10" layout="auto">
+                                        First
+                                    </cust:panelCustomizable>  
+                                </af:panelGroupLayout>
+                         </af:panelGroupLayout>                          
+                     </af:panelGroupLayout>            
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:panelGroupLayout id="pgl6"  styleClass="row " layout="vertical">
+                               <af:panelGroupLayout id="pgl7" styleClass="col-md-4" layout="vertical">
+                                    <af:panelGroupLayout id="pgl10" styleClass="row  show">
+                                         <af:panelGroupLayout id="pgl19" styleClass="col-md-12 show">
+                                           <af:panelGroupLayout id="pgl25"  styleClass="border_box show">
+                                            <cust:panelCustomizable id="pcarea11" layout="auto">
+                                                Second
+                                            </cust:panelCustomizable>
+                                         </af:panelGroupLayout>
+                                         </af:panelGroupLayout>
+                                    
+                                   <af:panelGroupLayout id="pgl26" styleClass="col-md-12 show">
+                                           <af:panelGroupLayout id="pgl27"  styleClass="border_box show">
+                                            <cust:panelCustomizable id="pcarea14" layout="auto">
+                                                Third
+                                            </cust:panelCustomizable>
+                                        </af:panelGroupLayout>
+                                         </af:panelGroupLayout>
+                                         
+                                      </af:panelGroupLayout>
+                                 
+                               </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl8" styleClass="col-md-8" layout="vertical">
+                                      <af:panelGroupLayout id="pgl9" styleClass="row show">
+                                           <af:panelGroupLayout id="pgl11" styleClass="col-md-6 show">
+                                              <af:panelGroupLayout id="pgl22"  styleClass="border_box show">
+                                                  <cust:panelCustomizable id="pcarea12" layout="auto">
+                                                    Fourth
+                                                    </cust:panelCustomizable>
+                                                </af:panelGroupLayout>
+                                           </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl21" styleClass="col-md-6 show">
+                                               <af:panelGroupLayout id="pgl23"  styleClass="border_box show">
+                                                  <cust:panelCustomizable id="pcarea13" layout="auto">
+                                                    Fifth
+                                                    </cust:panelCustomizable>
+                                                </af:panelGroupLayout>
+                                           </af:panelGroupLayout>
+                                      </af:panelGroupLayout>
+                                 <af:spacer width="10" height="10" id="s1"/>
+                              <af:panelGroupLayout id="pgl24" styleClass="row show">
+                                       <af:panelGroupLayout id="pgl28" styleClass="col-md-12 show">
+                                          <af:panelGroupLayout id="pgl30"  styleClass="border_box show">
+                                                  <cust:panelCustomizable id="pcarea16" layout="auto">
+                                                    Sixth
+                                                    </cust:panelCustomizable>
+                                                </af:panelGroupLayout>
+                                       </af:panelGroupLayout>
+                                  </af:panelGroupLayout>
+                             </af:panelGroupLayout>
+               </af:panelGroupLayout>              
+          </af:panelGroupLayout>
+    </af:panelGroupLayout>
+      </af:panelGroupLayout>
+</jsp:root>

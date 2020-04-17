@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="background:#ffffff"
+                         styleClass="iocl_page padding20" partialTriggers="b1 l2">
+        <!--<af:link text="#{custPortalBundle.BACK_TO_REQUEST_FOR_SUBSCRIPTION_VOUCHER}" id="l1" action="backToVoucher"/>-->
+        <af:panelGroupLayout id="pgl7" styleClass="header-title-sv">
+        <af:outputFormatted value="#{custPortalBundle.SUMMARY_OF_YOUR_ORDER}" id="of2"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl5" styleClass="row">
+            <af:panelGroupLayout id="pgl2" styleClass="col-md-10 col-md-offset-1">
+            <af:panelGroupLayout id="pgl8" styleClass="header-sub-title-sv"><af:outputFormatted value="#{custPortalBundle.MANDATORY_SECURITY_DEPOSIT_CHARGES}" id="of1"/></af:panelGroupLayout>
+                <ul class="list-group">
+                    <li class="list-group-item list-panel-header">
+                        <af:panelGroupLayout id="pgl6">
+                            <label>
+                                <af:outputFormatted value="#{custPortalBundle.ITEM_NAME}" id="of8"/>
+                            </label>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl9" styleClass="pull-right">
+                            <af:outputFormatted value="#{custPortalBundle.PRICE}" id="of7"/>
+                        </af:panelGroupLayout>
+                    </li>
+                    <af:iterator id="i1" value="#{pageFlowScope.svProductChargesDetailsPF}" var="mandIter">
+                        <li class="list-group-item">
+                            <af:panelGroupLayout id="pgl11">
+                                <label>
+                                    <af:outputFormatted value="#{mandIter.itemName}" id="of4"/>
+                                </label>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl12" styleClass="pull-right">
+                                <af:outputFormatted value="#{mandIter.itemPrice}" id="of3"/>
+                            </af:panelGroupLayout>
+                        </li>
+                    </af:iterator>
+                    <li class="list-group-item">
+                        <af:panelGroupLayout id="pgl20" styleClass="total">
+                            <label>
+                                <af:outputFormatted value="Total" id="of10"/>
+                            </label>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl19" styleClass="pull-right totalPrice">
+                            <af:outputFormatted value="#{pageFlowScope.svProductTotalPF}" id="of9"/>
+                        </af:panelGroupLayout>
+                    </li>
+                </ul>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+             <!--<af:panelGroupLayout id="pgl10" styleClass="row">
+            <af:panelGroupLayout id="pgl13" styleClass="col-md-10 col-md-offset-1">
+             <af:panelGroupLayout id="pgl18" styleClass="header-sub-title-sv"> <af:outputFormatted value="#{custPortalBundle.OTHER_CHARGES}" id="of11"/></af:panelGroupLayout>
+             <ul class="list-group">
+                    <li class="list-group-item list-panel-header">
+                        <af:panelGroupLayout id="pgl14">
+                            <label>
+                                <af:outputFormatted value="#{custPortalBundle.ITEM_NAME}" id="of16"/>
+                            </label>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl15" styleClass="pull-right">
+                            <af:outputFormatted value="#{custPortalBundle.PRICE}" id="of13"/>
+                        </af:panelGroupLayout>
+                    </li>
+                    <af:iterator id="i2" value="#{pageFlowScope.otherChargesDetailsPF}" var="otherIter">
+                        <li class="list-group-item">
+                            <af:panelGroupLayout id="pgl16">
+                                <label>
+                                     <af:outputFormatted value="#{otherIter.itemName}" id="of6"/>
+                                </label>
+                            </af:panelGroupLayout>
+                             
+                            <af:panelGroupLayout id="pgl17" styleClass="pull-right">
+                               <af:outputFormatted value="#{otherIter.itemPrice}" id="of5"/>
+                            </af:panelGroupLayout>
+                        </li>
+                    </af:iterator>
+                    <li class="list-group-item">
+                        <af:panelGroupLayout id="pgl21" styleClass="total">
+                            <label>
+                                <af:outputFormatted value="#{custPortalBundle.TOTAL}" id="of12"/>
+                            </label>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl23" styleClass="pull-right totalPrice">
+                            <af:outputFormatted value="#{pageFlowScope.otherChargeTotalPF}" id="of14"/>
+                        </af:panelGroupLayout>
+                    </li>
+                    <li class="list-group-item">
+                        <af:panelGroupLayout id="pgl24" styleClass="total">
+                            <label>
+                                <af:outputFormatted value="#{custPortalBundle.TOTAL_CHARGES_PAYABLE}" id="of15"/>
+                            </label>
+                        </af:panelGroupLayout>
+                         
+                        <af:panelGroupLayout id="pgl25" styleClass="pull-right totalPrice">
+                            <af:outputFormatted value="#{pageFlowScope.svItemTotalPF}" id="of17"/>
+                        </af:panelGroupLayout>
+                    </li>
+                </ul>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>-->
+           <af:panelGroupLayout id="pgl4" styleClass="row">
+            <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+            <af:panelGroupLayout id="pgl22" styleClass="col-md-offset-3 col-md-4 show">
+        <af:button text="#{custPortalBundle.PROCEED_FOR_PAYMENT}" id="b1"
+                   action="#{backingBeanScope.SubscriptionVouch.subsVouchPaymentAction}"/>
+        </af:panelGroupLayout>
+         <af:panelGroupLayout id="pgl3" styleClass="col-md-3 show pt-3">
+        <af:link text="#{custPortalBundle.CANCEL}" id="l2"/>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <!--<af:panelGroupLayout id="pgl5" layout="vertical">
+      <af:panelGroupLayout id="pgl6">
+        <af:outputFormatted value="#{custPortalBundle.ITEM_NAME}" id="of8"/>
+        <af:outputFormatted value="#{custPortalBundle.PRICE}" id="of7"/>
+      </af:panelGroupLayout>
+      <af:iterator id="i1" value="#{pageFlowScope.SubscriptionVouch.mandChargesDetails}" var="mandIter">
+        <af:panelGroupLayout id="pgl2">
+          <af:outputFormatted value="#{mandIter.itemName}" id="of4"/>
+          <af:outputFormatted value="#{mandIter.itemPrice}" id="of3"/>
+        </af:panelGroupLayout>
+      </af:iterator>
+    </af:panelGroupLayout>-->
+  
+    <!--<af:panelGroupLayout id="pgl7" layout="vertical">
+        <af:panelGroupLayout id="pgl8">
+            <af:outputFormatted value="#{custPortalBundle.ITEM_NAME}" id="of9"/>
+            <af:outputFormatted value="#{custPortalBundle.PRICE}" id="of10"/>
+        </af:panelGroupLayout>
+        <af:iterator id="i2" value="#{pageFlowScope.SubscriptionVouch.otherChargesDetails}" var="otherIter">
+            <af:panelGroupLayout id="pgl3">
+                <af:outputFormatted value="#{otherIter.itemName}" id="of6"/>
+                <af:outputFormatted value="#{otherIter.itemPrice}" id="of5"/>
+            </af:panelGroupLayout>
+        </af:iterator>
+    </af:panelGroupLayout>-->
+ 
+</jsp:root>

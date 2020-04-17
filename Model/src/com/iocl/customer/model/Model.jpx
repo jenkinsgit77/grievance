@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="12.2.1.12.24"
+  SeparateXMLFiles="true"
+  PackageName="com.iocl.customer.model">
+  <DesignTime>
+    <Attr Name="_DTExpressionTypeChecking" Value="true"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_jprName" Value="../../../../../Model.jpr"/>
+    <Attr Name="_NamedConnection" Value="LPGHo"/>
+    <Attr Name="_appModuleNames0" Value="com.iocl.customer.model.service.AppModule"/>
+  </DesignTime>
+  <Containee
+    Name="entityobject"
+    PackageName="com.iocl.customer.model.entityobject"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="service"
+    PackageName="com.iocl.customer.model.service"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="common"
+    PackageName="com.iocl.customer.model.viewobject.common"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="ioclcommonconfig"
+    PackageName="com.iocl.customer.model.viewobject.ioclcommonconfig"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="Lead"
+    PackageName="com.iocl.customer.model.viewobject.Lead"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="logssave"
+    PackageName="com.iocl.customer.model.viewobject.logssave"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="Loyalty"
+    PackageName="com.iocl.customer.model.viewobject.Loyalty"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="lpgerrorstrial"
+    PackageName="com.iocl.customer.model.viewobject.lpgerrorstrial"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="Retail"
+    PackageName="com.iocl.customer.model.viewobject.Retail"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="servo"
+    PackageName="com.iocl.customer.model.viewobject.servo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="sv"
+    PackageName="com.iocl.customer.model.viewobject.sv"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="viewobject"
+    PackageName="com.iocl.customer.model.viewobject"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

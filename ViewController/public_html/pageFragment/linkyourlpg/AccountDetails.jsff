@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    
+    <af:panelGroupLayout id="cls" styleClass="IOCLcontent_box1 show">
+    <af:panelGroupLayout id="pgl1" layout="default" styleClass="row iocl_page">
+            <af:outputFormatted value="#{custPortalBundle.YOR_ACC_DTLS}" id="ot11" styleClass="mainHeading d-block"/>
+                                  
+            <af:panelGroupLayout id="pgl24" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12 p-0 mt-4 mb-4">
+                    <af:panelGroupLayout id="pgl14" layout="default" styleClass="col-md-6 col-sm-6 col-xs-6 p-0">
+                        <af:panelGroupLayout id="pgl6" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <af:outputFormatted value="#{custPortalBundle.ACC_DET_NAME}" id="of1" styleClass="labelHeading col-md-4 p-0"/>
+                  
+                    <af:outputFormatted value="#{bindings.Name.inputValue}" id="of12" styleClass="col-md-8 margintop15"/>
+                            <af:outputFormatted id="ot4" styleClass="errorMessage" value="" rendered="false"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl8" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <af:outputFormatted value="#{custPortalBundle.RELAT_SHIPID}" id="of4" styleClass="labelHeading col-md-4 p-0"/>
+                            
+                        <af:outputFormatted value="#{pageFlowScope.ConsumerId}" id="of10" styleClass="col-md-8 margintop15"/>
+                    </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl11" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12 p-0">
+                                <af:outputFormatted value="#{custPortalBundle.CONTACT_NUM}" id="of9" styleClass="labelHeading col-md-4 p-0"/>
+                                <af:outputFormatted value="#{bindings.MobileNumber.inputValue}" id="of8" styleClass="col-md-8 margintop15"/>
+                   
+                </af:panelGroupLayout>    
+                    </af:panelGroupLayout>                    
+                    <af:panelGroupLayout id="pgl3" layout="default" styleClass="col-md-6 col-sm-6 col-xs-6 p-0">
+                        <af:panelGroupLayout id="pgl10" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12">
+                            <af:outputFormatted value="#{custPortalBundle.DIS_NAME}" id="of5" styleClass="labelHeading col-md-4"/>
+                  
+                    <af:outputFormatted value="#{bindings.DistributorName.inputValue}" id="of14" styleClass="col-md-8 margintop15"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl7" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12">
+                            <af:outputFormatted value="#{custPortalBundle.ADDRESS}" id="of6" styleClass="labelHeading col-md-4"/>
+                   
+                    <af:outputFormatted value="#{bindings.Address.inputValue}" id="of7" styleClass="col-md-8 margintop15"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        <af:outputFormatted value="#{bindings.EmailId.inputValue}" id="of2" visible="false"/>
+        <af:outputFormatted value="#{bindings.UCMId.inputValue}" id="of3" visible="false"
+                            binding="#{backingBeanScope.LinkedLpgBean.ucmIDbinding}"/>
+        <af:panelGroupLayout id="pgl27" layout="default" styleClass="col-sm-12 col-md-12 col-xs-12 p-0 text-right" >
+                <af:button text="#{custPortalBundle.YES_INF_RIGHT}" id="b1"
+                           action="#{backingBeanScope.LinkedLpgBean.onClickYes}" styleClass="col-md-5 mr-3" >
+                        <af:setPropertyListener from="#{bindings.UCMId.inputValue}" to="#{pageFlowScope.ucmId}" type="action"/>
+                </af:button>
+                <af:button text="#{custPortalBundle.NO_INF_NOT_RIGHT}" id="b2" action="toInformationNot" styleClass="col-md-6" inlineStyle="background-color:#fff; color:#f37021 !important; border-color:#f37021;"/>
+            </af:panelGroupLayout>
+            
+              <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.LinkedLpgBean.bindpopUp}"
+                        popupCanceledListener="#{backingBeanScope.LinkedLpgBean.signout}">
+                <af:dialog id="d1" contentWidth="800" type="none" styleClass="test iocl_page"
+                           inlineStyle="margin-top: 100px; border-radius: 10px;">
+                 <af:panelGroupLayout id="pgl2" styleClass="col-md-12 marB15 hyphenNo font20Regular"  inlineStyle="padding-right: 0px;">
+                                        <af:outputFormatted value="#{pageFlowScope.popUpmsg}" id="of11"
+                                                            inlineStyle="word-break:keep-all;"/>
+                                       
+                                       
+                                    </af:panelGroupLayout>
+                                     <af:panelGroupLayout id="pgl4" styleClass="col-md-4 col-md-offset-4 marB15 hyphenNo font20Regular"  inlineStyle="padding-right: 0px;">
+                    <af:button text="Logout" id="b3" actionListener="#{backingBeanScope.TemplateBean.clickSignOut}"/>
+                    </af:panelGroupLayout>
+                    
+                </af:dialog>
+            </af:popup>
+    </af:panelGroupLayout>
+   </af:panelGroupLayout>
+    </jsp:root>

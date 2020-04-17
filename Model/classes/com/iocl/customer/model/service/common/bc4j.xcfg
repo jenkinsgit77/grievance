@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="com.iocl.customer.model.service.AppModule">
+    <AppModuleConfig name="AppModuleLocal" jbo.project="com.iocl.customer.model.Model"
+                     ApplicationName="com.iocl.customer.model.service.AppModule" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="jdbc/iocl_dev_dbDS"/>
+      <Security AppModuleJndiName="com.iocl.customer.model.service.AppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="AppModuleShared" jbo.project="com.iocl.customer.model.Model"
+                     ApplicationName="com.iocl.customer.model.service.AppModule" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="jdbc/iocl_dev_dbDS"/>
+      <Security AppModuleJndiName="com.iocl.customer.model.service.AppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

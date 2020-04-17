@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="xtraRPointsPageDef"
+                Package="pageFragment.xtraRewards">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XtraRCustomerDetailsVO2" RangeSize="25" DataControl="AppModuleDataControl"
+              id="XtraRCustomerDetailsVO2Iterator"/>
+    <iterator Binds="XtraRCustomerDetailsVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="XtraRCustomerDetailsVO1Iterator"/>
+    <iterator Binds="XtraRewardsTxnVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="XtraRewardsTxnVO1Iterator"/>
+    <iterator Binds="XtraRewardsTxnVO2" RangeSize="25" DataControl="AppModuleDataControl"
+              id="XtraRewardsTxnVO2Iterator"/>
+    <taskFlow id="CustomerBussinessValidation1"
+              taskFlowId="/WEB-INF/taskflow/common/CustomerBussinessValidation.xml#CustomerBussinessValidation"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="errorBusinessValidationCode" value="#{pageFlowScope.pCustomerTxnValidCode}"/>
+        <parameter id="errorBusinessValidationMSG" value="#{pageFlowScope.pCustomerTxnValidMsg}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="XtraRCustomerDetailsVO2Iterator" id="BalancePoints">
+      <AttrNames>
+        <Item Value="BalancePoints"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XtraRCustomerDetailsVO1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XtraRCustomerDetailsVO1Iterator" id="MiddleName">
+      <AttrNames>
+        <Item Value="MiddleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XtraRCustomerDetailsVO1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XtraRCustomerDetailsVO1Iterator" id="Title">
+      <AttrNames>
+        <Item Value="Title"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XtraRCustomerDetailsVO1Iterator" id="CardNumber">
+      <AttrNames>
+        <Item Value="CardNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="serviceCustomerCall" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="serviceCustomerCall" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.serviceCustomerCall.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.serviceCustomerCall_serviceCustomerCall_dataControl_dataProvider_serviceCustomerCall_result">
+      <NamedData NDName="inputList" NDType="java.util.List"/>
+      <NamedData NDName="method" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="XtraRewardsTxnVO1Iterator" id="XtraRewardsTxnVO1">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.Loyalty.XtraRewardsTxnVO" Name="XtraRewardsTxnVO10">
+        <AttrNames>
+          <Item Value="MerchantLocation"/>
+          <Item Value="TxnAmt"/>
+          <Item Value="TxnPts"/>
+          <Item Value="MerchantName"/>
+          <Item Value="TxnProductName"/>
+          <Item Value="TxnDateTime"/>
+          <Item Value="TxnId"/>
+          <Item Value="MerchantId"/>
+          <Item Value="TxnPointsEarned"/>
+          <Item Value="TxnPointsReedeem"/>
+          <Item Value="TxnTime"/>
+          <Item Value="TxnYear"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="XtraRewardsTxnVO2Iterator" id="XtraRewardsTxnVO2">
+      <nodeDefinition DefName="com.iocl.customer.model.viewobject.Loyalty.XtraRewardsTxnVO" Name="XtraRewardsTxnVO20">
+        <AttrNames>
+          <Item Value="TxnType"/>
+          <Item Value="MerchantLocation"/>
+          <Item Value="TxnAmt"/>
+          <Item Value="TxnPts"/>
+          <Item Value="MerchantName"/>
+          <Item Value="TxnProductName"/>
+          <Item Value="TxnDateTime"/>
+          <Item Value="TxnId"/>
+          <Item Value="MerchantId"/>
+          <Item Value="TxnPointsEarned"/>
+          <Item Value="TxnPointsReedeem"/>
+          <Item Value="TxnTime"/>
+          <Item Value="TxnYear"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

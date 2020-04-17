@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library id="oracle..adf-library-dependencies" name="ADF Library Dependencies" deployed="true" locked="true" xmlns="http://xmlns.oracle.com/jdeveloper/1013/manifest-libraries">
+  <description/>
+  <classpath>../ViewController/public_html/WEB-INF/lib/aes6.0.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/ccavutil.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/commons-lang3-3.6.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/commons-pool2-2.6.0.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/IOCLCommonJar.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/json-20171018.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/log4j-1.2.9.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/oracle.ucm.ridc-11.1.1-javadoc.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/oracle.ucm.ridc-11.1.1.jar</classpath>
+  <classpath>../ViewController/public_html/WEB-INF/lib/oracle.ucm.ridc.was-lib-11.1.1.jar</classpath>
+</library>

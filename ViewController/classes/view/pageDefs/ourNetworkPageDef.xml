@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="ourNetworkPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="ourNetworkDistribtorTF1"
+              taskFlowId="/WEB-INF/taskflow/ourNetworkDistribtorTF.xml#ourNetworkDistribtorTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="ourNetworkLocatorTF1" taskFlowId="/WEB-INF/taskflow/ourNetworkLocatorTF.xml#ourNetworkLocatorTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

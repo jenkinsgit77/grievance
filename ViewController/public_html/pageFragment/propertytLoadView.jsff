@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:panelGroupLayout id="pgl7" layout="vertical" styleClass="row iocl_page">
+        <af:panelGroupLayout id="pgl2" layout="default" styleClass="col-md-12">
+            <af:panelGroupLayout id="pgl8" layout="default" styleClass="IOCLcontent_box1" inlineStyle="border: 1px solid #e1e3e4; background-color: #f5f5f7; border-radius: 5px;">
+                <af:panelGroupLayout id="pgl35" layout="default" styleClass="row d-block">
+                    <af:panelGroupLayout id="pgl4" styleClass="col-xs-offset-1 col-xs-10" layout="default">
+                        <af:link text="Load customer property" id="l1"
+                                 action="#{backingBeanScope.propLoadBn.contentPropReset}" styleClass="font-size26">
+                            <af:setPropertyListener from="true" to="#{sessionScope.custPropertyLoad}" type="action"/>
+                        </af:link>
+                        <af:outputFormatted value="Status::#{sessionScope.custPropertyLoad}"
+                                            partialTriggers="l1" visible="#{sessionScope.custPropertyLoad eq 'true'}"
+                                            id="of3" styleClass="font-size18 submitSection"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

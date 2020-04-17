@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">slider.jsff</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">350.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>slider.jsff&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">255.89648</property>
+      <property
+         name="page">/pageFragment/slider.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">methodCall1</property>
+      <property
+         name="x">165.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>methodCall1&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">255.44238</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall3"
+      to="View2">
+      <property
+         name="fromOutcome">toslider</property>
+      <property
+         name="sdm:polyPoints">R50,206.68846,255.0918,308.31158,255.5459,L50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall7">
+      <property
+         name="activityId">fetchAppListLpgLogIn</property>
+      <property
+         name="x">-13.954102</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>fetchAppListLpgLogIn&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">254.44824</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="MethodCall7"
+      to="MethodCall3">
+      <property
+         name="fromOutcome">fetchAppListLpgLogIn</property>
+      <property
+         name="sdm:polyPoints">R50,27.734348,254.09766,123.31157,255.0918,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="FetchIconsTF_FetchIconsTF_fetchAppListCustomerNonLoginPageDef" Package="taskflow.common"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="fetchAppListCustomerNonLogin" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAppListCustomerNonLogin" IsViewObjectMethod="false"
+                  DataControl="AppModuleDataControl"
+                  InstanceName="bindings.fetchAppListCustomerNonLogin.dataControl.dataProvider">
+      <NamedData NDName="pflowCode" NDValue="#{pageFlowScope.pflowCode}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

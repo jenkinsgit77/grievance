@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns="http://www.w3.org/1999/xhtml"
+                   xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<af:panelGroupLayout id="pgl1" styleClass="iocl_page">
+               <div class="container">
+        <div class="grievance grievanceContainer">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 ">
+                        <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <h1 class="zeromargin"><af:outputText value="Screen Reader" id="ot1"/></h1>
+                            <af:outputText value="Following table lists the information about different screen readers:" id="ot2"/>
+                        </div>
+                        </div>
+                        <div class="row top10">
+                            <div class="col-md-12 col-lg-12">
+                                <p class="fontmedium"><af:outputText value="Information related to the various screen readers" id="ot3"/></p>
+                            </div>
+                        </div>
+                        
+                <div class="row  top17">
+            <div class="col-md-12 col-lg-12 table-responsive">
+                    <table class="table table-striped grievanceTable" id="t1">
+                        <thead id="t3">
+                            <tr>
+                                <th>
+                                    <af:outputText value="Screen Reader" id="ot12"/>
+                                </th>
+                                <th>
+                                    <af:outputText value="Website"
+                                                   id="ot15"/>
+                                </th>
+                                <th>
+                                    <af:outputText value="Free / Commercial"
+                                                   id="ot17"/>
+                                </th>
+                            </tr>
+                        </thead>
+                         
+                        <tbody>
+                                            <!--<tr>
+                                    <td class="text-center">1</td>
+                                    <td>3242358340</td>
+                                    <td>NA</td>
+                                    <td>Lorem Ipsum is </td>
+                                    <td>XXXX</td>
+                                    <td>XXXX</td>
+                                    <td>XXXX</td>
+                                    <td>Given</td>
+                                    </tr>-->
+                        <tr>
+                            <td styleClass="text-center" id="t4">
+                                <af:outputText value="Non Visual Desktop Access (NVDA)" id="ot4"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.nvda-project.org/ (External website that opens in a new window)" id="ot6"
+                                destination="https://www.nvda-project.org/" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Free" id="ot16"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t2">
+                                <af:outputText value="System Access To Go" id="ot5"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.satogo.com/ (External website that opens in a new window)" id="ot7"
+                                destination="https://www.satogo.com/" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Free" id="ot8"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t5">
+                                <af:outputText value="Thunder" id="ot9"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.screenreader.net/index.php?pageid=11 (External website that opens in a new window)" id="ot10"
+                                destination="https://www.screenreader.net/index.php?pageid=11" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Free" id="ot11"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t6">
+                                <af:outputText value="WebAnywhere" id="ot13"/>
+                            </td>
+                            <td>
+                                <af:link text="https://webanywhere.cs.washington.edu/wa.php (External website that opens in a new window)" id="ot14"
+                                destination="https://webanywhere.cs.washington.edu/wa.php" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Free" id="ot18"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t7">
+                                <af:outputText value="Hal" id="ot19"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.yourdolphin.co.uk/productdetail.asp?id=5 (External website that opens in a new window)" id="ot20"
+                                destination="https://www.yourdolphin.co.uk/productdetail.asp?id=5" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Commercial" id="ot21"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t8">
+                                <af:outputText value="JAWS" id="ot22"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.freedomscientific.com/jaws-hq.asp (External website that opens in a new window)" id="ot23"
+                                destination="https://www.freedomscientific.com/jaws-hq.asp" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Commercial" id="ot24"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t9">
+                                <af:outputText value="Supernova" id="ot25"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.yourdolphin.co.uk/productdetail.asp?id=1 (External website that opens in a new window)" id="ot26"
+                                destination="https://www.yourdolphin.co.uk/productdetail.asp?id=1" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Commercial" id="ot27"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td styleClass="text-center" id="t10">
+                                <af:outputText value="Window-Eyes" id="ot28"/>
+                            </td>
+                            <td>
+                                <af:link text="https://www.gwmicro.com/Window-Eyes/ (External website that opens in a new window)"
+                                               id="ot29"
+                                               destination="https://www.gwmicro.com/Window-Eyes/" targetFrame="_blank"/>
+                            </td>
+                            <td>
+                                <af:outputText value="Commercial" id="ot30"/><!--<i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
+            
+            
+        </div></div></div></div>
+            </af:panelGroupLayout>
+            </jsp:root>

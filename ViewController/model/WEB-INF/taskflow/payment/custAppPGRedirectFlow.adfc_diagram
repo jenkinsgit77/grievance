@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="x">92.37402</property>
+      <property
+         name="y">266.5</property>
+   </OverallProperties>
+   <MethodCall
+      id="MethodCall4">
+      <property
+         name="activityId">handlePgResponse</property>
+      <property
+         name="x">92.37402</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>handlePgResponse&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">97.74707</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <View
+      id="View10">
+      <property
+         name="activityId">pgRedirect</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">527.35254</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>pgRedirect&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">98.09766</property>
+      <property
+         name="page">/pageFragment/pgRedirect.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="MethodCall4"
+      to="View10">
+      <property
+         name="tosrcid">__6</property>
+      <property
+         name="fromOutcome">updatePayment</property>
+      <property
+         name="fromsrcid">__4</property>
+      <property
+         name="sdm:polyPoints">R50,133.37402,97.396484,486.35254,97.74707,L50</property>
+   </ControlFlowCase>
+</SDM>

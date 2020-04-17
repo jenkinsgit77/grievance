@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="css">
+        .fileUpload label {
+            color: #95989a;
+            border-radius: 4px;
+            padding-left: 10px;
+            color: #000;
+            width: 100%;
+            border: 1px solid #D5D4D3;
+            border-color: #D5D4D3;
+            height: 60px;
+            padding-top: 15px;
+            background-color: #ffffff;
+            font-family: 'robotolight', sans-serif;
+            text-align: left;
+        }
+
+        .preview_box {
+            width: 40%;
+            height: 40%;
+            overflow: hidden;
+        }
+    </af:resource>
+    <af:panelGroupLayout id="pgl2" styleClass="iocl_page">
+        <af:panelGroupLayout id="pgl6" binding="#{backingBeanScope.AddAttachmentBean.addAttachmentPGL}">
+            <af:link id="l1"
+                     text="#{pageFlowScope.flowInUse eq 'ProfilePhotoChange' ? 'Update Photo' : 'Add Attachment'}"
+                     visible="#{!backingBeanScope.AddAttachmentBean.uplaodNameVisible}" partialTriggers="b111"
+                     partialSubmit="true" actionListener="#{backingBeanScope.AddAttachmentBean.onClickAddAttachment}"/>
+            <!--<af:outputLabel value="#{custPortalBundle.ATTACHMENT}:" 
+                                visible="#{backingBeanScope.AddAttachmentBean.uplaodNameVisible}" partialTriggers="b111"/>-->
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl1" layout="vertical"
+                             binding="#{backingBeanScope.AddAttachmentBean.removeAttachmentPgl}">
+            <af:image source="#{backingBeanScope.AddAttachmentBean.previewPath}" id="i4"
+                      styleClass="h-100 w-100"
+                      visible="#{pageFlowScope.hideImagePreview eq 'yes' ? false : backingBeanScope.AddAttachmentBean.imgVisible}"
+                      binding="#{backingBeanScope.AddAttachmentBean.thumbnailAttachImage}"/>
+            <af:link text="#{backingBeanScope.AddAttachmentBean.imagePathPre}" id="l6" partialSubmit="true"
+                     rendered="#{backingBeanScope.AddAttachmentBean.imgVisible}"
+                     actionListener="#{backingBeanScope.AddAttachmentBean.onClickPreviewImage}"></af:link>
+            <af:link text="#{custPortalBundle.REMOVE}"
+                     actionListener="#{backingBeanScope.AddAttachmentBean.onRemoveAttachment}" id="l2"
+                     partialSubmit="true"
+                     rendered="#{pageFlowScope.hideRemoveLink eq 'yes' ? false : backingBeanScope.AddAttachmentBean.imgVisible}"/>
+        </af:panelGroupLayout>
+        <div class="modal fade" id="lpgattachment" role="dialog"
+             style="position: center; background-color: White;border-radius:2px;" aria-labelledby="modalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-body">
+                    <af:popup childCreation="deferred" id="p111" animate="true"
+                              binding="#{backingBeanScope.AddAttachmentBean.popupImage}"
+                              popupCanceledListener="#{backingBeanScope.AddAttachmentBean.attachmentCancelLis}">
+                        <af:dialog id="d9" type="none"
+                                   contentHeight="200" contentWidth="800" styleClass="test MyDialog iocl_page AFDefaultFontFamily:alias ">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <h1>
+                                            <af:outputText value="#{custPortalBundle.UPLOAD_FILE}" id="ot6"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="row top17">
+                                    <div class="col-lg-12 col-md-12">
+                                        <af:outputText value="#{backingBeanScope.AddAttachmentBean.fileUplaodError}"
+                                                       styleClass="errorMessage"
+                                                       visible="#{backingBeanScope.AddAttachmentBean.fileUplaodError!=null}"
+                                                       partialTriggers="if1"/>
+                                    </div>
+                                    <div class="col-lg-12 hd_6">
+                                        <h1>
+                                            <af:outputText value="#{custPortalBundle.SELECT_FILE}" id="ot5"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="preview_box">
+                                            <!--<af:outputText value="#{pageFlowScope.IMAGE_PATH}" partialTriggers="b111"/>-->
+                                            <af:image styleClass="img-responsive" id="i111" partialTriggers="ol1 if1"
+                                                      visible="#{backingBeanScope.AddAttachmentBean.imgVisible}"
+                                                      source="#{backingBeanScope.AddAttachmentBean.previewPath}"
+                                                      binding="#{backingBeanScope.AddAttachmentBean.previewImage}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row top17">
+                                    <div class="col-md-5">
+                                        <af:outputLabel for="if1" styleClass="fileUpload"
+                                                        value="#{custPortalBundle.ADD_ATTACHMENT}"
+                                                        partialTriggers="if1" id="ol1" visible="false"></af:outputLabel>
+                                         
+                                        <af:inputFile label="#{custPortalBundle.IMAGE_PATH}" id="if1"
+                                                      value="#{backingBeanScope.AddAttachmentBean.imageFile}"
+                                                      autoSubmit="true"
+                                                      valueChangeListener="#{backingBeanScope.AddAttachmentBean.changeFileLstnr}"
+                                                      simple="true"
+                                                      binding="#{backingBeanScope.AddAttachmentBean.fileuploadBinding}"
+                                                      styleClass="fileUploadAttach"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <af:button text="#{custPortalBundle.SAVE}" id="b111" partialSubmit="true"
+                                                   action="#{backingBeanScope.AddAttachmentBean.uploadImageFileAction}"
+                                                   partialTriggers="if1"
+                                                   disabled="#{!backingBeanScope.AddAttachmentBean.imgVisible}"/>
+                                    </div>
+                                </div>
+                                <div class="row top17">
+                                    <div class="col-md-12">
+                                        <br/>
+                                         
+                                        <af:outputText value="#{custPortalBundle.ADD_ATTACHMENT_DISCLAIMER1}"
+                                                       id="ot1" styleClass="disclaimercolor"/><br/>
+                                         
+                                        <af:outputText value="#{custPortalBundle.ADD_ATTACHMENT_DISCLAIMER2}"
+                                                       id="ot2" styleClass="disclaimercolor"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </af:dialog>
+                    </af:popup>
+                     
+                    <af:popup childCreation="deferred" id="p5" animate="true"
+                              binding="#{backingBeanScope.AddAttachmentBean.imagePreviewPopup}">
+                        <af:dialog id="d6" type="none" contentHeight="200" contentWidth="800"
+                                   styleClass="test MyDialog iocl_page">
+                            <div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <h1>
+                                            <af:outputText value="#{custPortalBundle.FILE_PREVIEW}" id="ot4"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="row top17">
+                                    <div class="col-lg-12 col-md-12 ">
+                                        <af:image id="i5" partialTriggers="b111 l6 l2"
+                                                  source="#{backingBeanScope.AddAttachmentBean.previewPath}"
+                                                  styleClass="w-100"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 anchordecoration text-center">
+                                    <af:link text="#{custPortalBundle.CLOSE}" id="b8" partialSubmit="true"
+                                             actionListener="#{backingBeanScope.AddAttachmentBean.onCloseImagePreview}"/>
+                                </div>
+                                
+                            </div>
+                        </af:dialog>
+                    </af:popup>
+                </div>
+            </div>
+        </div>
+    </af:panelGroupLayout>
+    <af:resource type="javascript">
+      window.addEventListener('DOMContentLoaded', function () {
+          $("body").on("change", ".fileUploadAttach input[type=file]", function () {
+              setTimeout(function () {
+                  $(".x23t label, .fileUpload label").text($(".fileUploadAttach .x2k span").text());
+              },
+              1000);
+          })
+      });
+    </af:resource>
+</jsp:root>

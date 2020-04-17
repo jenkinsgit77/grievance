@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+     <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+     
+     <af:resource type="javascript">
+      var fileref = document.createElement('script');
+      fileref.setAttribute("type", "text/javascript");
+      fileref.setAttribute("src", "https://www.google.com/recaptcha/api.js");
+      document.getElementsByTagName("head")[0].appendChild(fileref);
+
+      window.addEventListener('DOMContentLoaded', function () {
+          $(".defaultFocusCls .x25").focus();
+      })
+
+     
+      
+       function setFocusSVInSec(event) {
+
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it2");
+
+          if (textfield_current_content_length == 1) {
+              element.focus();
+
+          }
+
+      }
+
+      function setFocusSVInThird(event) {
+
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it3");
+          if (textfield_current_content_length == 1) {
+              element.focus();
+          }
+      }
+
+      function setFocusSVInFourth(event) {
+      
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it4");
+          if (textfield_current_content_length == 1) {
+              element.focus();
+          }
+
+      }
+    </af:resource>
+   <af:panelGroupLayout id="cls" styleClass="IOCLcontent_box1 show">
+   
+    <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="row iocl_page">
+        <af:panelGroupLayout id="pgl23" layout="default" styleClass="col-md-12">
+                <af:panelGroupLayout id="pgl25" layout="vertical"  styleClass="row">                
+                    <af:panelGroupLayout id="pgl3" layout="default" styleClass="col-md-12">
+                        <af:outputFormatted value="OTP" id="ot1" styleClass="blueHeading d-block"/>
+                        <af:outputFormatted value="#{custPortalBundle.ENTER_OTP}" id="of3" styleClass="font_bold"/>
+                        <af:outputFormatted value="#{backingBeanScope.LinkedLpgBean.mobileNumber}" id="of2" styleClass="strong" inlineStyle="color:#f3782d; padding-left:5px; "/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl2" layout="default" styleClass="col-md-12 col-sm-12 col-xs-12 mt-2 p-0">
+                    <af:inputText simple="true" id="it1" maximumLength="1" columns="2" styleClass="col-md-1 p-0 otpPageInputStyling" autoTab="true"
+                                  binding="#{backingBeanScope.LinkedLpgBean.bindmobileotp1}">
+                                    <af:clientListener method="setFocusSVInSec" type="keyUp"/>
+                                  </af:inputText>
+                    <af:inputText simple="true" id="it2" maximumLength="1" columns="2" styleClass="col-md-1 p-0 otpPageInputStyling"  autoTab="true"
+                                  binding="#{backingBeanScope.LinkedLpgBean.bindMobileotp2}">
+                                   <af:clientListener method="setFocusSVInThird" type="keyUp"/>
+                                  </af:inputText>
+                    <af:inputText simple="true" id="it3" maximumLength="1" columns="2" styleClass="col-md-1 p-0 otpPageInputStyling"  autoTab="true"
+                                  binding="#{backingBeanScope.LinkedLpgBean.bindMobileotp3}">
+                                   <af:clientListener method="setFocusSVInFourth" type="keyUp"/>
+                                  </af:inputText>
+                    <af:inputText simple="true" id="it4" maximumLength="1" columns="2" styleClass="col-md-1 p-0 otpPageInputStyling" autoTab="true"
+                                  binding="#{backingBeanScope.LinkedLpgBean.bindMobileotp4}"/>
+                   
+                    <af:panelGroupLayout id="pgl4" layout="vertical" styleClass="col-md-4" >
+                        <af:outputFormatted value="#{custPortalBundle.DID_NOT}" id="of1" styleClass="font_bold"/>
+                        <af:link text="#{custPortalBundle.RESEND_OTP}" id="l1"
+                                 actionListener="#{backingBeanScope.LinkedLpgBean.resendOTP}"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                  <af:outputFormatted id="of5" styleClass="errorMessage" partialTriggers="b1" 
+                                        visible='#{backingBeanScope.LinkedLpgBean.errorOTP != null}'
+                                        value="#{backingBeanScope.LinkedLpgBean.errorOTP}"/>
+                <af:panelGroupLayout id="pgl20" layout="vertical" styleClass="col-md-12 col-sm-12 col-xs-12 mt-2 p-0 mt-5">
+                    <af:panelGroupLayout id="pgl22" layout="default" styleClass="col-md-3 p-0">
+                        <af:button text="#{custPortalBundle.VERIFY}" id="b1" action="#{backingBeanScope.LinkedLpgBean.verifyMobileotp}" />
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</af:panelGroupLayout>
+</jsp:root>

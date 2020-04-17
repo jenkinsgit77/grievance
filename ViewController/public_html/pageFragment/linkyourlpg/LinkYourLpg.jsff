@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
+    <c:set var="custPortalBundle" value="#{adfBundle['com.iocl.lpg.customer.custPortalBundle']}"/>
+    <af:resource type="javascript">
+      var fileref = document.createElement('script');
+      fileref.setAttribute("type", "text/javascript");
+      fileref.setAttribute("src", "https://www.google.com/recaptcha/api.js");
+      document.getElementsByTagName("head")[0].appendChild(fileref);
+
+      window.addEventListener('DOMContentLoaded', function () {
+          $(".defaultFocusCls .x25").focus();
+      })
+
+      function setFocusInSec(event) {
+
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it2");
+
+          if (textfield_current_content_length == 4) {
+              element.focus();
+
+          }
+
+      }
+
+      function setFocusInThird(event) {
+
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it3");
+          if (textfield_current_content_length == 4) {
+              element.focus();
+          }
+      }
+
+      function setFocusInFourth(event) {
+      
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it4");
+          if (textfield_current_content_length == 4) {
+              element.focus();
+          }
+
+      }
+      
+      
+       function setFocusInFourthtoSV(event) {
+      
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it5");
+          if (textfield_current_content_length == 4) {
+              element.focus();
+          }
+
+      }
+      
+       function setFocusSVInSec(event) {
+
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it22");
+
+          if (textfield_current_content_length == 1) {
+              element.focus();
+
+          }
+
+      }
+
+      function setFocusSVInThird(event) {
+
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it33");
+          if (textfield_current_content_length == 1) {
+              element.focus();
+          }
+      }
+
+      function setFocusSVInFourth(event) {
+      
+          var sourceId = event.getSource().getClientId();
+          var source = event.getSource();
+          var textfield = event.getCurrentTarget();
+          var textfield_current_content = textfield.getSubmittedValue();
+          var textfield_current_content_length = textfield_current_content.length;
+
+          var sourElement = event.getSource();
+          var element = sourElement.findComponent("it44");
+          if (textfield_current_content_length == 1) {
+              element.focus();
+          }
+
+      }
+      $( document ).ready(function() {
+    
+       // $('.inputOr > input').blur(function(){
+              //  alert("This input field has lost its focus.");
+           // });
+        });
+    </af:resource>
+    <af:resource type="css">
+   input{letter-spacing: 5px;}
+  .h1-iocl{
+  color:#00164E;
+  font-size: 26px;
+}
+.h1-iocl-outputFormatted{
+  color:#00164E;
+  display: inline-block;
+  font-weight: 400 !important;
+  margin-bottom: 5px;
+  max-width: 100%;
+  font-size: 26px !important;
+}
+.h1-iocl label {
+  color:#00164E;
+  display: inline-block;
+  font-weight: 400 !important;
+  margin-bottom: 5px;
+  max-width: 100%;
+  font-size: 26px !important;
+}
+.h6-iocl-subheading-lbl label{
+  font-size: 13px !important;
+  color: #000000;
+  font-weight: 500 !important;
+
+}
+.muted-text{
+  color:#95989A;
+  font-size: 14px;
+}
+
+
+@media (min-width: 992px) {
+  .input-width-4digi{
+    width: 11.666667% !important;
+  }
+  
+}
+.mt-10{
+margin-top:10px;
+}
+.mb-10{
+margin-bottom:10px;
+}.mb-10{
+margin-bottom:10px;
+}
+.mt-20{
+margin-top:20px;
+}
+.inputOr input{letter-spacing: 3px;}
+   </af:resource>
+    <af:resource type="javascript" source="/com/iocl/lpg/js/custom.js"/>
+    <af:panelGroupLayout id="pgl1777" styleClass="IOCLcontent_box1 row m-0 iocl_page" layout="default">
+     <af:panelGroupLayout id="pgl25" styleClass="row d-block mb-5">
+    
+        <af:panelGroupLayout id="pgl22" styleClass="col-md-6">
+            <af:outputText value="#{custPortalBundle.FND_17_DIGIT}" styleClass="p-0 h1-iocl text-left font-size22 font-dark-blue light-font"
+                                        id="ol11"/>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl4" styleClass="col-md-6 text-right muted-text show">
+            <af:outputFormatted value="#{custPortalBundle.All_MANDATORY_FIELD_MESSAGE}" id="of3"/>
+        </af:panelGroupLayout>
+     </af:panelGroupLayout>
+    
+     
+       
+       <af:panelGroupLayout id="pgl14" styleClass="col-md-12 mt-20 p-0">
+            <af:outputFormatted value="#{custPortalBundle.PROVID_EITHER}" id="ol5" styleClass="text-left  mb-3 p-0 h1-iocl-outputFormatted"/>
+       </af:panelGroupLayout>
+       <af:panelGroupLayout id="pgl15" styleClass="col-md-12 show">
+          <af:panelGroupLayout id="pgl18" styleClass="row show" inlineStyle= "background:#F2F0F0; padding: 20px 0;">
+            <af:panelGroupLayout id="pgl24" styleClass="col-md-3 show">
+             <af:outputText value="#{custPortalBundle.ENTER_LAST_4_DIGT}" id="ol3" styleClass="text-left IOCL-font-weight-bold mb-3 p-0 h6-iocl-subheading-lbl font-size14 medium-font font-normal"/>
+             <af:inputText id="it5" placeholder="#{custPortalBundle.LPG_DEFAULT_SV}" simple="true" maximumLength="30"
+                               autoComplete="off" autoTab="true" 
+                                      binding="#{backingBeanScope.LinkedLpgBean.bindSVNumber}" styleClass="inputOr">
+             </af:inputText>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl10" styleClass="col-md-1 show text-center p-0">
+               <af:image source="/images/globalimages/OR-image.png" styleClass="img" id="i1"
+                                inlineStyle="height: 67px;margin-top: 2px;"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl11" styleClass="col-md-3 show">
+              <af:outputText value="#{custPortalBundle.PLS_ENTER_AADHAR}" id="ol1" styleClass="text-left IOCL-font-weight-bold mb-3 p-0 h6-iocl-subheading-lbl font-size14 medium-font font-normal"/>
+                <af:inputText id="it6" placeholder="#{custPortalBundle.LPG_DEFAULT_SV}" simple="true" maximumLength="12"
+                               autoComplete="off" autoTab="true" 
+                              binding="#{backingBeanScope.LinkedLpgBean.bindAadharNumber}" styleClass="inputOr">
+                           
+                        </af:inputText>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl16" styleClass="col-md-1 show text-center p-0">
+            <af:image source="/images/globalimages/OR-image.png" styleClass="img" id="i2"
+                                inlineStyle="height: 67px;margin-top: 2px;"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl20" styleClass="col-md-4 show">
+               <af:outputText value="#{custPortalBundle.CASH_MEMO}" id="ol4" styleClass="text-left IOCL-font-weight-bold mb-3 p-0 h6-iocl-subheading-lbl font-size14 medium-font font-normal"/>
+               <af:inputText id="it7" placeholder="#{custPortalBundle.LPG_DEFAULT_SV}" simple="true" maximumLength="30"
+                               autoComplete="off" autoTab="true" 
+                             binding="#{backingBeanScope.LinkedLpgBean.bindCashMemoNumber}" styleClass="inputOr">
+                           
+                        </af:inputText>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl23" styleClass="pininput numericOnlyjs marginright10 col-md-12 show">
+               <af:outputFormatted id="of1" styleClass="errorMessage" partialTriggers="b1" 
+                            visible='#{backingBeanScope.LinkedLpgBean.svNumErrorMsg != null}'
+                            value="#{backingBeanScope.LinkedLpgBean.svNumErrorMsg}"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+       </af:panelGroupLayout>
+      <af:region value="#{bindings.CustomerBussinessValidation1.regionModel}" id="r1"/>
+      <af:panelGroupLayout id="pgl17" styleClass="col-md-12 show mt-5 p-0">
+          <af:panelGroupLayout id="pgl1" styleClass="row show">
+          <af:panelGroupLayout id="pgl2" styleClass="col-md-3 show">
+            <af:button text="#{custPortalBundle.SUBMIT}" id="b1" 
+                       action="#{backingBeanScope.LinkedLpgBean.onClickSubmit}"/>
+                       
+            </af:panelGroupLayout>
+             <af:panelGroupLayout id="pgl3" styleClass="col-md-3 show" inlineStyle="margin-top:20px;">
+                <af:link text="#{custPortalBundle.CANCEL}" id="l1" destination="/portal/Customer/pages_lpg"/>
+             </af:panelGroupLayout>
+          </af:panelGroupLayout>
+       </af:panelGroupLayout>
+       <!--<af:panelGroupLayout id="pgl19" styleClass="col-md-12 show p-0 mt-3">
+          <af:image source="/images/globalimages/exclamation.svg" id="i3" styleClass="pr-3" inlineStyle="width:30px;"/>
+          <af:outputText id="ot4" value="#{custPortalBundle.AN_OTP_WILL_BE}" styleClass="otpPass" inlineStyle="color:gray;"/>
+       </af:panelGroupLayout>-->
+       
+    </af:panelGroupLayout>
+</jsp:root>
+

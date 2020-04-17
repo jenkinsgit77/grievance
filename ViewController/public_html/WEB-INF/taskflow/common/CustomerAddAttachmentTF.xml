@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CustomerAddAttachmentTF">
+    <template-reference>
+      <document>/WEB-INF/ExceptIonHandler/ExceptionHandlerTF.xml</document>
+      <id>ExceptionHandlerTF</id>
+    </template-reference>
+    <default-activity>AttachmentAdd</default-activity>
+    <input-parameter-definition id="__9">
+      <name>pNameFile</name>
+      <value>#{pageFlowScope.pNameFile}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__10">
+      <name>pNameExt</name>
+      <value>#{pageFlowScope.pNameExt}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__11">
+      <name>pBase64Code</name>
+      <value>#{pageFlowScope.pBase64Code}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__2">
+      <name>pFileUploadName</name>
+      <value>#{pageFlowScope.pFileUploadName}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>pFileUploadNamePre</name>
+      <value>#{pageFlowScope.pFileUploadNamePre}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>IMAGE_PATH</name>
+      <value>#{pageFlowScope.IMAGE_PATH}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>internalServiceExec</name>
+      <value>#{pageFlowScope.internalServiceExec}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name>flowInUse</name>
+      <value>#{pageFlowScope.flowInUse}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__7">
+      <name>hideImagePreview</name>
+      <value>#{pageFlowScope.hideImagePreview}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name>hideRemoveLink</name>
+      <value>#{pageFlowScope.hideRemoveLink}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__12">
+      <name>docType</name>
+      <value>#{pageFlowScope.docType}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__13">
+      <name>pFileInfo</name>
+      <value>#{pageFlowScope.pFileInfo}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__14">
+      <name>pDocumentType</name>
+      <value>#{pageFlowScope.pDocumentType}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__15">
+      <name>pDocumentID</name>
+      <value>#{pageFlowScope.pDocumentID}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__16">
+      <name>pDisabledLink</name>
+      <value>#{pageFlowScope.pDisabledLink}</value>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>AddAttachmentBean</managed-bean-name>
+      <managed-bean-class>com.iocl.lpg.customer.bean.attachment.CustomerAddAttachment</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="AttachmentAdd">
+      <page>/pageFragment/attachment/AttachmentAdd.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

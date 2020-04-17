@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <!--<af:resource type="css" source="/skins/CustPortCommon.css"/>-->
+    <!--<af:resource type="css" source="/css/bootstrap.css"/>-->
+    <af:resource type="css" source="/static/bootstrap/css/bootstrap.min.css"/>
+    <af:resource type="css" source="/datatable/css/iocl-datatable.min.css"></af:resource>
+    <af:resource type="css" source="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css"></af:resource>
+    <af:resource type="css" source="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></af:resource>
+    <!--<af:resource source="/js/vender/jQuery/jquery-2.2.4.min.js" type="javascript"/>-->
+    <af:resource type="javascript" source="/datatable/js/jquery-3.3.1.js"/>
+    <af:resource type="css" source="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"></af:resource>
+    <!--<af:resource type="javascript" source="/js/vender/bootstrap_3.3.7/bootstrap.min.js"/>-->
+    <af:resource source="/js/globalNumberOnlyInput.js" type="javascript"/>
+    <af:resource type="javascript" source="/static/bootstrap/js/bootstrap.min.js"/>
+    <af:resource source="/datatable/js/iocl.datatable.min.js" type="javascript"/>
+     <af:resource type="javascript" source="/js/customJSLPG_V_2.js"/>
+    <af:resource type="javascript">
+      $(document).ready(function () {
+          $('.black-theme').click(function () {
+              alert("dsf");
+              $("*").css('background-color', '#000');
+              $("*").css('color', 'yellow');
+              $("*").css('border-color', 'yellow');
+          });
+          $('.white-theme').click(function () {
+              window.location.reload();
+          });
+          $('.zoomplus').click(function () {
+              $("*").css('font-size', function () {
+                  return parseInt($(this).css('font-size')) + 2 + "px";
+              });
+          });
+          $('.zoomminus').click(function () {
+              $("*").css('font-size', function () {
+                  return parseInt($(this).css('font-size')) - 2 + "px";
+              });
+          });
+          $('.zoomzero').click(function () {
+              window.location.reload();
+          });
+      });
+    </af:resource>
+    <af:resource type="javascript">
+ 
+    function dataTableInvoke(){
+            if ($('table.datatable')) {
+             if ( ! $.fn.DataTable.isDataTable( '.datatable' ) ) {
+              $('table.datatable').DataTable( {
+                  responsive : true
+
+              });
+             }
+          }
+    }
+      $(document).ready(function () {
+          if ($('table.datatable')) {
+          if ( ! $.fn.DataTable.isDataTable( '.datatable' ) ) {
+              $('table.datatable').DataTable( {
+                  responsive : true
+
+              });
+          }
+          }
+      });
+      
+      <!-- Below numericOnlyjs Class Allow only numeric input-->
+       window.addEventListener('DOMContentLoaded', function () {
+          $("body").on("keypress", ".numericOnlyjs input", function (e) {
+              if (e.which != 8 &amp;&amp; e.which != 0 &amp;&amp; (e.which &lt; 48 || e.which &gt; 57)) {
+                  return false;
+              }
+          });
+          
+          $('.attrid').attr('id','btnId');
+      });
+    </af:resource>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>LoggedInTemplate</display-name>
+                <facet>
+                    <facet-name>header</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>status</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>appNav</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>globalLinks</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>footer</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>center</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>start</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>end</facet-name>
+                </facet>
+                <attribute>
+                    <attribute-name>logoImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoSmallImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoStyleClass</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoShortDesc</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>showAppNavbar</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                    <default-value>true</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>brandingMaxWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>1024px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>minWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>startWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>endWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>showFooter</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                </attribute>
+            </component>
+        </af:xmlContent>
+        <af:group id="grp1">
+            <af:resource type="css" source="/styles/tabletFirstTemplate.css"/>
+            <header>
+                <af:panelGroupLayout id="pgl9" styleClass="container-fluid" layout="vertical">
+                    <af:panelGroupLayout id="pgl10" styleClass="row" layout="vertical">
+                        <af:panelGroupLayout id="pgl19" styleClass="col-md-12 pull-right text-right" layout="vertical">top
+                                                                                                                       links</af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl20" styleClass="row" layout="vertical">
+                        <af:panelGroupLayout id="pgl21" styleClass="col-md-2" layout="vertical">
+                            <af:image source="/images/indane.png" id="pt_i1" styleClass="img-responsive"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pt_pgl14">
+                        <af:panelGroupLayout id="pt_pgl16">
+                            <af:outputFormatted value="Color Themes" id="pt_ot10"/>
+                        </af:panelGroupLayout>
+                        <af:outputText value="White" id="pt_l3" styleClass="white-theme font_box"/>
+                        <af:outputText value="Black" id="pt_l4" styleClass="font_box black-theme"/>
+                        <!--<af:outputText value="w" id="pt_ot12" styleClass="w"/>
+                        <af:outputText value="b" id="pt_ot13" styleClass="b"/>-->
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pt_pgl17">
+                        <!--<af:outputText value="A-" id="pt_ot11" styleClass="font_box pull-left font-box-padding"/>
+                        <af:outputText value="A" id="pt_ot9" styleClass="font_box pull-left font-box-padding"/>
+                        <af:outputText value="A+" id="pt_ot8" styleClass="font_box pull-left font-box-padding"/>-->
+                        <af:outputText value="A-" id="pt_l6"
+                                       styleClass="font_box pull-left font-box-padding zoomminus"/>
+                        <af:outputText value="A" id="pt_l7" styleClass="font_box pull-left font-box-padding zoomzero"/>
+                        <af:outputText value="A+" id="pt_l5" styleClass="font_box pull-left font-box-padding zoomplus"/>
+                    </af:panelGroupLayout>
+                    <!--Relationship Change Menu Start-->
+                    <af:panelGroupLayout id="pt_pgl4">
+                        <ul class="nav pull-right">
+                            <li class="dropdown" id="menuLogin">
+                                <a class="dropdown-toggle Menulog-out" style="padding: 0px 10px;" href="#"
+                                   data-toggle="dropdown" id="navLogin">
+                                    <af:outputFormatted value="Change Relationship" id="pt_of1"/></a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu"
+                                    style="position: absolute;background: #fff;border: solid 1px #ccc;">
+                                    <af:forEach varStatus="relCount" items="#{sessionScope.userDetails.customerDetails}"
+                                                var="rel">
+                                        <li>
+                                            <af:link text="#{rel.connectionSubStatusLabel}" id="pt_l2"
+                                                     inlineStyle="text-decoration:none;">
+                                                <!--<af:setActionListener from="myprofile" to="#{sessionScope.redirectCheck}"/>-->
+                                            </af:link>
+                                        </li>
+                                    </af:forEach>
+                                </ul>
+                            </li>
+                        </ul>
+                    </af:panelGroupLayout>
+                    <!--Relationship Change Menu End-->
+                </af:panelGroupLayout>
+            </header>
+            <af:panelGroupLayout id="mainArea" styleClass="container show contentContainer" layout="vertical">
+                <af:panelGroupLayout id="pt_pgl2" styleClass="container-fluid mainContainerCustom">
+                    <af:panelGroupLayout id="pt_pgl1" layout="vertical" styleClass="row">
+                        <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="col-md-2">
+                            <af:panelGroupLayout id="pgl13" layout="vertical" styleClass="topheader">
+                                <af:link text="link 1" id="pt_l1"
+                                         actionListener="#{backingBeanScope.TemplateBean.goToOverviewSection}"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl12" layout="default" styleClass="leftTab">AVIATION</af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl14" layout="default" styleClass="leftTab">
+                                <af:link text="link 1" id="pt_l8"
+                                         actionListener="#{backingBeanScope.TemplateBean.goToLPGSection}"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl15" layout="default" styleClass="leftTab">LUBES</af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl16" layout="default" styleClass="leftTab">BULK CUSTOMER</af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl17" layout="default" styleClass="leftTab">RETAIL</af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl18" layout="default" styleClass="leftTab">LOYALTY</af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pt_pgl3" layout="vertical" styleClass="col-md-10">
+                            <af:facetRef facetName="center"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:declarativeComponent viewId="contentBody.jsff" id="cBodFDC" startWidth="#{attrs.startWidth}"
+                                         endWidth="#{attrs.endWidth}" minWidth="#{attrs.minWidth}"
+                                         brandingMaxWidth="#{attrs.brandingMaxWidth}">
+                    <!--<f:facet name="startFacet">
+                        <af:facetRef facetName="start"/>
+                    </f:facet>-->
+                    <f:facet name="endFacet">
+                        <af:facetRef facetName="end"/>
+                    </f:facet>
+                    <!--<f:facet name="content">
+                        <af:facetRef facetName="center"/>
+                    </f:facet>-->
+                </af:declarativeComponent>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="footerArea" styleClass="tablet-first-footer-area" layout="vertical">
+                <af:group id="grp2">
+                    <af:declarativeComponent viewId="footer.jsff" id="footFDC" showFooter="#{attrs.showFooter}"
+                                             brandingMaxWidth="#{attrs.brandingMaxWidth}">
+                        <f:facet name="footerBar">
+                            <af:facetRef facetName="footer"/>
+                        </f:facet>
+                    </af:declarativeComponent>
+                </af:group>
+            </af:panelGroupLayout>
+        </af:group>
+    </af:pageTemplateDef>
+</jsp:root>
